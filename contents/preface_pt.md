@@ -74,13 +74,13 @@ Neste capítulo você entenderá como:
     7. Manilupar cores e paletas.
     8. Criar layouts de figuras complexas.
 
-## Software Engineering {#sec:engineering}
+## Engenharia de software {#sec:engineering}
 
-Unlike most books on data science, this book lays more emphasis on properly **structuring code**.
-The reason for this is that we noticed that many data scientists simply place their code into one large file and run all the statements sequentially.
-You can think of this like forcing book readers to always read it from beginning to end, without being allowed to revisit earlier sections or jump to interesting sections right away.
-This works fine for small and simple projects, but, as the project becomes bigger or more complex, more problems will start to arise.
-For example, in a well-written book, the book is split into distinctly-named chapters and sections which contain several references to other parts in the book.
+Diferente de boa parte da literatura sobre Ciência de Dados, esse livro dá uma ênfase maior para a **estruturação do código**.
+A razão para isso é que notamos que muitos cientistas de dados simplesmente inserem seu código em um arquivo enorme e rodam as instruções sequencialmente.
+Uma analogia possível seria forçar as pessoas a lerem um livro sempre do início até o final, sem poder consultar capítulos anteriores ou pular para seções mais interessantes.
+Isso funciona para projetos menores, mas enquanto maior e mais complexo for o projeto, mais problemas aparecerão.
+Por exemplo, um livro bem escrito é dividido em diferentes capítulos e seções que fazem referência a diversas partes do próprio livro.
 The software equivalent of this is **splitting code into functions**.
 Each function has a name and some contents.
 By using functions, you can tell the computer at any point in your code to jump to some other place and continue from there.

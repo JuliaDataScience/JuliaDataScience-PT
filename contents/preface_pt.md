@@ -1,4 +1,4 @@
-# Preface {#sec:preface}
+# Prefácio {#sec:preface}
 
 There are many programming languages and each and every one of them has its strengths and weaknesses.
 Some languages are very quick, but verbose.

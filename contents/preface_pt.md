@@ -87,19 +87,19 @@ Ao usar corretamente as funções, você pode determinar que o computador, em qu
 Isso permite que você reutilize o código com mais facilidade entre projetos, atualize o código, compartilhe o código, colabore e tenha uma visão mais geral do processo.
 Portanto, com as funções, você pode **otimizar o tempo**.
 
-So, while reading this book, you will eventually get used to reading and using functions.
-Another benefit of having good software engineering skills is that it will allow you to more easily read the source code of the packages that you're using, which could be greatly beneficial when you are debugging your code or wondering how exactly the package that you're using works.
-Finally, you can rest assured that we did not invent this emphasis on functions ourselves.
-In industry, it is common practice to encourage developers to use **"functions instead of comments"**.
-This means that, instead of writing a comment for humans and some code for the computer, the developers write a function which is read by both humans and computers.
+Assim, ao ler este livro, você acabará se acostumando a ler e usar funções.
+Outro benefício em ser hábil na engenharia de software, é compreender com mais facilidade o código-fonte dos pacotes que utiliza, algo essencial qunado se depura códigos ou quando buscamos entender exatamente como os pacotes que utilizamos funcionam.
+Por fim, você pode ter certeza de que não inventamos essa ênfase nas funções.
+Na indústria, é comum estimular desenvolvedores a usarem **"funções ao invés de comentários"**.
+Isso significa que, em vez de escrever um comentário para humanos e algum código para o computador, os desenvolvedores escrevem uma função que é lida por humanos e computadores.
 
-Also, we've put much effort into sticking to a consistent style guide.
-Programming style guides provide guidelines for writing code; for example, about where there should be whitespace and what names should be capitalized or not.
-Sticking to a strict style guide might sound pedantic and it sometimes is.
-However, the more consistent the code is, the easier it is to read and understand the code.
-To read our code, you don't need to know our style guide.
-You'll figure it out when reading.
-If you do want to see the details of our style guide, check out @sec:notation.
+Além disso, nos esforçamos muito para seguir um guia de estilo consistente.
+Os guias de estilo de programação fornecem diretrizes para a escrita de códigos,por exemplo, sobre onde deve haver espaço em branco e quais nomes devem ser em caixa alta ou não.
+Seguir um guia de estilo rígido pode parecer pedante e algumas vezes é.
+No entanto, enquanto mais consistente o código for, mais fácil serão sua leitura e compreensão.
+Pra ler nosso código, você não precisa entender nosso guia de estilo.
+Você perceberá enquanto lê.
+Se quiser conhecer os detalhes de nosso guia de estilo, acesse @sec:notation.
 
 ## Acknowledgements
 

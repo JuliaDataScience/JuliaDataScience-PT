@@ -43,7 +43,7 @@ jobs:
                 using Books; Books.install_dependencies()'
 
       - run: >
-          DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project -e 'using JDS; JDS.build()'
+          DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project -e 'using JDS; JDS.build(; project="pt")'
         env:
           # Fix for Plots with GR backend.
           GKSwstype: nul
@@ -52,7 +52,6 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
-          cname: juliadatascience.io
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force_orphan: true
           publish_dir: ./_build/

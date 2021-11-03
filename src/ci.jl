@@ -33,17 +33,14 @@ function write_thanks_page()
 end
 
 """
-    build()
+    build(; project="default")
 
 This method is called during CI.
 """
-function build()
+function build(; project="default")
     println("Building JDS")
     write_thanks_page()
     fail_on_error = true
-    gen(; fail_on_error)
-    extra_head = """
-    <script src="https://cdn.usefathom.com/script.js" data-site="EEJXHKTE" defer></script>
-    """
-    build_all(; extra_head, fail_on_error)
+    gen(; fail_on_error, project)
+    build_all(; fail_on_error, project)
 end

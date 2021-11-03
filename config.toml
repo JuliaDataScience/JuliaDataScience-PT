@@ -39,3 +39,8 @@
   online_url = "https://juliadatascience.io"
 
   output_filename = "juliadatascience"
+
+  [project.pt]
+  contents = [
+    "preface_pt"
+  ]

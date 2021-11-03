@@ -2,7 +2,7 @@
 
 Existem várias linguagens de programação e cada uma delas tem seus pontos fortes e fracos.
 Algumas linguagens são mais rápidas, mas bastante verbosas.
-Outras linguagens são fáceis de codificar, mas são lentas. Isso é conhecido como o problema de *duas linguagens* problem e Julia busca contornar esse tipo de problema.
+Outras linguagens são fáceis de codificar, mas são lentas. Isso é conhecido como o problema de *duas linguagens* e Julia busca contornar esse tipo de questão.
 Mesmo que nós três venhamos de áreas distintas, todos acreditamos que Julia é mais eficiente que outros tipos de linguagens para nossas pesquisas. 
 Discorremos sobre esse ponto de vista em @sec:why_julia.
 Contudo, comparada a outras linguagens de programação, Julia é uma das mais recentes.

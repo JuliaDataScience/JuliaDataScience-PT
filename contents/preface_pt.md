@@ -24,33 +24,33 @@ Grande parte da análise de dados vem de um esforço colaborativo, por isso as p
 ### Dados estão em todos os lugares {#sec:data_everywhere}
 
 **Dados são abundantes** e serão ainda mais em um futuro próximo.
-Um relatório do final do ano de 2012, concluiu que, entre 2005 e 2020, a quantidade de dados armazenados digitalmente **cresceu de um fator de 300, em 130 exabytes^[1 exabyte (EB) = 1,000,000 terabyte (TB).] para impressionantes 40,000 exabytes** [@gantz2012digital].
+Um relatório do final do ano de 2012, concluiu que, entre 2005 e 2020, a quantidade de dados armazenados digitalmente **cresceria de um fator de 300, em 130 exabytes^[1 exabyte (EB) = 1,000,000 terabyte (TB).] para impressionantes 40,000 exabytes** [@gantz2012digital].
 Em 2020, na média, cada pessoa criou **1.7 MB dados por segundo** [@domo2018data].
 Um relatório recente previu que quase **dois terços (65%) doas PIBs nacionais estarão digitalizados até 2022** [@fitzgerald2020idc].
 
 Todas as profissões serão impactadas pelo aumento e pela disponibilidade cada vez maior de dados [@chen2014big; @khan2014big].
 Dados são usados para comunicar e construir conhecimento, assim como na tomada de decisões. 
-É por isso que habilidades com dados é tão importante.
-Estar confortável ao lidar com dados, fará de você um pesquisador e/ou profissional valioso. 
+É por isso que habilidade com dados é tão importante.
+Estar confortável ao lidar com dados fará de você um pesquisador e/ou profissional valioso. 
 Em outras palavras, você adquirirá **literacia em dados**.
 
 ## O que é Ciência de Dados? {#sec:why_data_science}
 
-Ciência de Dados não se trata apenas de aprendizado de máquina e estatística, também não é somente sobre predição.
+Ciência de dados não se trata apenas de aprendizado de máquina e estatística, também não é somente sobre predição.
 Também não é uma disciplina totalmente contida nos campos STEM (Ciências, Tecnologia, Engenharia e Matemática) [@Meng2019Data].
-Entretanto, podemos afirmar com certeza que Ciência de Dados é sempre sobre **dados**.
+Entretanto, podemos afirmar com certeza que ciência de dados é sempre sobre **dados**.
 Nossos objetivos com este livro são dois:
 
-* Focar na espinha dorsal da Ciência de dados: **dados**.
+* Focar na espinha dorsal da ciência de dados: **dados**.
 * E o uso da linguagem de programação **Julia** para o processamento de dados.
 
-Explicamos porque Julia é uma linguagem extremamente eficaz para a Ciência de Dados em @sec:why_julia.
+Explicamos porque Julia é uma linguagem extremamente eficaz para a ciência de dados em @sec:why_julia.
 Por enquanto, vamos focar nos dados.
 
 ### Literacia em dados {#sec:data_literacy}
 
-De acoro com a [Wikipedia](https://en.wikipedia.org/wiki/Data_literacy), a definição formal para **literacia em dados é "a habilidade de ler, entender, criar e comunicar dados enquanto informação."**.
-Também gostamos da concepção informal de que, ao adquirir literacia em dados, você não se sentirá sufocado pelos dados, mas sim, saberpa utilizá-los na tomada correta de decisões.
+De acordo com a [Wikipedia](https://en.wikipedia.org/wiki/Data_literacy), a definição formal para **literacia em dados é "a habilidade de ler, entender, criar e comunicar dados enquanto informação."**.
+Também gostamos da concepção informal de que, ao adquirir literacia em dados, você não se sentirá sufocado pelos dados, mas sim, saberá utilizá-los na tomada correta de decisões.
 Literacia em dados é uma habilidade extremamente competitiva.
 Neste livro iremos abordar dois importantes aspectos da literacia em dados:
 
@@ -76,10 +76,10 @@ Neste capítulo você entenderá como:
 
 ## Engenharia de software {#sec:engineering}
 
-Diferente de boa parte da literatura sobre Ciência de Dados, esse livro dá uma ênfase maior para a **estruturação do código**.
+Diferente de boa parte da literatura sobre ciência de dados, esse livro dá uma ênfase maior para a **estruturação do código**.
 A razão para isso é que notamos que muitos cientistas de dados simplesmente inserem seu código em um arquivo enorme e rodam as instruções sequencialmente.
 Uma analogia possível seria forçar as pessoas a lerem um livro sempre do início até o final, sem poder consultar capítulos anteriores ou pular para seções mais interessantes.
-Isso funciona para projetos menores, mas enquanto maior e mais complexo for o projeto, mais problemas aparecerão.
+Isso funciona para projetos menores, mas quanto maior e mais complexo for o projeto, mais problemas aparecerão.
 Por exemplo, um livro bem escrito é dividido em diferentes capítulos e seções que fazem referência a diversas partes do próprio livro.
 O software equivalente a isso **divide o código em funções**.
 Cada função tem nome e algum conteúdo.
@@ -88,15 +88,15 @@ Isso permite que você reutilize o código com mais facilidade entre projetos, a
 Portanto, com as funções, você pode **otimizar o tempo**.
 
 Assim, ao ler este livro, você acabará se acostumando a ler e usar funções.
-Outro benefício em ser hábil na engenharia de software, é compreender com mais facilidade o código-fonte dos pacotes que utiliza, algo essencial qunado se depura códigos ou quando buscamos entender exatamente como os pacotes que utilizamos funcionam.
+Outro benefício em ser hábil na engenharia de software, é compreender com mais facilidade o código-fonte dos pacotes que utiliza, algo essencial quando se depura códigos ou quando buscamos entender exatamente como os pacotes que utilizamos funcionam.
 Por fim, você pode ter certeza de que não inventamos essa ênfase nas funções.
 Na indústria, é comum estimular desenvolvedores a usarem **"funções ao invés de comentários"**.
 Isso significa que, em vez de escrever um comentário para humanos e algum código para o computador, os desenvolvedores escrevem uma função que é lida por humanos e computadores.
 
 Além disso, nos esforçamos muito para seguir um guia de estilo consistente.
-Os guias de estilo de programação fornecem diretrizes para a escrita de códigos,por exemplo, sobre onde deve haver espaço em branco e quais nomes devem ser em caixa alta ou não.
+Os guias de estilo de programação fornecem diretrizes para a escrita de códigos, por exemplo, sobre onde deve haver espaço em branco e quais nomes devem ser em caixa alta ou não.
 Seguir um guia de estilo rígido pode parecer pedante e algumas vezes é.
-No entanto, enquanto mais consistente o código for, mais fácil serão sua leitura e compreensão.
+No entanto, quanto mais consistente o código for, mais fácil será sua leitura e compreensão.
 Pra ler nosso código, você não precisa entender nosso guia de estilo.
 Você perceberá enquanto lê.
 Se quiser conhecer os detalhes de nosso guia de estilo, acesse @sec:notation.

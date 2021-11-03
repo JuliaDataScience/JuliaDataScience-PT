@@ -101,14 +101,14 @@ Pra ler nosso código, você não precisa entender nosso guia de estilo.
 Você perceberá enquanto lê.
 Se quiser conhecer os detalhes de nosso guia de estilo, acesse @sec:notation.
 
-## Acknowledgements
+## Agradecimentos
 
-Many people have contributed directly and indirectly to this book.
+Muitas pessoas colaboraram direta ou indiretamente para a criação deste livro.
 
-Jose Storopoli would like to thank his family, especially his wife for the support and love during the writing and reviewing process.
-He would also like to thank his colleagues, especially [Fernando Serra](https://orcid.org/0000-0002-8178-7313), [Wonder Alexandre Luz Alves](https://orcid.org/0000-0003-0430-950X) and [André Librantz](https://orcid.org/0000-0001-8599-9009), for their encouragement.
+Jose Storopoli agradece sua famíla, em especial sua esposa pelo suporte e amor durante a escrita e revisão da obra.
+Ele também agradece aos seus colegas, em especial a [Fernando Serra](https://orcid.org/0000-0002-8178-7313), [Wonder Alexandre Luz Alves](https://orcid.org/0000-0003-0430-950X) e [André Librantz](https://orcid.org/0000-0001-8599-9009), por seu suporte.
 
-Rik Huijzer would first like to thank his PhD supervisors at the University of Groningen, [Peter de Jonge](https://www.rug.nl/staff/peter.de.jonge/), [Ruud den Hartigh](https://www.rug.nl/staff/j.r.den.hartigh/) and [Frank Blaauw](https://frankblaauw.nl/) for their support.
-Second, he would like to thank his parents and girlfriend for being hugely supportive during the holiday and all the weekends and evenings that were involved in this book.
+Rik Huijzer agrade em primeiro lugar seus supervisores de PhD na Universidade de Groningen, [Peter de Jonge](https://www.rug.nl/staff/peter.de.jonge/), [Ruud den Hartigh](https://www.rug.nl/staff/j.r.den.hartigh/) e [Frank Blaauw](https://frankblaauw.nl/).
+Em segundo lugar, agradece aos pais e a sua namorada por toda a compreensão durante feriados, finais de semana e noites dedicadas a este livro. 
 
-Lazaro Alonso would like to thank his wife and daughters for their encouragement to get involved in this project.
+Lazaro Alonso agradece sua esposa e suas filhas por todo suporte durante o projeto.

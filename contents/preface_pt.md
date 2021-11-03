@@ -81,11 +81,11 @@ A razão para isso é que notamos que muitos cientistas de dados simplesmente in
 Uma analogia possível seria forçar as pessoas a lerem um livro sempre do início até o final, sem poder consultar capítulos anteriores ou pular para seções mais interessantes.
 Isso funciona para projetos menores, mas enquanto maior e mais complexo for o projeto, mais problemas aparecerão.
 Por exemplo, um livro bem escrito é dividido em diferentes capítulos e seções que fazem referência a diversas partes do próprio livro.
-The software equivalent of this is **splitting code into functions**.
-Each function has a name and some contents.
-By using functions, you can tell the computer at any point in your code to jump to some other place and continue from there.
-This allows you to more easily re-use code between projects, update code, share code, collaborate, and see the big picture.
-Hence, with functions, you can **save time**.
+O software equivalente a isso **divide o código em funções**.
+Cada função tem nome e algum conteúdo.
+Ao usar corretamente as funções, você pode determinar que o computador, em qualquer ponto do código, pule de um lugar para outro e continue a partir daí.
+Isso permite que você reutilize o código com mais facilidade entre projetos, atualize o código, compartilhe o código, colabore e tenha uma visão mais geral do processo.
+Portanto, com as funções, você pode **otimizar o tempo**.
 
 So, while reading this book, you will eventually get used to reading and using functions.
 Another benefit of having good software engineering skills is that it will allow you to more easily read the source code of the packages that you're using, which could be greatly beneficial when you are debugging your code or wondering how exactly the package that you're using works.

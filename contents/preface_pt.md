@@ -54,25 +54,25 @@ Também gostamos da concepção informal de que, ao adquirir literacia em dados,
 Literacia em dados é uma habilidade extremamente competitiva.
 Neste livro iremos abordar dois importantes aspectos da literacia em dados:
 
-1. **Data Manipulation** with `DataFrames.jl` (@sec:dataframes).
-In this chapter you will learn how to:
-    1. Read CSV and Excel data into Julia.
-    2. Process data in Julia, that is, learn how to answer data questions.
-    3. Filter and subset data.
-    4. Handle missing data.
-    5. Join multiple data sources together.
-    6. Group and summarize data.
-    7. Export data out of Julia to CSV and Excel files.
-2. **Data Visualization** with `Makie.jl` (@sec:DataVisualizationMakie).
-In these chapter you will learn how to:
-    1. Plot data with different `Makie.jl` backends.
-    2. Save visualizations in several formats such as PNG or PDF.
-    3. Use different plotting functions to make diverse data visualizations.
-    4. Customize visualizations with attributes.
-    5. Use and create new plotting themes.
-    6. Add $\LaTeX$ elements to plots.
-    7. Manipulate color and palettes.
-    8. Create complex figure layouts.
+1. **Manipulação de dados** com `DataFrames.jl` (@sec:dataframes).
+Neste capítulo, você aprenderá a:
+    1. Ler dados em CSV e Excel com Julia.
+    2. Processar dados em Julia, ou seja, aprender a responder questões com dados.
+    3. Filtrar e agrupar dados.
+    4. Lidar com dados faltantes.
+    5. Agrupar várias fontes de dados.
+    6. Agrupar e resumir dados.
+    7. Exportar dados em Julia para arquivos CSV e Excel.
+2. **Visualização de dados** com `Makie.jl` (@sec:DataVisualizationMakie).
+Neste capítulo você entenderá como:
+    1. Plotar dados `Makie.jl` com diferentes backends.
+    2. Salvar visualizações nos mais diferentes formatos, como PNG ou PDF.
+    3. Usar diferentes funções de plotagem para criar diversas formas de visualização dos dados.
+    4. Customizar visualizações com atributos.
+    5. Usar e criar novos temas de plotagem.
+    6. Adicionar elementos $\LaTeX$ aos plots.
+    7. Manilupar cores e paletas.
+    8. Criar layouts de figuras complexas.
 
 ## Software Engineering {#sec:engineering}
 

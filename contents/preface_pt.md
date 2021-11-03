@@ -17,17 +17,16 @@ Ao mesmo tempo, nós três usamos ferramentas de ciência de dados no nosso dia 
 E provavelmente você também quer trabalhar com ciência de dados!
 Por isso, nosso livro é focado em ciência de dados.
 
-In the next part of this section, we emphasize the **"data" part of data science** and why data skills are, and will remain, in **high demand** in industry as well as in academia.
-We make an argument for **incorporating software engineering practices into data science** which should reduce friction when updating and sharing code with collaborators.
-Most data analyses are collaborative endeavors; that is why these software practices will help you.
+Na próxima etapa dessa seção daremos uma ênfase maior nos **"dados" parte essencial da ciência de dados** e como a habilidade em manipulaçãp de dados é, e continuará sendo, a **maior demanda** do mercado e da academia.
+Argumentamos que **incorporar a ciência de dados às práticas de engenharia de software** reduzirá o atrito na atuaçização e no compartilhamento de códigos entre colaboradores. 
+Grande parte da análise de dados vem de um esforço colaborativo, por isso as práticas com softwares são de grande ajuda.
 
-### Data is Everywhere {#sec:data_everywhere}
+### Dados estão em todos os lugares {#sec:data_everywhere}
 
-**Data is abundant** and will be even more so in the near future.
-A report from late 2012 concluded that, from 2005 to 2020, the amount of data stored digitally will **grow by a factor of 300, from 130 exabytes^[1 exabyte (EB) = 1,000,000 terabyte (TB).] to a whopping 40,000 exabytes** [@gantz2012digital].
-This is equal to 40 trillion gigabytes and, to put it into perspective, more than **5.2 terabytes for every living human currently on this planet!**
-In 2020, on average, every person created **1.7 MB of data per second** [@domo2018data].
-A recent report predicted that almost **two thirds (65%) of national GDPs will have undergone digitization by 2022** [@fitzgerald2020idc].
+**Dados são abundantes** e serão ainda mais em um futuro próximo.
+Um relatório do final do ano de 2012, concluiu que, entre 2005 e 2020, a quantidade de dados armazenados digitalmente **cresceu de um fator de 300, em 130 exabytes^[1 exabyte (EB) = 1,000,000 terabyte (TB).] para impressionantes 40,000 exabytes** [@gantz2012digital].
+Em 2020, na média, cada pessoa criou **1.7 MB dados por segundo** [@domo2018data].
+Um relatório recente previu que quase **dois terços (65%) doas PIBs nacionais estarão digitalizados até 2022** [@fitzgerald2020idc].
 
 Every profession will be impacted by the increasing availability of data and data's increased importance [@chen2014big; @khan2014big].
 Data is used to communicate and build knowledge, and to make decisions.

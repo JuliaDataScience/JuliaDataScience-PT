@@ -17,8 +17,8 @@ Ao mesmo tempo, nós três usamos ferramentas de ciência de dados no nosso dia 
 E provavelmente você também quer trabalhar com ciência de dados!
 Por isso, nosso livro é focado em ciência de dados.
 
-Na próxima etapa dessa seção daremos uma ênfase maior nos **"dados" parte essencial da ciência de dados** e como a habilidade em manipulaçãp de dados é, e continuará sendo, a **maior demanda** do mercado e da academia.
-Argumentamos que **incorporar a ciência de dados às práticas de engenharia de software** reduzirá o atrito na atuaçização e no compartilhamento de códigos entre colaboradores. 
+Na próxima etapa dessa seção daremos uma ênfase maior nos **"dados" parte essencial da ciência de dados** e como a habilidade em manipulação de dados é, e continuará sendo, a **maior demanda** do mercado e da academia.
+Argumentamos que **incorporar a ciência de dados às práticas de engenharia de software** reduzirá o atrito na atualização e no compartilhamento de códigos entre colaboradores. 
 Grande parte da análise de dados vem de um esforço colaborativo, por isso as práticas com softwares são de grande ajuda.
 
 ### Dados estão em todos os lugares {#sec:data_everywhere}
@@ -28,31 +28,31 @@ Um relatório do final do ano de 2012, concluiu que, entre 2005 e 2020, a quanti
 Em 2020, na média, cada pessoa criou **1.7 MB dados por segundo** [@domo2018data].
 Um relatório recente previu que quase **dois terços (65%) doas PIBs nacionais estarão digitalizados até 2022** [@fitzgerald2020idc].
 
-Every profession will be impacted by the increasing availability of data and data's increased importance [@chen2014big; @khan2014big].
-Data is used to communicate and build knowledge, and to make decisions.
-This is why data skills are important.
-If you become comfortable with handling data, you will become a valuable researcher or professional.
-In other words, you will become **data literate**.
+Todas as profissões serão impactadas pelo aumento e pela disponibilidade cada vez maior de dados [@chen2014big; @khan2014big].
+Dados são usados para comunicar e construir conhecimento, assim como na tomada de decisões. 
+É por isso que habilidades com dados é tão importante.
+Estar confortável ao lidar com dados, fará de você um pesquisador e/ou profissional valioso. 
+Em outras palavras, você adquirirá **literacia em dados**.
 
-## What is Data Science? {#sec:why_data_science}
+## O que é Ciência de Dados? {#sec:why_data_science}
 
-Data science is not only machine learning and statistics, and it's not all about prediction.
-Alas, it is not even a discipline fully contained within STEM (Science, Technology, Engineering, and Mathematics) fields [@Meng2019Data].
-But one thing that we can assert with high confidence is that data science is always about **data**.
-Our aims of this book are twofold:
+Ciência de Dados não se trata apenas de aprendizado de máquina e estatística, também não é somente sobre predição.
+Também não é uma disciplina totalmente contida nos campos STEM (Ciências, Tecnologia, Engenharia e Matemática) [@Meng2019Data].
+Entretanto, podemos afirmar com certeza que Ciência de Dados é sempre sobre **dados**.
+Nossos objetivos com este livro são dois:
 
-* We focus on the backbone of data science: **data**.
-* We use the **Julia** programming language to process the data.
+* Focar na espinha dorsal da Ciência de dados: **dados**.
+* E o uso da linguagem de programação **Julia** para o processamento de dados.
 
-We cover why Julia is an extremely effective language for data science in @sec:why_julia.
-For now, let's turn our attention towards data.
+Explicamos porque Julia é uma linguagem extremamente eficaz para a Ciência de Dados em @sec:why_julia.
+Por enquanto, vamos focar nos dados.
 
-### Data Literacy {#sec:data_literacy}
+### Literacia em dados {#sec:data_literacy}
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/Data_literacy), the formal definition of **data literacy is "the ability to read, understand, create, and communicate data as information."**.
-We also like the informal idea that, being data literate, you won't feel overwhelmed by data, but instead can use it to make the right decisions.
-Data literacy can be seen as a highly competitive skill to possess.
-In this book we'll cover two aspects of data literacy:
+De acoro com a [Wikipedia](https://en.wikipedia.org/wiki/Data_literacy), a definição formal para **literacia em dados é "a habilidade de ler, entender, criar e comunicar dados enquanto informação."**.
+Também gostamos da concepção informal de que, ao adquirir literacia em dados, você não se sentirá sufocado pelos dados, mas sim, saberpa utilizá-los na tomada correta de decisões.
+Literacia em dados é uma habilidade extremamente competitiva.
+Neste livro iremos abordar dois importantes aspectos da literacia em dados:
 
 1. **Data Manipulation** with `DataFrames.jl` (@sec:dataframes).
 In this chapter you will learn how to:

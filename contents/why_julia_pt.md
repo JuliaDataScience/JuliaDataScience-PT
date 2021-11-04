@@ -35,7 +35,7 @@ Na segunda situação, a história por trás muda um pouco.
 Você é uma pessoa que não só sabe programar, como também, provavelmente, vive disso.
 Você tem familiaridade com uma ou mais linguagens de programação e deve transitar bem entre elas.
 Você ouviu falar sobre "ciência de dados" e quer surfar essa onda.
-You begin to learn how to do stuff in `numpy`, how to manipulate `DataFrames` in `pandas` and how to plot things in `matplotlib`.
+Você começou a aprender a fazer coisas em `numpy`, a manipular `DataFrames` em `pandas` e como plotar em `matplotlib`.
 Or maybe you've learned all that in R by using the tidyverse and `tibbles`, `data.frames`, `%>%` (pipes) and `geom_*`...
 
 Then, from someone or somewhere you become aware of this new language called "Julia".

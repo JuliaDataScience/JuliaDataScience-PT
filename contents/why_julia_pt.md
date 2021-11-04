@@ -36,10 +36,10 @@ Você é uma pessoa que não só sabe programar, como também, provavelmente, vi
 Você tem familiaridade com uma ou mais linguagens de programação e deve transitar bem entre elas.
 Você ouviu falar sobre "ciência de dados" e quer surfar essa onda.
 Você começou a aprender a fazer coisas em `numpy`, a manipular `DataFrames` em `pandas` e como plotar em `matplotlib`.
-Or maybe you've learned all that in R by using the tidyverse and `tibbles`, `data.frames`, `%>%` (pipes) and `geom_*`...
+Ou talvez você tenha aprendido tudo isso em R usando tidyverse e `tibbles`, `data.frames`, `%>%` (pipes) e `geom_*`...
 
-Then, from someone or somewhere you become aware of this new language called "Julia".
-Why bother?
+Então, por alguém ou por algum lugar, você ouviu falar dessa nova linguagem chamada "Julia".
+Por que se importar?
 You are already proficient in Python or R and you can do everything that you need.
 Well, let us contemplate some plausible scenarios.
 

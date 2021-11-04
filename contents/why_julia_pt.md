@@ -40,17 +40,17 @@ Ou talvez você tenha aprendido tudo isso em R usando tidyverse e `tibbles`, `da
 
 Então, por alguém ou por algum lugar, você ouviu falar dessa nova linguagem chamada "Julia".
 Por que se importar?
-You are already proficient in Python or R and you can do everything that you need.
-Well, let us contemplate some plausible scenarios.
+Você já domina Python ou R e consegue fazer tudo que precisa.
+Bom, vamos analisar alguns possíveis cenários.
 
-**Have you ever in Python or R:**
+**Alguma vez você já fez em Python ou R:**
 
-1. Done something and were unable to achieve the performance that you needed?
-Well, **in Julia, Python or R minutes can be translated to seconds**^[and sometimes milliseconds.].
-We reserved @sec:julia_wild for displaying successful Julia use cases in both academia and industry.
+1. Algo que não tenha conseguido alcançar a performance necessária?
+Então, **em Julia, minutos no Python ou R se transformam em segundos**^[and sometimes milliseconds.].
+Nós separamos o @sec:julia_wild para exemplificar casos de sucesso em Julia tanto na academia quanto no mercado.
 
-2. Tried to do something different from `numpy`/`dplyr` conventions and discovered that your code is slow and you'll probably have to learn dark magic^[`numba`, or even `Rcpp` or `cython`?] to make it faster?
-**In Julia you can do your custom different stuff without loss of performance**.
+2. Tentou algo diferente das convenções `numpy`/`dplyr` e descobriu que o código estava lento e provavelmente precisaria de magia ^[`numba`, or even `Rcpp` or `cython`?] para torná-lo mais rápido?
+**Em Julia, você pode persinalizar uma série de coisas sem perder desempenho**.
 
 3. Had to debug code and somehow you see yourself reading Fortran or C/C++ source code and having no idea what you are trying to accomplish?
 **In Julia you only read Julia code, no need to learn another language to make your original language fast**.

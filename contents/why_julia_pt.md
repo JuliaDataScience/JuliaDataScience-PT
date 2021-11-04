@@ -55,7 +55,7 @@ Nós separamos o @sec:julia_wild para exemplificar casos de sucesso em Julia tan
 3. Precisou executar um debug em um código e caiu num código Fortran ou C/C++, sem ter ideia alguma do que fazer?
 **Em Julia, você lê apenas códigos de Julia, não é preciso programar em outra linguagem para tornar a original mais rápida**.
 Isso é chamado o "problema das duas linguagens" (see @sec:two_language).
-It also covers the use case for when "you had an interesting idea and wanted to contribute to an open source package and gave up because almost everything is not in Python or R but in C/C++ or Fortran"^[have a look at some deep learning libraries in GitHub and you'll be surprised that Python is only 25%-33% of the codebase.].
+É também o caso quando "você tem uma ideia interessante e tenta contribuir com um pacote open source, mas desiste porque quase tudo não está nem em Python, nem em R, mas em C/C++ ou Fortran"^[have a look at some deep learning libraries in GitHub and you'll be surprised that Python is only 25%-33% of the codebase.].
 
 4. Wanted to use a data structure defined in another package and found that doesn't work and that you'll probably need to build an interface^[this is mostly a Python ecosystem problem, and while R doesn't suffer heavily from this, it's not blue skies either.].
 **Julia allows users to easily share and reuse code from different packages.**

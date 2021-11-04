@@ -1,16 +1,16 @@
-# Why Julia? {#sec:why_julia}
+# Por que Julia? {#sec:why_julia}
 
-The world of data science is filled with different open source programming languages.
+O mundo da ciência de dados é repleto de diferentes linguagens open source.
 
-Industry has, mostly, adopted Python and academia R.
-**Why bother learning another language?**
-To answer this question, we will address two common backgrounds:
+A Indústria tem, em grande parte, adotado as linguagens Python e R.
+**Por que aprender uma outra linguagem?**
+Para responder a essa questão, abordaremos duas situações bastante comuns:
 
-1. **Did not program before** -- see @sec:non-programmers.
+1. **Nunca programou antes** -- see @sec:non-programmers.
 
-2. **Did program before** -- see @sec:programmers.
+2. **Já programou** -- see @sec:programmers.
 
-## For Non-Programmers {#sec:non-programmers}
+## Para os que nunca programaram {#sec:non-programmers}
 
 In the first background, we expect the common underlying story to be the following.
 

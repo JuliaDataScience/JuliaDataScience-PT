@@ -18,7 +18,7 @@ A ciência de dados te atrai, você tem vontade de aprender sobre e entender com
 Então, você tenta encontrar formas de aprender essa nova habilidade e cai em um mundo acrônimos complexos:
 `pandas`, `dplyr`, `data.table`, `numpy`, `matplotlib`, `ggplot2`, `bokeh`, e a lista continua.
 
-E, do nada, você escuta: "Julia".
+E, do nada, você ouve: "Julia".
 O que é isso?
 Como seria diferente de qualquer outra ferramenta usada para ciência de dados?
 

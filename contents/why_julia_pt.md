@@ -46,14 +46,14 @@ Bom, vamos analisar alguns possíveis cenários.
 **Alguma vez você já fez em Python ou R:**
 
 1. Algo que não tenha conseguido alcançar a performance necessária?
-Então, **em Julia, minutos no Python ou R se transformam em segundos**^[and sometimes milliseconds.].
+Então, **em Julia, minutos no Python ou R se transformam em segundos**^[e até em milésimos de segundo.].
 Nós separamos o @sec:julia_wild para exemplificar casos de sucesso em Julia tanto na academia quanto no mercado.
 
 2. Tentou algo diferente das convenções `numpy`/`dplyr` e descobriu que o código estava lento e provavelmente precisaria de magia ^[`numba`, or even `Rcpp` or `cython`?] para torná-lo mais rápido?
 **Em Julia, você pode persinalizar uma série de coisas sem perder desempenho**.
 
-3. Had to debug code and somehow you see yourself reading Fortran or C/C++ source code and having no idea what you are trying to accomplish?
-**In Julia you only read Julia code, no need to learn another language to make your original language fast**.
+3. Precisou executar um debug em um código e se pegou lendo uma fonte de código Fortran ou C/C++, sem ter ideia alguma do que fazer?
+**Em Julia, você lê apenas códigos de Julia, não é preciso programar em outra linguagem para tornar a original mais rápida**.
 This is called the "two-language problem" (see @sec:two_language).
 It also covers the use case for when "you had an interesting idea and wanted to contribute to an open source package and gave up because almost everything is not in Python or R but in C/C++ or Fortran"^[have a look at some deep learning libraries in GitHub and you'll be surprised that Python is only 25%-33% of the codebase.].
 

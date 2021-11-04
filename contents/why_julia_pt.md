@@ -15,14 +15,14 @@ Para responder a essa questão, abordaremos duas situações bastante comuns:
 Para a primeira situação, acreditamos que o ponto em comum seja:
 
 A ciência de dados te atrai, você tem vontade de aprender sobre e entender como ela pode ajudar sua carreira seja na academia, seja no mercado.
-Then, you try to find resources to learn this new craft and you stumble into a world of intricate acronyms:
-`pandas`, `dplyr`, `data.table`, `numpy`, `matplotlib`, `ggplot2`, `bokeh`, and the list goes on and on.
+Então, você tenta encontrar formas de aprender essa nova habilidade e cai em um mundo acrônimos complexos:
+`pandas`, `dplyr`, `data.table`, `numpy`, `matplotlib`, `ggplot2`, `bokeh`, e a lista continua.
 
-Out of the blue you hear a name: "Julia".
-What is this?
-How is it any different from other tools that people tell you to use for data science?
+E, do nada, você escuta: "Julia".
+O que é isso?
+Como seria diferente de qualquer outra ferramenta usada para ciência de dados?
 
-Why should you dedicate your precious time into learning a language that is almost never mentioned in any job listing, lab position, postdoc offer, or academic job description?
+Por que você deveria usar seu tempo para aprender uma linguagem que programação que quase nunca é mencionada em processos seletivos, posições em laboratórios, pós-doutorados ou qualquer outro trabalho acadêmico?
 The answer is that **Julia is a fresh approach** to both programming and data science.
 Everything that you do in Python or in R, you can do it in Julia with the advantage of being able to write readable[^readable], fast, and powerful code.
 Therefore, the Julia language is gaining traction, and for good reasons.

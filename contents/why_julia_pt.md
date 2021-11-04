@@ -31,10 +31,10 @@ Então, **se você não tem nenhum conhecimento prévio de programação, recome
 
 ## Para programadores {#sec:programmers}
 
-In the second background, the common underlying story changes a little bit.
-You are someone who knows how to program and probably does this for a living.
-You are familiar with one or more languages and can easily switch between them.
-You've heard about this new flashy thing called "data science" and you want to jump on the bandwagon.
+Na segunda situação, a história por trás muda um pouco.
+Você é uma pessoa que não só sabe programar, como também, provavelmente, vive disso.
+Você tem familiaridade com uma ou mais linguagens de programação e deve transitar bem entre elas.
+Você ouviu falar sobre "ciência de dados" e quer surfar essa onda.
 You begin to learn how to do stuff in `numpy`, how to manipulate `DataFrames` in `pandas` and how to plot things in `matplotlib`.
 Or maybe you've learned all that in R by using the tidyverse and `tibbles`, `data.frames`, `%>%` (pipes) and `geom_*`...
 

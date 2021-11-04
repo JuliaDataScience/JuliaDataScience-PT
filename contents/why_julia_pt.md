@@ -23,13 +23,13 @@ O que é isso?
 Como seria diferente de qualquer outra ferramenta usada para ciência de dados?
 
 Por que você deveria usar seu tempo para aprender uma linguagem que programação que quase nunca é mencionada em processos seletivos, posições em laboratórios, pós-doutorados ou qualquer outro trabalho acadêmico?
-The answer is that **Julia is a fresh approach** to both programming and data science.
-Everything that you do in Python or in R, you can do it in Julia with the advantage of being able to write readable[^readable], fast, and powerful code.
-Therefore, the Julia language is gaining traction, and for good reasons.
+A respota para a questão é que **Julia é uma nova abordagem** tanto para programação, quanto para ciência de dados.
+Tudo que você faz em Python ou R, você pode fazer em Julia com a vantagem de poder escrever um código legível [^readable], rápido e poderoso.
+Assim, Julia tem ganhado força e por uma série de motivos.
 
-So, **if you don't have any programming background knowledge, we highly encourage you to take up Julia** as a first programming language and data science framework.
+Então, **se você não tem nenhum conhecimento prévio de programação, recomendamos que aprenda Julia** como uma primeira linguagem de programação e ferramenta para ciência de dados.
 
-## For Programmers {#sec:programmers}
+## Para programadores {#sec:programmers}
 
 In the second background, the common underlying story changes a little bit.
 You are someone who knows how to program and probably does this for a living.

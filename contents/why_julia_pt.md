@@ -12,9 +12,9 @@ Para responder a essa questão, abordaremos duas situações bastante comuns:
 
 ## Para os que nunca programaram {#sec:non-programmers}
 
-In the first background, we expect the common underlying story to be the following.
+Para a primeira situação, acreditamos que o ponto em comum seja:
 
-Data science has captivated you, making you interested in learning what is it all about and how can you use it to build your career in academia or industry.
+A ciência de dados te atrai, você tem vontade de aprender sobre e entender como ela pode ajudar sua carreira seja na academia, seja no mercado.
 Then, you try to find resources to learn this new craft and you stumble into a world of intricate acronyms:
 `pandas`, `dplyr`, `data.table`, `numpy`, `matplotlib`, `ggplot2`, `bokeh`, and the list goes on and on.
 

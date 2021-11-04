@@ -90,7 +90,7 @@ Portanto, com as funções, você pode **otimizar o tempo**.
 
 Assim, ao ler este livro, você acabará se acostumando a ler e usar funções.
 Outro benefício em ser hábil na engenharia de software, é compreender com mais facilidade o código-fonte dos pacotes que utiliza, algo essencial quando se depura códigos ou quando buscamos entender exatamente como os pacotes que utilizamos funcionam.
-Por fim, você pode ter certeza de que não inventamos essa ênfase nas funções.
+Por fim, você pode ter certeza de que não inventamos essa ênfase em funções.
 Na indústria, é comum estimular desenvolvedores a usarem **"funções ao invés de comentários"**.
 Isso significa que, em vez de escrever um comentário para humanos e algum código para o computador, os desenvolvedores escrevem uma função que é lida por humanos e computadores.
 

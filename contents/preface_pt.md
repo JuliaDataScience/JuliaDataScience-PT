@@ -2,7 +2,7 @@
 
 Existem várias linguagens de programação e cada uma delas tem seus pontos fortes e fracos.
 Algumas linguagens são mais rápidas, mas bastante verbosas.
-Outras linguagens são fáceis de codificar, mas são lentas. Isso é conhecido como o problema de *duas linguagens* e Julia busca contornar esse tipo de questão.
+Outras linguagens são fáceis de codificar, mas são lentas. Isso é conhecido como o problema das *duas linguagens* e Julia busca eliminar esse problema.
 Mesmo que nós três venhamos de áreas distintas, todos acreditamos que Julia é mais efetiva para nossas pesquisas que as outras linguagens que usamos antes.
 Discorremos sobre esse ponto de vista em @sec:why_julia.
 Contudo, comparada a outras linguagens de programação, Julia é uma das mais recentes.
@@ -17,7 +17,7 @@ Ao mesmo tempo, nós três usamos ferramentas de ciência de dados no nosso dia 
 E provavelmente você também quer trabalhar com ciência de dados!
 Por isso, nosso livro é focado em ciência de dados.
 
-Na próxima etapa dessa seção daremos uma ênfase maior **na parte da ciência de dados que se relaciona diretamente aos "dados"** e mostraremos porque a habilidade em manipulação de dados é, e continuará sendo, a **maior demanda** do mercado e da academia.
+Na próxima etapa dessa seção daremos uma ênfase maior **na importância dos "dados" em ciência de dados** e mostraremos porque a habilidade em manipulação de dados é, e continuará sendo, a **maior demanda** do mercado e da academia.
 Argumentamos que **incorporar as práticas da engenharia de software à ciência de dados** reduzirá o atrito na atualização e no compartilhamento de códigos entre colaboradores. 
 Grande parte da análise de dados vem de um esforço colaborativo, por isso as práticas de desenvolvimento de software são de grande ajuda.
 

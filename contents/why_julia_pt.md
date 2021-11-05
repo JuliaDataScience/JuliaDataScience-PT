@@ -55,11 +55,11 @@ Nós separamos o @sec:julia_wild para exemplificar casos de sucesso em Julia tan
 3. Precisou executar um debug em um código e caiu num código Fortran ou C/C++, sem ter ideia alguma do que fazer?
 **Em Julia, você lê apenas códigos de Julia, não é preciso programar em outra linguagem para tornar a original mais rápida**.
 Isso é chamado o "problema das duas linguagens" (see @sec:two_language).
-É também o caso quando "você tem uma ideia interessante e tenta contribuir com um pacote open source, mas desiste porque quase tudo não está nem em Python, nem em R, mas em C/C++ ou Fortran"^[have a look at some deep learning libraries in GitHub and you'll be surprised that Python is only 25%-33% of the codebase.].
+É também o caso quando "você tem uma ideia interessante e tenta contribuir com um pacote open source, mas desiste porque quase tudo não está nem em Python, nem em R, mas em C/C++ ou Fortran"^[dê uma olhada em algumas bibliotecas de aprendizado profundo no GitHub e você descobrirá que Python é apenas 25% -33% da base de código.].
 
-4. Wanted to use a data structure defined in another package and found that doesn't work and that you'll probably need to build an interface^[this is mostly a Python ecosystem problem, and while R doesn't suffer heavily from this, it's not blue skies either.].
-**Julia allows users to easily share and reuse code from different packages.**
-Most of Julia user-defined types and functions work right out of the box^[or with little effort necessary.] and some users marvelled upon discovering how their packages are being used by other libraries in ways that they could not have imagined.
+4. Quis usar uma estrutura de dados definida em outro pacote e descobriu que não ia funcionar, e que você precisaria construir uma interface^[esse é um problema do ecossistema Python e, ainda que o R não sofra tanto com isso, também não é tão eficaz.].
+**Julia permite que usuários compartilhem e reusem códigos de diferentes pacotes.**
+A maior parte dos tipos e funções definidos pelos usuários de Julia, work right out of the box^[or with little effort necessary.] and some users marvelled upon discovering how their packages are being used by other libraries in ways that they could not have imagined.
 We have some examples in @sec:multiple_dispatch.
 
 5. Needed to have a better project management, with dependencies and version control tightly controlled, manageable, and replicable?

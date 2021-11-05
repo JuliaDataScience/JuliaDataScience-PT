@@ -18,7 +18,7 @@ E provavelmente você também quer trabalhar com ciência de dados!
 Por isso, nosso livro é focado em ciência de dados.
 
 Na próxima etapa dessa seção daremos uma ênfase maior **na importância dos "dados" em ciência de dados** e mostraremos porque a habilidade em manipulação de dados é, e continuará sendo, a **maior demanda** do mercado e da academia.
-Argumentamos que **incorporar as práticas da engenharia de software à ciência de dados** reduzirá o atrito na atualização e no compartilhamento de códigos entre colaboradores. 
+Argumentamos que **incorporar as práticas da engenharia de software à ciência de dados** reduzirá o atrito na atualização e no compartilhamento de códigos entre colaboradores.
 Grande parte da análise de dados vem de um esforço colaborativo, por isso as práticas de desenvolvimento de software são de grande ajuda.
 
 ### Dados estão em todos os lugares {#sec:data_everywhere}
@@ -30,9 +30,9 @@ Em 2020, em média, cada pessoa criou **1.7 MB de dados por segundo** [@domo2018
 Um relatório recente previu que quase **dois terços (65%) dos PIBs nacionais estarão digitalizados até 2022** [@fitzgerald2020idc].
 
 Todas as profissões serão impactadas pelo aumento e disponibilidade cada vez maior de dados [@chen2014big; @khan2014big] e pela crescente importância que os dados têm tomado.
-Dados são usados para comunicar e construir conhecimento, assim como na tomada de decisões. 
+Dados são usados para comunicar e construir conhecimento, assim como na tomada de decisões.
 É por isso que habilidade com dados é tão importante.
-Estar confortável ao lidar com dados fará de você um pesquisador e/ou profissional valioso. 
+Estar confortável ao lidar com dados fará de você um pesquisador e/ou profissional valioso.
 Em outras palavras, você se tornará  **alfabetizado em dados**.
 
 ## O que é Ciência de Dados? {#sec:why_data_science}
@@ -110,6 +110,6 @@ Jose Storopoli agradece sua famíla, em especial sua esposa pelo suporte e compr
 Ele também agradece aos seus colegas, em especial a [Fernando Serra](https://orcid.org/0000-0002-8178-7313), [Wonder Alexandre Luz Alves](https://orcid.org/0000-0003-0430-950X) e [André Librantz](https://orcid.org/0000-0001-8599-9009), por seu suporte.
 
 Rik Huijzer agradece em primeiro lugar seus supervisores de PhD na Universidade de Groningen, [Peter de Jonge](https://www.rug.nl/staff/peter.de.jonge/), [Ruud den Hartigh](https://www.rug.nl/staff/j.r.den.hartigh/) e [Frank Blaauw](https://frankblaauw.nl/).
-Em segundo lugar, agradece aos pais e a sua namorada por toda a compreensão durante feriados, finais de semana e noites dedicadas a este livro. 
+Em segundo lugar, agradece aos pais e a sua namorada por toda a compreensão durante feriados, finais de semana e noites dedicadas a este livro.
 
 Lazaro Alonso agradece sua esposa e suas filhas por todo suporte durante o projeto.

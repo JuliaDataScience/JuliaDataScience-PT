@@ -25,11 +25,11 @@ Grande parte da análise de dados vem de um esforço colaborativo, por isso as p
 
 **Dados são abundantes** e serão ainda mais em um futuro próximo.
 Um relatório do final do ano de 2012, concluiu que, entre 2005 e 2020, a quantidade de dados armazenados digitalmente **cresceria em um fator de 300, partindo de 130 exabytes^[1 exabyte (EB) = 1,000,000 terabyte (TB).] para impressionantes 40,000 exabytes** [@gantz2012digital].
-Isso equivale a 40 trilhões de gigabytes: para colocarmos em perspectiva, são mais de **5.2 terabytes para cada ser humano que vivo neste planeta!**
+Isso equivale a 40 trilhões de gigabytes: para colocarmos em perspectiva, são mais de **5.2 terabytes para cada ser humano que vive neste planeta!**
 Em 2020, em média, cada pessoa criou **1.7 MB de dados por segundo** [@domo2018data].
 Um relatório recente previu que quase **dois terços (65%) dos PIBs nacionais estarão digitalizados até 2022** [@fitzgerald2020idc].
 
-Todas as profissões serão impactadas pelo aumento e disponibilidade cada vez maior de dados [@chen2014big; @khan2014big], e pela crescente importância que os dados têm tomado.
+Todas as profissões serão impactadas pelo aumento e disponibilidade cada vez maior de dados [@chen2014big; @khan2014big] e pela crescente importância que os dados têm tomado.
 Dados são usados para comunicar e construir conhecimento, assim como na tomada de decisões. 
 É por isso que habilidade com dados é tão importante.
 Estar confortável ao lidar com dados fará de você um pesquisador e/ou profissional valioso. 
@@ -84,12 +84,12 @@ Isso funciona para projetos menores, mas quanto maior e mais complexo for o proj
 Por exemplo, um livro bem escrito é dividido em diferentes capítulos e seções que fazem referência a diversas partes do próprio livro.
 O equivalente a isso em desenvolvimento de software é **dividir o código em funções**.
 Cada função tem nome e algum conteúdo.
-Ao usar corretamente as funções, você pode determinar que o computador, em qualquer ponto do código, pule de um lugar para outro e continue a partir daí.
+Ao usar corretamente as funções você pode determinar que o computador, em qualquer ponto do código, pule de um lugar para outro e continue a partir daí.
 Isso permite que você reutilize o código com mais facilidade entre projetos, atualize o código, compartilhe o código, colabore e tenha uma visão mais geral do processo.
 Portanto, com as funções, você pode **otimizar o tempo**.
 
 Assim, ao ler este livro, você acabará se acostumando a ler e usar funções.
-Outro benefício em ser hábil na engenharia de software, é compreender com mais facilidade o código-fonte dos pacotes que utiliza, algo essencial quando se depura códigos ou quando buscamos entender exatamente como os pacotes que utilizamos funcionam.
+Outro benefício em ser hábil na engenharia de software é compreender com mais facilidade o código-fonte dos pacotes que utiliza, algo essencial quando se depura códigos ou quando buscamos entender exatamente como os pacotes que utilizamos funcionam.
 Por fim, você pode ter certeza de que não inventamos essa ênfase em funções.
 Na indústria, é comum estimular desenvolvedores a usarem **"funções ao invés de comentários"**.
 Isso significa que, em vez de escrever um comentário para humanos e algum código para o computador, os desenvolvedores escrevem uma função que é lida por humanos e computadores.

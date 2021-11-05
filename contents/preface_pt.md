@@ -3,7 +3,7 @@
 Existem várias linguagens de programação e cada uma delas tem seus pontos fortes e fracos.
 Algumas linguagens são mais rápidas, mas bastante verbosas.
 Outras linguagens são fáceis de codificar, mas são lentas. Isso é conhecido como o problema das *duas linguagens* e Julia busca eliminar esse problema.
-Mesmo que nós três venhamos de áreas distintas, todos acreditamos que Julia é mais efetiva para nossas pesquisas que as outras linguagens que usamos antes.
+Mesmo que nós três somos de áreas distintas, todos acreditamos que Julia é mais efetiva para nossas pesquisas que as outras linguagens que usamos antes.
 Discorremos sobre esse ponto de vista em @sec:why_julia.
 Contudo, comparada a outras linguagens de programação, Julia é uma das mais recentes.
 Isso significa que o ecossistema em torno da liguagem é, por vezes, de difícil navegação.
@@ -59,7 +59,7 @@ Neste livro iremos abordar dois importantes aspectos da alfabetização de dados
 Neste capítulo, você aprenderá a:
     1. Ler dados em CSV e Excel com Julia.
     2. Processar dados em Julia, ou seja, aprender a responder questões com dados.
-    3. Filtrar dados e criar subconjuntos.
+    3. Filtrar dados e criar subconjuntos de dados.
     4. Lidar com dados faltantes.
     5. Unir e combinar dados provenientes de várias fontes.
     6. Agrupar e resumir dados.
@@ -106,7 +106,7 @@ Se quiser conhecer os detalhes de nosso guia de estilo, acesse @sec:notation.
 
 Muitas pessoas colaboraram direta ou indiretamente para a criação deste livro.
 
-Jose Storopoli agradece sua famíla, em especial sua esposa pelo suporte e amor durante a escrita e revisão da obra.
+Jose Storopoli agradece sua famíla, em especial sua esposa pelo suporte e compreensão durante a escrita e revisão da obra.
 Ele também agradece aos seus colegas, em especial a [Fernando Serra](https://orcid.org/0000-0002-8178-7313), [Wonder Alexandre Luz Alves](https://orcid.org/0000-0003-0430-950X) e [André Librantz](https://orcid.org/0000-0001-8599-9009), por seu suporte.
 
 Rik Huijzer agradece em primeiro lugar seus supervisores de PhD na Universidade de Groningen, [Peter de Jonge](https://www.rug.nl/staff/peter.de.jonge/), [Ruud den Hartigh](https://www.rug.nl/staff/j.r.den.hartigh/) e [Frank Blaauw](https://frankblaauw.nl/).

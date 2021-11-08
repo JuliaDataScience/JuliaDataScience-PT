@@ -59,10 +59,10 @@ Isso é chamado o "problema das duas linguagens" (see @sec:two_language).
 
 4. Quis usar uma estrutura de dados definida em outro pacote e descobriu que não ia funcionar, e que você precisaria construir uma interface^[esse é um problema do ecossistema Python e, ainda que o R não sofra tanto com isso, também não é tão eficaz.].
 **Julia permite que usuários compartilhem e reusem códigos de diferentes pacotes.**
-A maior parte dos tipos e funções definidos pelos usuários de Julia, work right out of the box^[ou com pouquíssimo esforço.] e alguns usuários ficaram maravilhados ao descobrir como seus pacotes estão sendo usados por outras bibliotecas, das mais diversas formas, algo que nunca poderiam ter imaginado.
-Temos alguns exempllos em @sec:multiple_dispatch.
+A maior parte dos tipos e funções definidos pelos usuários de Julia, funcionam perfeitamente^[ou com pouquíssimo esforço.] e alguns usuários ficam maravilhados ao descobrir como seus pacotes estão sendo usados por outros pacotes, das mais diversas formas, algo que nunca poderiam ter imaginado.
+Temos alguns exemplos em @sec:multiple_dispatch.
 
-5. Precisou de uma melhor gestão de projeto, with dependencies and version control tightly controlled, manageable, and replicable?
+5. Precisou de uma melhor gestão de projetos, com crontrole rígido de versões e dependências, de fácil usabilidade e replicável?
 **Julia tem soluções incríveis para a gestão de projetos e um ótimo gerenciador de pacotes**.
 Diferentemente dos gerenciadores de pacotes tradicionais, que instalam e gerenciam um único conjunto global de pacotes, o gerenciador de pacotes de Julia é projetado em torno de "ambientes":
 conjuntos independentes de pacotes que podem ser locais para um projeto individual ou compartilhados entre projetos.
@@ -80,18 +80,18 @@ Vamos ccomeçar!
 
 A linguagem de programação Julia [@bezanson2017julia] é relativamente nova, foi lançada em 2012, e procura ser **fácil e rápida**.
 Ela "roda como C^[às vezes até mais rápido], mas lê como Python" [@perkelJuliaComeSyntax2019].
-Foi feita para computação científica, capz de lidar com **uma grande quatidade de dados e a computação dos mesmos** sendo, ao mesmo tempo, **fácil de manipular, criar and prototipar códigos**.
+Foi idealizada inicialmente para computação científica, capaz de lidar com **uma grande quantidade de dados e demanda computacional** sendo, ao mesmo tempo, **fácil de manipular, criar and prototipar códigos**.
 
 Os criadores de Julia explicaram porque desenvolveram a linguagem [2012 blogpost](https://julialang.org/blog/2012/02/why-we-created-julia/).
 Eles afirmam:
 
 > Somos ambiciosos: queremos mais.
-> Queremos uma linguagem open source, com uma licença liberal.
+> Queremos uma linguagem open source, com uma licença permissiva.
 > Queremos a velocidade do C com o dinamismo do Ruby.
 > Queremos uma linguagem que seja homoicônica, com verdadeiros macros como Lisp, mas com uma noção matemética óbvia e familiar como Matlab.
-> Queremos algo que seja útil para programação em geral como Python, fácil para estatística como R, tão natural para processamento de string quanto Perl, tão poderoso para álgebra linear quanto Matlab, tão bom para colar programas juntos quanto shell.
+> Queremos algo que seja útil para programação em geral como Python, fácil para estatística como R, tão natural para processamento de strings quanto Perl, tão poderoso para álgebra linear quanto Matlab, tão bom para colar programas juntos quanto shell.
 > Algo que seja simples de aprender, mas que deixe os hackers mais sérios felizes.
-> Queremos que seja interativo e compilado.
+> Queremos que seja interativo e estático.
 
 A maioria dos usuários se sente atraída por Julia em função da sua **velocidade superior**.
 Afinal, Julia é membro de um clube prestigiado e exclusivo.
@@ -103,18 +103,18 @@ A **facilidade de uso**, **caracteres Unicode** e ser uma linguagem que torna **
 Falaremos de todas essas qualidades nessa seção, mas focaremos no compartilhamento de códigos por enquanto.
 
 O ecossistema de pacotes de Julia é algo único.
-It enables not only code sharing but also allows sharing of user-created types.
-For example, Python's `pandas` uses its own `Datetime` type to handle dates.
-The same with R tidyverse's `lubridate` package, which also defines its own `datetime` type to handle dates.
-Julia doesn't need any of this, it has all the date stuff already baked into its standard library.
-This means that other packages don't have to worry about dates.
-They just have to extend Julia's `DateTime` type to new functionalities by defining new functions and do not need to define new types.
-Julia's `Dates` module can do amazing stuff, but we are getting ahead of ourselves now.
-Let's talk about some other features of Julia.
+Permite não só o compartilhamento de códigos, como também permite a criação de tipos definidos pelos usuários. 
+Por exemplo, o `pandas` do Python usa seu próprio tipo de `Datetime` para lidar com datas.
+O mesmo ocorre com o pacote `lubridate` do tidyverse do R The same with, que também define o seu tipo próprio de `datetime`, para lidar com datas.
+Julia não precisa disso, ela tem todos os tipos e funcionalidades de datas incluidas na sua biblioteca padrão.
+Isso significa que outros pacotes não precisam se preocupar com datas.
+Eles só precisam extender os tipos de `DateTime` de Julia para novas funcionalidades, ao definirem novas funções, sem a necessidade de definirem novos tipos. 
+O módulo de `Dates` Julia faz coisas incríveis, mas não discutiremos isso agora.
+Vamos falar de outras características de Julia.
 
-### Julia Versus Other Programming Languages
+### Julia Versus outraas linguagens de programação
 
-In [@fig:language_comparison], a highly opinionated representation is shown that divides the main open source and scientific computing languages in a 2x2 diagram with two axes:
+Em [@fig:language_comparison], a highly opinionated representation is shown that divides the main open source and scientific computing languages in a 2x2 diagram with two axes:
 **Slow-Fast** and **Easy-Hard**.
 We've omitted closed source languages because there are many benefits to allowing other people to run your code for free as well as being able to inspect the source code in case of issues.
 

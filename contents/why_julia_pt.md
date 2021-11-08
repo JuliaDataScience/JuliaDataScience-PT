@@ -72,26 +72,26 @@ Se nós chamamos a sua ateção expondo situações familiares ou mesmo plausív
 
 Vamos ccomeçar!
 
-## What Julia Aims to Accomplish? {#sec:julia_accomplish}
+## O que Julia pretende alcançar? {#sec:julia_accomplish}
 
 > **_NOTE:_**
-> In this section we will explain the details of what makes Julia shine as a programming language.
-> If it becomes too technical for you, you can skip and go straight to @sec:dataframes to learn about tabular data with `DataFrames.jl`.
+> Nessa seção explicaremos com detalhe o que faz de Julia uma linguagem de programação brilhante.
+> Se essa explicação for muito técnica para você, vá direto para @sec:dataframes to learn about tabular data with `DataFrames.jl`.
 
-The Julia programming language [@bezanson2017julia] is a relatively new language, first released in 2012, and aims to be **both easy and fast**.
-It "runs like C^[sometimes even faster than C.] but reads like Python" [@perkelJuliaComeSyntax2019].
-It was made for scientific computing, capable of handling **large amounts of data and computation** while still being fairly **easy to manipulate, create, and prototype code**.
+A linguagem de programação Julia [@bezanson2017julia] é relativamente nova, foi lançada em 2012, e procura ser **fácil e rápida**.
+Ela "roda como C^[às vezes até mais rápido], mas lê como Python" [@perkelJuliaComeSyntax2019].
+Foi feita para computação científica, capz de lidar com **uma grande quatidade de dados e a computação dos mesmos** sendo, ao mesmo tempo, **fácil de manipular, criar and prototipar códigos**.
 
-The creators of Julia explained why they created Julia in a [2012 blogpost](https://julialang.org/blog/2012/02/why-we-created-julia/).
-They said:
+Os criadores de Julia explicaram porque desenvolveram a linguagem [2012 blogpost](https://julialang.org/blog/2012/02/why-we-created-julia/).
+Eles afirmam:
 
-> We are greedy: we want more.
-> We want a language that’s open source, with a liberal license.
-> We want the speed of C with the dynamism of Ruby.
-> We want a language that’s homoiconic, with true macros like Lisp, but with obvious, familiar mathematical notation like Matlab.
-> We want something as usable for general programming as Python, as easy for statistics as R, as natural for string processing as Perl, as powerful for linear algebra as Matlab, as good at gluing programs together as the shell.
-> Something that is dirt simple to learn, yet keeps the most serious hackers happy.
-> We want it interactive and we want it compiled.
+> Somos ambiciosos: queremos mais.
+> Queremos uma linguagem open source, com uma licença liberal.
+> Queremos a velocidade do C com o dinamismo do Ruby.
+> Queremos uma linguagem que seja homoicônica, com verdadeiros macros como Lisp, mas com uma noção matemética óbvia e familiar como Matlab.
+> Queremos algo que seja útil para programação em geral como Python, fácil para estatística como R, tão natural para processamento de string quanto Perl, tão poderoso para álgebra linear quanto Matlab, tão bom para colar programas juntos quanto shell.
+> Algo que seja simples de aprender, mas que deixe os hackers mais sérios felizes.
+> Queremos que seja interativo e compilado.
 
 Most users are attracted to Julia because of the **superior speed**.
 After all, Julia is a member of a prestigious and exclusive club.

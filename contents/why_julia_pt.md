@@ -93,16 +93,16 @@ Eles afirmam:
 > Algo que seja simples de aprender, mas que deixe os hackers mais sérios felizes.
 > Queremos que seja interativo e compilado.
 
-Most users are attracted to Julia because of the **superior speed**.
-After all, Julia is a member of a prestigious and exclusive club.
-The [**petaflop club**](https://www.hpcwire.com/off-the-wire/julia-joins-petaflop-club/) is comprised of languages who can exceed speeds of **one petaflop^[a petaflop is one thousand trillion, or one quadrillion, operations per second.] per second at peak performance**.
-Currently only C, C++, Fortran, and Julia belong to the [petaflop club](https://www.nextplatform.com/2017/11/28/julia-language-delivers-petascale-hpc-performance/).
+A maioria dos usuários se sente atraída por Julia em função da sua **velocidade superior**.
+Afinal, Julia é membro de um clube prestigiado e exclusivo.
+O [**petaflop club**](https://www.hpcwire.com/off-the-wire/julia-joins-petaflop-club/) é composto por linguagens que excedem a velocidade de **um petaflop^[um petaflop equivale a mil trilhões, ou um quatrilhão de operações por segundo] por segundo no desempenho máximo**.
+Atualmente, apenas C, C++, Fortran e Julia fazem parte do [petaflop club](https://www.nextplatform.com/2017/11/28/julia-language-delivers-petascale-hpc-performance/).
 
-But, speed is not all that Julia can deliver.
-The **ease of use**, **Unicode support**, and a language that makes **code sharing effortless** are some of Julia's features.
-We'll address all those features in this section, but we want to focus on the Julia code sharing feature for now.
+Mas velocidade não é tudo que Julia pode oferecer.
+A **facilidade de uso**, **caracteres Unicode** e ser uma linguagem que torna **o compartilhamento de códigos algo muito simples** são algumas das características de Julia.
+Falaremos de todas essas qualidades nessa seção, mas focaremos no compartilhamento de códigos por enquanto.
 
-The Julia ecosystem of packages is something unique.
+O ecossistema de pacotes de Julia é algo único.
 It enables not only code sharing but also allows sharing of user-created types.
 For example, Python's `pandas` uses its own `Datetime` type to handle dates.
 The same with R tidyverse's `lubridate` package, which also defines its own `datetime` type to handle dates.

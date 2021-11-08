@@ -114,9 +114,9 @@ Vamos falar de outras características de Julia.
 
 ### Julia Versus outraas linguagens de programação
 
-Em [@fig:language_comparison], a highly opinionated representation is shown that divides the main open source and scientific computing languages in a 2x2 diagram with two axes:
-**Slow-Fast** and **Easy-Hard**.
-We've omitted closed source languages because there are many benefits to allowing other people to run your code for free as well as being able to inspect the source code in case of issues.
+Em [@fig:language_comparison], uma representação altamente opinativa é demonstrada e divide as principais linguagens open source e de computação científica em um diagrama 2x2 com dois eixos:
+**Devagar-Rápido** e **Fácil-Difícil**.
+Deixamos de fora as linguagens fechadas,  because there are many benefits to allowing other people to run your code for free as well as being able to inspect the source code in case of issues.
 
 We've put C++ and FORTRAN in the hard and fast quadrant.
 Being static languages that need compilation, type checking, and other professional care and attention, they are really hard to learn and slow to prototype.

@@ -59,18 +59,18 @@ Isso é chamado o "problema das duas linguagens" (see @sec:two_language).
 
 4. Quis usar uma estrutura de dados definida em outro pacote e descobriu que não ia funcionar, e que você precisaria construir uma interface^[esse é um problema do ecossistema Python e, ainda que o R não sofra tanto com isso, também não é tão eficaz.].
 **Julia permite que usuários compartilhem e reusem códigos de diferentes pacotes.**
-A maior parte dos tipos e funções definidos pelos usuários de Julia, work right out of the box^[or with little effort necessary.] and some users marvelled upon discovering how their packages are being used by other libraries in ways that they could not have imagined.
-We have some examples in @sec:multiple_dispatch.
+A maior parte dos tipos e funções definidos pelos usuários de Julia, work right out of the box^[ou com pouquíssimo esforço.] e alguns usuários ficaram maravilhados ao descobrir como seus pacotes estão sendo usados por outras bibliotecas, das mais diversas formas, algo que nunca poderiam ter imaginado.
+Temos alguns exempllos em @sec:multiple_dispatch.
 
-5. Needed to have a better project management, with dependencies and version control tightly controlled, manageable, and replicable?
-**Julia has an amazing project management solution and a great package manager**.
-Unlike traditional package managers, which install and manage a single global set of packages, Julia's package manager is designed around "environments":
-independent sets of packages that can be local to an individual project or shared between projects.
-Each project maintains its own independent set of package versions.
+5. Precisou de uma melhor gestão de projeto, with dependencies and version control tightly controlled, manageable, and replicable?
+**Julia tem soluções incríveis para a gestão de projetos e um ótimo gerenciador de pacotes**.
+Diferentemente dos gerenciadores de pacotes tradicionais, que instalam e gerenciam um único conjunto global de pacotes, o gerenciador de pacotes de Julia é projetado em torno de "ambientes":
+conjuntos independentes de pacotes que podem ser locais para um projeto individual ou compartilhados entre projetos.
+Cada projeto mantém, independentemente, seu próprio conjunto de versões de pacotes.
 
-If we got your attention by exposing somewhat familiar or plausible situations, you might be interested to learn more about this newcomer called Julia.
+Se nós chamamos a sua ateção expondo situações familiares ou mesmo plausíveis, talvez você se interesse em aprender um pouco mais sobre Julia.
 
-Let's proceed then!
+Vamos ccomeçar!
 
 ## What Julia Aims to Accomplish? {#sec:julia_accomplish}
 

@@ -142,8 +142,8 @@ Código LLVM, também conhecido como instruções LLVM, são de nível-baixo, ou
 Portanto, em essência, Julia converte seu código escrito a mão e fácil de se ler em LLVM código máquina, o que é muito difícil para humanos lerem, mas muito fácil para um computador.
 Por exemplo, se você definir uma função recebendo um argumento e passar um inteiro para a função, dessa forma Julia criará um _specialized_ `MethodInstance`.
 Na próxima vez que você passar um inteiro como argumento para a função, Julia buscará o `MethodInstance` criado anteriormente e referir a execução a isso.
-Agora, o **grande** truque is that you can also do this inside a function that calls a function.
-For example, if some data type is passed into function `f` and `f` calls function `g` and the data types passed to `g` are known and always the same, then the generated function `g` can be hardcoded into function `f`!
+Agora, o **grande** truque é que você também pode fazer isso dentro de uma função que chama a função.
+Por exemplo, se certo tipo de dado é passado dentro da função `f` e `f` chama a função `g` e os tipos de dados conhcecidos e que são sempre os mesmos passam para `g`, então a função `g` gerada pode ser codificada na função `f`!
 This means that Julia doesn't even have to lookup `MethodInstances` any more, and the code can run very efficiently.
 The trade-off, here, is that there are cases where earlier assumptions about the hardcoded `MethodInstances` are invalidated.
 Then, the `MethodInstance` has to be recreated which takes time.

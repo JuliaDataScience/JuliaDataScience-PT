@@ -144,7 +144,7 @@ Por exemplo, se você definir uma função recebendo um argumento e passar um in
 Na próxima vez que você passar um inteiro como argumento para a função, Julia buscará o `MethodInstance` criado anteriormente e referir a execução a isso.
 Agora, o **grande** truque é que você também pode fazer isso dentro de uma função que chama a função.
 Por exemplo, se certo tipo de dado é passado dentro da função `f` e `f` chama a função `g` e os tipos de dados conhcecidos e que são sempre os mesmos passam para `g`, então a função `g` gerada pode ser codificada na função `f`!
-Isso significa que Julia não precisa sequer buscar `MethodInstances`, por isso o código consegue rodar de forma eficiente.
+Isso significa que Julia não precisa sequer buscar `MethodInstances`, pois o código consegue rodar de forma eficiente.
 A compensação aqui é que existem casos onde as suposições anteriores sobre a decodificação dos `MethodInstances` são invalidadas.
 Então, o `MethodInstance` precisa ser recriado, o que leva tempo.
 Além disso, a desvantagem é que leva tempo para inferir o que pode ser codificado e o que não pode.

@@ -103,12 +103,12 @@ A **facilidade de uso**, **caracteres Unicode** e ser uma linguagem que torna **
 Falaremos de todas essas qualidades nessa seção, mas focaremos no compartilhamento de códigos por enquanto.
 
 O ecossistema de pacotes de Julia é algo único.
-Permite não só o compartilhamento de códigos, como também permite a criação de tipos definidos pelos usuários. 
+Permite não só o compartilhamento de códigos, como também permite a criação de tipos definidos pelos usuários.
 Por exemplo, o `pandas` do Python usa seu próprio tipo de `Datetime` para lidar com datas.
 O mesmo ocorre com o pacote `lubridate` do tidyverse do R, que também define o seu tipo próprio de `datetime` para lidar com datas.
 Julia não precisa disso, ela tem todos os tipos e funcionalidades de datas incluidas na sua biblioteca padrão.
 Isso significa que outros pacotes não precisam se preocupar com datas.
-Eles só precisam estender os tipos de `DateTime` de Julia para novas funcionalidades, ao definirem novas funções, sem a necessidade de definirem novos tipos. 
+Eles só precisam estender os tipos de `DateTime` de Julia para novas funcionalidades, ao definirem novas funções, sem a necessidade de definirem novos tipos.
 O módulo de `Dates` Julia faz coisas incríveis, mas não discutiremos isso agora.
 Vamos falar de outras características de Julia.
 

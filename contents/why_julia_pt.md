@@ -345,38 +345,38 @@ Então, em resumo, o código que foi escrito pensando apenas para Raposa e Galin
 Na prática, isso significa que Julia facilita o reuso do código de outros projetos.
 
 Se você está tão animado quanto nós com o despacho múltiplo, aqui estão mais dois exemplos aprofundados.
-O primeiro é uma [rápida e elegante implementação of a one-hot vector](https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/#example_one-hot_vector) by @storopoli2021bayesianjulia.
-The second is an interview with [Christopher Rackauckas](https://www.chrisrackauckas.com/) at [Tanmay Bakshi YouTube's Channel](https://youtu.be/moyPIhvw4Nk?t=2107) (see from time 35:07 onwards) [@tanmaybakshiBakingKnowledgeMachine2021].
-Chris mentions that, while using [`DifferentialEquations.jl`](https://diffeq.sciml.ai/dev/), a package that he developed and currently maintains, a user filed an issue that his GPU-based quaternion ODE solver didn't work.
-Chris was quite surprised by this request since he would never have expected that someone would combine GPU computations with quaternions and solving ODEs.
-He was even more surprised to discover that the user made a small mistake and that it all worked.
-Most of the merit is due to multiple dispatch and high user code/type sharing.
+O primeiro é uma [rápida e elegante implementação de um vetor one-hot](https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/#example_one-hot_vector) por @storopoli2021bayesianjulia.
+O segundo é uma entrevista com [Christopher Rackauckas](https://www.chrisrackauckas.com/) no [Tanmay Bakshi YouTube's Channel](https://youtu.be/moyPIhvw4Nk?t=2107) (assista do minuto 35:07 em diante) [@tanmaybakshiBakingKnowledgeMachine2021].
+Chris explica que, enquanto usando [`DifferentialEquations.jl`](https://diffeq.sciml.ai/dev/), um pacote que ele desenvolveu e mantém atualmente, um usuário registrou um problema que seu solucionador ODE quaternion baseado em GPU não funcionava.
+Chris ficou bastante surpreso com este pedido, já que ele não esperava que alguém combinasse cálculos de GPU com quatérnions e resolvendo EDOs.
+Ele ficou ainda mais surpreso quando descobriu que o usuário cometeu um pequeno erro e que tudo funcionou.
+A maior parte do mérito é devido ao múltiplo despacho e alto compartilhamento de código/tipo de usuário.
 
-To conclude, we think that multiple dispatch is best explained by one of the creators of Julia:
+Para concluir, pensamos que o despacho múltiplo é melhor explicado por um dos criadores de Julia:
 [Stefan Karpinski at JuliaCon 2019](https://youtu.be/kc9HwsxE1OY).
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/kc9HwsxE1OY' frameborder='0' allowfullscreen></iframe></div>
 
 
-## Julia in the Wild {#sec:julia_wild}
+## Julia na Natureza {#sec:julia_wild}
 
-In @sec:julia_accomplish, we explained why we think Julia is such a unique programming language.
-We showed simple examples about the main features of Julia.
-If you would like to have a deep dive on how Julia is being used, we have some **interesting use cases**:
+Em @sec:julia_accomplish, explicamos por que achamos que Julia é uma linguagem de programação única.
+Mostramos exemplos simples sobre os principais recursos de Julia.
+Se você quiser se aprofundar em como Julia está sendo usada, temos alguns **casos interessantes**:
 
-1. NASA uses Julia in a supercomputer to analyze the ["Largest Batch of Earth-Sized Planets Ever Found"](https://exoplanets.nasa.gov/news/1669/seven-rocky-trappist-1-planets-may-be-made-of-similar-stuff/) and achieve a whopping **1,000x speedup** to catalog 188 million astronomical objects in 15 minutes.
-2. [The Climate Modeling Alliance (CliMa)](https://clima.caltech.edu/) is using mostly Julia to **model climate in the GPU and CPU**.
-Launched in 2018 in collaboration with researchers at Caltech, the NASA Jet Propulsion Laboratory, and the Naval Postgraduate School, CliMA is utilizing recent progress in computational science to develop an Earth system model that can predict droughts, heat waves, and rainfall with unprecedented precision and speed.
-3. [US Federal Aviation Administration (FAA) is developing an **Airborne Collision Avoidance System (ACAS-X)** using Julia](https://youtu.be/19zm1Fn0S9M).
-This is a nice example of the "Two-Language Problem" (see @sec:julia_accomplish).
-Previous solutions used Matlab to develop the algorithms and C++ for a fast implementation.
-Now, FAA is using one language to do all this: Julia.
-4. [**175x speedup** for Pfizer's pharmacology models using GPUs in Julia](https://juliacomputing.com/case-studies/pfizer/).
-It was presented as a [poster](https://chrisrackauckas.com/assets/Posters/ACoP11_Poster_Abstracts_2020.pdf) in the 11th American Conference of Pharmacometrics (ACoP11) and [won a quality award](https://web.archive.org/web/20210121164011/https://www.go-acop.org/abstract-awards).
-5. [The Attitude and Orbit Control Subsystem (AOCS) of the Brazilian satellite Amazonia-1 is **written 100% in Julia**](https://discourse.julialang.org/t/julia-and-the-satellite-amazonia-1/57541) by Ronan Arraes Jardim Chagas (<https://ronanarraes.com/>).
-6. [Brazil's national development bank (BNDES) ditched a paid solution and opted for open-source Julia modeling and gained a **10x speedup**.](https://youtu.be/NY0HcGqHj3g)
+1. NASA usa Julia em um supercomputador que analisa o ["O maior lote de planetas do tamanho da Terra já encontrado"](https://exoplanets.nasa.gov/news/1669/seven-rocky-trappist-1-planets-may-be-made-of-similar-stuff/) e alcançar uma extraordinária **aceleração de 1.000x** para catalogar 188 milhões de objetos astronômicos em 15 minutos.
+2. [The Climate Modeling Alliance (CliMa)](https://clima.caltech.edu/) usa Julia para **modelar clima no GPU e CPU**.
+Lançado em 2018 em colaboração com pesquisadores da Caltech, o NASA Jet Propulsion Laboratory, e a Naval Postgraduate School, CliMA está utilizando o progresso recente da ciência computacional para desenvolver um modelo do sistema terrestre que pode prever secas, ondas de calor e chuva com precisão e velocidade sem precedentes.
+3. [US Federal Aviation Administration (FAA) está desenvolvendo um **Airborne Collision Avoidance System (ACAS-X)** usando Julia](https://youtu.be/19zm1Fn0S9M).
+Esse é um bom exemplo do "Problema das Duas Linguagens" (see @sec:julia_accomplish).
+Soluções anteriores usavam Matlab para desenvolver os algoritmos e C++ para uma implementação mais rápida.
+Agora, FAA usa uma única linguagem para tudo isso: Julia.
+4. [**Aceleração de 175x** para modelos de farmacologia da Pfizer usando GPUs em Julia](https://juliacomputing.com/case-studies/pfizer/).
+Foi apresentado como um [poster](https://chrisrackauckas.com/assets/Posters/ACoP11_Poster_Abstracts_2020.pdf) na 11ª American Conference of Pharmacometrics (ACoP11) e [ganhou um prêmio de qualidade](https://web.archive.org/web/20210121164011/https://www.go-acop.org/abstract-awards).
+5. [O Attitude and Orbit Control Subsystem (AOCS) do satélite brasileiro Amazonia-1 é **escrito 100% em Julia**](https://discourse.julialang.org/t/julia-and-the-satellite-amazonia-1/57541) por Ronan Arraes Jardim Chagas (<https://ronanarraes.com/>).
+6. [Banco Nacional de Desenvolvimento Econômico e Social (BNDES) do Brasil abandonou uma solução paga e optou pela modelagem de Julia de código aberto e ganhou uma **aceleração de 10x**.](https://youtu.be/NY0HcGqHj3g)
 
-If this is not enough, there are more case studies in [Julia Computing website](https://juliacomputing.com/case-studies/).
+Se isso não for suficiente, existem mais estudos de caso em [Julia Computing website](https://juliacomputing.com/case-studies/).
 
 [^readable]: no C++ or FORTRAN API calls.
 [^LLVM]: LLVM stands for **L**ow **L**evel **V**irtual **M**achine, you can find more at the LLVM website (<http://llvm.org>).

@@ -43,7 +43,7 @@
   [projects.pt]
   contents = [
     "preface_pt",
-    "why_julia_pt"
+    "why_julia_pt",
     "julia_basics",
     "dataframes",
     "dataframes_load_save",

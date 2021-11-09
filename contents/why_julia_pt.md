@@ -185,10 +185,10 @@ Acreditamos que o "Problema das Duas Linguagens" e o "Código Um para Um e Rela�
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/qGW0GT1rCvs' frameborder='0' allowfullscreen></iframe></div>
 
-### Multiple Dispatch {#sec:multiple_dispatch}
+### Despacho Múltiplo {#sec:multiple_dispatch}
 
-Multiple dispatch is a powerful feature that allows us to extend existing functions or to define custom and complex behavior for new types.
-Suppose that you want to define two new `struct`s to denote two different animals:
+Despacho múltiplo é um recurso poderoso que nos permite estender funções existentes ou definir comportamento personalizado e complexo para novos tipos.
+Supondo que você queira definir dois novos `struct`s para denotar dois animais diferentes:
 
 ```jl
 s = """
@@ -203,8 +203,8 @@ s = """
 sc(s)
 ```
 
-Basically, this says "define a fox which is an animal" and "define a chicken which is an animal".
-Next, we might have one fox called Fiona and a chicken called Big Bird.
+Basicamente, isso diz "defina que uma raposa é um animal" e "defina que uma galinha é um animal".
+Em seguida, podemos ter uma raposa chamada Fiona e uma galinha chamada Big Bird.
 
 ```jl
 s = """
@@ -214,14 +214,14 @@ s = """
 sc(s)
 ```
 
-Next, we want to know how much they weight together, for which we can write a function:
+A seguir, queremos saber quanto elas pesam juntas, para o qual podemos escrever uma função:
 
 ```jl
 sco("combined_weight(A1::Animal, A2::Animal) = A1.weight + A2.weight")
 ```
 
-And we want to know whether they go well together.
-One way to implement that is to use conditionals:
+E queremos saber se elas vão bem juntas.
+Uma maneira de implementar isso é usar condicionais:
 
 ```jl
 s = """
@@ -238,14 +238,14 @@ s = """
 sco(s)
 ```
 
-Now, let's see whether leaving Fiona and Big Bird together would give trouble:
+Agora, vamos ver se deixar Fiona e Big Bird juntas daria problema:
 
 ```jl
 scob("naive_trouble(fiona, big_bird)")
 ```
 
-Okay, so this sounds right.
-Writing the `naive_trouble` function seems to be easy enough. However, using despacho múltiplo to create a new function `trouble` can have their benefits. Let's create our new function as follows:
+OK, isso parece correto.
+Escrevendo a função `naive_trouble` parece ser o suficiente. No entanto, usar despacho múltiplo para criar uma nova função `trouble` pode ser benéfico. Vamos criar novas funções:
 
 ```jl
 s = """
@@ -256,8 +256,8 @@ s = """
 sco(s)
 ```
 
-After defining these methods, `trouble` gives the same result as `naive_trouble`.
-For example:
+Depois da definição dos métodos, `trouble` fornece o mesmo resultado que `naive_trouble`.
+Por exemplo:
 
 ```jl
 scob("trouble(fiona, big_bird)")

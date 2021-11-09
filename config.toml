@@ -42,5 +42,6 @@
 
   [projects.pt]
   contents = [
-    "preface_pt"
+    "preface_pt",
+    "why_julia_pt"
   ]

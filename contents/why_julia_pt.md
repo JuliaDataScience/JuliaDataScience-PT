@@ -144,29 +144,29 @@ Por exemplo, se você definir uma função recebendo um argumento e passar um in
 Na próxima vez que você passar um inteiro como argumento para a função, Julia buscará o `MethodInstance` criado anteriormente e referir a execução a isso.
 Agora, o **grande** truque é que você também pode fazer isso dentro de uma função que chama a função.
 Por exemplo, se certo tipo de dado é passado dentro da função `f` e `f` chama a função `g` e os tipos de dados conhcecidos e que são sempre os mesmos passam para `g`, então a função `g` gerada pode ser codificada na função `f`!
-This means that Julia doesn't even have to lookup `MethodInstances` any more, and the code can run very efficiently.
-The trade-off, here, is that there are cases where earlier assumptions about the hardcoded `MethodInstances` are invalidated.
-Then, the `MethodInstance` has to be recreated which takes time.
-Also, the trade-off is that it takes time to infer what can be hardcoded and what not.
-This explains why it can often take very long before Julia does the first thing:
-in the background, it is optimizing your code.
+Isso significa que Julia não precisa sequer buscar `MethodInstances`, por isso o código consegue rodar de forma eficiente.
+A compensação aqui é que existem casos onde as suposições anteriores sobre a decodificação dos `MethodInstances` são invalidadas.
+Então, o `MethodInstance` precisa ser recriado, o que leva tempo.
+Além disso, a desvantagem é que leva tempo para inferir o que pode ser codificado e o que não pode.
+Isso explica por que demora para que Julia faça a primeira coisa:
+num segundo plano, está otimizando seu código.
 
-The compiler in turns does what it does best: it optimizes machine code^[if you like to learn more about how Julia is designed you should definitely check @bezanson2017julia.].
-You can find [benchmarks](https://julialang.org/benchmarks/) for Julia and several other languages here.
-@fig:benchmarks was taken from [Julia's website benchmarks section^[please note that the Julia results depicted above do not include compile time.]](https://julialang.org/benchmarks/).
-As you can see Julia is **indeed** fast.
+O compilador, por sua vez, faz o que faz de melhor: otimiza o código de máquina^[se quer saber mais sobre como Julia foi projetada, acesse @bezanson2017julia.].
+Você encontra [benchmarks](https://julialang.org/benchmarks/) para Julia e para outras linguagens aqui.
+@fig:benchmarks foi retirado de [Julia's website benchmarks section^[observe que os resultados de Julia descritos acima não incluem o tempo de compilação.]](https://julialang.org/benchmarks/).
+Como você pode perceber, Julia é **de fato** rápida.
 
-![Julia versus other programming languages.](images/benchmarks.png){#fig:benchmarks}
+![Julia versus outras linguagens de programação.](images/benchmarks.png){#fig:benchmarks}
 
-We really believe in Julia.
-Otherwise, we wouldn't be writing this book.
-We think that Julia is the **future of scientific computing and scientific data analysis**.
-It enables the user to develop rapid and powerful code with a simple syntax.
-Usually, researchers develop code by prototyping using a very easy, but slow, language.
-Once the code is assured to run correctly and fulfill its goal, then begins the process of converting the code to a fast, but hard, language.
-This is known as the "Two-Language Problem" and we discuss next.
+Nós realmente acreditamos em Julia.
+Caso contrário, não teríamos escrito este livro.
+Nós acreditamos que Julia é **o futuro da computação científica e da análise de dados científicos**.
+Ela permite que o usuário desenvolva códigos rápidos e poderosos com uma sintaxe simples.
+Normalmente, pesquisadores desenvolvem códigos usando linguagens fáceis, mas muito lentas.
+Uma vez que o código rode corretamente e cumpra seus objetivos, aí começa o processo de conversão do código para uma linguagem rápida, porém difícil.
+Esse é o "problema das duas linguagens" e discutiremos ele melhor a seguir.
 
-### The Two-Language Problem {#sec:two_language}
+### O Problema das Duas Linguagens {#sec:two_language}
 
 The "Two-Language Problem" is a very typical situation in scientific computing where a researcher devises an algorithm or a solution to tackle a desired problem or analysis at hand.
 Then, the solution is prototyped in an easy to code language (like Python or R).

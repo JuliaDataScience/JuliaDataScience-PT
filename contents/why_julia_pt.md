@@ -335,17 +335,17 @@ s = """
 scob(s)
 ```
 
-Even better, we can also calculate **the combined weight of zebra's and other animals without defining any extra function at our side**:
+Ainda melhor, conseguimos calcular **o peso combinado de zebras e outros animais sem definir qualquer função extra**:
 
 ```jl
 scob("combined_weight(big_bird, marty)")
 ```
 
-So, in summary, the code that was written with only Fox and Chicken in mind works even for types that it **has never seen before**!
-In practise, this means that Julia makes it often easy to re-use code from other projects.
+Então, em resumo, o código que foi escrito pensando apenas para Raposa e Galinha funciona para tipos que **nunca tinham sido vistos**!
+Na prática, isso significa que Julia facilita o reuso do código de outros projetos.
 
-If you are excited as much as we are by multiple dispatch, here are two more in-depth examples.
-The first is a [fast and elegant implementation of a one-hot vector](https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/#example_one-hot_vector) by @storopoli2021bayesianjulia.
+Se você está tão animado quanto nós com o despacho múltiplo, aqui estão mais dois exemplos aprofundados.
+O primeiro é uma [rápida e elegante implementação of a one-hot vector](https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/#example_one-hot_vector) by @storopoli2021bayesianjulia.
 The second is an interview with [Christopher Rackauckas](https://www.chrisrackauckas.com/) at [Tanmay Bakshi YouTube's Channel](https://youtu.be/moyPIhvw4Nk?t=2107) (see from time 35:07 onwards) [@tanmaybakshiBakingKnowledgeMachine2021].
 Chris mentions that, while using [`DifferentialEquations.jl`](https://diffeq.sciml.ai/dev/), a package that he developed and currently maintains, a user filed an issue that his GPU-based quaternion ODE solver didn't work.
 Chris was quite surprised by this request since he would never have expected that someone would combine GPU computations with quaternions and solving ODEs.

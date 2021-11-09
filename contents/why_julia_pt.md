@@ -139,17 +139,18 @@ Foi desenvolvida para ser veloz desde o início.
 E alcança esse objetivo com múltiplos despachos.
 Basicamente, a ideia é gerar códigos LLVM[^LLVM] muito eficientes.
 Códigos LLVM, também conhecido como instruções LLVM, são de nível-baixo, ou seja, muito próximos das operações reais que seu computador está executando.
-Portanto, em essência, Julia converte seu código escrito a mão e fácil de se ler em código máquina LLVM, o que é muito difícil para humanos lerem, mas muito fácil para um computador.
-Por exemplo, se você definir uma função recebendo um argumento e passar um inteiro para a função, Julia criará um _specialized_ `MethodInstance`.
-Na próxima vez que você passar um inteiro como argumento para a função, Julia buscará o `MethodInstance` criado anteriormente e referir a execução a isso.
-Agora, o **grande** truque é que você também pode fazer isso dentro de uma função que chama a função.
-Por exemplo, se certo tipo de dado é passado dentro da função `f` e `f` chama a função `g` e os tipos de dados conhcecidos e que são sempre os mesmos passam para `g`, então a função `g` gerada pode ser codificada na função `f`!
-Isso significa que Julia não precisa sequer buscar `MethodInstances`, pois o código consegue rodar de forma eficiente.
+Portanto, em essência, Julia converte seu código escrito e fácil de se ler em código de máquina LLVM, o que é muito difícil para humanos lerem, mas muito fácil para um computador.
+Por exemplo, se você definir uma função recebendo um argumento e passar um inteiro para a função, Julia criará um `MethodInstance` _especializado_ .
+Na próxima vez que você passar um inteiro como argumento para a função, Julia buscará o `MethodInstance` criado anteriormente e referirá a execução a isso.
+Agora, o **grande** truque é que você também pode fazer isso dentro de uma função que chama uma outra função.
+Por exemplo, se certo tipo de dado é passado dentro da função `f` e `f` chama a função `g` e os tipos de dados conhecidos e que são sempre os mesmos passam de `f` para `g`, então a função `g` gerada pode ser codificada na função `f`!
+Isso significa que Julia não precisa sequer buscar `MethodInstances` de `f` para `g`, pois o código consegue rodar de forma eficiente.
 A compensação aqui é que existem casos onde as suposições anteriores sobre a decodificação dos `MethodInstances` são invalidadas.
 Então, o `MethodInstance` precisa ser recriado, o que leva tempo.
-Além disso, a desvantagem é que leva tempo para inferir o que pode ser codificado e o que não pode.
-Isso explica por que demora para que Julia faça a primeira coisa:
+Além disso, a desvantagem é que também leva tempo para inferir o que pode ser codificado e o que não pode.
+Isso explica por que Julia demora para executar um código pela primeira vez:
 num segundo plano, está otimizando seu código.
+A segunda e subsequentes execuções serão extremamente rápidas.
 
 O compilador, por sua vez, faz o que faz de melhor: otimiza o código de máquina^[se quer saber mais sobre como Julia foi projetada, acesse @bezanson2017julia.].
 Você encontra [benchmarks](https://julialang.org/benchmarks/) para Julia e para outras linguagens aqui.
@@ -168,7 +169,7 @@ Esse é o "problema das duas linguagens" e discutiremos ele melhor a seguir.
 
 ### O Problema das Duas Linguagens {#sec:two_language}
 
-O "Problema das Duas Linguagens" é bastante comum na computação científica, quando um pesquisador concebe um algoritmo, ou quando desenvolve uma solução para um problema desejado, ou mesmo quando realiza algum tipo de análise.
+O "Problema das Duas Linguagens" é bastante comum na computação científica, quando um pesquisador concebe um algoritmo, ou quando desenvolve uma solução para um problema, ou mesmo quando realiza algum tipo de análise.
 Em seguida, a solução é prototipada em uma linguagem fácil de codificar (como Python ou R).
 Se o protótipo funciona, o pesquisador codifica em uma linguagem rápida que não seria fácil de prototipar (C++ ou FORTRAN).
 Assim, temos duas linguagens envolvidas no processo de desenvolvimento de uma nova solução.
@@ -346,7 +347,7 @@ Na prática, isso significa que Julia facilita o reuso do código de outros proj
 
 Se você está tão animado quanto nós com o despacho múltiplo, aqui estão mais dois exemplos aprofundados.
 O primeiro é uma [rápida e elegante implementação de um vetor one-hot](https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/#example_one-hot_vector) por @storopoli2021bayesianjulia.
-O segundo é uma entrevista com [Christopher Rackauckas](https://www.chrisrackauckas.com/) no [Tanmay Bakshi YouTube's Channel](https://youtu.be/moyPIhvw4Nk?t=2107) (assista do minuto 35:07 em diante) [@tanmaybakshiBakingKnowledgeMachine2021].
+O segundo é uma entrevista com [Christopher Rackauckas](https://www.chrisrackauckas.com/) no [canal do YouTube de Tanmay Bakshi](https://youtu.be/moyPIhvw4Nk?t=2107) (assista do minuto 35:07 em diante) [@tanmaybakshiBakingKnowledgeMachine2021].
 Chris explica que, enquanto usando [`DifferentialEquations.jl`](https://diffeq.sciml.ai/dev/), um pacote que ele desenvolveu e mantém atualmente, um usuário registrou um problema que seu solucionador ODE quaternion baseado em GPU não funcionava.
 Chris ficou bastante surpreso com este pedido, já que ele não esperava que alguém combinasse cálculos de GPU com quatérnions e resolvendo EDOs.
 Ele ficou ainda mais surpreso quando descobriu que o usuário cometeu um pequeno erro e que tudo funcionou.
@@ -364,7 +365,7 @@ Em @sec:julia_accomplish, explicamos por que achamos que Julia é uma linguagem 
 Mostramos exemplos simples sobre os principais recursos de Julia.
 Se você quiser se aprofundar em como Julia está sendo usada, temos alguns **casos interessantes**:
 
-1. NASA usa Julia em um supercomputador que analisa o ["O maior lote de planetas do tamanho da Terra já encontrado"](https://exoplanets.nasa.gov/news/1669/seven-rocky-trappist-1-planets-may-be-made-of-similar-stuff/) e alcançar uma extraordinária **aceleração de 1.000x** para catalogar 188 milhões de objetos astronômicos em 15 minutos.
+1. NASA usa Julia em um supercomputador que analisa ["O maior lote de planetas do tamanho da Terra já encontrado"](https://exoplanets.nasa.gov/news/1669/seven-rocky-trappist-1-planets-may-be-made-of-similar-stuff/) e alcançar uma extraordinária **aceleração de 1.000x** para catalogar 188 milhões de objetos astronômicos em 15 minutos.
 2. [The Climate Modeling Alliance (CliMa)](https://clima.caltech.edu/) usa Julia para **modelar clima no GPU e CPU**.
 Lançado em 2018 em colaboração com pesquisadores da Caltech, o NASA Jet Propulsion Laboratory, e a Naval Postgraduate School, CliMA está utilizando o progresso recente da ciência computacional para desenvolver um modelo do sistema terrestre que pode prever secas, ondas de calor e chuva com precisão e velocidade sem precedentes.
 3. [US Federal Aviation Administration (FAA) está desenvolvendo um **Airborne Collision Avoidance System (ACAS-X)** usando Julia](https://youtu.be/19zm1Fn0S9M).

@@ -15,17 +15,17 @@ Para responder a essa questão, abordaremos duas situações bastante comuns:
 Para a primeira situação, acreditamos que o ponto em comum seja:
 
 A ciência de dados te atrai, você tem vontade de aprender sobre e entender como ela pode ajudar sua carreira seja na academia, seja no mercado.
-Então, você tenta encontrar formas de aprender essa nova habilidade e cai em um mundo acrônimos complexos:
+Então, você tenta encontrar formas de aprender essa nova habilidade e cai em um mundo de acrônimos complexos:
 `pandas`, `dplyr`, `data.table`, `numpy`, `matplotlib`, `ggplot2`, `bokeh`, e a lista continua.
 
 E, do nada, você ouve: "Julia".
 O que é isso?
 Como seria diferente de qualquer outra ferramenta usada para ciência de dados?
 
-Por que você deveria usar seu tempo para aprender uma linguagem que programação que quase nunca é mencionada em processos seletivos, posições em laboratórios, pós-doutorados ou qualquer outro trabalho acadêmico?
+Por que você deveria gastar seu tempo para aprender uma linguagem de programação que quase nunca é mencionada em processos seletivos, posições em laboratórios, pós-doutorados ou qualquer outro trabalho acadêmico?
 A respota para a questão é que **Julia é uma nova abordagem** tanto para programação, quanto para ciência de dados.
 Tudo que você faz em Python ou R, você pode fazer em Julia com a vantagem de poder escrever um código legível [^readable], rápido e poderoso.
-Assim, Julia tem ganhado força e por uma série de motivos.
+Assim, Julia tem ganhado força por uma série de motivos.
 
 Então, **se você não tem nenhum conhecimento prévio de programação, recomendamos que aprenda Julia** como uma primeira linguagem de programação e ferramenta para ciência de dados.
 
@@ -50,7 +50,7 @@ Então, **em Julia, minutos no Python ou R se transformam em segundos**^[e até 
 Nós separamos o @sec:julia_wild para exemplificar casos de sucesso em Julia tanto na academia quanto no mercado.
 
 2. Tentou algo diferente das convenções `numpy`/`dplyr` e descobriu que o código estava lento e provavelmente precisaria de magia ^[`numba`, or even `Rcpp` or `cython`?] para torná-lo mais rápido?
-**Em Julia, você pode persinalizar uma série de coisas sem perder desempenho**.
+**Em Julia, você pode personalizar uma série de coisas sem perder desempenho**.
 
 3. Precisou executar um debug em um código e caiu num código Fortran ou C/C++, sem ter ideia alguma do que fazer?
 **Em Julia, você lê apenas códigos de Julia, não é preciso programar em outra linguagem para tornar a original mais rápida**.
@@ -58,8 +58,8 @@ Isso é chamado o "problema das duas linguagens" (see @sec:two_language).
 É também o caso quando "você tem uma ideia interessante e tenta contribuir com um pacote open source, mas desiste porque quase tudo não está nem em Python, nem em R, mas em C/C++ ou Fortran"^[dê uma olhada em algumas bibliotecas de aprendizado profundo no GitHub e você descobrirá que Python é apenas 25% -33% da base de código.].
 
 4. Quis usar uma estrutura de dados definida em outro pacote e descobriu que não ia funcionar, e que você precisaria construir uma interface^[esse é um problema do ecossistema Python e, ainda que o R não sofra tanto com isso, também não é tão eficaz.].
-**Julia permite que usuários compartilhem e reusem códigos de diferentes pacotes.**
-A maior parte dos tipos e funções definidos pelos usuários de Julia, funcionam perfeitamente^[ou com pouquíssimo esforço.] e alguns usuários ficam maravilhados ao descobrir como seus pacotes estão sendo usados por outros pacotes, das mais diversas formas, algo que nunca poderiam ter imaginado.
+**Julia permite que usuários compartilhem e reutilizem códigos de diferentes pacotes.**
+A maior parte dos tipos e funções definidas pelos usuários de Julia, funcionam perfeitamente^[ou com pouquíssimo esforço.] e alguns usuários ficam maravilhados ao descobrir como seus pacotes estão sendo usados por outros pacotes, das mais diversas formas, algo que nunca poderiam ter imaginado.
 Temos alguns exemplos em @sec:multiple_dispatch.
 
 5. Precisou de uma melhor gestão de projetos, com crontrole rígido de versões e dependências, de fácil usabilidade e replicável?
@@ -70,7 +70,7 @@ Cada projeto mantém, independentemente, seu próprio conjunto de versões de pa
 
 Se nós chamamos a sua ateção expondo situações familiares ou mesmo plausíveis, talvez você se interesse em aprender um pouco mais sobre Julia.
 
-Vamos ccomeçar!
+Vamos começar!
 
 ## O que Julia pretende alcançar? {#sec:julia_accomplish}
 
@@ -80,7 +80,7 @@ Vamos ccomeçar!
 
 A linguagem de programação Julia [@bezanson2017julia] é relativamente nova, foi lançada em 2012, e procura ser **fácil e rápida**.
 Ela "roda como C^[às vezes até mais rápido], mas lê como Python" [@perkelJuliaComeSyntax2019].
-Foi idealizada inicialmente para computação científica, capaz de lidar com **uma grande quantidade de dados e demanda computacional** sendo, ao mesmo tempo, **fácil de manipular, criar and prototipar códigos**.
+Foi idealizada inicialmente para computação científica, capaz de lidar com **uma grande quantidade de dados e demanda computacional** sendo, ao mesmo tempo, **fácil de manipular, criar e prototipar códigos**.
 
 Os criadores de Julia explicaram porque desenvolveram a linguagem [2012 blogpost](https://julialang.org/blog/2012/02/why-we-created-julia/).
 Eles afirmam:
@@ -105,14 +105,14 @@ Falaremos de todas essas qualidades nessa seção, mas focaremos no compartilham
 O ecossistema de pacotes de Julia é algo único.
 Permite não só o compartilhamento de códigos, como também permite a criação de tipos definidos pelos usuários. 
 Por exemplo, o `pandas` do Python usa seu próprio tipo de `Datetime` para lidar com datas.
-O mesmo ocorre com o pacote `lubridate` do tidyverse do R The same with, que também define o seu tipo próprio de `datetime`, para lidar com datas.
+O mesmo ocorre com o pacote `lubridate` do tidyverse do R, que também define o seu tipo próprio de `datetime` para lidar com datas.
 Julia não precisa disso, ela tem todos os tipos e funcionalidades de datas incluidas na sua biblioteca padrão.
 Isso significa que outros pacotes não precisam se preocupar com datas.
-Eles só precisam extender os tipos de `DateTime` de Julia para novas funcionalidades, ao definirem novas funções, sem a necessidade de definirem novos tipos. 
+Eles só precisam estender os tipos de `DateTime` de Julia para novas funcionalidades, ao definirem novas funções, sem a necessidade de definirem novos tipos. 
 O módulo de `Dates` Julia faz coisas incríveis, mas não discutiremos isso agora.
 Vamos falar de outras características de Julia.
 
-### Julia Versus outraas linguagens de programação
+### Julia Versus outras linguagens de programação
 
 Em [@fig:language_comparison], uma representação altamente opinativa é demonstrada e divide as principais linguagens open source e de computação científica em um diagrama 2x2 com dois eixos:
 **Lento-Rápido** e **Fácil-Difícil**.
@@ -125,7 +125,7 @@ A vantagem é que elas são linguagens **muito rápidas**.
 R e Python estão no quadrante Fácil e Lento.
 Elas são linguagens dinâmicas, que não são compiladas e executam em tempo de execução.
 Por causa disso, elas são fáceis de aprender e rápidas para prototipar.
-Claro que isso tem disvantagens:
+Claro que isso tem desvantagens:
 elas são linguagens **muito lentas**.
 
 Julia é a única linguagem no quadrante Fácil e Rápido.
@@ -136,11 +136,11 @@ Nós não conhecemos nenhuma linguagem séria qualificada no quadrante Difícil 
 **Julia é rápida!
 Muito rápida!**
 Foi desenvolvida para ser veloz desde o início.
-É alcança esse objetivo com múltiplos despachos.
+E alcança esse objetivo com múltiplos despachos.
 Basicamente, a ideia é gerar códigos LLVM[^LLVM] muito eficientes.
-Código LLVM, também conhecido como instruções LLVM, são de nível-baixo, ou seja, muito próximos das operações reais que seu computador está executando.
-Portanto, em essência, Julia converte seu código escrito a mão e fácil de se ler em LLVM código máquina, o que é muito difícil para humanos lerem, mas muito fácil para um computador.
-Por exemplo, se você definir uma função recebendo um argumento e passar um inteiro para a função, dessa forma Julia criará um _specialized_ `MethodInstance`.
+Códigos LLVM, também conhecido como instruções LLVM, são de nível-baixo, ou seja, muito próximos das operações reais que seu computador está executando.
+Portanto, em essência, Julia converte seu código escrito a mão e fácil de se ler em código máquina LLVM, o que é muito difícil para humanos lerem, mas muito fácil para um computador.
+Por exemplo, se você definir uma função recebendo um argumento e passar um inteiro para a função, Julia criará um _specialized_ `MethodInstance`.
 Na próxima vez que você passar um inteiro como argumento para a função, Julia buscará o `MethodInstance` criado anteriormente e referir a execução a isso.
 Agora, o **grande** truque é que você também pode fazer isso dentro de uma função que chama a função.
 Por exemplo, se certo tipo de dado é passado dentro da função `f` e `f` chama a função `g` e os tipos de dados conhcecidos e que são sempre os mesmos passam para `g`, então a função `g` gerada pode ser codificada na função `f`!

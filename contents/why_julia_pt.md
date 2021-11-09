@@ -115,34 +115,34 @@ Vamos falar de outras características de Julia.
 ### Julia Versus outraas linguagens de programação
 
 Em [@fig:language_comparison], uma representação altamente opinativa é demonstrada e divide as principais linguagens open source e de computação científica em um diagrama 2x2 com dois eixos:
-**Devagar-Rápido** e **Fácil-Difícil**.
-Deixamos de fora as linguagens fechadas,  because there are many benefits to allowing other people to run your code for free as well as being able to inspect the source code in case of issues.
+**Lento-Rápido** e **Fácil-Difícil**.
+Deixamos de fora as linguagens fechadas, porque os benefícios são maiores quando permitimos que outras pessoas usem nossos códigos gratuitamente, afinal o código-fonte acaba sendo revisado a todo momento, caso surja algum problema.
 
-We've put C++ and FORTRAN in the hard and fast quadrant.
-Being static languages that need compilation, type checking, and other professional care and attention, they are really hard to learn and slow to prototype.
-The advantage is that they are **really fast** languages.
+Consideramos que o C++ e o FORTRAN estão no quadrante Difícil e Rápido.
+Por serem linguagens estáticas que precisam de compilação, verificação de tipo e outros cuidados e atenção profissional, elas são realmente difíceis de aprender e lentas para prototipar.
+A vantagem é que elas são linguagens **muito rápidas**.
 
-R and Python go into the easy and slow quadrant.
-They are dynamic languages that are not compiled and they execute in runtime.
-Because of this, they are really easy to learn and fast to prototype.
-Of course, this comes with a disadvantage:
-they are **really slow** languages.
+R e Python estão no quadrante Fácil e Lento.
+Elas são linguagens dinâmicas, que não são compiladas e executam em tempo de execução.
+Por causa disso, elas são fáceis de aprender e rápidas para prototipar.
+Claro que isso tem disvantagens:
+elas são linguagens **muito lentas**.
 
-Julia is the only language in the easy and fast quadrant.
-We don't know any other serious language that would want to be hard and slow, so this quadrant is left empty.
+Julia é a única linguagem no quadrante Fácil e Rápido.
+Nós não conhecemos nenhuma linguagem séria qualificada no quadrante Difícil e Lento.
 
-![Scientific Computing Language Comparisons: logos for FORTRAN, C++, Python, R and Julia.](images/language_comparisons.png){#fig:language_comparison}
+![Comparações entre linguagens de computação científicas: logos para FORTRAN, C++, Python, R e Julia.](images/language_comparisons.png){#fig:language_comparison}
 
-**Julia is fast!
-Very fast!**
-It was designed for speed from the beginning.
-It accomplishes this by multiple dispatch.
-Basically, the idea is to generate very efficient LLVM[^LLVM] code.
-LLVM code, also known as LLVM instructions, are very low-level, that is, very close to the actual operations that your computer is executing.
-So, in essence, Julia converts your hand written and easy to read code to LLVM machine code which is very hard for humans to read, but easy for computers to read.
-For example, if you define a function taking one argument and pass an integer into the function, then Julia will create a _specialized_ `MethodInstance`.
-The next time that you pass an integer to the function, Julia will look up the `MethodInstance` that was created earlier and refer execution to that.
-Now, the **great** trick is that you can also do this inside a function that calls a function.
+**Julia é rápida!
+Muito rápida!**
+Foi desenvolvida para ser veloz desde o início.
+É alcança esse objetivo com múltiplos despachos.
+Basicamente, a ideia é gerar códigos LLVM[^LLVM] muito eficientes.
+Código LLVM, também conhecido como instruções LLVM, são de nível-baixo, ou seja, muito próximos das operações reais que seu computador está executando.
+Portanto, em essência, Julia converte seu código escrito a mão e fácil de se ler em LLVM código máquina, o que é muito difícil para humanos lerem, mas muito fácil para um computador.
+Por exemplo, se você definir uma função recebendo um argumento e passar um inteiro para a função, dessa forma Julia criará um _specialized_ `MethodInstance`.
+Na próxima vez que você passar um inteiro como argumento para a função, Julia buscará o `MethodInstance` criado anteriormente e referir a execução a isso.
+Agora, o **grande** truque is that you can also do this inside a function that calls a function.
 For example, if some data type is passed into function `f` and `f` calls function `g` and the data types passed to `g` are known and always the same, then the generated function `g` can be hardcoded into function `f`!
 This means that Julia doesn't even have to lookup `MethodInstances` any more, and the code can run very efficiently.
 The trade-off, here, is that there are cases where earlier assumptions about the hardcoded `MethodInstances` are invalidated.

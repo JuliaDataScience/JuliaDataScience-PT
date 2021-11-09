@@ -168,20 +168,20 @@ Esse é o "problema das duas linguagens" e discutiremos ele melhor a seguir.
 
 ### O Problema das Duas Linguagens {#sec:two_language}
 
-The "Two-Language Problem" is a very typical situation in scientific computing where a researcher devises an algorithm or a solution to tackle a desired problem or analysis at hand.
-Then, the solution is prototyped in an easy to code language (like Python or R).
-If the prototype works, the researcher would code in a fast language that would not be easy to prototype (C++ or FORTRAN).
-Thus, we have two languages involved in the process of developing a new solution.
-One which is easy to prototype but is not suited for implementation (mostly due to being slow).
-And another which is not so easy to code, and consequently not easy to prototype, but suited for implementation because it is fast.
-Julia avoids such situations by being the **same language that you prototype (ease of use) and implement the solution (speed)**.
+O "Problema das Duas Linguagens" é bastante comum na computação científica, quando um pesquisador concebe um algoritmo, ou quando desenvolve uma solução para um problema desejado, ou mesmo quando realiza algum tipo de análise.
+Em seguida, a solução é prototipada em uma linguagem fácil de codificar (como Python ou R).
+Se o protótipo funciona, o pesquisador codifica em uma linguagem rápida que não seria fácil de prototipar (C++ ou FORTRAN).
+Assim, temos duas linguagens envolvidas no processo de desenvolvimento de uma nova solução.
+Uma que é fácil de prototipar, mas não é adequada para implementação (principalmente por ser lenta).
+E outra que não é tão simples de codificar e, conseqüentemente, não é fácil de prototipar, mas adequada para implementação porque é rápida.
+Julia evita esse tipo de situação por ser a **a mesma linguagem que você prototipa (fácil de usar) e implementa a solução (rápida)**.
 
-Also, Julia lets you use **Unicode characters as variables or parameters**.
-This means no more using `sigma` or `sigma_i`, and instead just use $σ$ or $σᵢ$ as you would in mathematical notation.
-When you see code for an algorithm or for a mathematical equation, you see almost the same notation and idioms.
-We call this feature **"One-To-One Code and Math Relation"** which is a powerful feature.
+Além disso, Julia permite que você use **caracteres Unicode como variáveis ou parâmetros**.
+Isso significa que não é preciso mais usar `sigma` ou `sigma_i`, e ao invés disso use apenas $σ$ ou $σᵢ$ como você faria em notação matemática.
+Quando você vê o código de um algoritmo ou de uma equação matemática, você vê quase a mesma notação e expressões idiomáticas.
+Chamamos esse recurso poderoso de **"Código Um para Um e Relação Matemática"**.
 
-We think that the "Two-Language problem" and the "One-To-One Code and Math Relation" are best described by one of the creators of Julia, Alan Edelman, in a [TEDx Talk](https://youtu.be/qGW0GT1rCvs) [@tedxtalksProgrammingLanguageHeal2020].
+Acreditamos que o "Problema das Duas Linguagens" e o "Código Um para Um e Relação Matemática" são melhor descritos por um dos criadores de Julia, Alan Edelman, em [TEDx Talk](https://youtu.be/qGW0GT1rCvs) [@tedxtalksProgrammingLanguageHeal2020].
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/qGW0GT1rCvs' frameborder='0' allowfullscreen></iframe></div>
 

@@ -263,7 +263,7 @@ Por exemplo:
 scob("trouble(fiona, big_bird)")
 ```
 
-And leaving Big Bird alone with another chicken called Dora is also fine
+E deixar Big Bird sozinha com outra galinha chamada Dora também é bom
 
 ```jl
 s = """
@@ -273,9 +273,9 @@ s = """
 scob(s)
 ```
 
-So, in this case, the benefit of multiple dispatch is that you can just declare types and Julia will find the correct method for your types.
-Even more so, for many cases when multiple dispatch is used inside code, the Julia compiler will actually optimize the function calls away.
-For example, we could write:
+Portanto, neste caso, a vantagem do despacho múltiplo é que você pode apenas declarar tipos e Julia encontrará o método correto para seus tipos.
+Ainda mais, para muitos casos quando o despacho múltiplo é usado dentro do código, o compilador Julia irá realmente otimizar as chamadas de função.
+Por exemplo, poderíamos escrever:
 
 ```
 function trouble(A::Fox, B::Chicken, C::Chicken)
@@ -283,7 +283,7 @@ function trouble(A::Fox, B::Chicken, C::Chicken)
 end
 ```
 
-Depending on the context, Julia can optimize this to:
+Dependendo do contexto, Julia pode otimizar isso para:
 
 ```
 function trouble(A::Fox, B::Chicken, C::Chicken)
@@ -291,9 +291,9 @@ function trouble(A::Fox, B::Chicken, C::Chicken)
 end
 ```
 
-because the compiler **knows** that `A` is a Fox, `B` is a chicken and so this can be replaced by the contents of the method `trouble(F::Fox, C::Chicken)`.
-The same holds for `trouble(C1::Chicken, C2::Chicken)`.
-Next, the compiler can optimize this to:
+porque o compilador **sabe** que `A` é a raposa, `B` é a galinha e então isso pode ser substituído pelo conteúdo do método `trouble(F::Fox, C::Chicken)`.
+O mesmo vale para `trouble(C1::Chicken, C2::Chicken)`.
+Em seguida, o compilador pode otimizar isso para:
 
 ```
 function trouble(A::Fox, B::Chicken, C::Chicken)
@@ -301,8 +301,8 @@ function trouble(A::Fox, B::Chicken, C::Chicken)
 end
 ```
 
-Another benefit of multiple dispatch is that when someone else now comes by and wants to compare the existing animals to their animal, a Zebra, then that's possible.
-In their package, they can define a Zebra:
+Outro benefício do despacho múltiplo é que quando outra pessoa chega e quer comparar os animais existentes com seu animal, uma zebra por exemplo, é possível.
+Em seu pacote, eles podem definir um Zebra:
 
 ```jl
 s = """
@@ -313,7 +313,7 @@ s = """
 sc(s)
 ```
 
-and also how the interactions with the existing animals would go:
+e também como as interações com os animais existentes seriam:
 
 ```jl
 s = """
@@ -325,7 +325,7 @@ s = """
 sco(s)
 ```
 
-Now, we can see whether Marty (our zebra) is safe with Big Bird:
+Agora, podemos ver se Marty (nossa zebra) está a salvo com Big Bird:
 
 ```jl
 s = """

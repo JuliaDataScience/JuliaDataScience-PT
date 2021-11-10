@@ -1,15 +1,15 @@
 # Julia Basics {#sec:julia_basics}
 
 > **_NOTE:_**
-> In this chapter we cover the basics of Julia as a programming language.
-> Please note that this is not *strictly necessary* for you to use Julia as a tool for data manipulation and data visualization.
-> Having a basic understanding of Julia will definitely make you more *effective* and *efficient* in using Julia.
-> However, if you prefer to get started straight away, you can jump to @sec:dataframes to learn about tabular data with `DataFrames.jl`.
+> Neste capítulo, descreveremos o básico de Julia como linguagem de programação.
+> Por favor, note que isso não é *estritamente necessário* para você usar Julia como uma ferramenta de manipulação e visualização de dados.
+> Ter um conhecimento básico de Julia definitivamente o tornará mais *eficaz* e *eficiente* no uso de Julia.
+> No entanto, se você preferir começar imediatamente, pode pular para @sec:dataframes e aprenda sobre dados tabulares em `DataFrames.jl`.
 
-This is going to be a very brief and *not* an in-depth overview of the Julia language.
-If you are already familiar and comfortable with other programming languages, we highly encourage you to read Julia's documentation (<https://docs.julialang.org/>).
-The docs are an excellent resource for taking a deep dive into Julia.
-It covers all the basics and corner cases, but it can be cumbersome, especially if you aren't familiar with software documentation.
+Aqui, vamos trazer uma visão mais geral sobre a linguagem de Julia, *não* algo aprofundado.
+Se você já está familiarizado e confortável com outras linguagens de programação, nós encorajamos você a ler a documentação de Julia (<https://docs.julialang.org/>).
+Os documentos são um excelente recurso para você se aprofundar em Julia.
+Eles cobrem todos os fundamentos e casos extremos, mas podem ser complicados, especialmente se você não estiver familiarizado com a documentação do software.
 
 We'll cover the basics of Julia.
 Imagine that Julia is a fancy feature-loaded car, such as a brand-new Tesla.

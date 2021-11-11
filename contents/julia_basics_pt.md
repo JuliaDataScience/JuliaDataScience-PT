@@ -24,19 +24,19 @@ Em vez disso, Julia pegará seu código, adivinhará os tipos quando necessário
 Além disso, você não precisa especificar explicitamente cada tipo.
 Julia vai supor os tipos para você.
 
-The main differences between Julia and other dynamic languages such as R and Python are the following.
-First, Julia **allows the user to specify type declarations**.
-You already saw some types declarations in *Why Julia?* (@sec:why_julia): they are those double colons `::` that sometimes come after variables.
-However, if you don't want to specify the type of your variables or functions, Julia will gladly infer (guess) them for you.
+As principais diferenças entre Julia e outras linguagens dinâmicas como R e Python são:
+Primeiro, Julia **permite ao usuário especificar declarações de tipo**.
+Você já viu alguns tipos de declarações em *Por que Julia?* (@sec:why_julia): eles são aqueles dois pontos duplos `::` que às vezes vem depois das variáveis.
+No entanto, se você não quiser especificar o tipo de suas variáveis ou funções, Julia terá o prazer de inferir (adivinhar) para você.
 
-Second, Julia allows users to define function behavior across many combinations of argument types via multiple dispatch.
-We also covered multiple dispatch in @sec:julia_accomplish.
-We defined a different type behavior by defining new function signatures for argument types while using the same function name.
+Em segundo lugar, Julia permite que os usuários definam o comportamento da função em muitas combinações de tipos de argumento por meio de múltiplos despachos.
+Também falamos sobre despachos múltiplos em @sec:julia_accomplish.
+Definimos um comportamento de tipo diferente, definindo novas assinaturas de função para tipos de argumento enquanto usamos o mesmo nome de função.
 
-### Variables {#sec:variable}
+### Variáveis {#sec:variable}
 
-Variables are values that you tell the computer to store with a specific name, so that you can later recover or change its value.
-Julia has several types of variables but, in data science, we mostly use:
+As variáveis são valores que você diz ao computador para armazenar com um nome específico, para que você possa recuperar ou alterar seu valor posteriormente.
+Julia tem diversos tipos de variáveis, mas, em ciência de dados, usamos principalmente:
 
 * Integers: `Int64`
 * Real Numbers: `Float64`

@@ -43,12 +43,12 @@ Julia tem diversos tipos de variáveis, mas, em ciência de dados, usamos princi
 * Boolean: `Bool`
 * Strings: `String`
 
-Integers and real numbers are stored by using 64 bits by default, that's why they have the `64` suffix in the name of the type.
-If you need more or less precision, there are `Int8` or `Int128` types, for example, where higher means more precision.
-Most of the time, this won't be an issue so you can just stick to the defaults.
+Inteiros e números reais são armazenados usando 64 bits por padrão, é por isso que eles têm o sufixo `64` no nome do tipo.
+Se você precisar de mais ou menos precisão, existem os tipos `Int8` ou `Int128`, por exemplo, onde maior significa mais precisão.
+Na maioria das vezes, isso não será um problema, então você pode simplesmente seguir os padrões.
 
-We create new variables by writing the variable name on the left and its value in the right, and in the middle we use the `=` assignment operator.
-For example:
+Criamos novas variáveis escrevendo o nome da variável à esquerda e seu valor à direita, e no meio usamos o `=` operador de atribuição.
+Por exemplo:
 
 ```jl
 s = """

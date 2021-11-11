@@ -58,9 +58,9 @@ s = """
 scob(s)
 ```
 
-Note that the return output of the last statement (`age`) was printed to the console.
-Here, we are defining two new variables: `name` and `age`.
-We can recover their values by typing the names given in the assignment:
+Observe que a saída de retorno da última instrução (`idade`) foi impresso no console.
+Aqui, estamos definindo duas novas variáveis: `nome` e `idade`.
+Podemos recuperar seus valores digitando os nomes dados na atribuição:
 
 ```jl
 scob("name")

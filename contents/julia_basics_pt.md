@@ -11,18 +11,18 @@ Se você já está familiarizado e confortável com outras linguagens de program
 Os documentos são um excelente recurso para você se aprofundar em Julia.
 Eles cobrem todos os fundamentos e casos extremos, mas podem ser complicados, especialmente se você não estiver familiarizado com a documentação do software.
 
-We'll cover the basics of Julia.
-Imagine that Julia is a fancy feature-loaded car, such as a brand-new Tesla.
-We'll just explain to you how to "drive the car, park it, and how to navigate in traffic".
-If you want to know what "all the buttons in the steering wheel and dashboard do", this is not the resource you are looking for.
+Cobriremos o básico de Julia.
+Imagine que Julia é um carro sofisticado repleto de recursos, como um Tesla novo.
+Vamos apenas explicar a você como "dirigir o carro, estacioná-lo e como navegar no trânsito".
+Se você quer saber o que "todos os botões no volante e painel fazem", este não é o livro que você está procurando.
 
-## Language Syntax {#sec:syntax}
+## Sintaxe da linguagem {#sec:syntax}
 
-Julia is a **dynamic-typed language** with a just-in-time compiler.
-This means that you don't need to compile your program before you run it, like you would do in C++ or FORTRAN.
-Instead, Julia will take your code, guess types where necessary, and compile parts of code just before running it.
-Also, you don't need to explicitly specify each type.
-Julia will guess types for you on the go.
+Julia é uma **linguagem de tipo-dinâmico** com um compilador just-in-time.
+Isso significa que você não precisa compilar seu programa antes de executá-lo, como precisaria fazer com C++ ou FORTRAN.
+Em vez disso, Julia pegará seu código, adivinhará os tipos quando necessário e compilará partes do código antes de executá-lo.
+Além disso, você não precisa especificar explicitamente cada tipo.
+Julia vai supor os tipos para você.
 
 The main differences between Julia and other dynamic languages such as R and Python are the following.
 First, Julia **allows the user to specify type declarations**.

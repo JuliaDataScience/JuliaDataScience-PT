@@ -12,7 +12,7 @@ Para responder a essa questão, abordaremos duas situações bastante comuns:
 
 ## Para os que nunca programaram {#sec:non-programmers}
 
-Para a primeira situação, acreditamos que o ponto em comum seja:
+Para a primeira situação, acreditamos que o ponto em comum seja o seguinte.
 
 A ciência de dados te atrai, você tem vontade de aprender sobre e entender como ela pode ajudar sua carreira seja na academia, seja no mercado.
 Então, você tenta encontrar formas de aprender essa nova habilidade e cai em um mundo de acrônimos complexos:

@@ -24,7 +24,7 @@ Como seria diferente de qualquer outra ferramenta usada para ciência de dados?
 
 Por que você deveria gastar seu tempo para aprender uma linguagem de programação que quase nunca é mencionada em processos seletivos, posições em laboratórios, pós-doutorados ou qualquer outro trabalho acadêmico?
 A respota para a questão é que **Julia é uma nova abordagem** tanto para programação, quanto para ciência de dados.
-Tudo que você faz em Python ou R, você pode fazer em Julia com a vantagem de poder escrever um código legível [^readable], rápido e poderoso.
+Tudo que você faz em Python ou R, você pode fazer em Julia com a vantagem de poder escrever um código legível[^readable], rápido e poderoso.
 Assim, Julia tem ganhado força por uma série de motivos.
 
 Então, **se você não tem nenhum conhecimento prévio de programação, recomendamos que aprenda Julia** como uma primeira linguagem de programação e ferramenta para ciência de dados.
@@ -49,7 +49,7 @@ Bom, vamos analisar alguns possíveis cenários.
 Então, **em Julia, minutos no Python ou R se transformam em segundos**^[e até em milésimos de segundo.].
 Nós separamos o @sec:julia_wild para exemplificar casos de sucesso em Julia tanto na academia quanto no mercado.
 
-2. Tentou algo diferente das convenções `numpy`/`dplyr` e descobriu que o código estava lento e provavelmente precisaria de magia ^[`numba`, ou mesmo o `Rcpp` ou o `cython`?] para torná-lo mais rápido?
+2. Tentou algo diferente das convenções `numpy`/`dplyr` e descobriu que o código estava lento e provavelmente precisaria de magia^[`numba`, ou mesmo o `Rcpp` ou o `cython`?] para torná-lo mais rápido?
 **Em Julia, você pode fazer seu próprio código customizado sem perder desempenho**.
 
 3. Precisou debugar um código e de repente se viu lendo código fonte em Fortran ou C/C++, sem ter ideia alguma do que fazer?
@@ -89,17 +89,17 @@ Eles afirmam:
 > Queremos uma linguagem open source, com uma licença permissiva.
 > Queremos a velocidade do C com o dinamismo do Ruby.
 > Queremos uma linguagem que seja homoicônica, com verdadeiros macros como Lisp, mas com uma noção matemética óbvia e familiar como Matlab.
-> Queremos algo que seja útil para programação em geral como Python, fácil para estatística como R, tão natural para processamento de strings quanto Perl, tão poderoso para álgebra linear quanto Matlab, tão bom para colar programas juntos quanto shell.
+> Queremos algo que seja útil para programação em geral como Python, fácil para estatística como R, tão natural para processamento de strings quanto Perl, tão poderoso para álgebra linear quanto Matlab, tão bom para integrar programas juntos quanto shell.
 > Algo que seja simples de aprender, mas que deixe os hackers mais sérios felizes.
-> Queremos que seja interativo e que seja compilado.
+> Queremos que seja interativa e que seja compilada.
 
 A maioria dos usuários se sente atraída por Julia em função da sua **velocidade superior**.
 Afinal, Julia é membro de um clube prestigiado e exclusivo.
-O [**petaflop club**](https://www.hpcwire.com/off-the-wire/julia-joins-petaflop-club/) é composto por linguagens que excedem a velocidade de **um petaflop^[um petaflop equivale a mil trilhões, ou um quatrilhão de operações por segundo] por segundo no desempenho máximo**.
+O [**petaflop club**](https://www.hpcwire.com/off-the-wire/julia-joins-petaflop-club/) é composto por linguagens que excedem a velocidade de **um petaflop^[um petaflop equivale a mil trilhões, ou um quatrilhão de operações com pontos flutuantes por segundo.] no desempenho máximo**.
 Atualmente, apenas C, C++, Fortran e Julia fazem parte do [petaflop club](https://www.nextplatform.com/2017/11/28/julia-language-delivers-petascale-hpc-performance/).
 
 Mas velocidade não é tudo que Julia pode oferecer.
-A **facilidade de uso**, **o supoerte a caracteres Unicode** e ser uma linguagem que torna **o compartilhamento de códigos algo muito simples** são algumas das características de Julia.
+A **facilidade de uso**, **o suporte a caracteres Unicode** e ser uma linguagem que torna **o compartilhamento de códigos algo muito simples** são algumas das características de Julia.
 Falaremos de todas essas qualidades nessa seção, mas focaremos no compartilhamento de códigos por enquanto.
 
 O ecossistema de pacotes de Julia é algo único.
@@ -114,7 +114,7 @@ Primeiro, vamos falar de outras características de Julia.
 
 ### Julia Versus outras linguagens de programação
 
-Em [@fig:language_comparison], uma representação altamente opinativa é demonstrada, que divide as principais linguagens open source e de computação científica em um diagrama 2x2 com dois eixos:
+Em [@fig:language_comparison], uma representação altamente opinativa, dividmos as principais linguagens open source e de computação científica em um diagrama 2x2 com dois eixos:
 **Lento-Rápido** e **Fácil-Difícil**.
 Deixamos de fora as linguagens de código fechado, porque os benefícios são maiores quando permitimos que outras pessoas usem nossos códigos gratuitamente, assim como quando têm a liberdade para inspecionar elas mesmas o código fonte para sanar dúvidas e resolver problemas.
 
@@ -136,7 +136,7 @@ Nós não conhecemos nenhuma linguagem séria que almejaria ser Difícil e Lenta
 **Julia é rápida!
 Muito rápida!**
 Foi desenvolvida para ser veloz desde o início.
-E alcança esse objetivo por meio do emprego do despacho múltiplo.
+E alcança esse objetivo por meio do despacho múltiplo.
 Basicamente, a ideia é gerar códigos LLVM[^LLVM] muito eficientes.
 Códigos LLVM, também conhecido como instruções LLVM, são de baixo-nível, ou seja, muito próximos das operações reais que seu computador está executando.
 Portanto, em essência, Julia converte o código que você escreveu — que é fácil de se ler — em código de máquina LLVM, que é muito difícil para humanos lerem, mas muito fácil para um computador.
@@ -246,7 +246,8 @@ scob("naive_trouble(fiona, big_bird)")
 ```
 
 OK, isso parece correto.
-Escrevendo a função `naive_trouble` parece ser o suficiente. No entanto, usar despacho múltiplo para criar uma nova função `trouble` pode ser benéfico. Vamos criar novas funções:
+Escrevendo a função `naive_trouble` parece ser o suficiente.
+No entanto, usar despacho múltiplo para criar uma nova função `trouble` pode ser benéfico. Vamos criar novas funções:
 
 ```jl
 s = """
@@ -348,8 +349,8 @@ Na prática, isso significa que Julia facilita o reuso do código de outros proj
 Se você está tão animado quanto nós com o despacho múltiplo, aqui estão mais dois exemplos aprofundados.
 O primeiro é uma [rápida e elegante implementação de um vetor one-hot](https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/#example_one-hot_vector) por @storopoli2021bayesianjulia.
 O segundo é uma entrevista com [Christopher Rackauckas](https://www.chrisrackauckas.com/) no [canal do YouTube de Tanmay Bakshi](https://youtu.be/moyPIhvw4Nk?t=2107) (assista do minuto 35:07 em diante) [@tanmaybakshiBakingKnowledgeMachine2021].
-Chris explica que, enquanto utilizava o [`DifferentialEquations.jl`](https://diffeq.sciml.ai/dev/), um pacote que ele desenvolveu e mantém atualmente, um usuário registrou um problema que seu solucionador ODE quaternion baseado em GPU não funcionava.
-Chris ficou bastante surpreso com este pedido, já que ele não esperava que alguém combinasse cálculos de GPU com quatérnions e resolvendo EDOs.
+Chris explica que, enquanto utilizava o [`DifferentialEquations.jl`](https://diffeq.sciml.ai/dev/), um pacote que ele desenvolveu e mantém atualmente, um usuário registrou um problema que seu solucionador de Equações Diferenciais Ordinais (EDO) com quaternions baseado em GPU não funcionava.
+Chris ficou bastante surpreso com este pedido, já que ele não esperava que alguém combinasse cálculos da GPU com quaternions e resolvendo EDOs.
 Ele ficou ainda mais surpreso quando descobriu que o usuário cometeu um pequeno erro e que tudo funcionou.
 A maior parte do mérito é devido ao múltiplo despacho e alto compartilhamento de código/tipos definidos pelo usuário.
 
@@ -359,14 +360,14 @@ Para concluir, pensamos que o despacho múltiplo é melhor explicado por um dos 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/kc9HwsxE1OY' frameborder='0' allowfullscreen></iframe></div>
 
 
-## Julia na Natureza {#sec:julia_wild}
+## Julia Por Aí {#sec:julia_wild}
 
 Em @sec:julia_accomplish, explicamos por que achamos que Julia é uma linguagem de programação única.
 Mostramos exemplos simples sobre os principais recursos de Julia.
 Se você quiser se aprofundar em como Julia está sendo usada, temos alguns **casos de uso interessantes**:
 
-1. NASA usa Julia em um supercomputador que analisa ["O maior lote de planetas do tamanho da Terra já encontrado"](https://exoplanets.nasa.gov/news/1669/seven-rocky-trappist-1-planets-may-be-made-of-similar-stuff/) e alcançou uma extraordinária otimização que tornou a execução **1.000x mais rápida** para catalogar 188 milhões de objetos astronômicos em 15 minutos.
-2. [A Aliança para a Modelagem Climática (Climate Model Alliance - CliMa)](https://clima.caltech.edu/) usa Julia para **modelar o clima no GPU e CPU**.
+1. NASA usa Julia em um supercomputador que analisa ["o maior lote de planetas do tamanho da Terra já encontrado"](https://exoplanets.nasa.gov/news/1669/seven-rocky-trappist-1-planets-may-be-made-of-similar-stuff/) e alcançou uma extraordinária otimização que tornou a execução **1.000x mais rápida** para catalogar 188 milhões de objetos astronômicos em 15 minutos.
+2. [A Aliança para a Modelagem Climática (Climate Model Alliance - CliMa)](https://clima.caltech.edu/) usa Julia para **modelar o clima na GPU e CPU**.
 Lançado em 2018 em colaboração com pesquisadores da Caltech, do NASA Jet Propulsion Laboratory, e da Naval Postgraduate School, a CliMA está utilizando o progresso recente da ciência computacional para desenvolver um modelo do sistema terrestre que pode prever secas, ondas de calor e chuva com precisão e velocidade sem precedentes.
 3. [O Departamento de Aviação Federal dos Estados Unidos (US Federal Aviation Administration - FAA) está desenvolvendo um **Sistema de Prevenção de Colisões Aéreas (Airborne Collision Avoidance System - ACAS-X)** usando Julia](https://youtu.be/19zm1Fn0S9M).
 Esse é um bom exemplo do "Problema das Duas Linguagens" (see @sec:julia_accomplish).
@@ -374,7 +375,7 @@ Soluções anteriores usavam Matlab para desenvolver os algoritmos e C++ para um
 Agora, FAA usa uma única linguagem para tudo isso: Julia.
 4. [**Aceleração de 175x** para modelos de farmacologia da Pfizer usando GPUs em Julia](https://juliacomputing.com/case-studies/pfizer/).
 Foi apresentado como um [poster](https://chrisrackauckas.com/assets/Posters/ACoP11_Poster_Abstracts_2020.pdf) na 11ª American Conference of Pharmacometrics (ACoP11) e [ganhou um prêmio de qualidade](https://web.archive.org/web/20210121164011/https://www.go-acop.org/abstract-awards).
-5. [O Subsistema de Controle de Altitude e Órbita (Attitude and Orbit Control Subsystem -AOCS) do satélite brasileiro Amazonia-1 é **escrito 100% em Julia**](https://discourse.julialang.org/t/julia-and-the-satellite-amazonia-1/57541) por Ronan Arraes Jardim Chagas (<https://ronanarraes.com/>).
+5. [O Subsistema de Controle de Atitude e Órbita (Attitude and Orbit Control Subsystem - AOCS) do satélite brasileiro Amazonia-1 é **escrito 100% em Julia**](https://discourse.julialang.org/t/julia-and-the-satellite-amazonia-1/57541) por Ronan Arraes Jardim Chagas (<https://ronanarraes.com/>).
 6. [O Banco Nacional de Desenvolvimento Econômico e Social (BNDES) do Brasil abandonou uma solução paga e optou pela modelagem em Julia (que é código aberto) e teve uma otimização de velocidade de execução em um fator de  **10x**.](https://youtu.be/NY0HcGqHj3g)
 
 Se isso não for suficiente, existem mais estudos de caso em [Julia Computing website](https://juliacomputing.com/case-studies/).

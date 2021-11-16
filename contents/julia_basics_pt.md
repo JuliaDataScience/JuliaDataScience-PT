@@ -66,16 +66,16 @@ Podemos recuperar seus valores digitando os nomes dados na atribuição:
 scob("name")
 ```
 
-If you want to define new values for an existing variable, you can repeat the steps in the assignment.
-Note that Julia will now override the previous value with the new one.
-Supposed, Julia's birthday has passed and now it has turned 10:
+Se quiser definir novos valores para uma variável existente, você pode repetir as etapas da atribuição.
+Observe que Julia agora substituirá o valor anterior pelo novo.
+Suponho que o aniversário de Julia já passou e agora fez 10 anos:
 
 ```jl
 scob("age = 10")
 ```
 
-We can do the same with its `name`. Suppose that Julia has earned some titles due to its blazing speed.
-We would change the variable `name` to the new value:
+Podemos fazer o mesmo com `name`. Suponha que Julia tenha ganho alguns títulos devido à sua velocidade incrível.
+Mudaríamos a variável `name` para o novo valor:
 
 ```jl
 s = """
@@ -84,24 +84,23 @@ s = """
 scob(s)
 ```
 
-We can also do operations on variables such as addition or division.
-Let's see how old Julia is, in months, by multiplying `age` by 12:
+Também podemos fazer operações em variáveis como adição ou divisão.
+Vamos ver quantos anos Julia tem, em meses, multiplicando `age` por 12:
 
 ```jl
 s = "12 * age"
 scob(s)
 ```
-
-We can inspect the types of variables by using the `typeof` function:
+Podemos inspecionar os tipos de variáveis usando a função `typeof`:
 
 ```jl
 sco("typeof(age)")
 ```
 
-The next question then becomes:
-"What else can I do with integers?"
-There is a nice handy function `methodswith` that spits out every function available, along with its signature, for a certain type.
-Here, I will restrict the output to the first 5 rows:
+A próxima pergunta então se torna:
+"O que mais posso fazer com os inteiros?"
+Há uma função boa e útil, `methodswith` que expõe todas as funções disponíveis, junto com sua assinatura, para um certo tipo.
+Aqui, vamos restringir a saída às primeiras 5 linhas:
 
 ```jl
 s = """
@@ -110,16 +109,16 @@ s = """
 sco(s; process=catch_show)
 ```
 
-### User-defined Types {#sec:struct}
+### Tipos definidos pelo usuário {#sec:struct}
 
-Having variables around without any sort of hierarchy or relationships is not ideal.
-In Julia, we can define that kind of structured data with a `struct` (also known as a composite type).
-Inside each `struct`, you can specify a set of fields.
-They differ from the primitive types (e.g. integer and floats) that are by default defined already inside the core of Julia language.
-Since most `struct`s are user-defined, they are known as user-defined types.
+Ter variáveis sem qualquer tipo de hierarquia ou relacionamento não é ideal.
+Em Julia, podemos definir esse tipo de dado estruturado com um `struct` (também conhecido como tipo composto).
+Dentro de cada `struct`, você pode especificar um conjunto de campos.
+Eles diferem dos tipos primitivos (por exemplo, inteiro e flutuantes) que já são definidos por padrão dentro do núcleo da linguagem Julia.
+Já que a maioria dos `struct` são definidos pelo usuário, eles são conhecidos como tipos definidos pelo usuário.
 
-For example, let's create a `struct` to represent scientific open source programming languages.
-We'll also define a set of fields along with the corresponding types inside the `struct`:
+Por exemplo, vamos criar um `struct` para representar linguagens de programação científica em código aberto.
+Também definiremos um conjunto de campos junto com os tipos correspondentes dentro do `struct`:
 
 ```jl
 s = """
@@ -133,14 +132,14 @@ s = """
 sco(s; post=x -> "")
 ```
 
-To inspect the field names you can use the `fieldnames` and pass the desired `struct` as an argument:
+Para inspecionar os nomes dos campos, você pode usar o `fieldnames` e passar o `struct` desejado como um argumento:
 
 ```jl
 sco("fieldnames(Language)")
 ```
 
-To use `struct`s, we must instantiate individual instances (or "objects"), each with its own specific values for the fields defined inside the `struct`.
-Let's instantiate two instances, one for Julia and one for Python:
+Para usar os `struct`, devemos instanciar instâncias individuais (ou "objetos"), cada um com seus próprios valores específicos para os campos definidos dentro do `struct`.
+Vamos instanciar duas instâncias, uma para Julia e outra para Python:
 
 ```jl
 s = """
@@ -150,11 +149,11 @@ s = """
 sco(s)
 ```
 
-One thing to note with `struct`s is that we can't change their values once they are instantiated.
-We can solve this with a `mutable struct`.
-Also, note that mutable objects will, generally, be slower and more error prone.
-Whenever possible, make everything *immutable*.
-Let's create a `mutable struct`.
+Algo importante de se notar com os `struct` é que não podemos alterar seus valores, uma vez que são instanciados.
+Podemos resolver isso com `mutable struct`.
+Além disso, observe que objetos mutáveis geralmente serão mais lentos e mais propensos a erros.
+Sempre que possível, faça que tudo seja *imutável*.
+Vamos criar uma `mutable struct`.
 
 ```jl
 s = """

@@ -372,8 +372,8 @@ sco("python")
 
 #### Valores de Retorno Múltiplo {#sec:function_multiple}
 
-A function can, also, return two or more values.
-See the new function `add_multiply` below:
+Uma função também pode retornar dois ou mais valores.
+Veja a nova função `add_multiply` abaixo:
 
 ```jl
 s = """

@@ -386,9 +386,9 @@ s = """
 sco(s)
 ```
 
-In that case, we can do two things:
+Nesse caso, podemos fazer duas coisas:
 
-1. We can, analogously as the return values, define two variables to hold the function return values, one for each return value:
+1. Podemos, analogamente aos valores de retorno, definir duas variáveis para conter os valores de retorno da função, uma para cada valor de retorno:
 
    ```jl
    s = """
@@ -398,7 +398,7 @@ In that case, we can do two things:
    scob(s)
    ```
 
-2. Or we can define just one variable to hold the function's return values and access them with either `first` or `last`:
+2. Ou podemos definir apenas uma variável para manter os valores de retorno da função e acessá-los com `first` ou `last`:
 
    ```jl
    s = """
@@ -408,10 +408,10 @@ In that case, we can do two things:
    scob(s)
    ```
 
-#### Keyword Arguments {#sec:function_keyword_arguments}
+#### Argumentos de Palavra-Chave {#sec:function_keyword_arguments}
 
-Some functions can accept keyword arguments instead of positional arguments.
-These arguments are just like regular arguments, except that they are defined after the regular function's arguments and separated by a semicolon `;`.
+Algumas funções podem aceitar argumentos de palavra-chave ao invés de argumentos posicionais.
+Esses argumentos são como argumentos regulares, except that they are defined after the regular function's arguments and separated by a semicolon `;`.
 For example, let's define a `logarithm` function that by default uses base $e$ (2.718281828459045) as a keyword argument.
 Note that, here, we are using the abstract type `Real` so that we cover all types derived from `Integer` and `AbstractFloat`, being both themselves subtypes of `Real`:
 

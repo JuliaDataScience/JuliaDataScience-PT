@@ -191,7 +191,7 @@ Nós temos três operadores booleanos em Julia:
 * `&&`: **AND**
 * `||`: **OR**
 
-Here are a few examples with some of them:
+Aqui estão exemplos com alguns deles:
 
 ```jl
 scob("!true")
@@ -205,10 +205,10 @@ scob("(false && true) || (!false)")
 scob("(6 isa Int64) && (6 isa Real)")
 ```
 
-Regarding numeric comparison, Julia has three major types of comparisons:
+Com relação à comparação numérica, Julia tem três tipos principais de comparações:
 
-1. **Equality**: either something is *equal* or *not equal* another
-    * == "equal"
+1. **Igualdade**: ou algo é *igual* ou *não igual* em relação a outro
+    * == "igual"
     * != or ≠ "not equal"
 1. **Less than**: either something is *less than* or *less than or equal to*
     * <  "less than"

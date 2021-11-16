@@ -26,7 +26,7 @@ Julia vai supor os tipos para você.
 
 As principais diferenças entre Julia e outras linguagens dinâmicas como R e Python são:
 Primeiro, Julia **permite ao usuário especificar declarações de tipo**.
-Você já viu alguns tipos de declarações em *Por que Julia?* (@sec:why_julia): eles são aqueles dois pontos duplos `::` que às vezes vem depois das variáveis.
+Você já viu algumas declarações de tipo em *Por que Julia?* (@sec:why_julia): eles são aqueles dois pontos duplos `::` que às vezes vem depois das variáveis.
 No entanto, se você não quiser especificar o tipo de suas variáveis ou funções, Julia terá o prazer de inferir (adivinhar) para você.
 
 Em segundo lugar, Julia permite que os usuários definam o comportamento da função em muitas combinações de tipos de argumento por meio de múltiplos despachos.
@@ -38,9 +38,9 @@ Definimos um comportamento de tipo diferente, definindo novas assinaturas de fun
 As variáveis são valores que você diz ao computador para armazenar com um nome específico, para que você possa recuperar ou alterar seu valor posteriormente.
 Julia tem diversos tipos de variáveis, mas, em ciência de dados, usamos principalmente:
 
-* Integers: `Int64`
-* Real Numbers: `Float64`
-* Boolean: `Bool`
+* Números inteiros: `Int64`
+* Números reais: `Float64`
+* Booleana: `Bool`
 * Strings: `String`
 
 Inteiros e números reais são armazenados usando 64 bits por padrão, é por isso que eles têm o sufixo `64` no nome do tipo.
@@ -113,7 +113,7 @@ sco(s; process=catch_show)
 
 Ter variáveis sem qualquer tipo de hierarquia ou relacionamento não é ideal.
 Em Julia, podemos definir esse tipo de dado estruturado com um `struct` (também conhecido como tipo composto).
-Dentro de cada `struct`, você pode especificar um conjunto de campos.
+Dentro de cada `struct`, você pode especificar um conjunto de campos `field`s.
 Eles diferem dos tipos primitivos (por exemplo, inteiro e flutuantes) que já são definidos por padrão dentro do núcleo da linguagem Julia.
 Já que a maioria dos `struct` são definidos pelo usuário, eles são conhecidos como tipos definidos pelo usuário.
 
@@ -132,7 +132,7 @@ s = """
 sco(s; post=x -> "")
 ```
 
-Para inspecionar os nomes dos campos, você pode usar o `fieldnames` e passar o `struct` desejado como um argumento:
+Para inspecionar os nomes dos campos, você pode usar o `fieldnames` e passar o `struct` desejado como argumento:
 
 ```jl
 sco("fieldnames(Language)")
@@ -170,7 +170,7 @@ sco(s)
 ```
 
 Suponha que queremos mudar o título `julia_mutable`.
-Agora podemos fazer isso já que `julia_mutable` é um instanciado `mutable struct`:
+Agora podemos fazer isso já que `julia_mutable` é um `mutable struct` instanciado:
 
 ```jl
 s = """
@@ -256,7 +256,7 @@ A declaração da função começa com a palavra-chave `function` seguida do nom
 Então, entre parênteses `()`, nós definimos os argumentos separados por uma vírgula `,`.
 Dentro da função, especificamos o que queremos que Julia faça com os parâmetros que fornecemos.
 Todas as variáveis que definimos dentro de uma função são excluídas após o retorno da função. Isso é bom porque é como se realizasse uma limpeza automática.
-Depois que todas as operações no corpo da função forem concluídas, instruímos Julia a retornar o resultado final com a confirmação `return`.
+Depois que todas as operações no corpo da função forem concluídas, instruímos Julia a retornar o resultado com a palavra-chave `return`.
 Por fim, informamos a Julia que a definição da função terminou com a palavra-chave `end`.
 
 Existe também o compacto **formulário de atribuição**:
@@ -350,8 +350,8 @@ Vamos estender a função `Base.show` que imprime a saída de tipos instanciados
 
 Por padrão, uma `struct` tem um output básico, que você pode observar do caso de `python`.
 Podemos definir um nove método `Base.show` para nosso tipo `Language`, assim temos uma boa impressão para nossas instâncias de linguagens de programação.
-Queremos comunicar claramente os nomes, títulos e idades das linguagens de programação em anos.
-A função `Base.show` aceita como argumentos o tipo `IO` chamado `io` seguido pelo tipo que você deseja para definir o comportamento personalizado:
+Queremos comunicar claramente os nomes, títulos e idades em anos das linguagens de programação.
+A função `Base.show` aceita como argumentos um tipo `IO` chamado `io` seguido pelo tipo que você deseja para definir o comportamento personalizado:
 
 ```jl
 s = """
@@ -364,7 +364,7 @@ s = """
 sco(s; post=x -> "")
 ```
 
-Agora, vamos ver como o output `python` será:
+Agora, vamos ver como o output de `python` será:
 
 ```jl
 sco("python")

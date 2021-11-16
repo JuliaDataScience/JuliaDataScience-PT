@@ -209,15 +209,15 @@ Com relação à comparação numérica, Julia tem três tipos principais de com
 
 1. **Igualdade**: ou algo é *igual* ou *não igual* em relação a outro
     * == "igual"
-    * != or ≠ "not equal"
-1. **Less than**: either something is *less than* or *less than or equal to*
-    * <  "less than"
-    * <= or ≤ "less than or equal to"
-1. **Greater than**: either something is *greater than* or *greater than or equal to*
-    * \> "greater than"
-    * \>= or ≥ "greater than or equal to"
+    * != ou ≠ "não igual"
+1. **Menos que**: ou algo é *menos que* ou *menos que ou igual a*
+    * <  "menos que"
+    * <= ou ≤ "menos que ou igual a"
+1. **Maior que**: ou algo é *maior que* ou *maior que ou igual a*
+    * \> "maior que"
+    * \>= ou ≥ "maior que ou igual a"
 
-Here are some examples:
+Aqui temos alguns exemplos:
 
 ```jl
 scob("1 == 1")
@@ -227,23 +227,23 @@ scob("1 == 1")
 scob("1 >= 10")
 ```
 
-It evens works between different types:
+Equilibra os trabalhos entre diferentes tipos:
 
 ```jl
 scob("1 == 1.0")
 ```
 
-We can also mix and match boolean operators with numeric comparisons:
+Também podemos misturar e combinar operadores booleanos com comparações numéricas:
 
 ```jl
 scob("(1 != 10) || (3.14 <= 2.71)")
 ```
 
-### Functions {#sec:function}
+### Funções {#sec:function}
 
-Now that we already know how to define variables and custom types as `struct`s, let's turn our attention to **functions**.
-In Julia, a function **maps argument's values to one or more return values**.
-The basic syntax goes like this:
+Agora que já sabemos como definir variáveis e tipos personalizados como `struct`, vamps voltar nossa atenção para as **funções**.
+Em Julia, a função **mapeia os valores do argumento para um ou mais valores de retorno**.
+A sintaxe básica é assim:
 
 ```julia
 function function_name(arg1, arg2)
@@ -252,20 +252,20 @@ function function_name(arg1, arg2)
 end
 ```
 
-The function declaration begins with the keyword `function` followed by the function name.
-Then, inside parentheses `()`, we define the arguments separated by a comma `,`.
-Inside the function, we specify what we want Julia to do with the parameters that we supplied.
-All variables that we define inside a function are deleted after the function returns. This is nice because it is like an automatic cleanup.
-After all the operations in the function body are finished, we instruct Julia to return the final result with the `return` statement.
-Finally, we let Julia know that the function definition is finished with the `end` keyword.
+A declaração da função começa com a palavra-chave `function` seguida do nome da função.
+Então, entre parênteses `()`, nós definimos os argumentos separados por uma vírgula `,`.
+Dentro da função, especificamos o que queremos que Julia faça com os parâmetros que fornecemos.
+Todas as variáveis que definimos dentro de uma função são excluídas após o retorno da função. Isso é bom porque é como se realizasse uma limpeza automática.
+Depois que todas as operações no corpo da função forem concluídas, instruímos Julia a retornar o resultado final com a confirmação `return`.
+Por fim, informamos a Julia que a definição da função terminou com a palavra-chave `end`.
 
-There is also the compact **assignment form**:
+Existe também o compacto **formulário de atribuição**:
 
 ```julia
 f_name(arg1, arg2) = stuff with the arg1 and arg2
 ```
 
-It is the **same function** as before but with a different, more compact, form.
+É a **mesma função** que antes, mas com um formulário diferente, mais compacto.
 As a rule of thumb, when your code can fit easily on one line of up to 92 characters, then the compact form is suitable.
 Otherwise, just use the longer form with the `function` keyword.
 Let's dive into some examples.

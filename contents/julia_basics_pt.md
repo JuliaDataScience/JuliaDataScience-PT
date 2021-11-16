@@ -169,8 +169,8 @@ s = """
 sco(s)
 ```
 
-Suppose that we want to change `julia_mutable`'s title.
-Now, we can do this since `julia_mutable` is an instantiated `mutable struct`:
+Suponha que queremos mudar o título `julia_mutable`.
+Agora podemos fazer isso já que `julia_mutable` é um instanciado `mutable struct`:
 
 ```jl
 s = """
@@ -181,11 +181,11 @@ s = """
 sco(s)
 ```
 
-### Boolean Operators and Numeric Comparisons
+### Operadores booleanos e comparações numéricas
 
-Now that we've covered types, we can move to boolean operators and numeric comparison.
+Agora que cobrimos os tipos, podemos passar para os operadores booleanos e a comparação numérica.
 
-We have three boolean operators in Julia:
+Nós temos três operadores booleanos em Julia:
 
 * `!`: **NOT**
 * `&&`: **AND**

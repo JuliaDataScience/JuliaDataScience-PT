@@ -266,13 +266,13 @@ f_name(arg1, arg2) = stuff with the arg1 and arg2
 ```
 
 É a **mesma função** que antes, mas com um formulário diferente, mais compacto.
-As a rule of thumb, when your code can fit easily on one line of up to 92 characters, then the compact form is suitable.
-Otherwise, just use the longer form with the `function` keyword.
-Let's dive into some examples.
+Como regra geral, quando seu código pode caber facilmente em uma linha de até 92 caracteres, a forma compacta é adequada.
+Caso contrário, basta usar o formulário mais longo com a palavra-chave `function`.
+Vamos mergulhar em alguns exemplos.
 
-#### Creating new Functions {#sec:function_example}
+#### Criando novas funções {#sec:function_example}
 
-Let's create a new function that adds numbers together:
+Vamos criar uma nova função que adiciona números:
 
 ```jl
 s = """
@@ -283,7 +283,7 @@ s = """
 sco(s)
 ```
 
-Now, we can use our `add_numbers` function:
+Agora, podemos usar nossa função `add_numbers`:
 
 ```jl
 scob("add_numbers(17, 29)")
@@ -295,8 +295,8 @@ And it works also with floats:
 scob("add_numbers(3.14, 2.72)")
 ```
 
-Also, we can define custom behavior by specifying type declarations.
-Suppose that we want to have a `round_number` function that behaves differently if its argument is either a `Float64` or `Int64`:
+Além disso, podemos definir o comportamento personalizado, especificando declarações de tipo.
+Suponha que queremos ter uma função `round_number` que se comporta de maneira diferente se seu argumento for um `Float64` ou `Int64`:
 
 ```jl
 s = """
@@ -311,16 +311,16 @@ s = """
 sco(s)
 ```
 
-We can see that it is a function with multiple methods:
+Podemos ver que é uma função com múltiplos métodos:
 
 ```jl
 sco("methods(round_number)")
 ```
 
-There is one issue: what happens if we want to round a 32-bit float `Float32`?
-Or a 8-bit integer `Int8`?
+Existe um problema: o que acontece se quisermos arredondar um float de 32 bits, `Float32`?
+Ou um inteiro de 8 bits, `Int8`?
 
-If you want something to function on all float and integer types, you can use an **abstract type** as the type signature, such as `AbstractFloat` or `Integer`:
+Se você quiser que algo funcione em todos os tipos de float e inteiros, voc~e pode usar um **tipo abstrato** como a assinatura de tipo `AbstractFloat` ou `Integer`:
 
 ```jl
 s = """
@@ -331,7 +331,7 @@ s = """
 sco(s)
 ```
 
-Now, it works as expected with any float type:
+Agora, funcionará como esperado em qualquer tipo de float:
 
 ```jl
 s = """
@@ -342,16 +342,16 @@ scob(s)
 ```
 
 > **_NOTE:_**
-> We can inspect types with the `supertypes` and `subtypes` functions.
+> Podemos inspecionar tipos com as funções `supertypes` e `subtypes`.
 
-Let's go back to our `Language` `struct` that we defined above.
-This is an example of multiple dispatch.
-We will extend the `Base.show` function that prints the output of instantiated types and `struct`s.
+Vamos voltar ao nosso `Language` `struct` que definimos anteriormente.
+Isso é um exemplode despacho múltiplo.
+Vamos estender a função `Base.show` que imprime a saída de tipos instanciados e de `struct`.
 
-By default, a `struct` has a basic output, which you saw above in the `python` case.
-We can define a new `Base.show` method to our `Language` type, so that we have some nice printing for our programming languages instances.
-We want to clearly communicate programming languages' names, titles, and ages in years.
-The function `Base.show` accepts as arguments a `IO` type named `io` followed by the type you want to define custom behavior:
+Por padrão, uma `struct` tem um output básico, que você pode observar do caso de `python`.
+Podemos definir um nove método `Base.show` para nosso tipo `Language`, assim temos uma boa impressão para nossas instâncias de linguagens de programação.
+Queremos comunicar claramente os nomes, títulos e idades das linguagens de programação em anos.
+A função `Base.show` aceita como argumentos o tipo `IO` chamado `io` seguido pelo tipo que você deseja para definir o comportamento personalizado:
 
 ```jl
 s = """
@@ -364,13 +364,13 @@ s = """
 sco(s; post=x -> "")
 ```
 
-Now, let's see how `python` will output:
+Agora, vamos ver como o output `python` será:
 
 ```jl
 sco("python")
 ```
 
-#### Multiple Return Values {#sec:function_multiple}
+#### Valores de Retorno Múltiplo {#sec:function_multiple}
 
 A function can, also, return two or more values.
 See the new function `add_multiply` below:

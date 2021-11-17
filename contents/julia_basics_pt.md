@@ -411,9 +411,9 @@ Nesse caso, podemos fazer duas coisas:
 #### Argumentos de Palavra-Chave {#sec:function_keyword_arguments}
 
 Algumas funções podem aceitar argumentos de palavra-chave ao invés de argumentos posicionais.
-Esses argumentos são como argumentos regulares, except that they are defined after the regular function's arguments and separated by a semicolon `;`.
-For example, let's define a `logarithm` function that by default uses base $e$ (2.718281828459045) as a keyword argument.
-Note that, here, we are using the abstract type `Real` so that we cover all types derived from `Integer` and `AbstractFloat`, being both themselves subtypes of `Real`:
+Esses argumentos são como argumentos regulares, exceto por eles serem definidos após os argumentos da função regular e separados por um ponto e vírgula `;`.
+Por exemplo, vamos definir uma função `logarithm` que por padrão usa base $e$ (2.718281828459045) como um argumento de palavra-chave.
+Perceba que aqui, estamos usando o tipo abstrato `Real` para que possamos cobrir todos os tipos derivados de `Integer` e `AbstractFloat`, sendo ambos subtipos de `Real`:
 
 ```jl
 scob("AbstractFloat <: Real && Integer <: Real")
@@ -428,13 +428,13 @@ s = """
 sco(s)
 ```
 
-It works without specifying the `base` argument as we supplied a **default argument value** in the function declaration:
+Funciona sem especificar o argumento `base` já que fornecemos um **valor de argumento padrão** na declaração da função:
 
 ```jl
 scob("logarithm(10)")
 ```
 
-And also with the keyword argument `base` different from its default value:
+E também com o argumento de palavra-chave `base` diferente de seu valor padrão:
 
 ```jl
 s = """
@@ -443,35 +443,35 @@ s = """
 scob(s)
 ```
 
-#### Anonymous Functions {#sec:function_anonymous}
+#### Funções anônimas {#sec:function_anonymous}
 
-Often we don't care about the name of the function and want to quickly make one.
-What we need are **anonymous functions**.
-They are used a lot in Julia's data science workflow.
-For example, when using `DataFrames.jl` (@sec:dataframes) or `Makie.jl` (@sec:DataVisualizationMakie), sometimes we need a temporary function to filter data or format plot labels.
-That's when we use anonymous functions.
-They are especially useful when we don't want to create a function, and a simple in-place statement would be enough.
+Muitas vezes não nos importamos com o nome da função e queremos rapidamente criar um.
+O que precisamos são das **funções anônimas**.
+Elas são muito usadas no fluxo de trabalho de ciência de dados em Julia.
+Por exemplo, quando usamos `DataFrames.jl` (@sec:dataframes) ou `Makie.jl` (@sec:DataVisualizationMakie), às vezes precisamos de uma função temporária para filtrar dados ou formatar rótulos de plotagem.
+É aí que usamos as funções anônimas.
+Elas são especialmente úteis quando não queremos criar uma função e uma instrução simples seria o suficiente.
 
-The syntax is simple.
-We use the `->` operator.
-On the left of `->` we define the parameter name.
-And on the right of `->` we define what operations we want to perform on the parameter that we defined on the left of `->`.
-Here is an example.
-Suppose that we want to undo the log transformation by using an exponentiation:
+A sintaxe é simples.
+Nós usamos o operador `->`.
+À esquerda do `->` definimos o nome do parâmetro.
+E à direita do `->` definimos quais operações queremos realizar no parâmetro que definimos à esquerda de `->`.
+Segue um exemplo.
+Suponha que queremos desfazer a transformação de log usando uma exponenciação:
 
 ```jl
 scob("map(x -> 2.7182818284590^x, logarithm(2))")
 ```
 
-Here, we are using the `map` function to conveniently map the anonymous function (first argument) to `logarithm(2)` (the second argument).
-As a result, we get back the same number, because logarithm and exponentiation are inverse (at least in the base that we've chosen -- 2.7182818284590)
+Aqui, estamos usando a função `map` para mapear convenientemente a função anônima (primeiro argumento) para `logarithm(2)` (segundo argumento).
+Como resultado, obtemos o mesmo número, porque o logaritmo e a exponenciação são inversos (pelo menos na base que escolhemos -- 2.7182818284590)
 
-### Conditional If-Else-Elseif {#sec:conditionals}
+### Condicional If-Else-Elseif {#sec:conditionals}
 
-In most programming languages, the user is allowed to control the computer's flow of execution.
-Depending on the situation, we want the computer to do one thing or another.
-In Julia we can control the flow of execution with `if`, `elseif`, and `else` keywords.
-These are known as conditional statements.
+Na maioria das linguagens de programação, o usuário tem permissão para controlar o fluxo de execução do computador.
+Dependendo da situação, queremos que o computador faça uma coisa ou outra.
+Em Julia, podemos controlar o fluxo de execução com as palavras-chave `if`, `elseif` e `else`.
+Estas são conhecidas como declarações condicionais.
 
 The `if` keyword prompts Julia to evaluate an expression and, depending on whether it's `true` or `false`, execute certain portions of code.
 We can compound several `if` conditions with the `elseif` keyword for complex control flow.

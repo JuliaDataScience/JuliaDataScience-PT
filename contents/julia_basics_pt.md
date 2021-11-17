@@ -524,7 +524,7 @@ Você começa com a palavra-chave, nessa caso `for`.
 Em seguida, você especifica o que Julia deve "loop", ou seja, uma sequência.
 Além disso, como em tudo mais, você deve terminar com a palavra-chave `end`.
 
-So, to make Julia print every number from 1 to 10, you can use the following for loop:
+Então, para fazer Julia imprimir todos os números de 1 a 10, você pode usar o seguinte loop for:
 
 ```jl
 s = """
@@ -535,15 +535,15 @@ s = """
 sco(s; post=x -> "")
 ```
 
-### While Loop {#sec:while}
+### Loop While {#sec:while}
 
-The while loop is a mix of the previous conditional statements and for loops.
-Here, the loop is executed every time the condition is `true`.
-The syntax follows the same form as the previous one.
-We begin with the keyword `while`, followed by a statement that evaluates to `true` or `false`.
-As usual, you must end with the `end` keyword.
+O loop while é uma mistura das declarações condicionais anteriores e os loops for.
+Aqui, o loop é executado toda vez que a condicional é `true`.
+A sintaxe segue a mesma forma da anterior.
+Começamos com a palavra-chave `while`, seguido por uma declaração que avalia se é `true` ou `false`.
+Como de costume, devemos terminar com a palavra-chave `end`.
 
-Here's an example:
+Segue um exemplo:
 
 ```jl
 s = """
@@ -558,7 +558,7 @@ s = """
 scob(s)
 ```
 
-As you can see, we have to use the `global` keyword.
+Como pode ver, devemos usar a palavra-chave `global`.
 This is because of **variable scope**.
 Variables defined inside conditional statements, loops, and functions exist only inside them.
 This is known as the *scope* of the variable.

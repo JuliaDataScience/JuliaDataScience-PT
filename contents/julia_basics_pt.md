@@ -473,13 +473,13 @@ Dependendo da situação, queremos que o computador faça uma coisa ou outra.
 Em Julia, podemos controlar o fluxo de execução com as palavras-chave `if`, `elseif` e `else`.
 Estas são conhecidas como declarações condicionais.
 
-The `if` keyword prompts Julia to evaluate an expression and, depending on whether it's `true` or `false`, execute certain portions of code.
-We can compound several `if` conditions with the `elseif` keyword for complex control flow.
-Finally, we can define an alternative portion to be executed if anything inside the `if` or `elseif`s is evaluated to `true`.
-This is the purpose of the `else` keyword.
-Finally, like all the previous keyword operators that we saw, we must tell Julia when the conditional statement is finished with the `end` keyword.
+A palavra-chave `if` comanda Julia a avaliar uma expressão e, dependendo se é `true` ou `false`, executa certas partes do código.
+Podemos combinar várias condições `if` com a palavra-chave `elseif` para um fluxo de controle complexo.
+Assim, podemos definir uma parte alternativa a ser executada se qualquer coisa dentro de `if` ou` elseif` for avaliada como `true`.
+Esse é o propósito da palavra-chave `else`.
+Finalmente, como em todos os operadores de palavra-chave anteriores que vimos, devemos informar a Julia quando a declaração condicional for concluída com a palavra-chave `end`.
 
-Here's an example with all the `if`-`elseif`-`else` keywords:
+Aqui, temos um exemplo com todas as palavras-chave `if`-`elseif`-`else`:
 
 ```jl
 s = """
@@ -497,7 +497,7 @@ s = """
 scob(s)
 ```
 
-We can even wrap this in a function called `compare`:
+Podemos até incluir isso em uma função chamada `compare`:
 
 ```jl
 s = """
@@ -517,12 +517,12 @@ sco(s)
 ```
 
 
-### For Loop {#sec:for}
+### Loop For {#sec:for}
 
-The classical for loop in Julia follows a similar syntax as the conditional statements.
-You begin with a keyword, in this case `for`.
-Then, you specify what Julia should "loop" for, i.e., a sequence.
-Also, like everything else, you must finish with the `end` keyword.
+O clássico loop for em Julia segue uma sintaxe semelhante à das declarações condicionais.
+Você começa com a palavra-chave, nessa caso `for`.
+Em seguida, você especifica o que Julia deve "loop", ou seja, uma sequência.
+Além disso, como em tudo mais, você deve terminar com a palavra-chave `end`.
 
 So, to make Julia print every number from 1 to 10, you can use the following for loop:
 

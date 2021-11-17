@@ -559,22 +559,22 @@ scob(s)
 ```
 
 Como pode ver, devemos usar a palavra-chave `global`.
-This is because of **variable scope**.
-Variables defined inside conditional statements, loops, and functions exist only inside them.
-This is known as the *scope* of the variable.
-Here, we had to tell Julia that the `n` inside `while` loop is in the global scope with the `global` keyword.
+Isso se deve ao **escopo variável**.
+Variáveis definidas dentro das declarações condicionais, loops e funções existem apenas dentro delas.
+Isso é conhecido como o *escopo* da variável.
+Aqui, precisamos avisar Julia que o `n` dentro do loop `while` está no escopo global junto com a palavra-chave `global`.
 
-Finally, we also used the `+=` operator which is a nice shorthand for `n = n + 1`.
+Por fim, também usamos o operador `+=` que é uma boa abreviatura para `n = n + 1`.
 
-## Native Data Structures {#sec:data_structures}
+## Estruturas de dados nativos {#sec:data_structures}
 
-Julia has several native data structures.
-They are abstractions of data that represent some form of structured data.
-We will cover the most used ones.
-They hold homogeneous or heterogeneous data.
-Since they are collections, they can be *looped* over with the `for` loops.
+Julia possui diversas estruturas de dados nativos.
+Elas são abstrações de dados que representam alguma forma de dado estruturado.
+Vamos cobrir os mais usados.
+Eles mantêm dados homogêneos ou heterogêneos.
+Uma vez que são coleções, podem ser *looped* over with the `for` loops.
 
-We will cover `String`, `Tuple`, `NamedTuple`, `UnitRange`, `Arrays`, `Pair`, `Dict`, `Symbol`.
+Nós cobriremos `String`, `Tuple`, `NamedTuple`, `UnitRange`, `Arrays`, `Pair`, `Dict`, `Symbol`.
 
 When you stumble across a data structure in Julia, you can find methods that accept it as an argument with the `methodswith` function.
 In Julia, the distinction between methods and functions is as follows.

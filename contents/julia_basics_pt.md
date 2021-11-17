@@ -576,20 +576,20 @@ Uma vez que são coleções, podem ser *looped* over with the `for` loops.
 
 Nós cobriremos `String`, `Tuple`, `NamedTuple`, `UnitRange`, `Arrays`, `Pair`, `Dict`, `Symbol`.
 
-When you stumble across a data structure in Julia, you can find methods that accept it as an argument with the `methodswith` function.
-In Julia, the distinction between methods and functions is as follows.
-Every function can have multiple methods like we have shown earlier.
-The `methodswith` function is nice to have in your bag of tricks.
-Let's see what we can do with a `String` for example:
+Quando você se depara com uma estrutura de dados em Julia, você pode encontrar métodos que a aceitam como um argumento com a função `methodswith`.
+Em Julia, a distinção entre métodos e funções é a seguinte:
+Cada função pode ter mútiplos métodos, como mostramos anteriormente.
+A função `methodswith` é boa de se ter por perto.
+Vejamos o que podemos fazer com a `String`:
 
 ```jl
 s = "first(methodswith(String), 5)"
 sco(s; process=catch_show)
 ```
 
-### Broadcasting Operators and Functions {#sec:broadcasting}
+### Broadcasting Operadores e Funções {#sec:broadcasting}
 
-Before we dive into data structures, we need to talk about broadcasting (also known as *vectorization*) and the "dot" operator `.`.
+Antes de mergulharmos nas estruturas de dados, precisamos conversar sobre broadcasting (também conhecido como *vetorização*) e o operador "dot" `.`.
 
 We can broadcast mathematical operations like `*` (multiplication) or `+` (addition) using the dot operator.
 For example, broadcasted addition would imply a change from `+` to `.+`:

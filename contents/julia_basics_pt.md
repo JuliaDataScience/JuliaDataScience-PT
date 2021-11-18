@@ -760,26 +760,26 @@ scob(s)
 ```
 
 
-1. `occursin`, `startswith` and `endswith`: A conditional (returns either `true` or `false`) if the first argument is a:
-    * **substring** of the second argument
+1. `occursin`, `startswith` e `endswith`: Uma condicional (retorna `true` ou `false`) se o primeiro argumento é um:
+    * **substring** do segundo argumento
 
        ```jl
        scob("""occursin("Julia", julia_string)""")
        ```
 
-    * **prefix** of the second argument
+    * **prefix** do segundo argumento
 
        ```jl
        scob("""startswith("Julia", julia_string)""")
        ```
 
-    * **suffix** of the second argument
+    * **suffix** do segundo argumento
 
        ```jl
        scob("""endswith("Julia", julia_string)""")
        ```
 
-2. `lowercase`, `uppercase`, `titlecase` and `lowercasefirst`:
+2. `lowercase`, `uppercase`, `titlecase` e `lowercasefirst`:
 
      ```jl
      scob("lowercase(julia_string)")
@@ -797,13 +797,13 @@ scob(s)
      scob("lowercasefirst(julia_string)")
      ```
 
-3. `replace`: introduces a new syntax, called the `Pair`
+3. `replace`: introduz uma nova sintaxe, chamada de `Pair`
 
      ```jl
      scob("""replace(julia_string, "amazing" => "awesome")""")
      ```
 
-4. `split`: breaks up a string by a delimiter:
+4. `split`: divide uma string por um delimitador:
 
      ```jl
      sco("""split(julia_string, " ")""")

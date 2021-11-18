@@ -745,12 +745,12 @@ scob(s)
 
 #### Manipulações de Strings {#sec:string_manipulations}
 
-There are several functions to manipulate strings in Julia.
-We will demonstrate the most common ones.
-Also, note that most of these functions accept a [Regular Expression (RegEx)](https://docs.julialang.org/en/v1/manual/strings/#Regular-Expressions) as arguments.
-We won't cover RegEx in this book, but you are encouraged to learn about them, especially if most of your work uses textual data.
+Existem várias funções para manipular strings em Julia.
+Vamos demonstrar os mais comuns.
+Além disso, observe que a maioria dessas funções aceita um [Regular Expression (RegEx)](https://docs.julialang.org/en/v1/manual/strings/#Regular-Expressions) como argumentos.
+Não cobriremos RegEx neste livro, mas te encorajamos a aprender sobre eles, especialmente se a maior parte de seu trabalho usa dados textuais.
 
-First, let us define a string for us to play around with:
+Primeiro, vamos definir uma string para brincarmos:
 
 ```jl
 s = """

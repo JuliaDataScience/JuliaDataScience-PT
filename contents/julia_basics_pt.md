@@ -809,7 +809,7 @@ scob(s)
      sco("""split(julia_string, " ")""")
      ```
 
-#### String Conversions {#sec:string_conversions}
+#### Conversões de String {#sec:string_conversions}
 
 Often, we need to **convert** between types in Julia.
 To convert a number to a string we can use the `string` function:

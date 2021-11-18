@@ -665,7 +665,7 @@ s = """
 sco(s; post=output_block)
 ```
 
-But it is usually clearer to use triple quotation marks:
+Mas, geralmente, é mais claro usar aspas triplas:
 
 ```jl
 sco("""
@@ -677,17 +677,17 @@ s = \"\"\"
 """; post=output_block)
 ```
 
-When using triple-backticks, the indentation and newline at the start is ignored by Julia.
-This improves code readability because you can indent the block in your source code without those spaces ending up in your string.
+Ao usar backticks triplos, o recuo e a nova linha no início são ignorados por Julia.
+Isso melhora a legibilidade do código porque você pode recuar o bloco em seu código-fonte sem que esses espaços acabem em sua string.
 
-#### String Concatenation {#sec:string_concatenation}
+#### Concatenação de Strings {#sec:string_concatenation}
 
-A common string operation is **string concatenation**.
-Suppose that you want to construct a new string that is the concatenation of two or more strings.
-This is accomplished in Julia either with the `*` operator or the `join` function.
-This symbol might sound like a weird choice and it actually is.
-For now, many Julia codebases are using this symbol, so it will stay in the language.
-If you're interested, you can read a discussion from 2015 about it at
+Uma operação de string comum é a **concatenação de string**.
+Suponha que você queira construir uma nova string que é a concatenação de duas ou mais strings.
+Isso é realizado em Julia com o operador `*` ou a função `join`.
+Este símbolo pode soar como uma escolha estranha e na verdade é.
+Por enquanto, muitas bases de código de Julia estão usando este símbolo, então ele permanecerá na linguagem.
+Se você estiver interessado, pode ler uma discussão de 2015 sobre isso em
 <https://github.com/JuliaLang/julia/issues/11030>.
 
 ```jl
@@ -700,21 +700,21 @@ s = """
 scob(s)
 ```
 
-As you can see, we are missing a space between `hello` and `goodbye`.
-We could concatenate an additional `" "` string with the `*`, but that would be cumbersome for more than two strings.
-That's where the `join` function comes in handy.
-We just pass as arguments the strings inside the brackets `[]` and the separator:
+Como você pode ver, está faltando um espaço entre `hello` e `goodbye`.
+Poderíamos concatenar uma string adicional `" "` com `*`, mas isso seria complicado para mais de duas strings.
+É onde a função `join` vem a calhar.
+Nós apenas passamos como argumentos as strings dentro dos colchetes `[]` e do separador:
 
 ```jl
 scob("""join([hello, goodbye], " ")""")
 ```
 
-#### String Interpolation {#sec:string_interpolation}
+#### Interpolação de String {#sec:string_interpolation}
 
-Concatenating strings can be convoluted.
-We can be much more expressive with **string interpolation**.
-It works like this: you specify whatever you want to be included in your string with the dollar sign `$`.
-Here's the example before but now using interpolation:
+Concatenar strings pode ser complicado.
+Podemos ser muito mais expressivos com **interpolação de string**.
+Funciona assim: você especifica o que quer que seja incluído em sua string com o cifrão `$`.
+Aqui está o exemplo anterior, mas agora usando interpolação:
 
 ```jl
 s = """
@@ -723,8 +723,8 @@ s = """
 scob(s)
 ```
 
-It even works inside functions.
-Let's revisit our `test` function from @sec:conditionals:
+Ela até funciona dentro de funções.
+Vamos revisitar nossa função `test` a partir de @sec:conditionals:
 
 ```jl
 s = """
@@ -743,7 +743,7 @@ s = """
 scob(s)
 ```
 
-#### String Manipulations {#sec:string_manipulations}
+#### Manipulações de Strings {#sec:string_manipulations}
 
 There are several functions to manipulate strings in Julia.
 We will demonstrate the most common ones.

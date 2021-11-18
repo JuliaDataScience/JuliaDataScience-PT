@@ -591,8 +591,8 @@ sco(s; process=catch_show)
 
 Antes de mergulharmos nas estruturas de dados, precisamos conversar sobre broadcasting (também conhecido como *vetorização*) e o operador "dot" `.`.
 
-We can broadcast mathematical operations like `*` (multiplication) or `+` (addition) using the dot operator.
-For example, broadcasted addition would imply a change from `+` to `.+`:
+Também podemos vetorizar operações matemáticas como `*` (multiplicação) ou `+` (adição) usando o operador dot.
+Por exemplo, vetorizar adição implica em mudar `+` para `.+`:
 
 ```jl
 sco(
@@ -602,21 +602,21 @@ sco(
 )
 ```
 
-It also works automatically with functions.
-(Technically, the mathematical operations, or infix operators, are also functions, but that is not so important to know.)
-Remember our `logarithm` function?
+Também funciona automaticamente com funções.
+(Tecnicamente, as operações matemáticas, ou operadores infixos, também são funções, mas isso não é tão importante saber.)
+Lembra da nossa função `logarithm`?
 
 ```jl
 sco("logarithm.([1, 2, 3])")
 ```
 
-#### Functions with a bang `!` {#sec:function_bang}
+#### Funciona com um estrondo `!` {#sec:function_bang}
 
-It is a Julia convention to append a bang `!` to names of functions that modify one or more of their arguments.
-This convention warns the user that the function is **not pure**, i.e., that it has *side effects*.
-A function with side effects is useful when you want to update a large data structure or variable container without having all the overhead from creating a new instance.
+É uma convenção de Julia acrescentar um estrondo `!` a nomes de funções que modificam um ou mais de seus argumentos.
+Esta convenção avisa o usuário que a função **não é pura**, ou seja, que tem *efeitos colaterais*.
+Uma função com efeitos colaterais é útil quando você deseja atualizar uma grande estrutura de dados ou contêiner de variáveis sem ter toda a sobrecarga da criação de uma nova instância.
 
-For example, we can create a function that adds 1 to each element in a vector `V`:
+Por exemplo, podemos criar uma função que adiciona 1 a cada elemento de um vetor `V`:
 
 ```jl
 s = """
@@ -643,7 +643,7 @@ sco(s)
 
 ### String {#sec:string}
 
-**Strings** are represented delimited by double quotes:
+**Strings** são representadas delimitadas por aspas duplas:
 
 ```jl
 s = """
@@ -652,7 +652,7 @@ s = """
 sco(s)
 ```
 
-We can also write a multiline string:
+Também podemos escrever uma string multilinha:
 
 ```jl
 s = """

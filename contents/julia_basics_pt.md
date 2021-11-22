@@ -811,8 +811,8 @@ scob(s)
 
 #### Conversões de String {#sec:string_conversions}
 
-Often, we need to **convert** between types in Julia.
-To convert a number to a string we can use the `string` function:
+Muitas vezes, precisamos **converter** entre os tipos em Julia.
+Para converter um número em uma string, podemos usar a função `string`:
 
 ```jl
 s = """
@@ -822,18 +822,18 @@ s = """
 sco(s)
 ```
 
-Sometimes, we want the opposite: convert a string to a number.
-Julia has a handy function for that: `parse`.
+Às vezes, queremos o oposto: converter uma string em um número.
+Julia tem uma função útil para isso: `parse`.
 
 ```jl
 sco("""typeof(parse(Int64, "123"))""")
 ```
 
-Sometimes, we want to play safe with these conversions.
-That's when `tryparse` function steps in.
-It has the same functionality as `parse` but returns either a value of the requested type, or `nothing`.
-That makes `tryparse` handy when we want to avoid errors.
-Of course, you would need to deal with all those `nothing` values afterwards.
+Às vezes, queremos jogar pelo seguro com essas conversões.
+É aí que entra a função `tryparse`.
+Tem a mesma funcionalidade que `parse` mas retorna um valor do tipo solicitado ou `nothing`.
+Isso faz com que a `tryparse` seja útil quando buscamos evitar erros.
+Claro, você precisará lidar com todos aqueles valores `nothing` depois.
 
 ```jl
 sco("""tryparse(Int64, "A very non-numeric string")""")
@@ -841,13 +841,13 @@ sco("""tryparse(Int64, "A very non-numeric string")""")
 
 ### Tuple {#sec:tuple}
 
-Julia has a data structure called **tuple**.
-They are really *special* in Julia because they are often used in relation to functions.
-Since functions are a important feature in Julia, every Julia user should know the basics of tuples.
+Julia tem uma estrutura de dados chamada **tuple**.
+Ela é muito *especial* em Julia porque ela é frequentemente usada em relação às funções.
+Uma vez que as funções são um recurso importante em Julia, todo usuário precisa saber o básico de tuples.
 
-A tuple is a **fixed-length container that can hold multiple different types**.
-A tuple is an **immutable object**, meaning that it cannot be modified after instantiation.
-To construct a tuple, use parentheses `()` to delimit the beginning and end, along with commas `,` as delimiters between values:
+Uma tuple é uma **recipiente de comprimento fixo que pode conter vários tipos diferentes**.
+Uma tuple é um **objeto imutável**, o que significa que não pode ser modificado após a instanciação.
+Para construir uma tuple, use parênteses `()` para delimitar o início e o fim, junto com vírgulas `,` como delimitadores entre valores:
 
 ```jl
 sco("""my_tuple = (1, 3.14, "Julia")""")

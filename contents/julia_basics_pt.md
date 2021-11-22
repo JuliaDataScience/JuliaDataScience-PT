@@ -977,24 +977,24 @@ sco("collect(1:10)")
 ```
 
 Nós temos um arranjo do tipo especificado no range entre os limites que definimos.
-Speaking of arrays, let's talk about them.
+Vamos conversar sobre arranjos.
 
-### Array {#sec:array}
+### Arranjo {#sec:array}
 
-In its most basic form, **array**s hold multiple objects.
-For example, they can hold multiple numbers in one-dimension:
+Na sua forma mais básica, **arranjos** seguram múltiplos objetos.
+Por exemplo, eles podem armazenar múltiplos números em uma dimensão:
 
 ```jl
 sco("myarray = [1, 2, 3]")
 ```
 
-Most of the time you would want **arrays of a single type for performance issues**, but note that they can also hold objects of different types:
+Na maioria das vezes você gostaria de **arranjos de um único tipo para problemas de performance**, mas observe que eles também podem conter objetos de diferentes tipos:
 
 ```jl
 sco("myarray = [\"text\", 1, :symbol]"; process=output_block)
 ```
 
-They are the "bread and butter" of data scientist, because arrays are what underlies most of **data manipulation** and **data visualization** workflows.
+Eles são o "pão com manteiga" da ciência de dados, porque os arranjos são o que está por trás da maior parte do fluxo de trabalho em **manipulação de dados** e **visualização de dados**.
 
 Therefore, **Arrays are an essential data structure**.
 

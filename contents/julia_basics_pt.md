@@ -1158,7 +1158,7 @@ s = """
 sco(s)
 ```
 
-They also support multiple inputs:
+Eles também suportam múltiplas entradas:
 
 ```jl
 s = """
@@ -1289,22 +1289,22 @@ scob("my_example_vector[2]")
 ```
 
 A mesma sintaxe segue com os arranjos.
-But, since matrices are 2-dimensional arrays, we have to specify *both* rows and columns.
-Let's retrieve the element from the second row (first dimension) and first column (second dimension):
+Mas, como os arranjos são arranjos bidimensionais, temos que especificar *ambas* linhas e colunas.
+Vamos recuperar o elemento da segunda linha (primeira dimensão) e primeira coluna (segunda dimensão):
 
 ```jl
 scob("my_example_matrix[2, 1]")
 ```
 
-Julia also has conventional keywords for the **first** and **last** elements of an array: `begin` and `end`.
-For example, the second to last element of a vector can be retrieved as:
+Júlia também possui palavras-chave convencionais para o **primeiro** e **último** elementos de um arranjo: `begin` e `end`.
+Por exemplo, o penúltimo elemento de um vetor pode ser recuperado como:
 
 ```jl
 scob("my_example_vector[end-1]")
 ```
 
-This also works for matrices.
-Let's retrieve the element of the last row and second column:
+Isso também funciona para matrizes.
+Vamos recuperar o elemento da última linha e segunda coluna:
 
 ```jl
 scob("my_example_matrix[end, begin+1]")

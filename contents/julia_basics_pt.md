@@ -996,12 +996,12 @@ sco("myarray = [\"text\", 1, :symbol]"; process=output_block)
 
 Eles são o "pão com manteiga" da ciência de dados, porque os arranjos são o que está por trás da maior parte do fluxo de trabalho em **manipulação de dados** e **visualização de dados**.
 
-Therefore, **Arrays are an essential data structure**.
+Portanto, **arranjos são uma estrutura de dados essencial**.
 
-#### Array Types {#sec:array_types}
+#### Tipos de arranjo {#sec:array_types}
 
-Let's start with **array types**.
-There are several, but we will focus on the two most used in data science:
+Vamos começar com os **tipos de arranjos**.
+Existem vários, mas vamos nos concentrar nos dois mais usados em ciência de dados:
 
 * `Vector{T}`: **one-dimensional** array. Alias for `Array{T, 1}`.
 * `Matrix{T}`: **two-dimensional** array. Alias for `Array{T, 2}`.

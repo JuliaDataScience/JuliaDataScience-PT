@@ -1261,13 +1261,13 @@ Julia tem várias funções para inspecionar as dimensões do arranjo:
      scob("size(my_matrix_π, 2)")
      ```
 
-#### Array Indexing and Slicing {#sec:array_indexing}
+#### Indexação e Divisão de Arranjo {#sec:array_indexing}
 
-Sometimes, we want to inspect only certain parts of an array.
-This is called **indexing** and **slicing**.
-If you want a particular observation of a vector, or a row or column of a matrix, you'll probably need to **index an array**.
+Às vezes, queremos inspecionar apenas certas partes de um arranjo.
+Chamamos isso de **indexação** and **divisão**.
+Se você quiser uma observação particular de um vetor, ou uma linha ou coluna de uma matriz, você provavelmente precisará **indexar um arranjo**.
 
-First, I will create an example vector and matrix to play around:
+Primeiro, vou criar um vetor e uma matriz de exemplo para brincar:
 
 ```jl
 s = """
@@ -1280,15 +1280,15 @@ s = """
 sc(s)
 ```
 
-Let's start with vectors.
-Suppose that you want the second element of a vector.
-You append `[]` brackets with the desired **index** inside:
+Vamos começar com vetores.
+Supondo que você queira o segundo elemento de um vetor.
+Você anexa colchetes `[]` com o **index** desejado dentro:
 
 ```jl
 scob("my_example_vector[2]")
 ```
 
-The same syntax follows with matrices.
+A mesma sintaxe segue com os arranjos.
 But, since matrices are 2-dimensional arrays, we have to specify *both* rows and columns.
 Let's retrieve the element from the second row (first dimension) and first column (second dimension):
 

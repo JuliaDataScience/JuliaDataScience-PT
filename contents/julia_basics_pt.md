@@ -839,21 +839,21 @@ Claro, você precisará lidar com todos aqueles valores `nothing` depois.
 sco("""tryparse(Int64, "A very non-numeric string")""")
 ```
 
-### Tuple {#sec:tuple}
+### Tupla {#sec:tuple}
 
-Julia tem uma estrutura de dados chamada **tuple**.
+Julia tem uma estrutura de dados chamada **tupla**.
 Ela é muito *especial* em Julia porque ela é frequentemente usada em relação às funções.
-Uma vez que as funções são um recurso importante em Julia, todo usuário precisa saber o básico de tuples.
+Uma vez que as funções são um recurso importante em Julia, todo usuário precisa saber o básico das tuplas.
 
-Uma tuple é uma **recipiente de comprimento fixo que pode conter vários tipos diferentes**.
-Uma tuple é um **objeto imutável**, o que significa que não pode ser modificado após a instanciação.
-Para construir uma tuple, use parênteses `()` para delimitar o início e o fim, junto com vírgulas `,` como delimitadores entre valores:
+Uma tupla é uma **recipiente de comprimento fixo que pode conter vários tipos diferentes**.
+Uma tupla é um **objeto imutável**, o que significa que não pode ser modificado após a instanciação.
+Para construir uma tupla, use parênteses `()` para delimitar o início e o fim, junto com vírgulas `,` como delimitadores entre valores:
 
 ```jl
 sco("""my_tuple = (1, 3.14, "Julia")""")
 ```
 
-Aqui, estamos criando uma tuple com três valores.
+Aqui, estamos criando uma tupla com três valores.
 Cada um dos valores é um tipo diferente.
 Podemos acessá-los por meio de indexação.
 Assim:
@@ -862,9 +862,9 @@ Assim:
 scob("my_tuple[2]")
 ```
 
-Também podemos fazer um loop em tuples com a palavra-chave `for`.
-E até mesmo aplicar funções a tuples.
-Mas nós nunca podemos **mudar qualquer valor de uma tuple** já que elas são **imutáveis**.
+Também podemos fazer um loop em tuplas com a palavra-chave `for`.
+E até mesmo aplicar funções as tuplas.
+Mas nós nunca podemos **mudar qualquer valor de uma tupla** já que elas são **imutáveis**.
 
 Você se lembra funções que retornam vários valores em @sec:function_multiple?
 Vamos inspecionar o que nossa função `add_multiply` retorna:
@@ -885,8 +885,8 @@ sco("1, 2")
 
 Agora você pode ver por que elas são frequentemente relacionadas.
 
-Mais uma coisa para pensarmos sobre as tuples.
-**Quando você deseja passar mais de uma variável para uma função anônima, adivinhe o que você precisa usar? Tuples!**
+Mais uma coisa para pensarmos sobre as tuplas.
+**Quando você deseja passar mais de uma variável para uma função anônima, adivinhe o que você precisa usar? Tuplas!**
 
 ```jl
 scob("map((x, y) -> x^y, 2, 3)")
@@ -898,14 +898,14 @@ Ou ainda, mais do que dois argumentos:
 scob("map((x, y, z) -> x^y + z, 2, 3, 1)")
 ```
 
-### Tuple nomeada {#sec:namedtuple}
+### Tupla nomeada {#sec:namedtuple}
 
-Às vezes, você deseja nomear os valores em tuples.
-É aí que entram as **tuples nomeadas**.
-Sua funcionalidade é praticamente a mesma das tuples:
+Às vezes, você deseja nomear os valores em tuplas.
+É aí que entram as **tuplas nomeadas**.
+Sua funcionalidade é praticamente a mesma das tuplas:
 são **imutáveis** e podem conter **todo tipo de valor**.
 
-A construção das tuples nomeadas é ligeiramente diferente das tuples.
+A construção das tuplas nomeadas é ligeiramente diferente das tuplas.
 Você tem os familiares parênteses `()` e a vírgula `,` separadora de valor.
 Mas agora, você **nomeia os valores**:
 
@@ -913,16 +913,16 @@ Mas agora, você **nomeia os valores**:
 sco("""my_namedtuple = (i=1, f=3.14, s="Julia")""")
 ```
 
-We can access a named tuple's values via indexing like regular tuples or, alternatively, **access by their names** with the `.`:
+Podemos acessar os valores de uma tupla nomeada por meio da indexação como tuplas regulares ou, alternativamente, **acesso por seus nomes** com o `.`:
 
 ```jl
 scob("my_namedtuple.s")
 ```
 
-To finish our discussion of named tuples, there is one important *quick* syntax that you'll see a lot in Julia code.
-Often Julia users create a named tuple by using the familiar parenthesis `()` and commas `,`, but without naming the values.
-To do so you **begin the named tuple construction by specifying first a semicolon `;` before the values**.
-This is especially useful when the values that would compose the named tuple are already defined in variables or when you want to avoid long lines:
+Encerrando nossa discussão sobre tuplas nomeadas, há uma sintaxe *rápida* importante que você verá muito no código de Julia.
+Frequentemente, os usuários de Julia criam uma tupla nomeada usando o parêntese familiar `()` e vírgulas `,`, mas sem nomear os valores.
+Para fazer isso, **comece a construção da tupla nomeada especificando primeiro um ponto e vírgula `;` antes dos valores**.
+Isto é especialmente útil quando os valores que iriam compor a tupla nomeada já estão definidos em variáveis ou quando você deseja evitar linhas longas:
 
 ```jl
 s = """
@@ -937,14 +937,14 @@ sco(s)
 
 ### Ranges {#sec:ranges}
 
-A **range** in Julia represents an interval between start and stop boundaries.
-The syntax is `start:stop`:
+Uma **range** em Julia representa um intervalo entre os limites de início e parada.
+A sintaxe é `start:stop`:
 
 ```jl
 sco("1:10")
 ```
 
-As you can see, our instantiated range is of type `UnitRange{T}` where `T` is the type inside the `UnitRange`:
+Como você pode ver, nosso range instanciado é do tipo `UnitRange{T}` onde `T` é um tipo dentro de `UnitRange`:
 
 ```jl
 sco("typeof(1:10)")
@@ -956,27 +956,27 @@ And, if we gather all the values, we get:
 sco("[x for x in 1:10]")
 ```
 
-We can also construct ranges for other types:
+Também podemos construir ranges para outros tipos:
 
 ```jl
 sco("typeof(1.0:10.0)")
 ```
 
-Sometimes, we want to change the default interval stepsize behavior.
-We can do that by adding a stepsize in the range syntax `start:step:stop`.
-For example, suppose we want a range of `Float64` from 0 to 1 with steps of size 0.2:
+Às vezes, queremos mudar o comportamento do tamanho do intervalo padrão.
+Podemos fazer isso adicionando um tamanho de passo na sintaxe do range `start:step:stop`.
+Por exemplo, suponha que queremos um range de `Float64` que vá de 0 a 1 com passos do tamanho de 0.2:
 
 ```jl
 sco("0.0:0.2:1.0")
 ```
 
-If you want to "materialize" a range into a collection, you can use the function `collect`:
+Se você quer "materializar" a range para uma coleção, você pode usar a função `collect`:
 
 ```jl
 sco("collect(1:10)")
 ```
 
-We have an array of the type specified in the range between the boundaries that we've set.
+Nós temos um arranjo do tipo especificado no range entre os limites que definimos.
 Speaking of arrays, let's talk about them.
 
 ### Array {#sec:array}

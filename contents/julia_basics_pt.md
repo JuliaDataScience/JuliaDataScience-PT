@@ -853,21 +853,21 @@ Para construir uma tuple, use parênteses `()` para delimitar o início e o fim,
 sco("""my_tuple = (1, 3.14, "Julia")""")
 ```
 
-Here, we are creating a tuple with three values.
-Each one of the values is a different type.
-We can access them via indexing.
-Like this:
+Aqui, estamos criando uma tuple com três valores.
+Cada um dos valores é um tipo diferente.
+Podemos acessá-los por meio de indexação.
+Assim:
 
 ```jl
 scob("my_tuple[2]")
 ```
 
-We can also loop over tuples with the `for` keyword.
-And even apply functions to tuples.
-But we can **never change any value of a tuple** since they are **immutable**.
+Também podemos fazer um loop em tuples com a palavra-chave `for`.
+E até mesmo aplicar funções a tuples.
+Mas nós nunca podemos **mudar qualquer valor de uma tuple** já que elas são **imutáveis**.
 
-Remember functions that return multiple values back in @sec:function_multiple?
-Let's inspect what our `add_multiply` function returns:
+Você se lembra funções que retornam vários valores em @sec:function_multiple?
+Vamos inspecionar o que nossa função `add_multiply` retorna:
 
 ```jl
 s = """
@@ -877,35 +877,35 @@ s = """
 sco(s)
 ```
 
-This is because `return a, b` is the same as `return (a, b)`:
+Isso ocorre porque `return a, b` é o mesmo que `return (a, b)`:
 
 ```jl
 sco("1, 2")
 ```
 
-So, now you can see why they are often related.
+Agora você pode ver por que elas são frequentemente relacionadas.
 
-One more thing about tuples.
-**When you want to pass more than one variable to an anonymous function, guess what you would need to use? Once again: tuples!**
+Mais uma coisa para pensarmos sobre as tuples.
+**Quando você deseja passar mais de uma variável para uma função anônima, adivinhe o que você precisa usar? Tuples!**
 
 ```jl
 scob("map((x, y) -> x^y, 2, 3)")
 ```
 
-Or, even more than two arguments:
+Ou ainda, mais do que dois argumentos:
 
 ```jl
 scob("map((x, y, z) -> x^y + z, 2, 3, 1)")
 ```
 
-### Named Tuple {#sec:namedtuple}
+### Tuple nomeada {#sec:namedtuple}
 
-Sometimes, you want to name the values in tuples.
-That's when **named tuples** comes in.
-Their functionality is pretty much same as tuples:
-they are **immutable** and can hold **any type of value**.
+Às vezes, você deseja nomear os valores em tuples.
+É aí que entram as **tuples nomeadas**.
+Sua funcionalidade é praticamente a mesma das tuples:
+são **imutáveis** e podem conter **todo tipo de valor**.
 
-The construction of named tuples is slightly different from that of tuples.
+A construção das tuples nomeadas é ligeiramente diferente das tuples.
 You have the familiar parentheses `()` and the comma `,` value separator.
 But now you **name the values**:
 

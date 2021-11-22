@@ -906,8 +906,8 @@ Sua funcionalidade é praticamente a mesma das tuples:
 são **imutáveis** e podem conter **todo tipo de valor**.
 
 A construção das tuples nomeadas é ligeiramente diferente das tuples.
-You have the familiar parentheses `()` and the comma `,` value separator.
-But now you **name the values**:
+Você tem os familiares parênteses `()` e a vírgula `,` separadora de valor.
+Mas agora, você **nomeia os valores**:
 
 ```jl
 sco("""my_namedtuple = (i=1, f=3.14, s="Julia")""")

@@ -1146,10 +1146,10 @@ s = """
 sco(s)
 ```
 
-Another powerful way to create an array is to write an **array comprehension**.
-This way of creating arrays is better in most cases: it avoids loops, indexing, and other error-prone operations.
-You specify what you want to do inside the `[]` brackets.
-For example, say we want to create a vector of squares from 1 to 10:
+Outra maneira poderosa de criar um arranjo é escrever uma **compreensão do arranjo**.
+Esta maneira de criar arranjos é melhor na maioria dos casos: evita loops, indexação e outras operações sujeitas a erros.
+Você especifica o que deseja fazer dentro dos colchetes `[]`.
+Por exemplo, digamos que queremos criar um vetor de quadrados de 1 a 10:
 
 ```jl
 s = """
@@ -1167,7 +1167,7 @@ s = """
 sco(s)
 ```
 
-And conditionals:
+E condicionais:
 
 ```jl
 s = """
@@ -1176,7 +1176,7 @@ s = """
 sco(s)
 ```
 
-As with array literals, you can specify your desired type before the `[]` brackets:
+Tal como acontece com literais de arranjo, você pode especificar o tipo desejado antes dos colchetes `[]`:
 
 ```jl
 s = """
@@ -1185,9 +1185,9 @@ s = """
 sco(s)
 ```
 
-Finally, we can also create arrays with **concatenation functions**.
-Concatenation is a standard term in computer programming and means "to chain together".
-For example, we can concatenate strings with "aa" and "bb" to get "aabb":
+Finalmente, também podemos criar arranjos com **funções de concatenação**.
+Concatenação é um termo padrão em programação e significa "para acorrentar juntos".
+Por exemplo, podemos concatenar strings com "aa" e "bb" para conseguir "aabb":
 
 ```jl
 s = """
@@ -1196,9 +1196,9 @@ s = """
 sco(s)
 ```
 
-And, we can concatenate arrays to create new arrays:
+E podemos concatenar arranjos para criar novos arranjos:
 
-* `cat`: concatenate input arrays along a specific dimension `dims`
+* `cat`: concatenar arranjos de entrada ao longo de uma dimensão específica `dims`
 
      ```jl
      sco("cat(ones(2), zeros(2), dims=1)")
@@ -1208,54 +1208,54 @@ And, we can concatenate arrays to create new arrays:
      sco("cat(ones(2), zeros(2), dims=2)")
      ```
 
-* `vcat`: vertical concatenation, a shorthand for `cat(...; dims=1)`
+* `vcat`: concatenação vertical, uma abreviatura para `cat(...; dims=1)`
 
      ```jl
      sco("vcat(ones(2), zeros(2))")
      ```
 
-* `hcat`: horizontal concatenation, a shorthand for `cat(...; dims=2)`
+* `hcat`: concatenação horizontal, uma abreviatura para `cat(...; dims=2)`
 
      ```jl
      sco("hcat(ones(2), zeros(2))")
      ```
 
-#### Array Inspection {#sec:array_inspection}
+#### Inspeção de Arranjos {#sec:array_inspection}
 
-Once we have arrays, the next logical step is to **inspect** them.
-There are a lot of handy functions that allow the user to have an insight into any array.
+Assim que tivermos arranjos, o próximo passo lógico seria **inspeciona-los**.
+Existem várias funções úteis que permitem ao usuário ter uma visão de qualquer arranjo.
 
-It is most useful to know what **type of elements** are inside an array.
-We can do this with `eltype`:
+É muito útil saber que **tipo de elementos** existem dentro de um arranjo.
+Fazemos isso com `eltype`:
 
 ```jl
 sco("eltype(my_matrix_π)")
 ```
 
-After knowing its types, one might be interested in **array dimensions**.
-Julia has several functions to inspect array dimensions:
+Depois de conhecer seus tipos, alguém pode se interessar nas **dimensões do arranjo**.
+Julia tem várias funções para inspecionar as dimensões do arranjo:
 
-* `length`: total number of elements
+* `length`: número total de elementos
 
      ```jl
      scob("length(my_matrix_π)")
      ```
 
-* `ndims`: number of dimensions
+* `ndims`: número de dimensões
 
      ```jl
      scob("ndims(my_matrix_π)")
      ```
 
-* `size`: this one is a little tricky.
-    By default it will return a tuple containing the array's dimensions.
+* `size`: esse é um pouco complicado.
+    Por padrão, ele retornará uma tupla contendo as dimensões do arranjo.
 
      ```jl
      sco("size(my_matrix_π)")
      ```
 
-    You can get a specific dimension with a second argument to `size`.
-    Here, the the second axis is columns
+    Você pode obter uma dimensão específica com um segundo argumento para `size`.
+    Aqui, o segundo eixo são as colunas
 
      ```jl
      scob("size(my_matrix_π, 2)")

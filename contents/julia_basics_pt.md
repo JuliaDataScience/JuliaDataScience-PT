@@ -1003,28 +1003,28 @@ Portanto, **arranjos são uma estrutura de dados essencial**.
 Vamos começar com os **tipos de arranjos**.
 Existem vários, mas vamos nos concentrar nos dois mais usados em ciência de dados:
 
-* `Vector{T}`: **one-dimensional** array. Alias for `Array{T, 1}`.
-* `Matrix{T}`: **two-dimensional** array. Alias for `Array{T, 2}`.
+* `Vector{T}`: arranjo **unidimensional**. Alias para `Array{T, 1}`.
+* `Matrix{T}`: arranjo **bidimensional**. Alias para `Array{T, 2}`.
 
-Note here that `T` is the type of the underlying array.
-So, for example, `Vector{Int64}` is a `Vector` in which all elements are `Int64`s, and `Matrix{AbstractFloat}` is a `Matrix` in which all elements are subtypes of `AbstractFloat`.
+Observe aqui que `T` é o tipo do arranjo subjacente.
+Então, por exemplo, `Vector{Int64}` é um `Vector` no qual todos os elementos são `Int64`s, e `Matrix{AbstractFloat}` é a `Matrix` em que todos os elementos são subtipos de `AbstractFloat`.
 
-Most of the time, especially when dealing with tabular data, we are using either one- or two-dimensional arrays.
-They are both `Array` types for Julia.
-But, we can use the handy aliases `Vector` and `Matrix` for clear and concise syntax.
+Na maioria das vezes, especialmente ao lidar com dados tabulares, estamos usando arranjos unidimensionais ou bidimensionais.
+Ambos são tipos `Array` para Julia.
+Mas, podemos usar os úteis aliases `Vector` e `Matrix` para uma sintaxe clara e concisa.
 
-#### Array Construction {#sec:array_construction}
+#### Construção de Arranjo {#sec:array_construction}
 
-How do we **construct** an array?
-In this section, we start by constructing arrays in a low-level way.
-This can be necessary to write high performing code in some situations.
-However, in most situations, this is not necessary, and we can safely use more convenient methods to create arrays.
-These more convenient methods will be described later in this section.
+Como **construímos** um arranjo?
+Nesta seção, começamos construindo arranjos num nível mais baixo.
+Isso pode ser necessário para escrever código de alto desempenho em algumas situações.
+No entanto, na maioria das situações, isso não é necessário e podemos usar métodos mais convenientes para criar arranjos com segurança.
+Esses métodos mais convenientes serão descritos posteriormente nesta seção.
 
-The low-level constructor for Julia arrays is the **default constructor**.
-It accepts the element type as the type parameter inside the `{}` brackets and inside the constructor you'll pass the element type followed by the desired dimensions.
-It is common to initialize vector and matrices with undefined elements by using the `undef` argument for type.
-A vector of 10 `undef` `Float64` elements can be constructed as:
+O construtor de baixo nível para arranjos em Julia é o **construtor padrão**.
+Ele aceita o tipo de elemento como o parâmetro de tipo dentro dos colchetes `{}` e dentro do construtor você passará o tipo de elemento seguido pelas dimensões desejadas.
+É comum inicializar vetores e matrizes com elementos indefinidos usando o argumento para tipo `undef`.
+Um vetos de 10 elementos `undef` `Float64` pode ser construído como:
 
 ```jl
 s = """
@@ -1033,8 +1033,8 @@ s = """
 sco(s)
 ```
 
-For matrices, since we are dealing with two-dimensional objects, we need to pass two dimension arguments inside the constructor: one for **rows** and another for **columns**.
-For example, a matrix with 10 rows and 2 columns of `undef` elements can be instantiated as:
+Para matrizes, uma vez que estamos lidando com objetos bidimensionais, precisamos passar dois argumentos de dimensão dentro do construtor: um para **filas** e outro para **colunas**.
+Por exemplo, uma matriz com 10 linhas e 2 colunas de elementos `undef` pode ser instanciada como:
 
 ```jl
 s = """
@@ -1043,10 +1043,10 @@ s = """
 sco(s)
 ```
 
-We also have some **syntax aliases** for the most common elements in array construction:
+Nós também temos alguns **aliases de sintaxe** para os elementos mais comuns na construção de arranjos:
 
-* `zeros` for all elements being initialized to zero.
-  Note that the default type is `Float64` which can be changed if necessary:
+* `zeros` para todos os elementos inicializados em zero.
+  Observe que o tipo padrão é `Float64` que pode ser alterado se necessário:
 
      ```jl
      s = """
@@ -1062,7 +1062,7 @@ We also have some **syntax aliases** for the most common elements in array const
      sco(s)
      ```
 
-* `ones` for all elements being initialized to one:
+* `ones` para todos os elementos inicializados em um:
 
      ```jl
      s = """
@@ -1078,8 +1078,8 @@ We also have some **syntax aliases** for the most common elements in array const
      sco(s)
      ```
 
-For other elements, we can first instantiate an array with `undef` elements and use the `fill!` function to fill all elements of an array with the desired element.
-Here's an example with `3.14` ($\pi$):
+Para outros elementos, podemos primeiro instanciar um arranjo com elementos `undef` e usar a função `fill!` para preencher todos os elementos de um arranjo com o elemento desejado.
+Segue um exemplo com `3.14` ($\pi$):
 
 ```jl
 s = """
@@ -1089,8 +1089,8 @@ s = """
 sco(s)
 ```
 
-We can also create arrays with **array literals**.
-For example, here's a 2x2 matrix of integers:
+Também podemos criar arranjos com **literais de arranjo**.
+Por exemplo, segue uma matriz 2x2 de inteiros:
 
 ```jl
 s = """
@@ -1100,8 +1100,8 @@ s = """
 sco(s)
 ```
 
-Array literals also accept a type specification before the `[]` brackets.
-So, if we want the same 2x2 array as before but now as floats, we can do so:
+Literais de arranjo também aceita uma especificação de tipo antes do colchetes `[]`.
+Então, se quisermos o mesmo arranjo 2x2 de antes mas agora como floats, podemos:
 
 ```jl
 s = """
@@ -1111,7 +1111,7 @@ s = """
 sco(s)
 ```
 
-It also works for vectors:
+Também funciona para vetores:
 
 ```jl
 s = """
@@ -1120,7 +1120,7 @@ s = """
 sco(s)
 ```
 
-You can even **mix and match** array literals with the constructors:
+Você pode até **misturar e combinar** literais de arranjo com os construtores:
 
 ```jl
 s = """

@@ -1371,7 +1371,7 @@ sco(s)
 
 A segunda maneira de manipular um arranjo é **alterar sua forma**.
 Suponha que você tenha um vetor de 6 elementos e deseja torná-lo uma matriz 3x2.
-You can do this with `reshape`, by using the array as the first argument and a tuple of dimensions as the second argument:
+Você pode fazer isso com `reshape`, usando o arranjo como o primeiro argumento e uma tupla de dimensões como segundo argumento:
 
 ```jl
 s = """
@@ -1382,58 +1382,58 @@ s = """
 sco(s)
 ```
 
-You can convert it back to a vector by specifying a tuple with only one dimension as the second argument:
+Você pode convertê-lo de volta em um vetor especificando uma tupla com apenas uma dimensão como o segundo argumento:
 
 ```jl
 sco("reshape(tree_two_matrix, (6, ))")
 ```
 
-The third way we could manipulate an array is to **apply a function over every array element**.
-This is where the "dot" operator `.`, also known as _broadcasting_, comes in.
+A terceira forma que podemos manipular um arranjo é **aplicando uma função em cada elemento do arranjo**.
+Aqui é onde o operador "dot" `.`, também conhecido como _broadcasting_, entra.
 
 ```jl
 sco("logarithm.(my_example_matrix)")
 ```
 
-The dot operator in Julia is extremely versatile.
-You can even use it to broadcast infix operators:
+O operador dot em Julia é extremamente versátil.
+Você pode até mesmo usá-lo para vetorizar operadores infixos:
 
 ```jl
 sco("my_example_matrix .+ 100")
 ```
 
-An alternative to broadcasting a function over a vector is to use `map`:
+Uma alternativa para broadcasting uma função por um vetor é usar `map`:
 
 ```jl
 sco("map(logarithm, my_example_matrix)")
 ```
 
-For anonymous functions, `map` is usually more readable.
-For example,
+Para funções anônimas, `map` geralmente é mais legível.
+Por exemplo,
 
 ```jl
 sco("map(x -> 3x, my_example_matrix)")
 ```
 
-is quite clear.
-However, the same broadcast looks as follows:
+é bastante claro.
+No entanto, o mesmo broadcast se parece com a seguinte:
 
 ```jl
 sco("(x -> 3x).(my_example_matrix)")
 ```
 
-Next, `map` works with slicing:
+Em seguida, `map` funciona com a divisão:
 
 ```jl
 sco("map(x -> x + 100, my_example_matrix[:, 3])")
 ```
 
-Finally, sometimes, and specially when dealing with tabular data, we want to apply a **function over all elements in a specific array dimension**.
-This can be done with the `mapslices` function.
-Similar to `map`, the first argument is the function and the second argument is the array.
-The only change is that we need to specify the `dims` argument to flag what dimension we want to transform the elements.
+Finalmente, às vezes, e especialmente ao lidar com dados tabulares, queremos aplicar uma **função sobre todos os elementos em uma dimensão de arranjo específica**.
+Isso pode ser feito com a função `mapslices`.
+Parecido com `map`, o primeiro argumento é a função e o segundo argumento é o arranjo.
+A única mudança é que precisamos especificar o argumento `dims` argument para sinalizar em qual dimensão queremos transformar os elementos.
 
-For example, let's use `mapslice` with the `sum` function on both rows (`dims=1`) and columns (`dims=2`):
+Por exemplo, vamos usar `mapslice` com a função `sum` em ambas as linhas (`dims=1`) e colunas (`dims=2`):
 
 ```jl
 sco(
@@ -1453,10 +1453,10 @@ mapslices(sum, my_example_matrix; dims=2)
 )
 ```
 
-#### Array Iteration {#sec:array_iteration}
+#### Iteração de arranjo {#sec:array_iteration}
 
-One common operation is to **iterate over an array with a `for` loop**.
-The **regular `for` loop over an array returns each element**.
+Uma operação comum é **iterar sobre um arranjo com um loop `for`**.
+O **loop regular `for` sobre um arranjo retorna cada elemento**.
 
 The simplest example is with a vector.
 

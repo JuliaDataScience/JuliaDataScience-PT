@@ -1458,7 +1458,7 @@ mapslices(sum, my_example_matrix; dims=2)
 Uma operação comum é **iterar sobre um arranjo com um loop `for`**.
 O **loop regular `for` sobre um arranjo retorna cada elemento**.
 
-The simplest example is with a vector.
+O exemplo mais simples é com um vetor.
 
 ```jl
 sco(
@@ -1476,10 +1476,10 @@ empty_vector
 )
 ```
 
-Sometimes, you don't want to loop over each element, but actually over each array index.
-**We can use the `eachindex` function combined with a `for` loop to iterate over each array index**.
+Às vezes, você não quer fazer um loop sobre cada elemento, mas na verdade sobre cada índice de arranjo.
+**Podemos usar a função `eachindex` combinada com um loop `for` para iterar sobre cada índice de arranjo**.
 
-Again, let's show an example with a vector:
+Novamente, vamos mostrar um exemplo com um vetor:
 
 ```jl
 sco(
@@ -1497,20 +1497,20 @@ empty_vector
 )
 ```
 
-In this example, the `eachindex(forty_twos)` returns the indices of `forty_twos`, namely `[1, 2, 3]`.
+Nesse exemplo, o `eachindex(forty_twos)` retorna os índices de `forty_twos`, namely `[1, 2, 3]`.
 
-Similarly, we can iterate over matrices.
-The standard `for` loop goes first over columns then over rows.
-It will first traverse all elements in column 1, from the first row to the last row, then it will move to column 2 in a similar fashion until it has covered all columns.
+Da mesma forma, podemos iterar sobre matrizes.
+O padrão loop `for` vai primeiro sobre as colunas e depois sobre as linhas.
+Ele irá primeiro percorrer todos os elementos na coluna 1, da primeira à última linha, em seguida, ele se moverá para a coluna 2 de maneira semelhante até cobrir todas as colunas.
 
-For those familiar with other programming languages:
-Julia, like most scientific programming languages, is "column-major".
-Column-major means that the elements in the column are stored next to each other in memory[^pointers].
-This also means that iterating over elements in a column is much quicker than over elements in a row.
+Para aqueles familiarizados com outras linguagens de programação:
+Julia, como a maioria das linguagens de programação científica, é "column-major".
+Column-major significa que os elementos da coluna são armazenados lado a lado na memória[^pointers].
+Isso também significa que iterar sobre os elementos em uma coluna é muito mais rápido do que sobre os elementos em uma linha.
 
-[^pointers]: or, that the memory address pointers to the elements in the column are stored next to each other
+[^pointers]: ou, que os ponteiros de endereço de memória para os elementos na coluna são armazenados um ao lado do outro
 
-Ok, let's show this in an example:
+Ok, vamos mostrar isso em um exemplo:
 
 ```jl
 sc(
@@ -1524,7 +1524,7 @@ row_major = [[1 2]
 )
 ```
 
-If we loop over the vector stored in column-major order, then the output is sorted:
+Se fizermos um loop sobre o vetor armazenado em ordem column-major, então a saída é classificada:
 
 ```jl
 sco(
@@ -1540,7 +1540,7 @@ indexes
 )
 ```
 
-However, the output isn't sorted when looping over the other matrix:
+No entanto, a saída não é classificada ao fazer um loop sobre a outra matriz:
 
 ```jl
 sco(
@@ -1556,7 +1556,7 @@ indexes
 )
 ```
 
-It is often better to use specialized functions for these loops:
+Muitas vezes é melhor usar funções especializadas para esses loops:
 
 * `eachcol`: iterates over an array column first
 
@@ -1570,17 +1570,17 @@ It is often better to use specialized functions for these loops:
      sco("first(eachrow(column_major))")
      ```
 
-### Pair {#sec:pair}
+### Par {#sec:pair}
 
-Compared to the huge section on arrays, this section on pairs will be brief.
-**`Pair` is a data structure that holds two objects** (which typically belong to each other).
-We construct a pair in Julia using the following syntax:
+Em comparação com a enorme seção sobre arranjos, esta seção sobre pares será breve.
+**`Par` é uma estrutura de dados que contém dois objetos** (which typically belong to each other).
+Construímos um par em Julia usando a seguinte sintaxe:
 
 ```jl
 sco("""my_pair = "Julia" => 42""")
 ```
 
-The elements are stored in the fields `first` and `second`.
+Os elementos são armazenados nos campos `first` e `second`.
 
 ```jl
 scob("my_pair.first")
@@ -1590,7 +1590,7 @@ scob("my_pair.first")
 scob("my_pair.second")
 ```
 
-But, in most cases, it's easier use `first` and `last`[^easier]:
+Mas, na maioria dos casos, é mais fácil usar `first` e `last`[^easier]:
 
 ```jl
 scob("first(my_pair)")
@@ -1600,10 +1600,10 @@ scob("first(my_pair)")
 scob("last(my_pair)")
 ```
 
-[^easier]: it is easier because `first` and `last` also work on many other collections, so you need to remember less.
+[^easier]: é mais fácil porque `first` e `last` também funcionam em muitas outras coleções, então você não precisa se lembrar de tanta coisa.
 
-Pairs will be used a lot in data manipulation and data visualization since both `DataFrames.jl` (@sec:dataframes) or `Makie.jl` (@sec:DataVisualizationMakie) take objects of type `Pair` in their main functions.
-For example, with `DataFrames.jl` we're going to see that `:a => :b` can be used to rename the column `:a` to `:b`.
+Os pares serão muito usados na manipulação e visualização de dados, uma vez que ambos `DataFrames.jl` (@sec:dataframes) e/ou `Makie.jl` (@sec:DataVisualizationMakie) pegam objetos do tipo `Pair` em suas funções principais.
+Por exemplo, com `DataFrames.jl` veremos que `:a => :b` pode ser usado para renomear a coluna `:a` a `:b`.
 
 ### Dict {#sec:dict}
 

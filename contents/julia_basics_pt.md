@@ -2026,76 +2026,76 @@ scob("dayofweekofmonth(my_birthday)")
 Sim, José nasceu no segundo domingo de setembro.
 
 > **_NOTE:_**
-> Here's a handy tip to just recover weekdays from `Dates` instances.
-> Just use a `filter` on `dayofweek(your_date) <= 5`.
-> For business day you can checkout the [`BusinessDays.jl`](https://github.com/JuliaFinance/BusinessDays.jl) package.
+> Aqui está uma dica útil para recuperar apenas os dias da semana de instâncias de `Dates`.
+> Use o `filter` no `dayofweek(your_date) <= 5`.
+> Para o dia útil, você pode verificar o pacote [`BusinessDays.jl`](https://github.com/JuliaFinance/BusinessDays.jl).
 
-#### Date Operations {#sec:dates_operations}
+#### Operações de data {#sec:dates_operations}
 
-We can perform **operations** in `Dates` instances.
-For example, we can add days to a `Date` or `DateTime` instance.
-Notice that Julia's `Dates` will automatically perform the adjustments necessary for leap years, and for months with 30 or 31 days (this is known as *calendrical* arithmetic).
+Podemos realizar **operações** em instâncias de `Dates`.
+Por exemplo, podemos adicionar dias a uma instância `Date` ou `DateTime`.
+Note que as `Dates` em Julia executará automaticamente os ajustes necessários para anos bissextos, e por meses com 30 ou 31 dias (isso é conhecido como aritmética *calendárica*.
 
 ```jl
 sco("my_birthday + Day(90)")
 ```
 
-We can add as many as we like:
+Podemos adicionar quantas quisermos:
 
 ```jl
 sco("my_birthday + Day(90) + Month(2) + Year(1)")
 ```
 
-In case you're ever wondering: "What can I do with dates again? What is available?", then you can use `methodswith` to check it out.
-We show only the first 20 results here:
+Caso você esteja se perguntando: "O que posso fazer com datas de novo? O que está disponível?", então você pode usar `methodswith` para verificar.
+Mostramos apenas os primeiros 20 resultados aqui:
 
 ```jl
 s = "first(methodswith(Date), 20)"
 sco(s; process=catch_show)
 ```
 
-From this, we can conclude that we can also use the plus `+` and minus `-` operator.
-Let's see how old Jose is, in days:
+A partir disso, podemos concluir que também podemos usar o operador de sinal de mais `+` e menos `-`.
+Vamos ver quantos anos o José tem, em dias:
 
 ```jl
 sco("today() - my_birthday")
 ```
 
-The **default duration** of `Date` types is a `Day` instance.
-For the `DateTime`, the default duration is `Millisecond` instance:
+A **duração padrãon** de tipos de `Date` é a instância `Day`.
+Para o `DateTime`, a duração padrão é a instância `Millisecond`:
 
 ```jl
 sco("DateTime(today()) - DateTime(my_birthday)")
 ```
 
-#### Date Intervals {#sec:dates_intervals}
+#### Intervalos de Data {#sec:dates_intervals}
 
-One nice thing about `Dates` module is that we can also easily construct **date and time intervals**.
-Julia is clever enough to not have to define the whole interval types and operations that we covered in @sec:ranges.
-It just extends the functions and operations defined for range to `Date`'s types.
-This is known as multiple dispatch and we already covered this in *Why Julia?* (@sec:why_julia).
+Uma coisa boa sobre o módulo `Dates` é que também podemos construir facilmente **intervalos de data e hora**.
+Julia é inteligente o suficiente para não ter que definir todos os tipos de intervalo e operações que abordamos @sec:ranges.
+Ela apenas estende as funções e operações definidas para range dos tipos `Date`'s.
+Isso é conhecido como múltiplo despacho e já abordamos isso em *Por que Julia?* (@sec:why_julia).
 
-For example, suppose that you want to create a `Day` interval.
-This is easy done with the colon `:` operator:
+Por exemplo, suponha que você deseja criar um intervalo `Day`.
+Isso é fácil de fazer com o operador cólon `:`:
 
 ```jl
 sco("""Date("2021-01-01"):Day(1):Date("2021-01-07")""")
 ```
 
-There is nothing special in using `Day(1)` as the interval, we can **use whatever `Period` type** as interval.
-For example, using 3 days as the interval:
+Não há nada de especial em usar `Day(1)` como o intervalo, podemos **usar qualquer tipo `Period`** como intervalo.
+Por exemplo, usando 3 dias como intervalo:
 
 ```jl
 sco("""Date("2021-01-01"):Day(3):Date("2021-01-07")""")
 ```
 
-Or even months:
+Ou mesmo meses:
 
 ```jl
 sco("""Date("2021-01-01"):Month(1):Date("2021-03-01")""")
 ```
 
-Note that the **type of this interval is a `StepRange` with the `Date` and concrete `Period` type** we used as interval inside the colon `:` operator:
+Perceba que o **tipo deste intervalo é um `StepRange` com o `Date` e concreto do tipo `Period`** usamos como intervalo dentro do operador de cólon `:`:
 
 ```jl
 s = """
@@ -2105,90 +2105,90 @@ s = """
 sco(s)
 ```
 
-We can convert this to a **vector** with the `collect` function:
+Podemos converter isso para um **vetor** com a função `collect`:
 
 ```jl
 sco("collected_date_interval = collect(date_interval)")
 ```
 
-And have all the **array functionalities available**, like, for example, indexing:
+E tem todo o **arranjo de funcionalidades disponíveis**, como, por exemplo, indexação:
 
 ```jl
 sco("collected_date_interval[end]")
 ```
 
-We can also **broadcast date operations** to our vector of `Date`s:
+Também podemos **broadcast operações de data** com seu vetor de `Date`s:
 
 ```jl
 sco("collected_date_interval .+ Day(10)")
 ```
 
-Similarly, these examples work for `DateTime` types too.
+Da mesma forma, esses exemplos funcionam para tipos `DateTime` também.
 
-### Random Numbers {#sec:random}
+### Números aleatórios {#sec:random}
 
-Another important module in Julia's standard library is the `Random` module.
-This module deals with **random number generation**.
-`Random` is a rich library and, if you're interested, you should consult [Julia's `Random` documentation](https://docs.julialang.org/en/v1/stdlib/Random/).
-We will cover *only* three functions: `rand`, `randn` and `seed!`.
+Outro módulo importante na biblioteca padrão de Julia é o módulo `Random`.
+Este módulo lida com **geração de números aleatórios**.
+`Random` é uma biblioteca rica e, se você está interessado, deve consultar a [documentação `Random` de Julia](https://docs.julialang.org/en/v1/stdlib/Random/).
+Vamos cobrir *somente* três funções: `rand`, `randn` e `seed!`.
 
-To begin, we first load the `Random` module.
-Since we know exactly what we want to load, we can just as well explicitly load the methods that we want to use:
+Para começar, primeiro carregamos o módulo `Random`.
+Como sabemos exatamente o que queremos carregar, podemos também carregar explicitamente os métodos que queremos usar:
 
 ```julia
 using Random: rand, randn, seed!
 ```
 
-We have **two main functions that generate random numbers**:
+Nós temos **duas funções principais que geram números aleatórios**:
 
-* `rand`: samples a **random element** of a data structure or type.
-* `randn`: generates a random number that follows a **standard normal distribution** (mean 0 and standard deviation 1) of a specific type.
+* `rand`: amostras de **elemento aleatório** de uma estrutura ou tipo de dados.
+* `randn`: gera um número aleatório que segue um **distribuição normal padrão** (média 0 e desvio padrão 1) de um tipo específico.
 
 > **_NOTE:_**
-> Note that those two functions are already in the Julia `Base` module.
-> So, you don't need to import `Random` if you're planning to use them.
+> Observe que essas duas funções já estão no módulo `Base` de Julia.
+> Então, você não precisa importar `Random` se estiver planejando usá-los.
 
 #### `rand` {#sec:random_rand}
 
-By default, if you call `rand` without arguments it will return a `Float64` in the interval $[0, 1)$, which means between 0 inclusive to 1 exclusive:
+Por padrão, se você ligar `rand` sem argumentos, ele retornará um `Float64` no intervalo $[0, 1)$, o que significa entre 0 inclusivo e 1 exclusivo:
 
 ```jl
 scob("rand()")
 ```
 
-You can modify `rand` arguments in several ways.
-For example, suppose you want more than 1 random number:
+Você pode modificar argumentos `rand` em várias formas.
+Por exemplo, suponha que você queira mais de 1 número aleatório:
 
 ```jl
 sco("rand(3)")
 ```
 
-Or, you want a different interval:
+Ou você quer um intervalo diferente:
 
 ```jl
 scob("rand(1.0:10.0)")
 ```
 
-You can also specify a different step size inside the interval and a different type.
-Here we are using numbers without the dot `.` so Julia will interpret them as `Int64`:
+Você também pode especificar um tamanho de etapa diferente dentro do intervalo e um tipo diferente.
+Aqui estamos usando números sem ponto `.` então Julia irá interpretá-los como `Int64`:
 
 ```jl
 scob("rand(2:2:20)")
 ```
 
-You can also mix and match arguments:
+Você também pode misturar e combinar argumentos:
 
 ```jl
 sco("rand(2:2:20, 3)")
 ```
 
-It also supports a collection of elements as a tuple:
+Ele também suporta uma coleção de elementos como uma tupla:
 
 ```jl
 scob("""rand((42, "Julia", 3.14))""")
 ```
 
-And also arrays:
+E também arranjos:
 
 ```jl
 scob("rand([1, 2, 3])")
@@ -2200,9 +2200,9 @@ scob("rand([1, 2, 3])")
 sco("rand(Dict(:one => 1, :two => 2))")
 ```
 
-To finish off all the `rand` arguments options, you can specify the desired random number dimensions in a tuple.
-If you do this, the returned type will be an array.
-For example, here's a 2x2 matrix of `Float64` numbers between 1.0 and 3.0:
+Para terminar todas as opções de argumentos `rand`, você pode especificar as dimensões de número aleatório desejadas em uma tupla.
+Se você fizer isso, o tipo retornado será um arranjo.
+Por exemplo, aqui uma matriz 2x2 de números `Float64` entre 1.0 e 3.0:
 
 ```jl
 sco("rand(1.0:3.0, (2, 2))")

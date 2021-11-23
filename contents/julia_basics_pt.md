@@ -1310,36 +1310,36 @@ Vamos recuperar o elemento da última linha e segunda coluna:
 scob("my_example_matrix[end, begin+1]")
 ```
 
-Often, we are not only interested in just one array element, but in a whole **subset of array elements**.
-We can accomplish this by **slicing** an array.
-It uses the same index syntax, but with the added colon `:` to denote the boundaries that we are slicing through the array.
-For example, suppose we want to get the 2nd to 4th element of a vector:
+Muitas vezes, não estamos só interessados em apenas um elemento do arranjo, mas em um todo **subconjunto de elementos do arranjo**.
+Podemos fazer isso **dividindo** um arranjo.
+Usamos a mesma sintaxe de índice, mas com os dois pontos adicionados `:` para denotar os limites que estamos cortando através do arranjo.
+Por exemplo, suponha que queremos obter do 2º ao 4º elemento de um vetor:
 
 ```jl
 sco("my_example_vector[2:4]")
 ```
 
-We could do the same with matrices.
-Particularly with matrices if we want to select **all elements** in a following dimension we can do so with just a colon `:`.
-For example, to get all the elements in the second row:
+Poderíamos fazer o mesmo com matrizes.
+Particularmente com matrizes, se quisermos selecionar **todos os elementos** em uma dimensão seguinte, podemos fazer isso com apenas dois pontos `:`.
+Por exemplo, para obter todos os elementos da segunda linha:
 
 ```jl
 sco("my_example_matrix[2, :]")
 ```
 
-You can interpret this with something like "take the 2nd row and all the columns".
+Você pode interpretar isso com algo como "pegue a 2ª linha e todas as colunas".
 
-It also supports `begin` and `end`:
+Também suporta `begin` e `end`:
 
 ```jl
 sco("my_example_matrix[begin+1:end, end]")
 ```
 
-#### Array Manipulations {#sec:array_manipulation}
+#### Manipulações de Arranjo {#sec:array_manipulation}
 
-There are several ways we could **manipulate** an array.
-The first would be to manipulate a **singular element of the array**.
-We just index the array by the desired element and proceed with an assignment `=`:
+Existem várias formas para **manipular** um arranjo.
+O primeiro seria manipular um **único elemento do arranjo**.
+Nós apenas indexamos o arranjo pelo elemento desejado e procedemos com uma atribuição `=`:
 
 ```jl
 s = """
@@ -1349,8 +1349,8 @@ s = """
 sco(s)
 ```
 
-Or, you can manipulate a certain **subset of elements of the array**.
-In this case, we need to slice the array and then assign with `=`:
+Ou, você pode manipular um determinado **subconjunto de elementos do arranjo**.
+Nesse caso, precisamos dividir o arranjo e, em seguida, atribuir com `=`:
 
 ```jl
 s = """
@@ -1360,7 +1360,7 @@ s = """
 sco(s)
 ```
 
-Note that we had to assign a vector because our sliced array is of type `Vector`:
+Observe que tivemos que atribuir um vetor porque nosso arranjo dividido é do tipo `Vector`:
 
 ```jl
 s = """
@@ -1369,8 +1369,8 @@ s = """
 sco(s)
 ```
 
-The second way we could manipulate an array is to **alter its shape**.
-Suppose that you have a 6-element vector and you want to make it a 3x2 matrix.
+A segunda maneira de manipular um arranjo é **alterar sua forma**.
+Suponha que você tenha um vetor de 6 elementos e deseja torná-lo uma matriz 3x2.
 You can do this with `reshape`, by using the array as the first argument and a tuple of dimensions as the second argument:
 
 ```jl

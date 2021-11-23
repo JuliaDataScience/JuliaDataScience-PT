@@ -1846,23 +1846,23 @@ Depois de fazer isso, você pode acessar todas as funções e tipos dentro `Modu
 
 Saber como lidar com datas e timestamps é importante na ciência de dados.
 Como dissemos na seção *Por que Julia?* (@sec:why_julia), O `pandas` do Python usa seu próprio tipo de `datetime` para lidar com datas.
-The same is true in the R tidyverse's `lubridate` package, which also defines its own `datetime` type to handle dates.
-In Julia packages don't need to write their own dates logic, because Julia has a dates module in its standard library called `Dates`.
+O mesmo é verdade no R tidyverse, o pacote `lubridate`, que também define o seu próprio tipo de `datetime` para lidar com datas.
+Em Julia, os pacotes não precisam escrever sua própria lógica de datas, porque Julia tem um módulo de datas em sua biblioteca padrão chamado `Dates`.
 
-To begin, let's load the `Dates` module:
+Para começar, vamos carregar o módulo `Dates`:
 
 ```julia
 using Dates
 ```
 
-#### `Date` and `DateTime` Types {#sec:dates_types}
+#### Tipo `Date` e `DateTime` {#sec:dates_types}
 
-The `Dates` standard library module has **two types for working with dates**:
+O módulo de biblioteca padrão `Dates` tem **dois tipos para trabalhar com datas**:
 
-1. `Date`: representing time in days and
-2. `DateTime`: representing time in millisecond precision.
+1. `Date`: representando o tempo em dias e
+2. `DateTime`: representando o tempo em milissegundos de precisão.
 
-We can construct `Date` and `DateTime` with the default constructor either by specifying an integer to represent year, month, day, hours and so on:
+Nós podemos construir `Date` e `DateTime` com o construtor padrão especificando um número inteiro para representar ano, mês, dia, horas e assim por diante:
 
 ```jl
 sco(

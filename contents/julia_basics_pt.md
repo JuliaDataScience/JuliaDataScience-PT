@@ -1773,79 +1773,79 @@ Também funciona para ranges:
 scob("add_elements(1:3...)")
 ```
 
-## Filesystem {#sec:filesystem}
+## Sistema de arquivo {#sec:filesystem}
 
-In data science, most projects are undertaken in a collaborative effort.
-We share code, data, tables, figures and so on.
-Behind everything, there is the **operating system (OS) filesystem**.
-In a perfect world, the same program would give the **same** output when running on **different** operating systems.
-Unfortunately, that is not always the case.
-One instance of this is the difference between Windows paths, such as `C:\\user\john\`, and Linux paths, such as `/home/john`.
-This is why it is important to discuss **filesystem best practices**.
+Em ciência de dados, a maioria dos projetos é realizada em um esforço colaborativo.
+Compartilhamos código, dados, tabelas, figuras e assim por diante.
+Por trás de tudo, está o **sistema de arquivos do sistema operacional (SO)**.
+Em um mundo perfeito, o mesmo programa daria a **mesma** saída quando executado em sistemas operacionais **diferentes**.
+Infelizmente, nem sempre é esse o caso.
+Um exemplo disso é a diferença entre os caminhos do Windows, tal como `C:\\user\john\`, e do Linux, como `/home/john`.
+Por isso é importante discutir as **melhores práticas em sistema de arquivos**.
 
-Julia has native filesystem capabilities that **handle the differences between operating systems**.
-They are located in the [`Filesystem`](https://docs.julialang.org/en/v1/base/file/) module from the core `Base` Julia library.
+Julia tem recursos de sistema de arquivos nativos que **lidam com as diferenças entre os sistemas operacionais**.
+Eles estão localizados no módulo [`Filesystem`](https://docs.julialang.org/en/v1/base/file/) da biblioteca central `Base` de Julia.
 
-Whenever you are dealing with files such as CSV, Excel files or other Julia scripts, make sure that your code **works on different OS filesystems**.
-This is easily accomplished with the `joinpath`, `@__FILE__` and `pkgdir` functions.
+Sempre que você estiver lidando com arquivos como CSV, Excel ou qualquer outro script de Julia, certifique-se de que seu código **funciona em diferentes sistemas de arquivos do SO**.
+Isso é facilmente realizado com as funções `joinpath`, `@__FILE__` e `pkgdir`.
 
-If you write your code in a package, you can use `pkgdir` to get the root directory of the package.
-For example, for the Julia Data Science (JDS) package that we use to produce this book:
+Se você escrever seu código em um pacote, você pode usar `pkgdir` para obter o diretório raiz do pacote.
+Por exemplo, para o pacote de Julia Data Science (JDS) que usamos para produzir este livro:
 
 ```jl
 root = pkgdir(JDS)
 ```
 
-as you can see, the code to produce this book was running on a Linux computer.
-If you're using a script, you can get the location of the script file via
+como você pode ver, o código para produzir este livro foi executado em um computador Linux.
+Se você está usando um script, você pode obter a localização do arquivo de script via
 
 ```julia
 root = dirname(@__FILE__)
 ```
 
-The nice thing about these two commands is that they are independent of how the user started Julia.
-In other words, it doesn't matter whether the user started the program with `julia scripts/script.jl` or `julia script.jl`, in both cases the paths are the same.
+O bom desses dois comandos é que eles são independentes de como o usuário iniciou o Julia.
+Em outras palavras, não importa se o usuário iniciou o programa com `julia scripts/script.jl` ou `julia script.jl`, em ambos os casos os caminhos são os mesmos.
 
-The next step would be to include the relative path from `root` to our desired file.
-Since different OS have different ways to construct relative paths with subfolders (some use forward slashes `/` while other might use backslashes `\`), we cannot simply concatenate the  file's relative path with the `root` string.
-For that, we have the `joinpath` function, which will join different relative paths and filenames according to your specific OS filesystem implementation.
+A próxima etapa seria incluir o caminho relativo a partir de `root` para o nosso arquivo desejado.
+Uma vez que diferentes sistemas operacionais têm maneiras diferentes de construir caminhos relativos com subpastas (alguns usam barras `/` enquanto outros podem usar barras invertidas `\`), não podemos simplesmente concatenar o caminho relativo do arquivo com a string `root`.
+Para isso, temosa função `joinpath`, que unirá diferentes caminhos relativos e nomes de arquivos de acordo com a implementação específica do seu sistema de arquivos do sistema operacional.
 
-Suppose that you have a script named `my_script.jl` inside your project's directory.
-You can have a robust representation of the filepath to `my_script.jl` as:
+Supondo que você tenha um script chamado `my_script.jl` dentro do diretório do seu projeto.
+Você pode ter uma representação robusta do caminho do arquivo para `my_script.jl` como:
 
 ```jl
 scob("""joinpath(root, "my_script.jl")""")
 ```
 
-`joinpath` also handles **subfolders**.
-Let's now imagine a common situation where you have a folder named `data/` in your project's directory.
-Inside this folder there is a CSV file named `my_data.csv`.
-You can have the same robust representation of the filepath to `my_data.csv` as:
+`joinpath` também lida com **subfolders**.
+Agora vamos imaginar uma situação comum em que você tem uma pasta chamada `data/` no diretório do seu projeto.
+Dentro desta pasta, há um arquivo CSV chamado `my_data.csv`.
+Você pode ter a mesma representação robusta do caminho do arquivo para `my_data.csv` como:
 
 ```jl
 scob("""joinpath(root, "data", "my_data.csv")""")
 ```
 
-It's a good habit to pick up, because it's very likely to save problems for you or other people later.
+É um bom hábito de adquirir, porque é muito provável que evite problemas para você ou outras pessoas mais tarde.
 
-## Julia Standard Library {#sec:standardlibrary}
+## Biblioteca Padrão de Julia {#sec:standardlibrary}
 
-Julia has a **rich standard library** that is available with *every* Julia installation.
-Contrary to everything that we have seen so far, e.g. types, data structures and filesystem; you **must load standard library modules into your environment** to use a particular module or function.
+Julia tem uma **biblioteca padrão rica** que está disponível em *toda* instalação de Julia.
+Ao contrário de tudo o que vimos até agora, por exemplo, tipos, estruturas de dados e sistema de arquivos; você **deve carregar módulos de biblioteca padrão em seu ambiente** para usar um módulo ou função particular.
 
-This is done via `using` or `import`.
-In this book, we will load code via `using`:
+Isso é feito via `using` ou `import`.
+Neste livro, carregaremos o código via `using`:
 
 ```julia
 using ModuleName
 ```
 
-After doing this, you can access all functions and types inside `ModuleName`.
+Depois de fazer isso, você pode acessar todas as funções e tipos dentro `ModuleName`.
 
-### Dates {#sec:dates}
+### Datas {#sec:dates}
 
-Knowing how to handle dates and timestamps is important in data science.
-As we said in *Why Julia?* (@sec:why_julia) section, Python's `pandas` uses its own `datetime` type to handle dates.
+Saber como lidar com datas e timestamps é importante na ciência de dados.
+Como dissemos na seção *Por que Julia?* (@sec:why_julia), O `pandas` do Python usa seu próprio tipo de `datetime` para lidar com datas.
 The same is true in the R tidyverse's `lubridate` package, which also defines its own `datetime` type to handle dates.
 In Julia packages don't need to write their own dates logic, because Julia has a dates module in its standard library called `Dates`.
 

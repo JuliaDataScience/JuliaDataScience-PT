@@ -1607,13 +1607,13 @@ Por exemplo, com `DataFrames.jl` veremos que `:a => :b` pode ser usado para reno
 
 ### Dict {#sec:dict}
 
-If you understood what a `Pair` is, then `Dict` won't be a problem.
-For all practical purposes, **`Dict`s are mappings from keys to values**.
-By mapping, we mean that if you give a `Dict` some key, then the `Dict` can tell you which value belongs to that key.
-`key`s and `value`s can be of any type, but usually `key`s are strings.
+Se você entendeu o que é um `Pair`, então `Dict` não será um problema.
+Por razões práticas, **`Dict`s são mapeamentos de chaves para valores**.
+Por mapeamento, queremos dizer que se você der alguma chave a um `Dict`, then the `Dict` pode dizer qual valor pertence aquela chave.
+`key`s e `value`s podem ser de qualquer tipo, mas normalmente `key` são strings.
 
-There are two ways to construct `Dict`s in Julia.
-The first is by passing a vector of tuples as `(key, value)` to the `Dict` constructor:
+Existem duas maneiras de construir `Dict`s em Julia.
+A primeira é passando um vetor de tuplas como `(key, value)` para o construtor `Dict`:
 
 ```jl
 sco(
@@ -1624,8 +1624,8 @@ name2number_map = Dict([("one", 1), ("two", 2)])
 )
 ```
 
-There is a more readable syntax based on the `Pair` type described above.
-You can also pass `Pair`s of `key => value`s to the `Dict` constructor:
+Existe uma sintaxe mais legível com base no tipo `Pair` descrito acima.
+Você também pode passar `Pair`s de `key => value`s para o construtor `Dict`:
 
 ```jl
 sco(
@@ -1636,13 +1636,13 @@ name2number_map = Dict("one" => 1, "two" => 2)
 )
 ```
 
-You can retrieve a `Dict`s `value` by indexing it by the corresponding `key`:
+Você pode recuperar um `Dict`s `value` ao indexá-lo na `key` correspondente:
 
 ```jl
 scob("""name2number_map["one"]""")
 ```
 
-To add a new entry, you index the `Dict` by the desired `key` and assign a `value` with the assignment `=` operator:
+Para adicionar uma nova entrada, você indexa o `Dict` pela `key` desejada e atribui um `value` com o operador de atribuição `=`:
 
 ```jl
 scob(
@@ -1652,13 +1652,13 @@ name2number_map["three"] = 3
 )
 ```
 
-If you want to check if a `Dict` has a certain `key` you can use `keys` and `in`:
+Se você quer checar se um `Dict` tem uma certa `key` você pode usar `keys` e `in`:
 
 ```jl
 scob("\"two\" in keys(name2number_map)")
 ```
 
-To delete a `key` you can use either the `delete!` function:
+Para deletar a `key` você pode usar a função `delete!`:
 
 ```jl
 sco(
@@ -1668,24 +1668,24 @@ delete!(name2number_map, "three")
 )
 ```
 
-Or, to delete a key while returning its value, you can use `pop!`:
+Ou, para excluir uma chave enquanto retorna seu valor, você pode usar `pop!`:
 
 ```jl
 scob("""popped_value = pop!(name2number_map, "two")""")
 ```
 
-Now, our `name2number_map` has only one `key`:
+Agora, nosso `name2number_map` tem apenas uma `key`:
 
 ```jl
 sco("name2number_map")
 ```
 
-`Dict`s are also used for data manipulation by `DataFrames.jl` (@sec:dataframes) and for data visualization by `Makie.jl` (@sec:DataVisualizationMakie).
-So, it is important to know their basic functionality.
+`Dict`s também são usados para manipulação de dados por `DataFrames.jl` (@sec:dataframes) e para visualização de dados por `Makie.jl` (@sec:DataVisualizationMakie).
+Logo, é importante conhecer suas funcionalidades básicas.
 
-There is another useful way of constructing `Dict`s.
-Suppose that you have two vectors and you want to construct a `Dict` with one of them as `key`s and the other as `value`s.
-You can do that with the `zip` function which "glues" together two objects (just like a zipper):
+Existe outra maneira útil de construir `Dict`s.
+Suponha que você tenha dois vetores e deseja construir um `Dict` com um deles como se fosse `key`s e outro como se fosse `value`s.
+Você pode fazer isso com uma função `zip` que "cola" dois objetos (como um zíper):
 
 ```jl
 sco(
@@ -1698,23 +1698,23 @@ name2number_map = Dict(zip(A, B))
 )
 ```
 
-For instance, we can now get the number 3 via:
+Por exemplo, agora podemos obter o número 3 via:
 
 ```jl
 scob("""name2number_map["three"]""")
 ```
 
-### Symbol {#sec:symbol}
+### Símbolo {#sec:symbol}
 
-`Symbol` is actually *not* a data structure.
-It is a type and behaves a lot like a string.
-Instead of surrounding the text by quotation marks, a symbol starts with a colon (:) and can contain underscores:
+`Symbol` na verdade *não* é uma estrutura de dados.
+É um tipo e se comporta muito parecido com uma string.
+Em vez de colocar o texto entre aspas, um símbolo começa com dois pontos (:) e pode conter sublinhados:
 
 ```jl
 sco("sym = :some_text")
 ```
 
-We can easily convert a symbol to string and vice versa:
+Podemos facilmente converter um símbolo em string e vice-versa:
 
 ```jl
 scob("s = string(sym)")
@@ -1724,23 +1724,23 @@ scob("s = string(sym)")
 sco("sym = Symbol(s)")
 ```
 
-One simple benefit of symbols is that you have to type one character less, that is, `:some_text` versus `"some text"`.
-We use `Symbol`s a lot in data manipulations with the `DataFrames.jl` package (@sec:dataframes) and data visualizations with the `Makie.jl` package (@sec:DataVisualizationMakie).
+Um benefício simples dos símbolos é que você digita um caractere a menos, ou seja, `:some_text` versus `"some text"`.
+Usamos muito `Symbol`s na manipulação de dados com o package `DataFrames.jl` (@sec:dataframes) e em visualização de dados com o package `Makie.jl` (@sec:DataVisualizationMakie).
 
-### Splat Operator {#sec:splat}
+### Operador de Splat {#sec:splat}
 
-In Julia we have the "splat" operator `...` which is used in function calls as a **sequence of arguments**.
-We will occasionally use splatting in some function calls in the **data manipulation** and **data visualization** chapters.
+Em Julia, temos o operador "splat" `...` que é usado em chamadas de função como uma **sequência de argumentos**.
+Ocasionalmente, usaremos splatting em algumas chamadas de função nos capítulos sobre **manipulação de dados** e **visualização de dados**.
 
-The most intuitive way to learn about splatting is with an example.
-The `add_elements` function below takes three arguments to be added together:
+A maneira mais intuitiva de aprender sobre splatting é com um exemplo.
+A função `add_elements` abaixo leva três argumentos para serem somados:
 
 ```jl
 sco("add_elements(a, b, c) = a + b + c")
 ```
 
-Now, suppose that we have a collection with three elements.
-The naïve way to this would be to supply the function with all three elements as function arguments like this:
+Agora, suponha que temos uma coleção com três elementos.
+A maneira ingênua de fazer isso seria fornecer à função todos os três elementos como argumentos de função:
 
 ```jl
 scob("""
@@ -1750,14 +1750,14 @@ add_elements(my_collection[1], my_collection[2], my_collection[3])
 """)
 ```
 
-Here is where we use the "splat" operator `...` which takes a collection (often an array, vector, tuple, or range) and converts it into a sequence of arguments:
+Aqui é que usamos o operador "splat" `...` que pega uma coleção (geralmente um arranjo, vetor, tupla ou range) e a converte em uma sequência de argumentos:
 
 ```jl
 scob("add_elements(my_collection...)")
 ```
 
-The `...` is included after the collection that we want to "splat" into a sequence of arguments.
-In the example above, the following are the same:
+O `...` está incluído após a coleção que queremos "splat" em uma sequência de argumentos.
+No exemplo acima, o seguinte é o mesmo:
 
 ```jl
 scob("""
@@ -1765,9 +1765,9 @@ add_elements(my_collection...) == add_elements(my_collection[1], my_collection[2
 """)
 ```
 
-Anytime Julia sees a splatting operator inside a function call, it will be converted on a sequence of arguments for all elements of the collection separated by commas.
+Sempre que Julia vê um operador splatting dentro de uma chamada de função, ele será convertido em uma sequência de argumentos para todos os elementos da coleção separados por vírgulas.
 
-It also works for ranges:
+Também funciona para ranges:
 
 ```jl
 scob("add_elements(1:3...)")

@@ -1951,12 +1951,12 @@ Também funciona para timestamps com `DateTime`:
 sco("""DateTime("1987-09-13T21:21:00", "yyyy-mm-ddTHH:MM:SS")""")
 ```
 
-Você pode encontrar mais informações sobre como especificar diferentes formatos de data na [Julia `Dates`' documentation](https://docs.julialang.org/en/v1/stdlib/Dates/#Dates.DateFormat).
-Don't worry if you have to revisit it all the time, we ourselves do that too when working with dates and timestamps.
+Você pode encontrar mais informações sobre como especificar diferentes formatos de data na [documentação `Dates`' de Julia](https://docs.julialang.org/en/v1/stdlib/Dates/#Dates.DateFormat).
+Não se preocupe se você tiver que revisitá-lo o tempo todo, nós mesmos fazemos isso ao trabalhar com datas e timestamps.
 
-According to [Julia `Dates`' documentation](https://docs.julialang.org/en/v1/stdlib/Dates/#Constructors), using the `Date(date_string, format_string)` method is fine if it's only called a few times.
-If there are many similarly formatted date strings to parse, however, it is much more efficient to first create a `DateFormat` type, and then pass it instead of a raw format string.
-Then, our previous example becomes:
+De acordo com a [documentação `Dates`' de Julia](https://docs.julialang.org/en/v1/stdlib/Dates/#Constructors), usando o `Date(date_string, format_string)` método é bom se ele só for chamado algumas vezes.
+Se houver muitas strings de data formatadas de forma semelhante para analisar, no entanto, é muito mais eficiente criar primeiro um tipo `DateFormat`, e, em seguida, o passar em vez de uma string de formato bruto.
+Então, nosso exemplo anterior se torna:
 
 ```jl
 s = """
@@ -1966,22 +1966,22 @@ s = """
 sco(s)
 ```
 
-Alternatively, without loss of performance, you can use the string literal prefix `dateformat"..."`:
+Como alternativa, sem perda de desempenho, você pode usar o prefixo literal da string `dateformat"..."`:
 
 ```jl
 sco("""Date("19870913", dateformat"yyyymmdd")""")
 ```
 
-#### Extracting Date Information {#sec:dates_information}
+#### Extraindo informações de data {#sec:dates_information}
 
-It is easy to **extract desired information from `Date` and `DateTime` objects**.
-First, let's create an instance of a very special date:
+É fácil **extraia as informações desejadas dos objetos `Date` e` DateTime`**.
+Primeiro, vamos criar uma instância de uma data muito especial:
 
 ```jl
 sco("""my_birthday = Date("1987-09-13")""")
 ```
 
-We can extract anything we want from `my_birthday`:
+Podemos extrair tudo o que quisermos `my_birthday`:
 
 ```jl
 scob("year(my_birthday)")
@@ -1995,7 +1995,7 @@ scob("month(my_birthday)")
 scob("day(my_birthday)")
 ```
 
-Julia's `Dates` module also has **compound functions that return a tuple of values**:
+O módulo `Dates` de Julia também tem **funções compostas que retornam uma tupla de valores**:
 
 ```jl
 sco("yearmonth(my_birthday)")
@@ -2009,7 +2009,7 @@ sco("monthday(my_birthday)")
 sco("yearmonthday(my_birthday)")
 ```
 
-We can also see the day of the week and other handy stuff:
+Também podemos ver o dia da semana e outras coisas úteis:
 
 ```jl
 scob("dayofweek(my_birthday)")
@@ -2023,7 +2023,7 @@ scob("dayname(my_birthday)")
 scob("dayofweekofmonth(my_birthday)")
 ```
 
-Yep, Jose was born on the second Sunday of September.
+Sim, José nasceu no segundo domingo de setembro.
 
 > **_NOTE:_**
 > Here's a handy tip to just recover weekdays from `Dates` instances.

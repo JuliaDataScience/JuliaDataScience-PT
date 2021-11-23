@@ -2210,15 +2210,15 @@ sco("rand(1.0:3.0, (2, 2))")
 
 #### `randn` {#sec:random_randn}
 
-`randn` follows the same general principle from `rand` but now it only returns numbers generated from the **standard normal distribution**.
-The standard normal distribution is the normal distribution with mean 0 and standard deviation 1.
-The default type is `Float64` and it only allows for subtypes of `AbstractFloat` or `Complex`:
+`randn` segue o mesmo princípio geral de `rand`, mas agora ele só retorna números gerados a partir da **distribuição normal padrão**.
+A distribuição normal padrão é a distribuição normal com média 0 e desvio padrão 1.
+O tipo padrão é `Float64` e só permite subtipos de `AbstractFloat` ou `Complex`:
 
 ```jl
 scob("randn()")
 ```
 
-We can only specify the size:
+Só podemos especificar o tamanho:
 
 ```jl
 sco("randn((2, 2))")
@@ -2226,10 +2226,10 @@ sco("randn((2, 2))")
 
 #### `seed!` {#sec:random_seed}
 
-To finish off the `Random` overview, let's talk about **reproducibility**.
-Often, we want to make something **replicable**.
-Meaning that, we want the random number generator to generate the **same random sequence of numbers**.
-We can do so with the `seed!` function:
+Para terminar a visão geral de `Random`, vamos falar sobre **reprodutibilidade**.
+Muitas vezes, queremos fazer algo **replicável**.
+Ou seja, queremos que o gerador de números aleatórios gere a **mesma sequência aleatória de números**.
+Podemos fazer isso com a função `seed!`:
 
 ```jl
 s = """
@@ -2247,7 +2247,7 @@ s = """
 sco(s)
 ```
 
-In order to avoid tedious and inefficient repetition of `seed!` all over the place, we can instead define an instance of a `seed!` and pass it as a first argument of **either `rand` or `randn`**.
+A fim de evitar a repetição tediosa e ineficiente de `seed!` em todo lugar, podemos definir uma instância de `seed!` e passá-la como primeiro argumento **ou `rand` ou `randn`**.
 
 ```jl
 sco("my_seed = seed!(123)")
@@ -2263,30 +2263,30 @@ sco("rand(my_seed, 3)")
 ```
 
 > **_NOTE:_**
-> If you want your code to be reproducible you can just call `seed!` in the beginning of your script.
-> This will take care of reproducibility in sequential `Random` operations.
-> No need to use it all `rand` and `randn` usage.
+> Se você quiser que seu código seja reproduzível, basta chamar `seed!` no começo do seu script.
+> Isso cuidará da reprodutibilidade sequencial das operações `Random`.
+> Não há necessidade de usar todo uso `rand` e `randn`.
 
 ### Downloads {#sec:downloads}
 
-One last thing from Julia's standard library for us to cover is the **`Download` module**.
-It will be really brief because we will only be covering a single function named `download`.
+Uma última coisa da biblioteca padrão de Julia para cobrirmos é o **módulo `Download`**.
+Será muito breve porque iremos cobrir apenas uma única função chamada `download`.
 
-Suppose you want to **download a file from the internet to your local storage**.
-You can accomplish this with the `download` function.
-The first and only required argument is the file's url.
-You can also specify as a second argument the desired output path for the downloaded file (don't forget the filesystem best practices!).
-If you don't specify a second argument, Julia will, by default, create a temporary file with the `tempfile` function.
+Suponha que você queira **fazer o download de um arquivo da internet para o seu armazenamento local**.
+Você pode fazer isso com a função `download`.
+O primeiro e único argumento obrigatório é o url do arquivo.
+Você também pode especificar como um segundo argumento o caminho de saída desejado para o arquivo baixado (não se esqueça das práticas recomendadas do sistema de arquivos!).
+Se você não especificar um segundo argumento, Julia irá, por padrão, criar um arquivo temporário com a função `tempfile`.
 
-Let's load the `download` method:
+Vamos carregar o método `download`:
 
 ```julia
 using Download: download
 ```
 
-For example, let's download our [`JuliaDataScience` GitHub repository](https://github.com/JuliaDataScience/JuliaDataScience) `Project.toml` file.
-Note that `download` function is not exported by `Downloads` module, so we have to use the `Module.function` syntax.
-By default, it returns a string that holds the file path for the downloaded file:
+Por exemplo, vamos baixar nosso [repositório GitHub `JuliaDataScience`](https://github.com/JuliaDataScience/JuliaDataScience) `Project.toml` file.
+Observe que a função `download` não é exportada pelo módulo `Downloads`, então temos que usar a sintaxe `Module.function`.
+Por padrão, ele retorna uma string que contém o caminho do arquivo para o arquivo baixado:
 
 ```jl
 s = """
@@ -2297,7 +2297,7 @@ s = """
 scob(s)
 ```
 
-With `readlines`, we can look at the first 4 lines of our downloaded file:
+Com `readlines`, we can look at the first 4 lines of our downloaded file:
 
 ```jl
 s = """
@@ -2307,4 +2307,4 @@ sco(s; process=catch_show)
 ```
 
 > **_NOTE:_**
-> For more complex HTTP interactions such as interacting with web APIs, see the [`HTTP.jl` package](https://github.com/JuliaWeb/HTTP.jl) package.
+> Para interações HTTP mais complexas, como interação com APIs da web, consulte o pacote [`HTTP.jl` package](https://github.com/JuliaWeb/HTTP.jl) .

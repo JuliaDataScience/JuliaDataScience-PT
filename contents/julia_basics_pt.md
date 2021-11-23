@@ -1904,17 +1904,17 @@ DateTime(1987, 9, 13, 21, 21) # year, month, day, hour, minute
 )
 ```
 
-For the curious, September 13th 1987, 21:21 is the official time of birth of the first author, Jose.
+Para os curiosos, 13 de setembro de 1987, 21:21 é a hora oficial do nascimento do primeiro autor, José.
 
-We can also pass `Period` types to the default constructor.
-**`Period` types are the human-equivalent representation of time** for the computer.
-Julia's `Dates` have the following `Period` abstract subtypes:
+Nós também podemos passar tipos `Period` para o construtor padrão.
+**Tipos `Period` são a equivalência humana da representação do tempo** para o computador.
+`Dates` em Julia têm os seguintes subtipos abstratos de `Period`:
 
 ```jl
 sco("subtypes(Period)")
 ```
 
-which divide into the following concrete types, and they are pretty much self-explanatory:
+que se dividem nos seguintes tipos concretos, e eles são bastante autoexplicativos:
 
 ```jl
 sco("subtypes(DatePeriod)")
@@ -1924,34 +1924,34 @@ sco("subtypes(DatePeriod)")
 sco("subtypes(TimePeriod)")
 ```
 
-So, we could alternatively construct Jose's official time of birth as:
+Assim, poderíamos, alternativamente, construir a hora oficial de nascimento de José como:
 
 ```jl
 sco("DateTime(Year(1987), Month(9), Day(13), Hour(21), Minute(21))")
 ```
 
-#### Parsing Dates {#sec:dates_parsing}
+#### Datas de análise {#sec:dates_parsing}
 
-Most of the time, we won't be constructing `Date` or `DateTime` instances from scratch.
+Na maioria das vezes, não construiremos instâncias `Date` ou `DateTime` do princípio.
 Actually, we will probably be **parsing strings as `Date` or `DateTime` types**.
 
-The `Date` and `DateTime` constructors can be fed a string and a format string.
-For example, the string `"19870913"` representing September 13th 1987 can be parsed with:
+Os construtores `Date` e `DateTime` constructors pode ser alimentado com uma string e uma string de formato.
+Por exemplo, a string `"19870913"` representando 13 de setembro de 1987 pode ser analisado com:
 
 ```jl
 sco("""Date("19870913", "yyyymmdd")""")
 ```
 
-Notice that the second argument is a string representation of the format.
-We have the first four digits representing year `y`, followed by two digits for month `m` and finally two digits for day `d`.
+Observe que o segundo argumento é uma representação em string do formato.
+Temos os primeiros quatro dígitos que representam o ano `y`, seguido por dois dígitos para o mês `m` e finalmente dois dígitos para dia `d`.
 
-It also works for timestamps with `DateTime`:
+Também funciona para timestamps com `DateTime`:
 
 ```jl
 sco("""DateTime("1987-09-13T21:21:00", "yyyy-mm-ddTHH:MM:SS")""")
 ```
 
-You can find more on how to specify different date formats in the [Julia `Dates`' documentation](https://docs.julialang.org/en/v1/stdlib/Dates/#Dates.DateFormat).
+Você pode encontrar mais informações sobre como especificar diferentes formatos de data na [Julia `Dates`' documentation](https://docs.julialang.org/en/v1/stdlib/Dates/#Dates.DateFormat).
 Don't worry if you have to revisit it all the time, we ourselves do that too when working with dates and timestamps.
 
 According to [Julia `Dates`' documentation](https://docs.julialang.org/en/v1/stdlib/Dates/#Constructors), using the `Date(date_string, format_string)` method is fine if it's only called a few times.

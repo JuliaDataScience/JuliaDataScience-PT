@@ -572,7 +572,7 @@ Julia possui diversas estruturas de dados nativos.
 Elas são abstrações de dados que representam alguma forma de dado estruturado.
 Vamos cobrir os mais usados.
 Eles mantêm dados homogêneos ou heterogêneos.
-Uma vez que são coleções, podem ser *looped* over with the `for` loops.
+Uma vez que são coleções, podem ser iteradas com os loops `for`.
 
 Nós cobriremos `String`, `Tuple`, `NamedTuple`, `UnitRange`, `Arrays`, `Pair`, `Dict`, `Symbol`.
 
@@ -587,7 +587,7 @@ s = "first(methodswith(String), 5)"
 sco(s; process=catch_show)
 ```
 
-### Broadcasting Operadores e Funções {#sec:broadcasting}
+### Fazendo Broadcasting de Operadores e Funções {#sec:broadcasting}
 
 Antes de mergulharmos nas estruturas de dados, precisamos conversar sobre broadcasting (também conhecido como *vetorização*) e o operador "dot" `.`.
 
@@ -767,13 +767,13 @@ scob(s)
        scob("""occursin("Julia", julia_string)""")
        ```
 
-    * **prefix** do segundo argumento
+    * **prefixo** do segundo argumento
 
        ```jl
        scob("""startswith("Julia", julia_string)""")
        ```
 
-    * **suffix** do segundo argumento
+    * **sufixo** do segundo argumento
 
        ```jl
        scob("""endswith("Julia", julia_string)""")
@@ -809,9 +809,9 @@ scob(s)
      sco("""split(julia_string, " ")""")
      ```
 
-#### Conversões de String {#sec:string_conversions}
+#### Convertendo/parseando Strings {#sec:string_conversions}
 
-Muitas vezes, precisamos **converter** entre os tipos em Julia.
+Muitas vezes, precisamos **converter/parsear** entre os tipos em Julia.
 Para converter um número em uma string, podemos usar a função `string`:
 
 ```jl
@@ -950,7 +950,7 @@ Como você pode ver, nosso range instanciado é do tipo `UnitRange{T}` onde `T` 
 sco("typeof(1:10)")
 ```
 
-And, if we gather all the values, we get:
+E, se juntarmos todos os valores, temos:
 
 ```jl
 sco("[x for x in 1:10]")
@@ -979,9 +979,9 @@ sco("collect(1:10)")
 Nós temos um arranjo do tipo especificado no range entre os limites que definimos.
 Vamos conversar sobre arranjos.
 
-### Arranjo {#sec:array}
+### Array {#sec:array}
 
-Na sua forma mais básica, **arranjos** seguram múltiplos objetos.
+Na sua forma mais básica, **arrays** detém múltiplos objetos.
 Por exemplo, eles podem armazenar múltiplos números em uma dimensão:
 
 ```jl
@@ -1033,7 +1033,7 @@ s = """
 sco(s)
 ```
 
-Para matrizes, uma vez que estamos lidando com objetos bidimensionais, precisamos passar dois argumentos de dimensão dentro do construtor: um para **filas** e outro para **colunas**.
+Para matrizes, uma vez que estamos lidando com objetos bidimensionais, precisamos passar dois argumentos de dimensão dentro do construtor: um para **linhas** e outro para **colunas**.
 Por exemplo, uma matriz com 10 linhas e 2 colunas de elementos `undef` pode ser instanciada como:
 
 ```jl
@@ -1043,7 +1043,7 @@ s = """
 sco(s)
 ```
 
-Nós também temos alguns **aliases de sintaxe** para os elementos mais comuns na construção de arranjos:
+Nós também temos alguns **atalhos de sintaxe** para os elementos mais comuns na construção de arrays:
 
 * `zeros` para todos os elementos inicializados em zero.
   Observe que o tipo padrão é `Float64` que pode ser alterado se necessário:
@@ -1078,7 +1078,7 @@ Nós também temos alguns **aliases de sintaxe** para os elementos mais comuns n
      sco(s)
      ```
 
-Para outros elementos, podemos primeiro instanciar um arranjo com elementos `undef` e usar a função `fill!` para preencher todos os elementos de um arranjo com o elemento desejado.
+Para outros elementos, podemos primeiro instanciar uma array com elementos `undef` e usar a função `fill!` para preencher todos os elementos de um arranjo com o elemento desejado.
 Segue um exemplo com `3.14` ($\pi$):
 
 ```jl
@@ -1146,7 +1146,7 @@ s = """
 sco(s)
 ```
 
-Outra maneira poderosa de criar um arranjo é escrever uma **compreensão do arranjo**.
+Outra maneira poderosa de criar um arranjo é escrever uma **compreensão de array**.
 Esta maneira de criar arranjos é melhor na maioria dos casos: evita loops, indexação e outras operações sujeitas a erros.
 Você especifica o que deseja fazer dentro dos colchetes `[]`.
 Por exemplo, digamos que queremos criar um vetor de quadrados de 1 a 10:
@@ -1264,7 +1264,7 @@ Julia tem várias funções para inspecionar as dimensões do arranjo:
 #### Indexação e Divisão de Arranjo {#sec:array_indexing}
 
 Às vezes, queremos inspecionar apenas certas partes de um arranjo.
-Chamamos isso de **indexação** and **divisão**.
+Chamamos isso de **indexação** e **fatiamento**.
 Se você quiser uma observação particular de um vetor, ou uma linha ou coluna de uma matriz, você provavelmente precisará **indexar um arranjo**.
 
 Primeiro, vou criar um vetor e uma matriz de exemplo para brincar:
@@ -1282,7 +1282,7 @@ sc(s)
 
 Vamos começar com vetores.
 Supondo que você queira o segundo elemento de um vetor.
-Você anexa colchetes `[]` com o **index** desejado dentro:
+Você usa colchetes `[]` com o **índice** desejado dentro:
 
 ```jl
 scob("my_example_vector[2]")
@@ -1311,7 +1311,7 @@ scob("my_example_matrix[end, begin+1]")
 ```
 
 Muitas vezes, não estamos só interessados em apenas um elemento do arranjo, mas em um todo **subconjunto de elementos do arranjo**.
-Podemos fazer isso **dividindo** um arranjo.
+Podemos fazer isso **fatiando** uma array.
 Usamos a mesma sintaxe de índice, mas com os dois pontos adicionados `:` para denotar os limites que estamos cortando através do arranjo.
 Por exemplo, suponha que queremos obter do 2º ao 4º elemento de um vetor:
 
@@ -1369,7 +1369,7 @@ s = """
 sco(s)
 ```
 
-A segunda maneira de manipular um arranjo é **alterar sua forma**.
+A segunda maneira de manipular uma array é **alterando suas dimensões**.
 Suponha que você tenha um vetor de 6 elementos e deseja torná-lo uma matriz 3x2.
 Você pode fazer isso com `reshape`, usando o arranjo como o primeiro argumento e uma tupla de dimensões como segundo argumento:
 
@@ -1388,7 +1388,7 @@ Você pode convertê-lo de volta em um vetor especificando uma tupla com apenas 
 sco("reshape(tree_two_matrix, (6, ))")
 ```
 
-A terceira forma que podemos manipular um arranjo é **aplicando uma função em cada elemento do arranjo**.
+A terceira forma que podemos manipular uma array é **aplicando uma função em cada elemento da array**.
 Aqui é onde o operador "dot" `.`, também conhecido como _broadcasting_, entra.
 
 ```jl
@@ -1508,7 +1508,7 @@ Julia, como a maioria das linguagens de programação científica, é "column-ma
 Column-major significa que os elementos da coluna são armazenados lado a lado na memória[^pointers].
 Isso também significa que iterar sobre os elementos em uma coluna é muito mais rápido do que sobre os elementos em uma linha.
 
-[^pointers]: ou, que os ponteiros de endereço de memória para os elementos na coluna são armazenados um ao lado do outro
+[^pointers]: ou, que os ponteiros de endereço de memória para os elementos na coluna são armazenados um ao lado do outro.
 
 Ok, vamos mostrar isso em um exemplo:
 
@@ -1603,7 +1603,7 @@ scob("last(my_pair)")
 [^easier]: é mais fácil porque `first` e `last` também funcionam em muitas outras coleções, então você não precisa se lembrar de tanta coisa.
 
 Os pares serão muito usados na manipulação e visualização de dados, uma vez que ambos `DataFrames.jl` (@sec:dataframes) e/ou `Makie.jl` (@sec:DataVisualizationMakie) pegam objetos do tipo `Pair` em suas funções principais.
-Por exemplo, com `DataFrames.jl` veremos que `:a => :b` pode ser usado para renomear a coluna `:a` a `:b`.
+Por exemplo, com `DataFrames.jl` veremos que `:a => :b` pode ser usado para renomear a coluna `:a` para `:b`.
 
 ### Dict {#sec:dict}
 
@@ -1636,7 +1636,7 @@ name2number_map = Dict("one" => 1, "two" => 2)
 )
 ```
 
-Você pode recuperar um `Dict`s `value` ao indexá-lo na `key` correspondente:
+Você pode recuperar um `value` de um `Dict`s ao indexá-lo na `key` correspondente:
 
 ```jl
 scob("""name2number_map["one"]""")
@@ -1685,7 +1685,7 @@ Logo, é importante conhecer suas funcionalidades básicas.
 
 Existe outra maneira útil de construir `Dict`s.
 Suponha que você tenha dois vetores e deseja construir um `Dict` com um deles como se fosse `key`s e outro como se fosse `value`s.
-Você pode fazer isso com uma função `zip` que "cola" dois objetos (como um zíper):
+Você pode fazer isso com uma função `zip` que "junta" dois objetos (como um zíper):
 
 ```jl
 sco(

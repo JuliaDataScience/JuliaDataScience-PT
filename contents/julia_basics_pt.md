@@ -1727,12 +1727,12 @@ sco("sym = Symbol(s)")
 Um benefício simples dos símbolos é que você digita um caractere a menos, ou seja, `:some_text` versus `"some text"`.
 Usamos muito `Symbol`s na manipulação de dados com o package `DataFrames.jl` (@sec:dataframes) e em visualização de dados com o package `Makie.jl` (@sec:DataVisualizationMakie).
 
-### Operador de Splat {#sec:splat}
+### Operador Splat {#sec:splat}
 
 Em Julia, temos o operador "splat" `...` que é usado em chamadas de função como uma **sequência de argumentos**.
-Ocasionalmente, usaremos splatting em algumas chamadas de função nos capítulos sobre **manipulação de dados** e **visualização de dados**.
+Ocasionalmente, usaremos o splat em algumas chamadas de função nos capítulos sobre **manipulação de dados** e **visualização de dados**.
 
-A maneira mais intuitiva de aprender sobre splatting é com um exemplo.
+A maneira mais intuitiva de aprender sobre o splat é com um exemplo.
 A função `add_elements` abaixo leva três argumentos para serem somados:
 
 ```jl
@@ -1808,7 +1808,7 @@ Em outras palavras, não importa se o usuário iniciou o programa com `julia scr
 
 A próxima etapa seria incluir o caminho relativo a partir de `root` para o nosso arquivo desejado.
 Uma vez que diferentes sistemas operacionais têm maneiras diferentes de construir caminhos relativos com subpastas (alguns usam barras `/` enquanto outros podem usar barras invertidas `\`), não podemos simplesmente concatenar o caminho relativo do arquivo com a string `root`.
-Para isso, temosa função `joinpath`, que unirá diferentes caminhos relativos e nomes de arquivos de acordo com a implementação específica do seu sistema de arquivos do sistema operacional.
+Para isso, temos a função `joinpath`, que unirá diferentes caminhos relativos e nomes de arquivos de acordo com a implementação específica do sistema de arquivos do seu sistema operacional.
 
 Supondo que você tenha um script chamado `my_script.jl` dentro do diretório do seu projeto.
 Você pode ter uma representação robusta do caminho do arquivo para `my_script.jl` como:
@@ -1846,7 +1846,7 @@ Depois de fazer isso, você pode acessar todas as funções e tipos dentro `Modu
 
 Saber como lidar com datas e timestamps é importante na ciência de dados.
 Como dissemos na seção *Por que Julia?* (@sec:why_julia), O `pandas` do Python usa seu próprio tipo de `datetime` para lidar com datas.
-O mesmo é verdade no R tidyverse, o pacote `lubridate`, que também define o seu próprio tipo de `datetime` para lidar com datas.
+O mesmo é verdade no tidyverse de R, no pacote `lubridate`, que também define o seu próprio tipo de `datetime` para lidar com datas.
 Em Julia, os pacotes não precisam escrever sua própria lógica de datas, porque Julia tem um módulo de datas em sua biblioteca padrão chamado `Dates`.
 
 Para começar, vamos carregar o módulo `Dates`:
@@ -1930,13 +1930,13 @@ Assim, poderíamos, alternativamente, construir a hora oficial de nascimento de 
 sco("DateTime(Year(1987), Month(9), Day(13), Hour(21), Minute(21))")
 ```
 
-#### Datas de análise {#sec:dates_parsing}
+#### Parseando Datas {#sec:dates_parsing}
 
 Na maioria das vezes, não construiremos instâncias `Date` ou `DateTime` do princípio.
-Actually, we will probably be **parsing strings as `Date` or `DateTime` types**.
+Na verdade, nós provavelmente **parsearemos strings como tipos `Date` ou `DateTime`**.
 
-Os construtores `Date` e `DateTime` constructors pode ser alimentado com uma string e uma string de formato.
-Por exemplo, a string `"19870913"` representando 13 de setembro de 1987 pode ser analisado com:
+Os construtores `Date` e `DateTime` podem ser alimentados com uma string e uma string de formato de data.
+Por exemplo, a string `"19870913"` representando 13 de setembro de 1987 pode ser parseada com:
 
 ```jl
 sco("""Date("19870913", "yyyymmdd")""")
@@ -2095,7 +2095,7 @@ Ou mesmo meses:
 sco("""Date("2021-01-01"):Month(1):Date("2021-03-01")""")
 ```
 
-Perceba que o **tipo deste intervalo é um `StepRange` com o `Date` e concreto do tipo `Period`** usamos como intervalo dentro do operador de cólon `:`:
+Perceba que o **tipo deste intervalo é um `StepRange` com o `Date` e um tipo concreto `Period`** que usamos como intervalo dentro do operador `:`:
 
 ```jl
 s = """
@@ -2117,7 +2117,7 @@ E tem todo o **arranjo de funcionalidades disponíveis**, como, por exemplo, ind
 sco("collected_date_interval[end]")
 ```
 
-Também podemos **broadcast operações de data** com seu vetor de `Date`s:
+Também podemos fazer **broadcast de operações de data** em um vetor de `Date`s:
 
 ```jl
 sco("collected_date_interval .+ Day(10)")
@@ -2141,7 +2141,7 @@ using Random: rand, randn, seed!
 
 Nós temos **duas funções principais que geram números aleatórios**:
 
-* `rand`: amostras de **elemento aleatório** de uma estrutura ou tipo de dados.
+* `rand`: **amostra aleatória de elementos** de uma estrutura ou tipo de dados.
 * `randn`: gera um número aleatório que segue um **distribuição normal padrão** (média 0 e desvio padrão 1) de um tipo específico.
 
 > **_NOTE:_**
@@ -2169,7 +2169,7 @@ Ou você quer um intervalo diferente:
 scob("rand(1.0:10.0)")
 ```
 
-Você também pode especificar um tamanho de etapa diferente dentro do intervalo e um tipo diferente.
+Você também pode especificar um tamanho de incremento diferente dentro do intervalo e um tipo diferente.
 Aqui estamos usando números sem ponto `.` então Julia irá interpretá-los como `Int64`:
 
 ```jl
@@ -2182,7 +2182,7 @@ Você também pode misturar e combinar argumentos:
 sco("rand(2:2:20, 3)")
 ```
 
-Ele também suporta uma coleção de elementos como uma tupla:
+`rand` também aceita uma coleção de elementos como, por exemplo, uma tupla:
 
 ```jl
 scob("""rand((42, "Julia", 3.14))""")
@@ -2265,7 +2265,7 @@ sco("rand(my_seed, 3)")
 > **_NOTE:_**
 > Se você quiser que seu código seja reproduzível, basta chamar `seed!` no começo do seu script.
 > Isso cuidará da reprodutibilidade sequencial das operações `Random`.
-> Não há necessidade de usar todo uso `rand` e `randn`.
+> Não há necessidade de usá-la dentro de todo `rand` e `randn`.
 
 ### Downloads {#sec:downloads}
 

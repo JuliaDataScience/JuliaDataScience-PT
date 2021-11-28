@@ -1,6 +1,6 @@
 # Julia Basics {#sec:julia_basics}
 
-> **_NOTE:_**
+> **_OBSERVAÇÃO:_**
 > Neste capítulo, descreveremos o básico de Julia como linguagem de programação.
 > Por favor, note que isso não é *estritamente necessário* para você usar Julia como uma ferramenta de manipulação e visualização de dados.
 > Ter um conhecimento básico de Julia definitivamente o tornará mais *eficaz* e *eficiente* no uso de Julia.
@@ -341,7 +341,7 @@ s = """
 scob(s)
 ```
 
-> **_NOTE:_**
+> **_OBSERVAÇÃO:_**
 > Podemos inspecionar tipos com as funções `supertypes` e `subtypes`.
 
 Vamos voltar ao nosso `Language` `struct` que definimos anteriormente.
@@ -566,7 +566,7 @@ Aqui, precisamos avisar Julia que o `n` dentro do loop `while` está no escopo g
 
 Por fim, também usamos o operador `+=` que é uma boa abreviatura para `n = n + 1`.
 
-## Estruturas de dados nativos {#sec:data_structures}
+## Estruturas nativas de dados {#sec:data_structures}
 
 Julia possui diversas estruturas de dados nativos.
 Elas são abstrações de dados que representam alguma forma de dado estruturado.
@@ -803,7 +803,7 @@ scob(s)
      scob("""replace(julia_string, "amazing" => "awesome")""")
      ```
 
-4. `split`: divide uma string por um delimitador:
+4. `split`: fatia uma string por um delimitador:
 
      ```jl
      sco("""split(julia_string, " ")""")
@@ -976,8 +976,8 @@ Se você quer "materializar" a range para uma coleção, você pode usar a funç
 sco("collect(1:10)")
 ```
 
-Nós temos um arranjo do tipo especificado no range entre os limites que definimos.
-Vamos conversar sobre arranjos.
+Nós temos uma array do tipo especificado no range entre os limites que definimos.
+Vamos conversar sobre arrays.
 
 ### Array {#sec:array}
 
@@ -988,40 +988,40 @@ Por exemplo, eles podem armazenar múltiplos números em uma dimensão:
 sco("myarray = [1, 2, 3]")
 ```
 
-Na maioria das vezes você gostaria de **arranjos de um único tipo para problemas de performance**, mas observe que eles também podem conter objetos de diferentes tipos:
+Na maioria das vezes você gostaria de **arrays de um único tipo para problemas de performance**, mas observe que eles também podem conter objetos de diferentes tipos:
 
 ```jl
 sco("myarray = [\"text\", 1, :symbol]"; process=output_block)
 ```
 
-Eles são o "pão com manteiga" da ciência de dados, porque os arranjos são o que está por trás da maior parte do fluxo de trabalho em **manipulação de dados** e **visualização de dados**.
+Eles são o "pão com manteiga" da ciência de dados, porque as arrays são o que está por trás da maior parte do fluxo de trabalho em **manipulação de dados** e **visualização de dados**.
 
-Portanto, **arranjos são uma estrutura de dados essencial**.
+Portanto, **arrays são uma estrutura de dados essencial**.
 
-#### Tipos de arranjo {#sec:array_types}
+#### Tipos de array {#sec:array_types}
 
-Vamos começar com os **tipos de arranjos**.
+Vamos começar com os **tipos de arrays**.
 Existem vários, mas vamos nos concentrar nos dois mais usados em ciência de dados:
 
-* `Vector{T}`: arranjo **unidimensional**. Alias para `Array{T, 1}`.
-* `Matrix{T}`: arranjo **bidimensional**. Alias para `Array{T, 2}`.
+* `Vector{T}`: array **unidimensional**. Alias para `Array{T, 1}`.
+* `Matrix{T}`: array**bidimensional**. Alias para `Array{T, 2}`.
 
-Observe aqui que `T` é o tipo do arranjo subjacente.
+Observe aqui que `T` é o tipo da array subjacente.
 Então, por exemplo, `Vector{Int64}` é um `Vector` no qual todos os elementos são `Int64`s, e `Matrix{AbstractFloat}` é a `Matrix` em que todos os elementos são subtipos de `AbstractFloat`.
 
-Na maioria das vezes, especialmente ao lidar com dados tabulares, estamos usando arranjos unidimensionais ou bidimensionais.
+Na maioria das vezes, especialmente ao lidar com dados tabulares, estamos usando arrays unidimensionais ou bidimensionais.
 Ambos são tipos `Array` para Julia.
 Mas, podemos usar os úteis aliases `Vector` e `Matrix` para uma sintaxe clara e concisa.
 
-#### Construção de Arranjo {#sec:array_construction}
+#### Construção de Array {#sec:array_construction}
 
-Como **construímos** um arranjo?
-Nesta seção, começamos construindo arranjos num nível mais baixo.
+Como **construímos** uma array?
+Nesta seção, começamos construindo arrays num nível mais baixo.
 Isso pode ser necessário para escrever código de alto desempenho em algumas situações.
-No entanto, na maioria das situações, isso não é necessário e podemos usar métodos mais convenientes para criar arranjos com segurança.
+No entanto, na maioria das situações, isso não é necessário e podemos usar métodos mais convenientes para criar arrays com segurança.
 Esses métodos mais convenientes serão descritos posteriormente nesta seção.
 
-O construtor de baixo nível para arranjos em Julia é o **construtor padrão**.
+O construtor de baixo nível para arrays em Julia é o **construtor padrão**.
 Ele aceita o tipo de elemento como o parâmetro de tipo dentro dos colchetes `{}` e dentro do construtor você passará o tipo de elemento seguido pelas dimensões desejadas.
 É comum inicializar vetores e matrizes com elementos indefinidos usando o argumento para tipo `undef`.
 Um vetos de 10 elementos `undef` `Float64` pode ser construído como:
@@ -1078,7 +1078,7 @@ Nós também temos alguns **atalhos de sintaxe** para os elementos mais comuns n
      sco(s)
      ```
 
-Para outros elementos, podemos primeiro instanciar uma array com elementos `undef` e usar a função `fill!` para preencher todos os elementos de um arranjo com o elemento desejado.
+Para outros elementos, podemos primeiro instanciar uma array com elementos `undef` e usar a função `fill!` para preencher todos os elementos de uma array com o elemento desejado.
 Segue um exemplo com `3.14` ($\pi$):
 
 ```jl
@@ -1089,7 +1089,7 @@ s = """
 sco(s)
 ```
 
-Também podemos criar arranjos com **literais de arranjo**.
+Também podemos criar arrays com **literais de array**.
 Por exemplo, segue uma matriz 2x2 de inteiros:
 
 ```jl
@@ -1100,8 +1100,8 @@ s = """
 sco(s)
 ```
 
-Literais de arranjo também aceita uma especificação de tipo antes do colchetes `[]`.
-Então, se quisermos o mesmo arranjo 2x2 de antes mas agora como floats, podemos:
+Literais de array também aceita uma especificação de tipo antes do colchetes `[]`.
+Então, se quisermos a mesma array 2x2 de antes mas agora como floats, podemos:
 
 ```jl
 s = """
@@ -1120,7 +1120,7 @@ s = """
 sco(s)
 ```
 
-Você pode até **misturar e combinar** literais de arranjo com os construtores:
+Você pode até **misturar e combinar** literais de array com os construtores:
 
 ```jl
 s = """
@@ -1146,8 +1146,8 @@ s = """
 sco(s)
 ```
 
-Outra maneira poderosa de criar um arranjo é escrever uma **compreensão de array**.
-Esta maneira de criar arranjos é melhor na maioria dos casos: evita loops, indexação e outras operações sujeitas a erros.
+Outra maneira poderosa de criar uma array é escrever uma **compreensão de array**.
+Esta maneira de criar arrays é melhor na maioria dos casos: evita loops, indexação e outras operações sujeitas a erros.
 Você especifica o que deseja fazer dentro dos colchetes `[]`.
 Por exemplo, digamos que queremos criar um vetor de quadrados de 1 a 10:
 
@@ -1176,7 +1176,7 @@ s = """
 sco(s)
 ```
 
-Tal como acontece com literais de arranjo, você pode especificar o tipo desejado antes dos colchetes `[]`:
+Tal como acontece com literais de array, você pode especificar o tipo desejado antes dos colchetes `[]`:
 
 ```jl
 s = """
@@ -1185,7 +1185,7 @@ s = """
 sco(s)
 ```
 
-Finalmente, também podemos criar arranjos com **funções de concatenação**.
+Finalmente, também podemos criar arrays com **funções de concatenação**.
 Concatenação é um termo padrão em programação e significa "para acorrentar juntos".
 Por exemplo, podemos concatenar strings com "aa" e "bb" para conseguir "aabb":
 
@@ -1196,9 +1196,9 @@ s = """
 sco(s)
 ```
 
-E podemos concatenar arranjos para criar novos arranjos:
+E podemos concatenar arrays para criar novas arrays:
 
-* `cat`: concatenar arranjos de entrada ao longo de uma dimensão específica `dims`
+* `cat`: concatenar arrays de entrada ao longo de uma dimensão específica `dims`
 
      ```jl
      sco("cat(ones(2), zeros(2), dims=1)")
@@ -1220,20 +1220,20 @@ E podemos concatenar arranjos para criar novos arranjos:
      sco("hcat(ones(2), zeros(2))")
      ```
 
-#### Inspeção de Arranjos {#sec:array_inspection}
+#### Inspeção de Arrays {#sec:array_inspection}
 
-Assim que tivermos arranjos, o próximo passo lógico seria **inspeciona-los**.
-Existem várias funções úteis que permitem ao usuário ter uma visão de qualquer arranjo.
+Assim que tivermos arrays, o próximo passo lógico seria **inspeciona-las**.
+Existem várias funções úteis que permitem ao usuário ter uma visão de qualquer array.
 
-É muito útil saber que **tipo de elementos** existem dentro de um arranjo.
+É muito útil saber que **tipo de elementos** existem dentro de uma array.
 Fazemos isso com `eltype`:
 
 ```jl
 sco("eltype(my_matrix_π)")
 ```
 
-Depois de conhecer seus tipos, alguém pode se interessar nas **dimensões do arranjo**.
-Julia tem várias funções para inspecionar as dimensões do arranjo:
+Depois de conhecer seus tipos, alguém pode se interessar nas **dimensões da array**.
+Julia tem várias funções para inspecionar as dimensões da array:
 
 * `length`: número total de elementos
 
@@ -1248,7 +1248,7 @@ Julia tem várias funções para inspecionar as dimensões do arranjo:
      ```
 
 * `size`: esse é um pouco complicado.
-    Por padrão, ele retornará uma tupla contendo as dimensões do arranjo.
+    Por padrão, ele retornará uma tupla contendo as dimensões da array.
 
      ```jl
      sco("size(my_matrix_π)")
@@ -1261,11 +1261,11 @@ Julia tem várias funções para inspecionar as dimensões do arranjo:
      scob("size(my_matrix_π, 2)")
      ```
 
-#### Indexação e Divisão de Arranjo {#sec:array_indexing}
+#### Indexação e Fatiamento de Array {#sec:array_indexing}
 
-Às vezes, queremos inspecionar apenas certas partes de um arranjo.
+Às vezes, queremos inspecionar apenas certas partes de uma array.
 Chamamos isso de **indexação** e **fatiamento**.
-Se você quiser uma observação particular de um vetor, ou uma linha ou coluna de uma matriz, você provavelmente precisará **indexar um arranjo**.
+Se você quiser uma observação particular de um vetor, ou uma linha ou coluna de uma matriz, você provavelmente precisará **indexar uma array**.
 
 Primeiro, vou criar um vetor e uma matriz de exemplo para brincar:
 
@@ -1288,15 +1288,15 @@ Você usa colchetes `[]` com o **índice** desejado dentro:
 scob("my_example_vector[2]")
 ```
 
-A mesma sintaxe segue com os arranjos.
-Mas, como os arranjos são arranjos bidimensionais, temos que especificar *ambas* linhas e colunas.
+A mesma sintaxe segue com as arrays.
+Mas, como as arrays são arrays bidimensionais, temos que especificar *ambas* linhas e colunas.
 Vamos recuperar o elemento da segunda linha (primeira dimensão) e primeira coluna (segunda dimensão):
 
 ```jl
 scob("my_example_matrix[2, 1]")
 ```
 
-Júlia também possui palavras-chave convencionais para o **primeiro** e **último** elementos de um arranjo: `begin` e `end`.
+Júlia também possui palavras-chave convencionais para o **primeiro** e **último** elementos de uma array: `begin` e `end`.
 Por exemplo, o penúltimo elemento de um vetor pode ser recuperado como:
 
 ```jl
@@ -1310,9 +1310,9 @@ Vamos recuperar o elemento da última linha e segunda coluna:
 scob("my_example_matrix[end, begin+1]")
 ```
 
-Muitas vezes, não estamos só interessados em apenas um elemento do arranjo, mas em um todo **subconjunto de elementos do arranjo**.
+Muitas vezes, não estamos só interessados em apenas um elemento da array, mas em um todo **subconjunto de elementos da array**.
 Podemos fazer isso **fatiando** uma array.
-Usamos a mesma sintaxe de índice, mas com os dois pontos adicionados `:` para denotar os limites que estamos cortando através do arranjo.
+Usamos a mesma sintaxe de índice, mas com os dois pontos adicionados `:` para denotar os limites que estamos fatiando através da array.
 Por exemplo, suponha que queremos obter do 2º ao 4º elemento de um vetor:
 
 ```jl
@@ -1335,11 +1335,11 @@ Também suporta `begin` e `end`:
 sco("my_example_matrix[begin+1:end, end]")
 ```
 
-#### Manipulações de Arranjo {#sec:array_manipulation}
+#### Manipulações de Array {#sec:array_manipulation}
 
-Existem várias formas para **manipular** um arranjo.
-O primeiro seria manipular um **único elemento do arranjo**.
-Nós apenas indexamos o arranjo pelo elemento desejado e procedemos com uma atribuição `=`:
+Existem várias formas para **manipular** uma array.
+O primeiro seria manipular um **único elemento da array**.
+Nós apenas indexamos a array pelo elemento desejado e procedemos com uma atribuição `=`:
 
 ```jl
 s = """
@@ -1349,8 +1349,8 @@ s = """
 sco(s)
 ```
 
-Ou, você pode manipular um determinado **subconjunto de elementos do arranjo**.
-Nesse caso, precisamos dividir o arranjo e, em seguida, atribuir com `=`:
+Ou, você pode manipular um determinado **subconjunto de elementos da array**.
+Nesse caso, precisamos fatiar a array e, em seguida, atribuir com `=`:
 
 ```jl
 s = """
@@ -1360,7 +1360,7 @@ s = """
 sco(s)
 ```
 
-Observe que tivemos que atribuir um vetor porque nosso arranjo dividido é do tipo `Vector`:
+Observe que tivemos que atribuir um vetor porque nossa array fatiada é do tipo `Vector`:
 
 ```jl
 s = """
@@ -1371,7 +1371,7 @@ sco(s)
 
 A segunda maneira de manipular uma array é **alterando suas dimensões**.
 Suponha que você tenha um vetor de 6 elementos e deseja torná-lo uma matriz 3x2.
-Você pode fazer isso com `reshape`, usando o arranjo como o primeiro argumento e uma tupla de dimensões como segundo argumento:
+Você pode fazer isso com `reshape`, usando a array como o primeiro argumento e uma tupla de dimensões como segundo argumento:
 
 ```jl
 s = """
@@ -1428,9 +1428,9 @@ Em seguida, `map` funciona com a divisão:
 sco("map(x -> x + 100, my_example_matrix[:, 3])")
 ```
 
-Finalmente, às vezes, e especialmente ao lidar com dados tabulares, queremos aplicar uma **função sobre todos os elementos em uma dimensão de arranjo específica**.
+Finalmente, às vezes, e especialmente ao lidar com dados tabulares, queremos aplicar uma **função sobre todos os elementos em uma dimensão de array específica**.
 Isso pode ser feito com a função `mapslices`.
-Parecido com `map`, o primeiro argumento é a função e o segundo argumento é o arranjo.
+Parecido com `map`, o primeiro argumento é a função e o segundo argumento é a array.
 A única mudança é que precisamos especificar o argumento `dims` argument para sinalizar em qual dimensão queremos transformar os elementos.
 
 Por exemplo, vamos usar `mapslice` com a função `sum` em ambas as linhas (`dims=1`) e colunas (`dims=2`):
@@ -1453,10 +1453,10 @@ mapslices(sum, my_example_matrix; dims=2)
 )
 ```
 
-#### Iteração de arranjo {#sec:array_iteration}
+#### Iteração de array {#sec:array_iteration}
 
-Uma operação comum é **iterar sobre um arranjo com um loop `for`**.
-O **loop regular `for` sobre um arranjo retorna cada elemento**.
+Uma operação comum é **iterar sobre uma array com um loop `for`**.
+O **loop regular `for` sobre uma array retorna cada elemento**.
 
 O exemplo mais simples é com um vetor.
 
@@ -1476,8 +1476,8 @@ empty_vector
 )
 ```
 
-Às vezes, você não quer fazer um loop sobre cada elemento, mas na verdade sobre cada índice de arranjo.
-**Podemos usar a função `eachindex` combinada com um loop `for` para iterar sobre cada índice de arranjo**.
+Às vezes, você não quer fazer um loop sobre cada elemento, mas na verdade sobre cada índice de array.
+**Podemos usar a função `eachindex` combinada com um loop `for` para iterar sobre cada índice de array**.
 
 Novamente, vamos mostrar um exemplo com um vetor:
 
@@ -1572,7 +1572,7 @@ Muitas vezes é melhor usar funções especializadas para esses loops:
 
 ### Par {#sec:pair}
 
-Em comparação com a enorme seção sobre arranjos, esta seção sobre pares será breve.
+Em comparação com a enorme seção sobre arrays, esta seção sobre pares será breve.
 **`Par` é uma estrutura de dados que contém dois objetos** (which typically belong to each other).
 Construímos um par em Julia usando a seguinte sintaxe:
 
@@ -1750,7 +1750,7 @@ add_elements(my_collection[1], my_collection[2], my_collection[3])
 """)
 ```
 
-Aqui é que usamos o operador "splat" `...` que pega uma coleção (geralmente um arranjo, vetor, tupla ou range) e a converte em uma sequência de argumentos:
+Aqui é que usamos o operador "splat" `...` que pega uma coleção (geralmente uma array, vetor, tupla ou range) e a converte em uma sequência de argumentos:
 
 ```jl
 scob("add_elements(my_collection...)")
@@ -2025,7 +2025,7 @@ scob("dayofweekofmonth(my_birthday)")
 
 Sim, José nasceu no segundo domingo de setembro.
 
-> **_NOTE:_**
+> **_OBSERVAÇÃO:_**
 > Aqui está uma dica útil para recuperar apenas os dias da semana de instâncias de `Dates`.
 > Use o `filter` no `dayofweek(your_date) <= 5`.
 > Para o dia útil, você pode verificar o pacote [`BusinessDays.jl`](https://github.com/JuliaFinance/BusinessDays.jl).
@@ -2111,7 +2111,7 @@ Podemos converter isso para um **vetor** com a função `collect`:
 sco("collected_date_interval = collect(date_interval)")
 ```
 
-E tem todo o **arranjo de funcionalidades disponíveis**, como, por exemplo, indexação:
+E tem toda a **array de funcionalidades disponíveis**, como, por exemplo, indexação:
 
 ```jl
 sco("collected_date_interval[end]")
@@ -2144,7 +2144,7 @@ Nós temos **duas funções principais que geram números aleatórios**:
 * `rand`: **amostra aleatória de elementos** de uma estrutura ou tipo de dados.
 * `randn`: gera um número aleatório que segue um **distribuição normal padrão** (média 0 e desvio padrão 1) de um tipo específico.
 
-> **_NOTE:_**
+> **_OBSERVAÇÃO:_**
 > Observe que essas duas funções já estão no módulo `Base` de Julia.
 > Então, você não precisa importar `Random` se estiver planejando usá-los.
 
@@ -2188,7 +2188,7 @@ sco("rand(2:2:20, 3)")
 scob("""rand((42, "Julia", 3.14))""")
 ```
 
-E também arranjos:
+E também arrays:
 
 ```jl
 scob("rand([1, 2, 3])")
@@ -2201,7 +2201,7 @@ sco("rand(Dict(:one => 1, :two => 2))")
 ```
 
 Para terminar todas as opções de argumentos `rand`, você pode especificar as dimensões de número aleatório desejadas em uma tupla.
-Se você fizer isso, o tipo retornado será um arranjo.
+Se você fizer isso, o tipo retornado será uma array.
 Por exemplo, aqui uma matriz 2x2 de números `Float64` entre 1.0 e 3.0:
 
 ```jl
@@ -2262,7 +2262,7 @@ sco("rand(my_seed, 3)")
 sco("rand(my_seed, 3)")
 ```
 
-> **_NOTE:_**
+> **_OBSERVAÇÃO:_**
 > Se você quiser que seu código seja reproduzível, basta chamar `seed!` no começo do seu script.
 > Isso cuidará da reprodutibilidade sequencial das operações `Random`.
 > Não há necessidade de usá-la dentro de todo `rand` e `randn`.
@@ -2306,5 +2306,5 @@ s = """
 sco(s; process=catch_show)
 ```
 
-> **_NOTE:_**
+> **_OBSERVAÇÃO:_**
 > Para interações HTTP mais complexas, como interação com APIs da web, consulte o pacote [`HTTP.jl` package](https://github.com/JuliaWeb/HTTP.jl) .

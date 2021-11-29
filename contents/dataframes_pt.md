@@ -21,13 +21,13 @@ Options(tv_shows; label="TV_shows")
 ```
 
 Aqui, as reticências significam que esta pode ser uma tabela muito longa e mostramos apenas algumas linhas.
-Ao analisar dados, muitas vezes levantamos questões interessantes sobre eles, também conhecidas como _data queries_.
+Ao analisar dados, muitas vezes levantamos questões interessantes sobre eles.
 Para tabelas grandes, os computadores são capazes de responder a  perguntas desse tipo muito mais rápido do que você faria manualmente.
-Alguns exemplos das chamadas _queries_ para os dados seriam:
+Alguns exemplos de questões para os dados seriam:
 
 - Qual programa de TV foi melhor classificado?
 - Quais programas de TV foram produzidos nos Estados Unidos?
-- Which TV shows were produced in the same country?
+- Quais programas de TV foram produzidos no mesmo país?
 
 Mas, como pesquisador, a ciência real muitas vezes começa com várias tabelas ou fontes de dados.
 Por exemplo, se também tivéssemos dados das classificações de outra pessoa para os programas de TV (@tbl:ratings):
@@ -47,13 +47,7 @@ Agora, alguns questionamentos que poderíamos fazer:
 
 Ao longo deste capítulo, mostraremos como você pode responder facilmente a essas perguntas em Julia.
 Para fazer isso, primeiro mostramos porque precisamos de um pacote Julia chamado `DataFrames.jl`.
-Nas próximas seções, mostramos como você pode usar este pacote e também, como escrever transformações de dados rápidas (@sec:df_performance).
-
-```{=comment}
-TODO: Adicione uma comparação com o Excel para ver onde Julia é melhor.
-Em resumo, porque é muito mais fácil estruturar e reproduzir a lógica.
-(Jose approves)
-```
+Nas próximas seções, mostramos como você pode usar este pacote e também, como escrever transformações de dados (@sec:df_performance).
 
 Vejamos uma tabela de notas como a @tbl:grades_for_2020:
 
@@ -122,12 +116,6 @@ without_caption_label(df) # hide
 
 o que nos dá uma variável `df` que contém nossos dados no formato de tabela.
 
-```{=comment}
-Although this section is a duplicate of earlier chapters, I do think it might be a good idea to keep the duplicate.
-According to MIT instructor Patrick Winston (https://youtu.be/Unzc731iCUY), convencer alguém de algo significa repetir algumas vezes.
-Com esta seção, as pessoas que já entendem, entendem um pouco melhor e as pessoas que não entendiam ainda podem entender.
-```
-
 > **_OBSERVAÇÃO:_**
 > Isso funciona, mas há uma coisa que precisamos mudar imediatamente.
 > Neste exemplo, definimos as variáveis `name`, `grade_2020` e `df` em escopo global.
@@ -180,7 +168,7 @@ Ao invés de "mudarmos" a função, vamos fazer uma nova e daremos um nome claro
 Portanto, de volta ao construtor `DataFrames`.
 Como você deve ter visto, a maneira de criar um é simplesmente passar vetores como argumentos para o construtor `DataFrame`.
 Você pode criar qualquer vetor de Julia válido e ele funcionará **contanto que os vetores tenham o mesmo comprimento**.
-Duplicados, símbolos Unicode e qualquer tipo de número são adequados:
+Valores duplicados, símbolos Unicode e qualquer tipo de número são adequados:
 
 ```jl
 sco("""
@@ -196,9 +184,9 @@ Por exemplo, podemos fazer uma função para obter as notas de um ou mais `names
 ```
 
 Esta forma de usar funções para envolver funcionalidades básicas em linguagens de programação e pacotes é bastante comum.
-Basicamente, você pode pensar em Julia e `DataFrames.jl` como fornecedores de blocos de construção.
-Eles fornecem blocos de construção muito **genéricos** que permitem que você crie coisas para seu caso de uso **específico** como neste exemplo de notas.
-Usando os blocos, você pode fazer um script de análise de dados, controlar um robô ou o que você quiser construir.
+Basicamente, você pode pensar em Julia e `DataFrames.jl` como peças de Lego.
+Eles fornecem peças muito **genéricas** que permitem que você crie coisas para seu uso **específico** como neste exemplo de notas.
+Usando essas peças, você pode fazer um script de análise de dados, controlar um robô ou o que você quiser construir.
 
 Até agora, os exemplos eram bastante complicados, porque tínhamos que usar índices.
-Nas próximas seções, mostraremos como carregar e salvar dados e muitos blocos de construção poderosos fornecidos por `DataFrames.jl`.
+Nas próximas seções, mostraremos como carregar e salvar dados, e muitas outras peças de Lego poderosas fornecidas por `DataFrames.jl`.

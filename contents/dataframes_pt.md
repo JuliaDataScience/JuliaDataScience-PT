@@ -7,8 +7,8 @@ As linhas, na prática, denotam observações enquanto as colunas indicam variá
 Por exemplo, podemos ter uma tabela de programas de TV contendo o país em que cada um foi produzido e nossa classificação pessoal, acesse @tbl:TV_shows.
 
 ```{=comment}
-Using a different example from the rest in the chapter to make the text a bit more interesting.
-We could even ask the reader to answer the queries described below as exercises.
+Vamos usar um exemplo diferente do resto do capítulo para tornar o texto um pouco mais interessante.
+Poderíamos até mesmo pedir ao leitor que responda às perguntas descritas abaixo como exercícios.
 ```
 
 ```jl
@@ -20,17 +20,17 @@ tv_shows = DataFrame(
 Options(tv_shows; label="TV_shows")
 ```
 
-Here, the dots mean that this could be a very long table and we only show a few rows.
-While analyzing data, often we come up with interesting questions about the data, also known as _data queries_.
-For large tables, computers would be able to answer these kinds of questions much quicker than you could do it by hand.
-Some examples of these so-called _queries_ for this data could be:
+Aqui, as reticências significam que esta pode ser uma tabela muito longa e mostramos apenas algumas linhas.
+Ao analisar dados, muitas vezes levantamos questões interessantes sobre eles, também conhecidas como _data queries_.
+Para tabelas grandes, os computadores são capazes de responder a  perguntas desse tipo muito mais rápido do que você faria manualmente.
+Alguns exemplos das chamadas _queries_ para os dados seriam:
 
-- Which TV show has the highest rating?
-- Which TV shows were produced in the United States?
+- Qual programa de TV foi melhor classificado?
+- Quais programas de TV foram produzidos nos Estados Unidos?
 - Which TV shows were produced in the same country?
 
-But, as a researcher, real science often starts with having multiple tables or data sources.
-For example, if we also have data from someone else's ratings for the TV shows (@tbl:ratings):
+Mas, como pesquisador, a ciência real muitas vezes começa com várias tabelas ou fontes de dados.
+Por exemplo, se também tivéssemos dados das classificações de outra pessoa para os programas de TV (@tbl:ratings):
 
 ```jl
 ratings = DataFrame(
@@ -39,14 +39,14 @@ ratings = DataFrame(
 Options(ratings; label="ratings")
 ```
 
-Now, questions that we could ask ourselves could be:
+Agora, alguns questionamentos que poderíamos fazer:
 
-- What is Game of Thrones' average rating?
-- Who gave the highest rating for Friends?
-- What TV shows were rated by you but not by the other person?
+- Qual é a avaliação média de Game of Thrones?
+- Quem deu a classificação mais alta para Friends?
+- Quais programas de TV foram avaliados por você, mas não pela outra pessoa?
 
-In the rest of this chapter, we will show you how you can easily answer these questions in Julia.
-To do so, we first show why we need a Julia package called `DataFrames.jl`.
+Ao longo deste capítulo, mostraremos como você pode responder facilmente a essas perguntas em Julia.
+Para fazer isso, primeiro mostramos porque precisamos de um pacote Julia chamado `DataFrames.jl`.
 In the next sections, we show how you can use this package and, finally, we show how to write fast data transformations (@sec:df_performance).
 
 ```{=comment}

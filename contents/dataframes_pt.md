@@ -173,14 +173,14 @@ df = grades_2020()
 """; process=without_caption_label)
 ```
 
-Of course, this assumes that the function is not re-defined.
-We promise to not do that in this book, because it is a bad idea exactly for this reason.
-Instead of "changing" a function, we will make a new one and give it a clear name.
+Claro, pressupondo que a função não seja redefinida.
+Prometemos não fazer isso neste livro, porque é uma má ideia exatamente por este motivo.
+Ao invés de "mudarmos" a função, vamos fazer uma nova e daremos um nome claro.
 
-So, back to the `DataFrames` constructor.
-As you might have seen, the way to create one is simply to pass vectors as arguments into the `DataFrame` constructor.
-You can come up with any valid Julia vector and it will work **as long as the vectors have the same length**.
-Duplicates, Unicode symbols and any sort of numbers are fine:
+Portanto, de volta ao construtor `DataFrames`.
+Como você deve ter visto, a maneira de criar um é simplesmente passar vetores como argumentos para o construtor `DataFrame`.
+Você pode criar qualquer vetor de Julia válido e ele funcionará **contanto que os vetores tenham o mesmo comprimento**.
+Duplicados, símbolos Unicode e qualquer tipo de número são adequados:
 
 ```jl
 sco("""
@@ -188,17 +188,17 @@ DataFrame(σ = ["a", "a", "a"], δ = [π, π/2, π/3])
 """; process=without_caption_label)
 ```
 
-Typically, in your code, you would create a function which wraps around one or more `DataFrame`s' functions.
-For example, we can make a function to get the grades for one or more `names`:
+Normalmente, em seu código, você criaria uma função que envolve uma ou mais funções `DataFrame`s.
+Por exemplo, podemos fazer uma função para obter as notas de um ou mais `names`:
 
 ```jl
 @sco process=without_caption_label JDS.grades_2020([3, 4])
 ```
 
-This way of using functions to wrap around basic functionality in programming languages and packages is quite common.
-Basically, you can think of Julia and `DataFrames.jl` as providers of building blocks.
-They provide very **generic** building blocks which allow you to build things for your **specific** use case like this grades example.
-By using the blocks, you can make a data analysis script, control a robot or whatever you like to build.
+Esta forma de usar funções para envolver funcionalidades básicas em linguagens de programação e pacotes é bastante comum.
+Basicamente, você pode pensar em Julia e `DataFrames.jl` como fornecedores de blocos de construção.
+Eles fornecem blocos de construção muito **genéricos** que permitem que você crie coisas para seu caso de uso **específico** como neste exemplo de notas.
+Usando os blocos, você pode fazer um script de análise de dados, controlar um robô ou o que você quiser construir.
 
-So far, the examples were quite cumbersome, because we had to use indexes.
-In the next sections, we will show how to load and save data, and many powerful building blocks provided by `DataFrames.jl`.
+Até agora, os exemplos eram bastante complicados, porque tínhamos que usar índices.
+Nas próximas seções, mostraremos como carregar e salvar dados e muitos blocos de construção poderosos fornecidos por `DataFrames.jl`.

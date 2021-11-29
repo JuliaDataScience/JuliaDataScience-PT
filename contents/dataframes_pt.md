@@ -47,37 +47,37 @@ Agora, alguns questionamentos que poderíamos fazer:
 
 Ao longo deste capítulo, mostraremos como você pode responder facilmente a essas perguntas em Julia.
 Para fazer isso, primeiro mostramos porque precisamos de um pacote Julia chamado `DataFrames.jl`.
-In the next sections, we show how you can use this package and, finally, we show how to write fast data transformations (@sec:df_performance).
+Nas próximas seções, mostramos como você pode usar este pacote e também, como escrever transformações de dados rápidas (@sec:df_performance).
 
 ```{=comment}
-TODO: Add a comparison with Excel to see where Julia is better.
-In summary, because it is much easier to structure and reproduce the logic.
+TODO: Adicione uma comparação com o Excel para ver onde Julia é melhor.
+Em resumo, porque é muito mais fácil estruturar e reproduzir a lógica.
 (Jose approves)
 ```
 
-Let's look at a table of grades like the one in @tbl:grades_for_2020:
+Vejamos uma tabela de notas como a @tbl:grades_for_2020:
 
 ```jl
 JDS.grades_for_2020()
 ```
 
-Here, the column name has type `string`, age has type `integer`, and grade has type `float`.
+Aqui, o nome da coluna tem um tipo `string`, idade tem um tipo `integer` e nota um tipo `float`.
 
-So far, this book has only handled Julia's basics.
-These basics are great for many things, but not for tables.
-To show that we need more, lets try to store the tabular data in arrays:
+Até agora, este livro tratou apenas do básico de Julia.
+Esse básico é bom para muitas coisas, mas não para tabelas.
+Para mostrar que precisamos de mais, vamos tentar armazenar os dados tabulares em arrays:
 
 ```jl
 @sc JDS.grades_array()
 ```
 
-Now, the data is stored in so-called column-major form, which is cumbersome when we want to get data from a row:
+Agora, os dados são armazenados na chamada forma de coluna principal, o que é complicado quando queremos obter dados de uma linha:
 
 ```jl
 @sco JDS.second_row()
 ```
 
-Or, if you want to have the grade for Alice, you first need to figure out in what row Alice is:
+Ou, se você quiser ter a nota de Alice, primeiro você precisa descobrir em que linha Alice está:
 
 ```jl
 scob("""
@@ -89,7 +89,7 @@ row_alice()
 """)
 ```
 
-and then we can get the value:
+e então podemos obter o valor:
 
 ```jl
 scob("""
@@ -102,14 +102,14 @@ value_alice()
 """)
 ```
 
-`DataFrames.jl` can easily solve these kinds of issues.
-You can start by loading `DataFrames.jl` with `using`:
+`DataFrames.jl` resolve esses problemas facilmente.
+Você pode começar carregando `DataFrames.jl` com `using`:
 
 ```
 using DataFrames
 ```
 
-With `DataFrames.jl`, we can define a `DataFrame` to hold our tabular data:
+Com `DataFrames.jl`, podemos definir uma `DataFrame` para armazenar nossos dados tabulares:
 
 ```jl
 sco("""
@@ -120,36 +120,36 @@ without_caption_label(df) # hide
 """)
 ```
 
-which gives us a variable `df` containing our data in table format.
+o que nos dá uma variável `df` que contém nossos dados no formato de tabela.
 
 ```{=comment}
 Although this section is a duplicate of earlier chapters, I do think it might be a good idea to keep the duplicate.
-According to MIT instructor Patrick Winston (https://youtu.be/Unzc731iCUY), convincing someone of something means repeating it a few times.
-With this section, people who already understand it, understand it a bit better and people who didn't understand it yet might understand it here.
+According to MIT instructor Patrick Winston (https://youtu.be/Unzc731iCUY), convencer alguém de algo significa repetir algumas vezes.
+Com esta seção, as pessoas que já entendem, entendem um pouco melhor e as pessoas que não entendiam ainda podem entender.
 ```
 
-> **_NOTE:_**
-> This works, but there is one thing that we need to change straight away.
-> In this example, we defined the variables `name`, `grade_2020` and `df` in global scope.
-> This means that these variables can be accessed and edited from anywhere.
-> If we would continue writing the book like this, we would have a few hundred variables at the end of the book even though the data that we put into the variable `name` should only be accessed via `DataFrame`!
-> The variables `name` and `grade_2020` where never meant to be kept for long!
-> Now, imagine that we would change the contents of `grade_2020` a few times in this book.
-> Given only the book as PDF, it would be near impossible to figure out the contents of the variable by the end.
+> **_OBSERVAÇÃO:_**
+> Isso funciona, mas há uma coisa que precisamos mudar imediatamente.
+> Neste exemplo, definimos as variáveis `name`, `grade_2020` e `df` em escopo global.
+> Isso significa que essas variáveis podem ser acessadas e editadas de qualquer lugar.
+> Se continuássemos escrevendo o livro assim, teríamos algumas centenas de variáveis no final do livro, embora os dados que colocamos na variável `name` só podem ser acessados via `DataFrame`!
+> As variáveis `name` e `grade_2020` não foram feitas para serem mantidas por muito tempo!
+> Agora, imagine se mudássemos `grade_2020` algumas vezes nesse livro.
+> Dado apenas o livro como PDF, seria quase impossível descobrir o conteúdo da variável ao final.
 >
-> We can solve this very easily by using functions.
+> Podemos resolver isso facilmente usando funções.
 
-Let's do the same thing as before but now in a function:
+Vamos fazer a mesma coisa de antes, mas agora em uma função:
 
 ```jl
 @sco grades_2020()
 ```
 
-Note that `name` and `grade_2020` are destroyed after the function returns, that is, they are only available in the function.
-There are two other benefits of doing this.
-First, it is now clear to the reader where `name` and `grade_2020` belong to: they belong to the grades of 2020.
-Second, it is easy to determine what the output of `grades_2020()` would be at any point in the book.
-For example, we can now assign the data to a variable `df`:
+Note que `name` e `grade_2020` desaparecem depois que a função retorna, ou seja, só estão disponíveis na função.
+Existem dois outros benefícios ao fazer isso.
+Primeiro, agora está claro para o leitor onde `name` e `grade_2020` pertencem: eles pertencem as notas de 2020.
+Em segundo lugar, é fácil determinar qual a saída de `grades_2020()` estaria em qualquer ponto do livro.
+Por exemplo, agora podemos atribuir os dados a uma variável `df`:
 
 ```jl
 sco("""
@@ -157,7 +157,7 @@ df = grades_2020()
 """; process=without_caption_label)
 ```
 
-Change the contents of `df`:
+Mudar os conteúdos de `df`:
 
 ```jl
 sco("""
@@ -165,7 +165,7 @@ df = DataFrame(name = ["Malice"], grade_2020 = ["10"])
 """; process=without_caption_label)
 ```
 
-And still recover the original data back without any problem:
+E ainda recuperar os dados originais de volta sem nenhum problema:
 
 ```jl
 sco("""

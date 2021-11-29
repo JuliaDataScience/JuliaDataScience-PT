@@ -1,10 +1,10 @@
 # DataFrames.jl {#sec:dataframes}
 
-Data comes mostly in a tabular format.
-By tabular, we mean that the data consists of a table containing rows and columns.
-Columns are usually of the same data type, whereas rows have different types.
-The rows, in practice, denote observations while columns denote variables.
-For example, we can have a table of TV shows containing the country in which each was produced and our personal rating, see @tbl:TV_shows.
+Os dados são fornecidos, geralmente, em formato tabular.
+Por tabular, queremos dizer que os dados consistem em uma tabela que contém linhas e colunas.
+As colunas normalmente contêm o mesmo tipo de dados, enquanto as linhas são de tipos diferentes.
+As linhas, na prática, denotam observações enquanto as colunas indicam variáveis.
+Por exemplo, podemos ter uma tabela de programas de TV contendo o país em que cada um foi produzido e nossa classificação pessoal, acesse @tbl:TV_shows.
 
 ```{=comment}
 Using a different example from the rest in the chapter to make the text a bit more interesting.

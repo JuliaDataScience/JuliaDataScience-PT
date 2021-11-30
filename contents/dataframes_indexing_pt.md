@@ -70,12 +70,12 @@ collect(zip(df.name, df.grade_2020))
 """)
 ```
 
-However, converting a `DataFrame` to a `Dict` is only useful when the elements are unique.
-Generally that is not the case and that's why we need to learn how to `filter` a `DataFrame`.
+Entraetanto, converter um `DataFrame` para `Dict` só é útil quando os elementos são únicos.
+Geralmente esse não é o caso e é por isso que precisamos aprender como `filter` um `DataFrame`.
 
-## Filter and Subset {#sec:filter_subset}
+## Filtro e Subconjunto {#sec:filter_subset}
 
-There are two ways to remove rows from a `DataFrame`, one is `filter` (@sec:filter) and the other is `subset` (@sec:subset).
+Existem duas maneiras de remover linhas de um `DataFrame`, uma é `filter` (@sec:filter) e outra é `subset` (@sec:subset).
 `filter` was added earlier to `DataFrames.jl`, is more powerful and more consistent with syntax from Julia base, so that is why we start discussing `filter` first.
 `subset` is newer and often more convenient.
 

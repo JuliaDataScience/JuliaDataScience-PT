@@ -1,25 +1,25 @@
-## Index and Summarize
+## Indexação e sumarização
 
-Let's go back to the example `grades_2020()` data defined before:
+Vamos voltar para o exemplo dos dados `grades_2020()` definido antes:
 
 ```jl
 sco("grades_2020()"; process=without_caption_label)
 ```
 
-To retrieve a **vector** for `name`, we can access the `DataFrame` with the `.`, as we did previously with `struct`s in @sec:julia_basics:
+Para recuperar um **vetor** para `name`, podemos acessar o `DataFrame` com o `.`, como fizemos anteriormente com `struct`s em @sec:julia_basics:
 
 ```jl
 @sco JDS.names_grades1()
 ```
 
-or we can index a `DataFrame` much like an `Array` with symbols and special characters.
-The **second index is the column indexing**:
+ou podemos indexar um `DataFrame` muito parecido com uma `Array` com símbolos e caracteres especiais.
+O **segundo índice é a indexação da coluna**:
 
 ```jl
 @sco JDS.names_grades2()
 ```
 
-Note that `df.name` is exactly the same as `df[!, :name]`, which you can verify yourself by doing:
+Perceba que `df.name` é exatamente o mesmo que `df[!, :name]`, que você pode verificar fazendo:
 
 ```
 julia> df = DataFrame(id=[1]);
@@ -27,9 +27,9 @@ julia> df = DataFrame(id=[1]);
 julia> @edit df.name
 ```
 
-In both cases, it gives you the column `:name`.
-There also exists `df[:, :name]` which copies the column `:name`.
-In most cases, `df[!, :name]` is the best bet since it is more versatile and does an in-place modification.
+Em ambos os casos, ele dará a coluna `:name`.
+Também existe o `df[:, :name]` que copia a coluna `:name`.
+Na maioria dos casos, `df[!, :name]` é a melhor aposta, pois é mais versátil e faz uma modificação no local.
 
 For any **row**, say the second row, we can use the **first index as row indexing**:
 

@@ -31,7 +31,7 @@ Em ambos os casos, ele dará a coluna `:name`.
 Também existe o `df[:, :name]` que copia a coluna `:name`.
 Na maioria dos casos, `df[!, :name]` é a melhor aposta, pois é mais versátil e faz uma modificação no local.
 
-For any **row**, say the second row, we can use the **first index as row indexing**:
+Para qualquer **linha**, digamos a segunda linha, podemos usar o **primeiro índice como indexação de linha**:
 
 ```jl
 s = """
@@ -42,26 +42,26 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-or create a function to give us any row `i` we want:
+ou criar uma função para nos dar qualquer linha `i` que quisermos:
 
 ```jl
 @sco process=without_caption_label JDS.grade_2020(2)
 ```
 
-We can also get only `names` for the first 2 rows using **slicing** (again similar to an `Array`):
+Podemos também obter apenas `names` para as 2 primeiras linhas usando **fatiamento** (again similar to an `Array`):
 
 ```jl
 @sco JDS.grades_indexing(grades_2020())
 ```
 
-If we assume that all names in the table are unique, we can also write a function to obtain the grade for a person via their `name`.
-To do so, we convert the table back to one of Julia's basic data structures (see @sec:data_structures) which is capable of creating mappings, namely `Dict`s:
+Se assumirmos que todos os nomes na tabela são únicos, também podemos escrever uma função para obter a nota de uma pessoa por meio de seu `name`.
+Para fazer isso, convertemos a tabela de volta para uma das estruturas de dados básicas de Julia (see @sec:data_structures) que são capazes de criar mapeamentos, a saber `Dict`s:
 
 ```jl
 @sco post=output_block grade_2020("Bob")
 ```
 
-which works because `zip` loops through `df.name` and `df.grade_2020` at the same time like a "zipper":
+que funciona porque `zip` faz loops através de `df.name` e `df.grade_2020` ao mesmo tempo como uma "zipper":
 
 ```jl
 sco("""

@@ -61,7 +61,7 @@ Para fazer isso, convertemos a tabela de volta para uma das estruturas de dados 
 @sco post=output_block grade_2020("Bob")
 ```
 
-que funciona porque `zip` faz loops através de `df.name` e `df.grade_2020` ao mesmo tempo como uma "zipper":
+que funciona porque `zip` faz loops através de `df.name` e `df.grade_2020` ao mesmo tempo como um "zipper":
 
 ```jl
 sco("""

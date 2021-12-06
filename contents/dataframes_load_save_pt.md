@@ -75,11 +75,11 @@ end # hide
 """)
 ```
 
-So, `CSV.jl` adds quotation marks `"` around the comma-containing values.
-Another common way to solve this problem is to write the data to a **t**ab-**s**eparated **v**alues (TSV) file format.
-This assumes that the data doesn't contain tabs, which holds in most cases.
+Logo, `CSV.jl` adiciona aspas `"` em torno dos valores contendo vírgulas.
+Outra maneira comum de resolver esse problema é gravar os dados em um formato de arquivo **t**ab-**s**eparated **v**alues (TSV).
+Isso pressupõe que os dados não contêm guias, o que é válido na maioria dos casos.
 
-Also, note that TSV files can also be read using a simple text editor, and these files use the ".tsv" extension.
+Além disso, observe que os arquivos TSV também podem ser lidos usando um editor de texto simples e esses arquivos usam a extensão ".tsv".
 
 ```jl
 sco("""

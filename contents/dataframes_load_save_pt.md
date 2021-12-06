@@ -93,7 +93,7 @@ end # hide
 """)
 ```
 
-Text file formats like CSV and TSV files can also be found that use other delimiters, such as semicolons ";", spaces "\ ", or even something as unusual as "π".
+Também é possível encontrar formatos de arquivo de texto, como arquivos CSV e TSV, que usam outros delimitadores, como ponto-e-vírgula ";", espaços "\ ", ou mesmo algo tão incomum como "π".
 
 ```jl
 sco("""
@@ -107,11 +107,11 @@ end # hide
 """)
 ```
 
-By convention, it's still best to give files with special delimiters, such as ";", the ".csv" extension.
+Por convenção, ainda é melhor fornecer arquivos com delimitadores especiais, como ";", a extensão ".csv".
 
-Loading CSV files using `CSV.jl` is done in a similar way.
-You can use `CSV.read` and specify in what kind of format you want the output.
-We specify a `DataFrame`.
+Carregando arquivos CSV usando `CSV.jl` é feito de maneira semelhante.
+Você pode usar `CSV.read` e especifique em que tipo de formato você deseja que a saída.
+Nós especificamos um `DataFrame`.
 
 ```jl
 sco("""
@@ -122,7 +122,7 @@ end # hide
 """; process=without_caption_label)
 ```
 
-Conveniently, `CSV.jl` will automatically infer column types for us:
+Convenientemente, `CSV.jl` irá inferir automaticamente os tipos de coluna para nós:
 
 ```jl
 sco("""
@@ -133,7 +133,7 @@ end # hide
 """; process=string, post=output_block)
 ```
 
-It works even for far more complex data:
+Funciona mesmo com dados muito mais complexos:
 
 ```jl
 sco("""
@@ -149,8 +149,8 @@ end # hide
 """; process=string, post=output_block)
 ```
 
-These CSV basics should cover most use cases.
-For more information, see the [`CSV.jl` documentation](https://csv.juliadata.org/stable) and especially the [`CSV.File` constructor docstring](https://csv.juliadata.org/stable/#CSV.File).
+Essas noções básicas de CSV devem abranger a maioria dos casos de uso.
+Para obter mais informações, consulte o [`CSV.jl` documentation](https://csv.juliadata.org/stable) e, especialemnte, o [`CSV.File` constructor docstring](https://csv.juliadata.org/stable/#CSV.File).
 
 ### Excel {#sec:excel}
 

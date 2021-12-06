@@ -1,44 +1,44 @@
 ## Select {#sec:select}
 
-Whereas **`filter` removes rows**, **`select` removes columns**.
-However, `select` is much more versatile than just removing columns, as we will discuss in this section.
-First, let's create a dataset with multiple columns:
+Enquanto **`filter` remove linhas**, **`select` remove colunas**.
+Entretanto, `select` é muito mais versátil do que apenas remover colunas, como discutiremos nesta seção.
+Primeiro, vamos criar um dataset com múltiplas colunas:
 
 ```jl
 @sco responses()
 ```
 
-Here, the data represents answers for five questions (`q1`, `q2`, ..., `q5`) in a given questionnaire.
-We will start by "selecting" a few columns from this dataset.
-As usual, we use symbols to specify columns:
+Aqui, os dados representam respostas para cinco perguntas (`q1`, `q2`, ..., `q5`) em um determinado questionário.
+Começaremos "selecionando" algumas colunas deste dataset.
+Como de costume, usamos símbolos para especificar colunas:
 
 ```jl
 s = "select(responses(), :id, :q1)"
 sco(s, process=without_caption_label)
 ```
 
-We can also use strings if we want:
+Também podemos usar strings se quisermos:
 
 ```jl
 s = """select(responses(), "id", "q1", "q2")"""
 sco(s, process=without_caption_label)
 ```
 
-To select everything _except_ one or more columns, use `Not` with either a single column:
+Para selecionar tudo _menos_ uma ou mais colunas, use `Not` com uma única coluna:
 
 ```jl
 s = """select(responses(), Not(:q5))"""
 sco(s, process=without_caption_label)
 ```
 
-Or, with multiple columns:
+Ou, com múltiplas colunas:
 
 ```jl
 s = """select(responses(), Not([:q4, :q5]))"""
 sco(s, process=without_caption_label)
 ```
 
-It's also fine to mix and match columns that we want to preserve with columns that we do `Not` want to select:
+Também é bom misturar e combinar colunas que queremos preservar com colunas que não `Not` queremos selecionar:
 
 ```jl
 s = """select(responses(), :q5, Not(:id))"""

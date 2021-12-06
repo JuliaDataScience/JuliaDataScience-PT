@@ -1,17 +1,17 @@
-## Load and Save Files {#sec:load_save}
+## Carrgar e salvar arquivos {#sec:load_save}
 
-Having only data inside Julia programs and not being able to load or save it would be very limiting.
-Therefore, we start by mentioning how to store files to and load files from disk.
-We focus on CSV, see @sec:csv, and Excel, see @sec:excel, file formats since those are the most common data storage formats for tabular data.
+Ter apenas dados dentro dos programas Julia e não ser capaz de carregá-los ou salvá-los seria muito limitante.
+Portanto, começamos mencionando como armazenar e carregar arquivos do disco.
+Focamos em CSV, see @sec:csv, e Excel, see @sec:excel, formatos de arquivo, uma vez que esses são os formatos de armazenamento de dados mais comuns para dados tabulares.
 
 ### CSV {#sec:csv}
 
-**C**omma-**s**eparated **v**alues (CSV) files are are very effective way to store tables.
-CSV files have two advantages over other data storage files.
-First, it does exactly what the name indicates it does, namely storing values by separating them using commas `,`.
-This acronym is also used as the file extension.
-So, be sure that you save your files using the ".csv" extension such as "myfile.csv".
-To demonstrate how a CSV file looks, we can install the [`CSV.jl`](http://csv.juliadata.org/latest/) package:
+Arquivos **C**omma-**s**eparated **v**alues (CSV) são eficazes no armazenamento de tabelas.
+Os arquivos CSV têm duas vantagens sobre outros arquivos de armazenamento de dados.
+Primeiro, eles fazem exatamente o que o nome indica que fazem, ou seja, armazenam valores, separando-os por vírgulas `,`.
+Este acrônimo também é usado como extensão de arquivo.
+Portanto, certifique-se de salvar seus arquivos usando a extensão ".csv" tal como "myfile.csv".
+Para demonstrar a aparência de um arquivo CSV, podemos instalar o pacote [`CSV.jl`](http://csv.juliadata.org/latest/):
 
 ```
 julia> ]
@@ -19,13 +19,13 @@ julia> ]
 pkg> add CSV
 ```
 
-and load it via:
+e carregue-lo via:
 
 ```
 using CSV
 ```
 
-We can now use our previous data:
+Agora podemos usar nossos dados anteriores:
 
 ```jl
 sco("
@@ -33,7 +33,7 @@ grades_2020()
 "; process=without_caption_label)
 ```
 
-and read it from a file after writing it:
+e lê-los de um arquivo depois de escrever:
 
 ```jl
 @sc write_grades_csv()
@@ -48,19 +48,19 @@ end # hide
 """)
 ```
 
-Here, we also see the second benefit of CSV data format: the data can be read by using a simple text editor.
-This differs from many alternative data formats which require proprietary software, e.g. Excel.
+Aqui, também vemos o segundo benefício do formato de dados CSV: os dados podem ser lidos usando um editor de texto simples.
+Isso difere de muitos formatos de dados alternativos que requerem software próprio, por exemplo, Excel.
 
-This works wonders, but what if our data **contains commas `,`** as values?
-If we were to naively write data with commas, it would make the files very hard to convert back to a table.
-Luckily, `CSV.jl` handles this for us automatically.
-Consider the following data with commas `,`:
+Isso funciona muito bem, mas somente se nossos dados **contiverem vírgulas `,`** como valores?
+Se tivéssemos de escrever ingenuamente os dados com vírgulas, issp tornaria os arquivos muito difíceis de se converter de volta para uma tabela.
+Por sorte, `CSV.jl` lida com isso de forma automática.
+Considere os seguintes dados com vírgulas `,`:
 
 ```jl
 @sco grades_with_commas()
 ```
 
-If we write this, we get:
+Se escrevermos isso, teremos:
 
 ```jl
 sco("""

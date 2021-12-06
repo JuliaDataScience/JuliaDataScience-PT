@@ -150,15 +150,15 @@ end # hide
 ```
 
 Essas noções básicas de CSV devem abranger a maioria dos casos de uso.
-Para obter mais informações, consulte o [`CSV.jl` documentation](https://csv.juliadata.org/stable) e, especialemnte, o [`CSV.File` constructor docstring](https://csv.juliadata.org/stable/#CSV.File).
+Para obter mais informações, consulte o [`CSV.jl` documentação](https://csv.juliadata.org/stable) e, especialemnte, o [`CSV.File` construtor docstring](https://csv.juliadata.org/stable/#CSV.File).
 
 ### Excel {#sec:excel}
 
-There are multiple Julia packages to read Excel files.
-In this book, we will only look at [`XLSX.jl`](https://github.com/felipenoris/XLSX.jl), because it is the most actively maintained package in the Julia ecosystem that deals with Excel data.
-As a second benefit, `XLSX.jl` is written in pure Julia, which makes it easy for us to inspect and understand what's going on under the hood.
+Existem vários pacotes Julia para ler arquivos Excel.
+Existem vários pacotes Julia para ler arquivos Excel [`XLSX.jl`](https://github.com/felipenoris/XLSX.jl), porque é o pacote mais ativamente mantido no ecossistema Julia que lida com dados do Excel.
+Como um segundo benefício, `XLSX.jl` é escrito em Julia puro, o que torna mais fácil para nós inspecionar e entender o que está acontecendo nos bastidores.
 
-Load `XLSX.jl` via
+Carregue `XLSX.jl` via
 
 ```
 using XLSX:
@@ -167,19 +167,19 @@ using XLSX:
     writetable
 ```
 
-To write files, we define a little helper function for data and column names:
+Para escrever arquivos, definimos uma pequena função auxiliar para dados e nomes de colunas:
 
 ```jl
 @sc write_xlsx("", DataFrame())
 ```
 
-Now, we can easily write the grades to an Excel file:
+Agora, podemos escrever facilmente as notas em um arquivo Excel:
 
 ```jl
 @sc write_grades_xlsx()
 ```
 
-When reading it back, we will see that `XLSX.jl` puts the data in a `XLSXFile` type and we can access the desired `sheet` much like a `Dict`:
+Ao ler de volta, veremos que `XLSX.jl` coloca os dados em um tipo `XLSXFile` type e podemos acessar a `folha` desejada como um `Dict`:
 
 ```jl
 sco("""
@@ -201,5 +201,5 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Notice that we cover just the basics of `XLSX.jl` but more powerful usage and customizations are available.
-For more information and options, see the [`XLSX.jl` documentation](https://felipenoris.github.io/XLSX.jl/stable/).
+Observe que cobrimos apenas o básico de `XLSX.jl` mas um uso mais poderoso e personalizações estão disponíveis.
+Para obter mais informações e opções, consulte o [`XLSX.jl` documentação](https://felipenoris.github.io/XLSX.jl/stable/).

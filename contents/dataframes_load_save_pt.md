@@ -1,12 +1,12 @@
 ## Carrgar e salvar arquivos {#sec:load_save}
 
 Ter apenas dados dentro dos programas Julia e não ser capaz de carregá-los ou salvá-los seria muito limitante.
-Portanto, começamos mencionando como armazenar e carregar arquivos do disco.
+Portanto, começamos mencionando como armazenar e carregar arquivos do HD.
 Focamos em CSV, see @sec:csv, e Excel, see @sec:excel, formatos de arquivo, uma vez que esses são os formatos de armazenamento de dados mais comuns para dados tabulares.
 
 ### CSV {#sec:csv}
 
-Arquivos **C**omma-**s**eparated **v**alues (CSV) são eficazes no armazenamento de tabelas.
+Arquivos **C**omma-**s**eparated **v**alues (CSV, valores separados por vírgula) são eficazes no armazenamento de tabelas.
 Os arquivos CSV têm duas vantagens sobre outros arquivos de armazenamento de dados.
 Primeiro, eles fazem exatamente o que o nome indica que fazem, ou seja, armazenam valores, separando-os por vírgulas `,`.
 Este acrônimo também é usado como extensão de arquivo.
@@ -49,7 +49,7 @@ end # hide
 ```
 
 Aqui, também vemos o segundo benefício do formato de dados CSV: os dados podem ser lidos usando um editor de texto simples.
-Isso difere de muitos formatos de dados alternativos que requerem software próprio, por exemplo, Excel.
+Isso difere de muitos formatos de dados alternativos que requerem software proprietário, por exemplo, Excel.
 
 Isso funciona muito bem, mas somente se nossos dados **contiverem vírgulas `,`** como valores?
 Se tivéssemos de escrever ingenuamente os dados com vírgulas, issp tornaria os arquivos muito difíceis de se converter de volta para uma tabela.
@@ -76,8 +76,8 @@ end # hide
 ```
 
 Logo, `CSV.jl` adiciona aspas `"` em torno dos valores contendo vírgulas.
-Outra maneira comum de resolver esse problema é gravar os dados em um formato de arquivo **t**ab-**s**eparated **v**alues (TSV).
-Isso pressupõe que os dados não contêm guias, o que é válido na maioria dos casos.
+Outra maneira comum de resolver esse problema é gravar os dados em um formato de arquivo **t**ab-**s**eparated **v**alues (TSV, valores separados por tabulações).
+Isso pressupõe que os dados não contêm abas, o que é válido na maioria dos casos.
 
 Além disso, observe que os arquivos TSV também podem ser lidos usando um editor de texto simples e esses arquivos usam a extensão ".tsv".
 

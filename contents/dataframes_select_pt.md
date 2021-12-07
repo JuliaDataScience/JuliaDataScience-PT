@@ -45,30 +45,30 @@ s = """select(responses(), :q5, Not(:id))"""
 sco(s, process=without_caption_label)
 ```
 
-Note how `q5` is now the first column in the `DataFrame` returned by `select`.
-There is a more clever way to achieve the same using `:`.
-The colon `:` can be thought of as "all the columns that we didn't include yet".
-For example:
+Perceba como `q5` agora é a primeira coluna no `DataFrame` devolvido por `select`.
+Existe uma maneira mais inteligente de conseguir o mesmo usando `:`.
+Os dois pontos `:` pode ser pensado como "todas as colunas que ainda não incluímos".
+Por exemplo:
 
 ```jl
 s = """select(responses(), :q5, :)"""
 sco(s, process=without_caption_label)
 ```
 
-Or, to put `q5` at the second position[^sudete]:
+Ou, para colocar `q5` na segunda posição[^sudete]:
 
-[^sudete]: thanks to Sudete on Discourse (<https://discourse.julialang.org/t/pull-dataframes-columns-to-the-front/60327/4>) for this suggestion.
+[^sudete]: obrigado ao Sudete pela sugestão no Discourse (<https://discourse.julialang.org/t/pull-dataframes-columns-to-the-front/60327/4>).
 
 ```jl
 s = "select(responses(), 1, :q5, :)"
 sco(s, process=without_caption_label)
 ```
 
-> **_NOTE:_**
-> As you might have observed there are several ways to select a column.
-> These are known as [_column selectors_](https://bkamins.github.io/julialang/2021/02/06/colsel.html).
+> **_OBSERVAÇÃO:_**
+> Como você deve ter observado, existem várias maneiras de selecionar uma coluna.
+> Estes são conhecidos como [_seletores de coluna_](https://bkamins.github.io/julialang/2021/02/06/colsel.html).
 >
-> We can use:
+> Podemos usar:
 >
 > * `Symbol`: `select(df, :col)`
 >
@@ -76,14 +76,14 @@ sco(s, process=without_caption_label)
 >
 > * `Integer`: `select(df, 1)`
 
-Even renaming columns is possible via `select` using the `source => target` pair syntax:
+Até mesmo renomear colunas é possível via `select` usando a sintaxe de par `origem => destino`:
 
 ```jl
 s = """select(responses(), 1 => "participant", :q1 => "age", :q2 => "nationality")"""
 sco(s, process=without_caption_label)
 ```
 
-Additionally, thanks to the "splat" operator `...` (see @sec:splat), we can also write:
+Além disso, graças ao operador "splat" `...` (see @sec:splat), também podemos escrever:
 
 ```jl
 s = """
@@ -93,7 +93,7 @@ s = """
 sco(s, process=without_caption_label)
 ```
 
-## Types and Missing Data {#sec:missing_data}
+## Tipos e dados ausentes {#sec:missing_data}
 
 ```{=comment}
 Try to combine with transformations

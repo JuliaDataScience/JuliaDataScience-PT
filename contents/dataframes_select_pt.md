@@ -98,25 +98,25 @@ sco(s, process=without_caption_label)
 ```{=comment}
 Try to combine with transformations
 
-categorical
-allowmissing
-disallowmissing
+categórica
+permissivo
+desautorizando
 ```
 
-As discussed in @sec:load_save, `CSV.jl` will do its best to guess what kind of types your data have as columns.
-However, this won't always work perfectly.
-In this section, we show why suitable types are important and we fix wrong data types.
-To be more clear about the types, we show the text output for `DataFrame`s instead of a pretty-formatted table.
-In this section, we work with the following dataset:
+Como discutido em @sec:load_save, `CSV.jl` fará o seu melhor para adivinhar que tipo de tipos seus dados têm como colunas.
+No entanto, isso nem sempre funcionará perfeitamente.
+Nesta seção, mostramos porque os tipos adequados são importantes e corrigimos os tipos de dados incorretos.
+Para ser mais claro sobre os tipos, mostramos a saída de texto para `DataFrame`s ao invés de uma tabela bem formatada.
+Nesta seção, trabalharemos com o seuinte dataset:
 
 ```jl
 @sco process=string post=output_block wrong_types()
 ```
 
-Because the date column has the wrong type, sorting won't work correctly:
+Como a coluna de data tem o tipo incorreto, a classificação não funcionará corretamente:
 
 ```{=comment}
-Whoa! You haven't introduced the reader to sorting with `sort` yet.
+Uau! Você ainda não apresentou ao leitor a classificação com `sort`.
 ```
 
 ```jl
@@ -124,13 +124,13 @@ s = "sort(wrong_types(), :date)"
 scsob(s)
 ```
 
-To fix the sorting, we can use the `Date` module from Julia's standard library as described in @sec:dates:
+Para corrigir a classificação, podemos usar o módulo `Date` da biblioteca padrão de Julia, conforme descrito em @sec:dates:
 
 ```jl
 @sco process=string post=output_block fix_date_column(wrong_types())
 ```
 
-Now, sorting will work as intended:
+Agora, a classificação funcionará conforme o planejado:
 
 ```jl
 s = """
@@ -140,7 +140,7 @@ s = """
 scsob(s)
 ```
 
-For the age column, we have a similar problem:
+Para a coluna de idade, temos um problema semelhante:
 
 ```jl
 s = "sort(wrong_types(), :age)"

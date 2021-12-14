@@ -1,9 +1,9 @@
 ## Join {#sec:join}
 
-At the start of this chapter, we showed multiple tables and raised questions also related to multiple tables.
-However, we haven't talked about combining tables yet, which we will do in this section.
-In `DataFrames.jl`, combining multiple tables is done via _joins_.
-Joins are extremely powerful, but it might take a while to wrap your head around them.
+No início deste capítulo, mostramos várias tabelas e levantamos questões também relacionadas às várias tabelas.
+No entanto, não falamos sobre a combinação de tabelas ainda, o que faremos nesta seção.
+Em `DataFrames.jl`, a combinação de várias tabelas é feita via _joins_.
+As junções são extremamente poderosas, mas pode demorar um pouco para você entendê-las.
 It is not necessary to know the joins below by heart, because the [`DataFrames.jl` documentation](https://DataFrames.juliadata.org/stable/man/joins/), along with this book, will list them for you.
 But, it's essential to know that joins exist.
 If you ever find yourself looping over rows in a `DataFrame` and comparing it with other data, then you probably need one of the joins below.

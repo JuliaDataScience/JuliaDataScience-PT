@@ -147,24 +147,24 @@ s = "sort(wrong_types(), :age)"
 scsob(s)
 ```
 
-This isn't right, because an infant is younger than adults and adolescents.
-The solution for this issue and any sort of categorical data is to use `CategoricalArrays.jl`:
+Isso não está certo, porque uma criança é mais jovem do que adultos e adolescentes.
+A solução para este problema e qualquer tipo de dado categórico é usar `CategoricalArrays.jl`:
 
 ```
 using CategoricalArrays
 ```
 
-With the `CategoricalArrays.jl` package, we can add levels that represent the ordering of our categorical variable to our data:
+Com o pacote `CategoricalArrays.jl`, podemos adicionar níveis que representam a ordem de variável categórica para nossos dados:
 
 ```jl
 @sco process=string post=output_block fix_age_column(wrong_types())
 ```
 
-> **_NOTE:_**
-> Also note that we are passing the argument `ordered=true` which tells `CategoricalArrays.jl`'s `categorical` function that our categorical data is "ordered".
-> Without this any type of sorting or bigger/smaller comparissons would not be possible.
+> **_OBESERVAÇÃO:_**
+> Observe também que estamos passando o argumento `ordered=true` que diz para a função `CategoricalArrays.jl`'s `categorical` que nossos dados categóricos são "ordenados".
+> Sem isso, qualquer tipo de classificação ou comparações maiores/menores não seriam possíveis.
 
-Now, we can sort the data correctly on the age column:
+Agora, podemos classificar os dados corretamente na coluna de idade:
 
 ```jl
 s = """
@@ -174,13 +174,13 @@ s = """
 scsob(s)
 ```
 
-Because we have defined convenient functions, we can now define our fixed data by just performing the function calls:
+Como definimos funções convenientes, agora podemos definir nossos dados fixos apenas executando as chamadas de função:
 
 ```jl
 @sco process=string post=output_block correct_types()
 ```
 
-Since age in our data is ordinal (`ordered=true`), we can properly compare categories of age:
+Já que a idade em nossos dados é ordinal (`ordered=true`), podemos comparar adequadamente as categorias de idade:
 
 ```jl
 s = """
@@ -192,7 +192,7 @@ s = """
 scob(s)
 ```
 
-which would give wrong comparisons if the element type were strings:
+o que daria comparações erradas se o tipo de elemento fosse strings:
 
 ```jl
 s = "\"infant\" < \"adult\""

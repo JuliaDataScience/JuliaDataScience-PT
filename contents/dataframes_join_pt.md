@@ -33,21 +33,21 @@ Suponha que temos dois datasets `A` e `B` com as respectivas colunas `A_1, A_2, 
 Então, o inner join em `:id` irá percorrer todos os elementos em `A_1` e compará-lo aos elementos em `B_1`.
 Se os elementos são **os mesmos**, então ele irá adicionar todas as informações de `A_2, ..., A_n` e `B_2, ..., B_m` depois da coluna `:id`.
 
-Okay, so no worries if you didn't get this description.
-The result on the grades datasets looks like this:
+Ok, não se preocupe se você não conseguiu esta descrição.
+O resultado das notas nos datasets será assim:
 
 ```jl
 s = "innerjoin(grades_2020(), grades_2021(); on=:name)"
 sco(s; process=without_caption_label)
 ```
 
-Note that only "Sally" and "Hank" are in both datasets.
-The name _inner_ join makes sense since, in mathematics, the _set intersection_ is defined by "all elements in $A$, that are also in $B$, or all elements in $B$ that are also in $A$".
+Observe que apenas "Sally" e "Hank" estão em ambos datasets.
+O nome _inner_ join az sentido, uma vez que, em matemática, o _set intersection_ é definido por "todos os elementos em $A$, que também estão em $B$, ou todos os elementos em $B$ que também estão em $A$".
 
 ### outerjoin {#sec:outerjoin}
 
-Maybe you're now thinking "aha, if we have an _inner_, then we probably also have an _outer_".
-Yes, you've guessed right!
+Talvez você esteja pensando agora "se temos um _inner_, provavelmente também temos um _outer_".
+Sim, você adivinhou certo!
 
 The **`outerjoin`** is much less strict than the `innerjoin` and just takes any row it can find which contains a name in **at least one of the datasets**:
 

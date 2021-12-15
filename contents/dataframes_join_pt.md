@@ -3,35 +3,35 @@
 No início deste capítulo, mostramos várias tabelas e levantamos questões também relacionadas às várias tabelas.
 No entanto, não falamos sobre a combinação de tabelas ainda, o que faremos nesta seção.
 Em `DataFrames.jl`, a combinação de várias tabelas é feita via _joins_.
-As junções são extremamente poderosas, mas pode demorar um pouco para você entendê-las.
-It is not necessary to know the joins below by heart, because the [`DataFrames.jl` documentation](https://DataFrames.juliadata.org/stable/man/joins/), along with this book, will list them for you.
-But, it's essential to know that joins exist.
-If you ever find yourself looping over rows in a `DataFrame` and comparing it with other data, then you probably need one of the joins below.
+Os joins são extremamente poderosos, mas pode demorar um pouco para você entendê-los.
+Não é necessário saber os joins abaixo de cor, porque a [`DataFrames.jl` documentação](https://DataFrames.juliadata.org/stable/man/joins/), juntamente com este livro, listará-los para você.
+Mas, é essencial saber que os joins existem.
+Se você alguma vez se pegar dando voltas sobre as linhas de um `DataFrame` e compará-lo com outros dados, então você provavelmente precisará de um dos joins abaixo.
 
-In @sec:dataframes, we've introduced the grades for 2020 with `grades_2020`:
+No @sec:dataframes, introduzimos as notas para 2020 com `grades_2020`:
 
 ```jl
 s = "grades_2020()"
 sco(s; process=without_caption_label)
 ```
 
-Now, we're going to combine `grades_2020` with grades from 2021:
+Agora, vamos combinar `grades_2020` com notas de 2021:
 
 ```jl
 s = "grades_2021()"
 sco(s; process=without_caption_label)
 ```
 
-To do this, we are going to use joins.
-`DataFrames.jl` lists no less than seven kinds of join.
-This might seem daunting at first, but hang on because they are all useful and we will showcase them all.
+Para fazer isso, vamos os joins.
+`DataFrames.jl` ista não menos que sete tipos de join.
+Isso pode parecer assustador no início, mas espere porque todos eles são úteis e vamos mostrá-los.
 
 ### innerjoin {#sec:innerjoin}
 
-This first is **`innerjoin`**.
-Suppose that we have two datasets `A` and `B` with respectively columns `A_1, A_2, ..., A_n` and `B_1, B_2, ..., B_m` **and** one of the columns has the same name, say `A_1` and `B_1` are both called `:id`.
-Then, the inner join on `:id` will go through all the elements in `A_1` and compare it to the elements in `B_1`.
-If the elements are **the same**, then it will add all the information from `A_2, ..., A_n` and `B_2, ..., B_m` after the `:id` column.
+O primeiro é **`innerjoin`**.
+Suponha que temos dois datasets `A` e `B` com as respectivas colunas `A_1, A_2, ..., A_n` e `B_1, B_2, ..., B_m` **e** uma das colunas tem o mesmo nome, digamos `A_1` e `B_1` são ambas chamadas `:id`.
+Então, o inner join em `:id` irá percorrer todos os elementos em `A_1` e compará-lo aos elementos em `B_1`.
+Se os elementos são **os mesmos**, então ele irá adicionar todas as informações de `A_2, ..., A_n` e `B_2, ..., B_m` depois da coluna `:id`.
 
 Okay, so no worries if you didn't get this description.
 The result on the grades datasets looks like this:

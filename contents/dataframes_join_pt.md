@@ -4,7 +4,7 @@ No início deste capítulo, mostramos várias tabelas e levantamos questões tam
 No entanto, não falamos sobre a combinação de tabelas ainda, o que faremos nesta seção.
 Em `DataFrames.jl`, a combinação de várias tabelas é feita via _joins_.
 Os joins são extremamente poderosos, mas pode demorar um pouco para você entendê-los.
-Não é necessário saber os joins abaixo de cor, porque a [`DataFrames.jl` documentação](https://DataFrames.juliadata.org/stable/man/joins/), juntamente com este livro, listará-los para você.
+Não é necessário saber os joins abaixo de cor, porque a [documentação `DataFrames.jl`](https://DataFrames.juliadata.org/stable/man/joins/), juntamente com este livro, listará-los para você.
 Mas, é essencial saber que os joins existem.
 Se você alguma vez se pegar dando voltas sobre as linhas de um `DataFrame` e compará-lo com outros dados, então você provavelmente precisará de um dos joins abaixo.
 

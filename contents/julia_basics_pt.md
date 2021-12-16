@@ -6,10 +6,10 @@
 > Ter um conhecimento básico de Julia definitivamente o tornará mais *eficaz* e *eficiente* no uso de Julia.
 > No entanto, se você preferir começar imediatamente, pode pular para @sec:dataframes e aprenda sobre dados tabulares em `DataFrames.jl`.
 
-Aqui, vamos trazer uma visão mais geral sobre a linguagem de Julia, *não* algo aprofundado.
+Aqui, vamos trazer uma visão mais geral sobre a linguagem Julia, *não* algo aprofundado.
 Se você já está familiarizado e confortável com outras linguagens de programação, nós encorajamos você a ler a documentação de Julia (<https://docs.julialang.org/>).
 Os documentos são um excelente recurso para você se aprofundar em Julia.
-Eles cobrem todos os fundamentos e casos extremos, mas podem ser complicados, especialmente se você não estiver familiarizado com a documentação do software.
+Eles cobrem todos os fundamentos e casos extremos, mas podem ser complicados, especialmente se você não estiver familiarizado com a leitura de documentação de software.
 
 Cobriremos o básico de Julia.
 Imagine que Julia é um carro sofisticado repleto de recursos, como um Tesla novo.
@@ -18,20 +18,20 @@ Se você quer saber o que "todos os botões no volante e painel fazem", este nã
 
 ## Sintaxe da linguagem {#sec:syntax}
 
-Julia é uma **linguagem de tipo-dinâmico** com um compilador just-in-time.
+Julia é uma **linguagem de tipagem dinâmica** com um compilador just-in-time.
 Isso significa que você não precisa compilar seu programa antes de executá-lo, como precisaria fazer com C++ ou FORTRAN.
 Em vez disso, Julia pegará seu código, adivinhará os tipos quando necessário e compilará partes do código antes de executá-lo.
 Além disso, você não precisa especificar explicitamente cada tipo.
-Julia vai supor os tipos para você.
+Julia vai inferir os tipos para você na hora.
 
 As principais diferenças entre Julia e outras linguagens dinâmicas como R e Python são:
 Primeiro, Julia **permite ao usuário especificar declarações de tipo**.
 Você já viu algumas declarações de tipo em *Por que Julia?* (@sec:why_julia): eles são aqueles dois pontos duplos `::` que às vezes vem depois das variáveis.
 No entanto, se você não quiser especificar o tipo de suas variáveis ou funções, Julia terá o prazer de inferir (adivinhar) para você.
 
-Em segundo lugar, Julia permite que os usuários definam o comportamento da função em muitas combinações de tipos de argumento por meio de múltiplos despachos.
-Também falamos sobre despachos múltiplos em @sec:julia_accomplish.
-Definimos um comportamento de tipo diferente, definindo novas assinaturas de função para tipos de argumento enquanto usamos o mesmo nome de função.
+Em segundo lugar, Julia permite que os usuários definam o comportamento da função de acordo com combinações diversas de tipos de argumento por meio do despacho múltiplo.
+Também falamos sobre despacho múltiplo em @sec:julia_accomplish.
+Por meio do despacho múltiplo, nós definimos um comportamento diferente de uma função para um determinado tipo quando escrevemos uma nova função com o mesmo nome da função anterior, mas cuja assinatura contém a especifcação deste tipo em seus argumentos.
 
 ### Variáveis {#sec:variable}
 
@@ -44,7 +44,7 @@ Julia tem diversos tipos de variáveis, mas, em ciência de dados, usamos princi
 * Strings: `String`
 
 Inteiros e números reais são armazenados usando 64 bits por padrão, é por isso que eles têm o sufixo `64` no nome do tipo.
-Se você precisar de mais ou menos precisão, existem os tipos `Int8` ou `Int128`, por exemplo, onde maior significa mais precisão.
+Se você precisar de mais ou menos precisão, existem os tipos `Int8` ou `Int128`, por exemplo, nos quais um maior número significa uma maior significa mais precisão.
 Na maioria das vezes, isso não será um problema, então você pode simplesmente seguir os padrões.
 
 Criamos novas variáveis escrevendo o nome da variável à esquerda e seu valor à direita, e no meio usamos o `=` operador de atribuição.
@@ -58,7 +58,7 @@ s = """
 scob(s)
 ```
 
-Observe que a saída de retorno da última instrução (`idade`) foi impresso no console.
+Observe que a saída de retorno da última instrução (`idade`) foi impressa no console.
 Aqui, estamos definindo duas novas variáveis: `nome` e `idade`.
 Podemos recuperar seus valores digitando os nomes dados na atribuição:
 
@@ -66,7 +66,7 @@ Podemos recuperar seus valores digitando os nomes dados na atribuição:
 scob("name")
 ```
 
-Se quiser definir novos valores para uma variável existente, você pode repetir as etapas da atribuição.
+Se quiser definir novos valores para uma variável existente, você pode repetir os passos realizados durante a atribuição.
 Observe que Julia agora substituirá o valor anterior pelo novo.
 Suponho que o aniversário de Julia já passou e agora fez 10 anos:
 
@@ -91,7 +91,7 @@ Vamos ver quantos anos Julia tem, em meses, multiplicando `age` por 12:
 s = "12 * age"
 scob(s)
 ```
-Podemos inspecionar os tipos de variáveis usando a função `typeof`:
+Podemos inspecionar os tipos das variáveis usando a função `typeof`:
 
 ```jl
 sco("typeof(age)")
@@ -111,8 +111,8 @@ sco(s; process=catch_show)
 
 ### Tipos definidos pelo usuário {#sec:struct}
 
-Ter variáveis sem qualquer tipo de hierarquia ou relacionamento não é ideal.
-Em Julia, podemos definir esse tipo de dado estruturado com um `struct` (também conhecido como tipo composto).
+Ter apenas variáveis à disposição, sem qualquer forma de hierarquia ou relacionamento não é o ideal.
+Em Julia, podemos definir essa espécie de dado estruturado com um `struct` (também conhecido como tipo composto).
 Dentro de cada `struct`, você pode especificar um conjunto de campos `field`s.
 Eles diferem dos tipos primitivos (por exemplo, inteiro e flutuantes) que já são definidos por padrão dentro do núcleo da linguagem Julia.
 Já que a maioria dos `struct` são definidos pelo usuário, eles são conhecidos como tipos definidos pelo usuário.
@@ -169,7 +169,7 @@ s = """
 sco(s)
 ```
 
-Suponha que queremos mudar o título `julia_mutable`.
+Suponha que queremos mudar o campo título do objeto `julia_mutable`.
 Agora podemos fazer isso já que `julia_mutable` é um `mutable struct` instanciado:
 
 ```jl
@@ -227,7 +227,7 @@ scob("1 == 1")
 scob("1 >= 10")
 ```
 
-Equilibra os trabalhos entre diferentes tipos:
+As comparações funcionam até mesmo entre tipos diferentes:
 
 ```jl
 scob("1 == 1.0")
@@ -241,8 +241,8 @@ scob("(1 != 10) || (3.14 <= 2.71)")
 
 ### Funções {#sec:function}
 
-Agora que já sabemos como definir variáveis e tipos personalizados como `struct`, vamps voltar nossa atenção para as **funções**.
-Em Julia, a função **mapeia os valores do argumento para um ou mais valores de retorno**.
+Agora que já sabemos como definir variáveis e tipos personalizados como `struct`, vamos voltar nossa atenção para as **funções**.
+Em Julia, uma função **mapeia os valores de seus argumentos para um ou mais valores de retorno**.
 A sintaxe básica é assim:
 
 ```julia
@@ -252,27 +252,27 @@ function function_name(arg1, arg2)
 end
 ```
 
-A declaração da função começa com a palavra-chave `function` seguida do nome da função.
+A declaração de funções começa com a palavra-chave `function` seguida do nome da função.
 Então, entre parênteses `()`, nós definimos os argumentos separados por uma vírgula `,`.
 Dentro da função, especificamos o que queremos que Julia faça com os parâmetros que fornecemos.
 Todas as variáveis que definimos dentro de uma função são excluídas após o retorno da função. Isso é bom porque é como se realizasse uma limpeza automática.
-Depois que todas as operações no corpo da função forem concluídas, instruímos Julia a retornar o resultado com a palavra-chave `return`.
+Depois que todas as operações no corpo da função forem concluídas, instruímos Julia a retornar o resultado com o comando `return`.
 Por fim, informamos a Julia que a definição da função terminou com a palavra-chave `end`.
 
-Existe também o compacto **formulário de atribuição**:
+Existe também a maneira compacta de definição de funções por meio da **forma de atribuição**:
 
 ```julia
 f_name(arg1, arg2) = stuff with the arg1 and arg2
 ```
 
-É a **mesma função** que antes, mas com um formulário diferente, mais compacto.
+É a **mesma função** que antes, mas definida de uma forma diferente, mais compacta.
 Como regra geral, quando seu código pode caber facilmente em uma linha de até 92 caracteres, a forma compacta é adequada.
-Caso contrário, basta usar o formulário mais longo com a palavra-chave `function`.
+Caso contrário, basta usar o formato mais longo com a palavra-chave `function`.
 Vamos mergulhar em alguns exemplos.
 
 #### Criando novas funções {#sec:function_example}
 
-Vamos criar uma nova função que adiciona números:
+Vamos criar uma nova função que soma números:
 
 ```jl
 s = """
@@ -289,13 +289,13 @@ Agora, podemos usar nossa função `add_numbers`:
 scob("add_numbers(17, 29)")
 ```
 
-And it works also with floats:
+E ela também funciona com números reais (também chamados em programação de números de ponto-flutuante ou, de forma mais curta, com o jargão "floats"):
 
 ```jl
 scob("add_numbers(3.14, 2.72)")
 ```
 
-Além disso, podemos definir o comportamento personalizado, especificando declarações de tipo.
+Além disso, podemos definir comportamentos especializados para nossa função, por meio da especificação de declarações de tipo.
 Suponha que queremos ter uma função `round_number` que se comporta de maneira diferente se seu argumento for um `Float64` ou `Int64`:
 
 ```jl
@@ -311,16 +311,16 @@ s = """
 sco(s)
 ```
 
-Podemos ver que é uma função com múltiplos métodos:
+Podemos ver que ela é uma função com múltiplos métodos:
 
 ```jl
 sco("methods(round_number)")
 ```
 
-Existe um problema: o que acontece se quisermos arredondar um float de 32 bits, `Float32`?
+Mas há um problema: o que acontece se quisermos arredondar um float de 32 bits, `Float32`?
 Ou um inteiro de 8 bits, `Int8`?
 
-Se você quiser que algo funcione em todos os tipos de float e inteiros, voc~e pode usar um **tipo abstrato** como a assinatura de tipo `AbstractFloat` ou `Integer`:
+Se você quiser que algo funcione em todos os tipos de float e inteiros, você pode usar um **tipo abstrato** na assinatura de tipo, como `AbstractFloat` ou `Integer`:
 
 ```jl
 s = """
@@ -331,7 +331,7 @@ s = """
 sco(s)
 ```
 
-Agora, funcionará como esperado em qualquer tipo de float:
+Agora, funcionará da forma esperada com qualquer tipo de float:
 
 ```jl
 s = """
@@ -344,14 +344,14 @@ scob(s)
 > **_OBSERVAÇÃO:_**
 > Podemos inspecionar tipos com as funções `supertypes` e `subtypes`.
 
-Vamos voltar ao nosso `Language` `struct` que definimos anteriormente.
-Isso é um exemplode despacho múltiplo.
+Vamos voltar ao nosso `struct` `Language` que definimos anteriormente.
+Será um exemplo de despacho múltiplo.
 Vamos estender a função `Base.show` que imprime a saída de tipos instanciados e de `struct`.
 
-Por padrão, uma `struct` tem um output básico, que você pode observar do caso de `python`.
-Podemos definir um nove método `Base.show` para nosso tipo `Language`, assim temos uma boa impressão para nossas instâncias de linguagens de programação.
+Por padrão, uma `struct` tem um output básico, que você pôde observar do caso do `python`.
+Podemos definir um novo método `Base.show` para nosso tipo `Language`, assim temos uma boa impressão para nossas instâncias de linguagens de programação.
 Queremos comunicar claramente os nomes, títulos e idades em anos das linguagens de programação.
-A função `Base.show` aceita como argumentos um tipo `IO` chamado `io` seguido pelo tipo que você deseja para definir o comportamento personalizado:
+A função `Base.show` aceita como argumentos um tipo `IO` chamado `io` seguido pelo tipo para o qual você deseja definir o comportamento personalizado:
 
 ```jl
 s = """
@@ -370,7 +370,7 @@ Agora, vamos ver como o output de `python` será:
 sco("python")
 ```
 
-#### Valores de Retorno Múltiplo {#sec:function_multiple}
+#### Múltiplos Valores de Retorno {#sec:function_multiple}
 
 Uma função também pode retornar dois ou mais valores.
 Veja a nova função `add_multiply` abaixo:
@@ -411,9 +411,9 @@ Nesse caso, podemos fazer duas coisas:
 #### Argumentos de Palavra-Chave {#sec:function_keyword_arguments}
 
 Algumas funções podem aceitar argumentos de palavra-chave ao invés de argumentos posicionais.
-Esses argumentos são como argumentos regulares, exceto por eles serem definidos após os argumentos da função regular e separados por um ponto e vírgula `;`.
+Esses argumentos são como argumentos comuns, exceto pelo fato de serem definidos após os argumentos de função regulares e separados por um ponto e vírgula `;`.
 Por exemplo, vamos definir uma função `logarithm` que por padrão usa base $e$ (2.718281828459045) como um argumento de palavra-chave.
-Perceba que aqui, estamos usando o tipo abstrato `Real` para que possamos cobrir todos os tipos derivados de `Integer` e `AbstractFloat`, sendo ambos subtipos de `Real`:
+Perceba que aqui estamos usando o tipo abstrato `Real` para que possamos cobrir todos os tipos derivados de `Integer` e `AbstractFloat`, dado que ambos são subtipos de `Real`:
 
 ```jl
 scob("AbstractFloat <: Real && Integer <: Real")
@@ -445,10 +445,10 @@ scob(s)
 
 #### Funções anônimas {#sec:function_anonymous}
 
-Muitas vezes não nos importamos com o nome da função e queremos rapidamente criar um.
-O que precisamos são das **funções anônimas**.
+Muitas vezes não nos importamos com o nome da função e queremos criar uma rapidamente.
+O que precisamos é das **funções anônimas**.
 Elas são muito usadas no fluxo de trabalho de ciência de dados em Julia.
-Por exemplo, quando usamos `DataFrames.jl` (@sec:dataframes) ou `Makie.jl` (@sec:DataVisualizationMakie), às vezes precisamos de uma função temporária para filtrar dados ou formatar rótulos de plotagem.
+Por exemplo, quando usamos `DataFrames.jl` (@sec:dataframes) ou `Makie.jl` (@sec:DataVisualizationMakie), às vezes precisamos de uma função temporária para filtrar dados ou formatar os rótulos de um gráfico.
 É aí que usamos as funções anônimas.
 Elas são especialmente úteis quando não queremos criar uma função e uma instrução simples seria o suficiente.
 
@@ -473,11 +473,11 @@ Dependendo da situação, queremos que o computador faça uma coisa ou outra.
 Em Julia, podemos controlar o fluxo de execução com as palavras-chave `if`, `elseif` e `else`.
 Estas são conhecidas como declarações condicionais.
 
-A palavra-chave `if` comanda Julia a avaliar uma expressão e, dependendo se é `true` ou `false`, executa certas partes do código.
+A palavra-chave `if` comanda Julia a avaliar uma expressão e, dependendo se ela é verdadeira (`true`) ou falsa (`false`), a executar certas partes do código.
 Podemos combinar várias condições `if` com a palavra-chave `elseif` para um fluxo de controle complexo.
 Assim, podemos definir uma parte alternativa a ser executada se qualquer coisa dentro de `if` ou` elseif` for avaliada como `true`.
 Esse é o propósito da palavra-chave `else`.
-Finalmente, como em todos os operadores de palavra-chave anteriores que vimos, devemos informar a Julia quando a declaração condicional for concluída com a palavra-chave `end`.
+Finalmente, como em todos os operadores de palavra-chave que vimos anteriormente, devemos informar a Julia quando a declaração condicional for concluída com a palavra-chave `end`.
 
 Aqui, temos um exemplo com todas as palavras-chave `if`-`elseif`-`else`:
 
@@ -497,7 +497,7 @@ s = """
 scob(s)
 ```
 
-Podemos até incluir isso em uma função chamada `compare`:
+Podemos até envelopar isso em uma função chamada `compare`:
 
 ```jl
 s = """
@@ -517,14 +517,14 @@ sco(s)
 ```
 
 
-### Loop For {#sec:for}
+### Laço For {#sec:for}
 
-O clássico loop for em Julia segue uma sintaxe semelhante à das declarações condicionais.
+O clássico laço for em Julia segue uma sintaxe semelhante à das declarações condicionais.
 Você começa com a palavra-chave, nessa caso `for`.
-Em seguida, você especifica o que Julia deve "loop", ou seja, uma sequência.
+Em seguida, você especifica o que Julia deve iterar sobre (ou, no jargão, "loopar"), p. ex., uma sequência.
 Além disso, como em tudo mais, você deve terminar com a palavra-chave `end`.
 
-Então, para fazer Julia imprimir todos os números de 1 a 10, você pode usar o seguinte loop for:
+Então, para fazer Julia imprimir todos os números de 1 a 10, você pode usar o seguinte laço for:
 
 ```jl
 s = """
@@ -535,12 +535,12 @@ s = """
 sco(s; post=x -> "")
 ```
 
-### Loop While {#sec:while}
+### Laço While {#sec:while}
 
-O loop while é uma mistura das declarações condicionais anteriores e os loops for.
-Aqui, o loop é executado toda vez que a condicional é `true`.
+O laço while é uma mistura das declarações condicionais anteriores com os laços for.
+Aqui, o laço é executado toda vez que a condição é avaliada como `true`.
 A sintaxe segue a mesma forma da anterior.
-Começamos com a palavra-chave `while`, seguido por uma declaração que avalia se é `true` ou `false`.
+Começamos com a palavra-chave `while`, seguido por uma declaração que é avaliada em `true` ou `false`.
 Como de costume, devemos terminar com a palavra-chave `end`.
 
 Segue um exemplo:
@@ -559,28 +559,28 @@ scob(s)
 ```
 
 Como pode ver, devemos usar a palavra-chave `global`.
-Isso se deve ao **escopo variável**.
-Variáveis definidas dentro das declarações condicionais, loops e funções existem apenas dentro delas.
+Isso se deve ao **escopo de variável**.
+Variáveis definidas dentro das declarações condicionais, laços e funções existem apenas dentro delas.
 Isso é conhecido como o *escopo* da variável.
-Aqui, precisamos avisar Julia que o `n` dentro do loop `while` está no escopo global junto com a palavra-chave `global`.
+Aqui, precisamos avisar Julia que o `n` dentro do laço `while` está no escopo global por meio do uso da palavra-chave `global`.
 
 Por fim, também usamos o operador `+=` que é uma boa abreviatura para `n = n + 1`.
 
 ## Estruturas nativas de dados {#sec:data_structures}
 
-Julia possui diversas estruturas de dados nativos.
+Julia possui diversas estruturas de dados nativas.
 Elas são abstrações de dados que representam alguma forma de dado estruturado.
 Vamos cobrir os mais usados.
-Eles mantêm dados homogêneos ou heterogêneos.
-Uma vez que são coleções, podem ser iteradas com os loops `for`.
+Eles contém dados homogêneos ou heterogêneos.
+Uma vez que são coleções, podemos iterar sobre eles com os laços `for`.
 
 Nós cobriremos `String`, `Tuple`, `NamedTuple`, `UnitRange`, `Arrays`, `Pair`, `Dict`, `Symbol`.
 
-Quando você se depara com uma estrutura de dados em Julia, você pode encontrar métodos que a aceitam como um argumento com a função `methodswith`.
+Quando você se depara com uma estrutura de dados em Julia, você pode encontrar métodos que a aceitam como um argumento por meio da função `methodswith`.
 Em Julia, a distinção entre métodos e funções é a seguinte:
 Cada função pode ter mútiplos métodos, como mostramos anteriormente.
 A função `methodswith` é boa de se ter por perto.
-Vejamos o que podemos fazer com a `String`:
+Vejamos o que podemos fazer com uma `String`, por exemplo:
 
 ```jl
 s = "first(methodswith(String), 5)"
@@ -591,7 +591,7 @@ sco(s; process=catch_show)
 
 Antes de mergulharmos nas estruturas de dados, precisamos conversar sobre broadcasting (também conhecido como *vetorização*) e o operador "dot" `.`.
 
-Também podemos vetorizar operações matemáticas como `*` (multiplicação) ou `+` (adição) usando o operador dot.
+Podemos vetorizar operações matemáticas como `*` (multiplicação) ou `+` (adição) usando o operador dot.
 Por exemplo, vetorizar adição implica em mudar `+` para `.+`:
 
 ```jl
@@ -610,11 +610,11 @@ Lembra da nossa função `logarithm`?
 sco("logarithm.([1, 2, 3])")
 ```
 
-#### Funciona com um estrondo `!` {#sec:function_bang}
+#### Funções com exclamação `!` {#sec:function_bang}
 
-É uma convenção de Julia acrescentar um estrondo `!` a nomes de funções que modificam um ou mais de seus argumentos.
+É uma convenção de Julia acrescentar uma exclamação `!` a nomes de funções que modificam um ou mais de seus argumentos.
 Esta convenção avisa o usuário que a função **não é pura**, ou seja, que tem *efeitos colaterais*.
-Uma função com efeitos colaterais é útil quando você deseja atualizar uma grande estrutura de dados ou contêiner de variáveis sem ter toda a sobrecarga da criação de uma nova instância.
+Uma função com efeitos colaterais é útil quando você deseja atualizar uma grande estrutura de dados ou coleção de variáveis sem ter toda a sobrecarga da criação de uma nova instância.
 
 Por exemplo, podemos criar uma função que adiciona 1 a cada elemento de um vetor `V`:
 
@@ -677,16 +677,16 @@ s = \"\"\"
 """; post=output_block)
 ```
 
-Ao usar backticks triplos, o recuo e a nova linha no início são ignorados por Julia.
-Isso melhora a legibilidade do código porque você pode recuar o bloco em seu código-fonte sem que esses espaços acabem em sua string.
+Ao usar crases triplas, a tabulação e o marcador de nova linha no início são ignorados por Julia.
+Isso melhora a legibilidade do código porque você pode indentar o bloco em seu código-fonte sem que esses espaços acabem em sua string.
 
 #### Concatenação de Strings {#sec:string_concatenation}
 
-Uma operação de string comum é a **concatenação de string**.
+Uma operação comum de string é a **concatenação de string**.
 Suponha que você queira construir uma nova string que é a concatenação de duas ou mais strings.
 Isso é realizado em Julia com o operador `*` ou a função `join`.
-Este símbolo pode soar como uma escolha estranha e na verdade é.
-Por enquanto, muitas bases de código de Julia estão usando este símbolo, então ele permanecerá na linguagem.
+Este símbolo pode soar como uma escolha estranha e realmente é.
+Por enquanto, muitas bases de código em Julia estão usando este símbolo, então ele permanecerá na linguagem.
 Se você estiver interessado, pode ler uma discussão de 2015 sobre isso em
 <https://github.com/JuliaLang/julia/issues/11030>.
 
@@ -703,7 +703,7 @@ scob(s)
 Como você pode ver, está faltando um espaço entre `hello` e `goodbye`.
 Poderíamos concatenar uma string adicional `" "` com `*`, mas isso seria complicado para mais de duas strings.
 É onde a função `join` vem a calhar.
-Nós apenas passamos como argumentos as strings dentro dos colchetes `[]` e do separador:
+Nós apenas passamos como argumentos as strings dentro dos colchetes `[]` e, em seguida, o separador:
 
 ```jl
 scob("""join([hello, goodbye], " ")""")
@@ -723,8 +723,8 @@ s = """
 scob(s)
 ```
 
-Ela até funciona dentro de funções.
-Vamos revisitar nossa função `test` a partir de @sec:conditionals:
+Isso funciona mesmo dentro de funções.
+Vamos revisitar nossa função `test` que foi definida em @sec:conditionals:
 
 ```jl
 s = """
@@ -746,9 +746,9 @@ scob(s)
 #### Manipulações de Strings {#sec:string_manipulations}
 
 Existem várias funções para manipular strings em Julia.
-Vamos demonstrar os mais comuns.
-Além disso, observe que a maioria dessas funções aceita um [Regular Expression (RegEx)](https://docs.julialang.org/en/v1/manual/strings/#Regular-Expressions) como argumentos.
-Não cobriremos RegEx neste livro, mas te encorajamos a aprender sobre eles, especialmente se a maior parte de seu trabalho usa dados textuais.
+Vamos demonstrar as mais comuns.
+Além disso, observe que a maioria dessas funções aceita uma [Expressão Regular (RegEx)](https://docs.julialang.org/en/v1/manual/strings/#Regular-Expressions) como argumentos.
+Não cobriremos RegEx neste livro, mas te encorajamos a aprender sobre elas, especialmente se a maior parte de seu trabalho usa dados textuais.
 
 Primeiro, vamos definir uma string para brincarmos:
 
@@ -760,7 +760,7 @@ scob(s)
 ```
 
 
-1. `occursin`, `startswith` e `endswith`: Uma condicional (retorna `true` ou `false`) se o primeiro argumento é um:
+1. `occursin`, `startswith` e `endswith`: São condicionais (retornam `true` ou `false`) se o primeiro argumento é um:
     * **substring** do segundo argumento
 
        ```jl
@@ -809,9 +809,9 @@ scob(s)
      sco("""split(julia_string, " ")""")
      ```
 
-#### Convertendo/parseando Strings {#sec:string_conversions}
+#### Convertendo em/parseando Strings {#sec:string_conversions}
 
-Muitas vezes, precisamos **converter/parsear** entre os tipos em Julia.
+Muitas vezes, precisamos **converter** tipos de variáveis em Julia.
 Para converter um número em uma string, podemos usar a função `string`:
 
 ```jl
@@ -822,7 +822,7 @@ s = """
 sco(s)
 ```
 
-Às vezes, queremos o oposto: converter uma string em um número.
+Às vezes, queremos o oposto: converter uma string em um número (ou, como se diz no jargão, parsear essa string).
 Julia tem uma função útil para isso: `parse`.
 
 ```jl
@@ -845,7 +845,7 @@ Julia tem uma estrutura de dados chamada **tupla**.
 Ela é muito *especial* em Julia porque ela é frequentemente usada em relação às funções.
 Uma vez que as funções são um recurso importante em Julia, todo usuário precisa saber o básico das tuplas.
 
-Uma tupla é uma **recipiente de comprimento fixo que pode conter vários tipos diferentes**.
+Uma tupla é um **contâiner de tamanho fixo que pode conter vários tipos diferentes**.
 Uma tupla é um **objeto imutável**, o que significa que não pode ser modificado após a instanciação.
 Para construir uma tupla, use parênteses `()` para delimitar o início e o fim, junto com vírgulas `,` como delimitadores entre valores:
 
@@ -862,8 +862,8 @@ Assim:
 scob("my_tuple[2]")
 ```
 
-Também podemos fazer um loop em tuplas com a palavra-chave `for`.
-E até mesmo aplicar funções as tuplas.
+Também podemos iterar sobre tuplas com a palavra-chave `for`.
+E até mesmo aplicar funções sobre tuplas.
 Mas nós nunca podemos **mudar qualquer valor de uma tupla** já que elas são **imutáveis**.
 
 Você se lembra funções que retornam vários valores em @sec:function_multiple?
@@ -883,7 +883,7 @@ Isso ocorre porque `return a, b` é o mesmo que `return (a, b)`:
 sco("1, 2")
 ```
 
-Agora você pode ver por que elas são frequentemente relacionadas.
+Agora você pode ver porque tuplas e funções são frequentemente relacionadas.
 
 Mais uma coisa para pensarmos sobre as tuplas.
 **Quando você deseja passar mais de uma variável para uma função anônima, adivinhe o que você precisa usar? Tuplas!**
@@ -900,7 +900,7 @@ scob("map((x, y, z) -> x^y + z, 2, 3, 1)")
 
 ### Tupla nomeada {#sec:namedtuple}
 
-Às vezes, você deseja nomear os valores em tuplas.
+Às vezes, você deseja nomear os valores contidos nas tuplas.
 É aí que entram as **tuplas nomeadas**.
 Sua funcionalidade é praticamente a mesma das tuplas:
 são **imutáveis** e podem conter **todo tipo de valor**.
@@ -913,7 +913,7 @@ Mas agora, você **nomeia os valores**:
 sco("""my_namedtuple = (i=1, f=3.14, s="Julia")""")
 ```
 
-Podemos acessar os valores de uma tupla nomeada por meio da indexação como tuplas regulares ou, alternativamente, **acesso por seus nomes** com o `.`:
+Podemos acessar os valores de uma tupla nomeada por meio da indexação como em tuplas regulares ou, alternativamente, **acessá-los por seus nomes** com o `.`:
 
 ```jl
 scob("my_namedtuple.s")
@@ -944,13 +944,13 @@ A sintaxe é `start:stop`:
 sco("1:10")
 ```
 
-Como você pode ver, nosso range instanciado é do tipo `UnitRange{T}` onde `T` é um tipo dentro de `UnitRange`:
+Como você pode ver, nosso range instanciado é do tipo `UnitRange{T}` onde `T` é o tipo de dados contido dentro de `UnitRange`:
 
 ```jl
 sco("typeof(1:10)")
 ```
 
-E, se juntarmos todos os valores, temos:
+E, se recolhermos todos os valores, temos:
 
 ```jl
 sco("[x for x in 1:10]")
@@ -962,33 +962,33 @@ Também podemos construir ranges para outros tipos:
 sco("typeof(1.0:10.0)")
 ```
 
-Às vezes, queremos mudar o comportamento do tamanho do intervalo padrão.
-Podemos fazer isso adicionando um tamanho de passo na sintaxe do range `start:step:stop`.
+Às vezes, queremos mudar o comportamento padrão do incremento do intervalo.
+Podemos fazer isso adicionando um incremento específico por meio da sintaxe do range `start:step:stop`.
 Por exemplo, suponha que queremos um range de `Float64` que vá de 0 a 1 com passos do tamanho de 0.2:
 
 ```jl
 sco("0.0:0.2:1.0")
 ```
 
-Se você quer "materializar" a range para uma coleção, você pode usar a função `collect`:
+Se você quer "materializar" a range, transformando-a em uma coleção, você pode usar a função `collect`:
 
 ```jl
 sco("collect(1:10)")
 ```
 
-Nós temos uma array do tipo especificado no range entre os limites que definimos.
-Vamos conversar sobre arrays.
+Assim, temos uma array do tipo especificado no range entre os limites que definimos.
+Já que estamos falando de arrays, vamos conversar sobre eles.
 
 ### Array {#sec:array}
 
-Na sua forma mais básica, **arrays** detém múltiplos objetos.
+Na sua forma mais básica, **arrays** contém múltiplos objetos.
 Por exemplo, eles podem armazenar múltiplos números em uma dimensão:
 
 ```jl
 sco("myarray = [1, 2, 3]")
 ```
 
-Na maioria das vezes você gostaria de **arrays de um único tipo para problemas de performance**, mas observe que eles também podem conter objetos de diferentes tipos:
+Na maioria das vezes você quer ter **arrays de tipo único para evitar problemas de performance**, mas observe que eles também podem conter objetos de diferentes tipos:
 
 ```jl
 sco("myarray = [\"text\", 1, :symbol]"; process=output_block)
@@ -1003,28 +1003,28 @@ Portanto, **arrays são uma estrutura de dados essencial**.
 Vamos começar com os **tipos de arrays**.
 Existem vários, mas vamos nos concentrar nos dois mais usados em ciência de dados:
 
-* `Vector{T}`: array **unidimensional**. Alias para `Array{T, 1}`.
-* `Matrix{T}`: array**bidimensional**. Alias para `Array{T, 2}`.
+* `Vector{T}`: array **unidimensional**. Escrita alternativa para `Array{T, 1}`.
+* `Matrix{T}`: array**bidimensional**. Escrita alternativa para `Array{T, 2}`.
 
-Observe aqui que `T` é o tipo da array subjacente.
-Então, por exemplo, `Vector{Int64}` é um `Vector` no qual todos os elementos são `Int64`s, e `Matrix{AbstractFloat}` é a `Matrix` em que todos os elementos são subtipos de `AbstractFloat`.
+Observe aqui que `T` é o tipo do array subjacente.
+Então, por exemplo, `Vector{Int64}` é um `Vector` no qual todos os elementos são `Int64`, e `Matrix{AbstractFloat}` é uma `Matrix` em que todos os elementos são subtipos de `AbstractFloat`.
 
 Na maioria das vezes, especialmente ao lidar com dados tabulares, estamos usando arrays unidimensionais ou bidimensionais.
 Ambos são tipos `Array` para Julia.
-Mas, podemos usar os úteis aliases `Vector` e `Matrix` para uma sintaxe clara e concisa.
+Mas, podemos usar os apelidos úteis `Vector` e `Matrix` para uma sintaxe clara e concisa.
 
 #### Construção de Array {#sec:array_construction}
 
 Como **construímos** uma array?
-Nesta seção, começamos construindo arrays num nível mais baixo.
+Nesta seção, começamos construindo arrays de uma forma mais baixo-nível.
 Isso pode ser necessário para escrever código de alto desempenho em algumas situações.
-No entanto, na maioria das situações, isso não é necessário e podemos usar métodos mais convenientes para criar arrays com segurança.
+No entanto, isso não é necessário na maioria das situações, e podemos, com segurança, usar métodos mais convenientes para criar arrays.
 Esses métodos mais convenientes serão descritos posteriormente nesta seção.
 
 O construtor de baixo nível para arrays em Julia é o **construtor padrão**.
 Ele aceita o tipo de elemento como o parâmetro de tipo dentro dos colchetes `{}` e dentro do construtor você passará o tipo de elemento seguido pelas dimensões desejadas.
 É comum inicializar vetores e matrizes com elementos indefinidos usando o argumento para tipo `undef`.
-Um vetos de 10 elementos `undef` `Float64` pode ser construído como:
+Um vetor de 10 elementos `undef` `Float64` pode ser construído como:
 
 ```jl
 s = """
@@ -1034,7 +1034,7 @@ sco(s)
 ```
 
 Para matrizes, uma vez que estamos lidando com objetos bidimensionais, precisamos passar dois argumentos de dimensão dentro do construtor: um para **linhas** e outro para **colunas**.
-Por exemplo, uma matriz com 10 linhas e 2 colunas de elementos `undef` pode ser instanciada como:
+Por exemplo, uma matriz com 10 linhas e 2 colunas de elementos indefinidos `undef` pode ser instanciada como:
 
 ```jl
 s = """
@@ -1043,7 +1043,7 @@ s = """
 sco(s)
 ```
 
-Nós também temos alguns **atalhos de sintaxe** para os elementos mais comuns na construção de arrays:
+Nós também temos algumas **açúcares sintáticos** para os elementos mais comuns na construção de arrays:
 
 * `zeros` para todos os elementos inicializados em zero.
   Observe que o tipo padrão é `Float64` que pode ser alterado se necessário:
@@ -1100,7 +1100,7 @@ s = """
 sco(s)
 ```
 
-Literais de array também aceita uma especificação de tipo antes do colchetes `[]`.
+Literais de array também aceitam uma especificação de tipo antes dos colchetes `[]`.
 Então, se quisermos a mesma array 2x2 de antes mas agora como floats, podemos:
 
 ```jl
@@ -1288,8 +1288,8 @@ Você usa colchetes `[]` com o **índice** desejado dentro:
 scob("my_example_vector[2]")
 ```
 
-A mesma sintaxe segue com as arrays.
-Mas, como as arrays são arrays bidimensionais, temos que especificar *ambas* linhas e colunas.
+A mesma sintaxe segue com as matrizes.
+Mas, como as matrizes são arrays bidimensionais, temos que especificar *ambas* linhas e colunas.
 Vamos recuperar o elemento da segunda linha (primeira dimensão) e primeira coluna (segunda dimensão):
 
 ```jl
@@ -1310,9 +1310,9 @@ Vamos recuperar o elemento da última linha e segunda coluna:
 scob("my_example_matrix[end, begin+1]")
 ```
 
-Muitas vezes, não estamos só interessados em apenas um elemento da array, mas em um todo **subconjunto de elementos da array**.
+Muitas vezes, não estamos só interessados em apenas um elemento da array, mas em todo um **subconjunto de elementos da array**.
 Podemos fazer isso **fatiando** uma array.
-Usamos a mesma sintaxe de índice, mas com os dois pontos adicionados `:` para denotar os limites que estamos fatiando através da array.
+Usamos a mesma sintaxe de índice, mas adicionando dois pontos `:` para denotar os limites a partir dos quais estamos fatiando a array.
 Por exemplo, suponha que queremos obter do 2º ao 4º elemento de um vetor:
 
 ```jl
@@ -1388,7 +1388,7 @@ Você pode convertê-lo de volta em um vetor especificando uma tupla com apenas 
 sco("reshape(tree_two_matrix, (6, ))")
 ```
 
-A terceira forma que podemos manipular uma array é **aplicando uma função em cada elemento da array**.
+A terceira forma pela qual podemos manipular uma array é **aplicando uma função sobre cada elemento da array**.
 Aqui é onde o operador "dot" `.`, também conhecido como _broadcasting_, entra.
 
 ```jl
@@ -1402,7 +1402,7 @@ Você pode até mesmo usá-lo para vetorizar operadores infixos:
 sco("my_example_matrix .+ 100")
 ```
 
-Uma alternativa para broadcasting uma função por um vetor é usar `map`:
+Uma alternativa para fazer o broadcasting de função sobre um vetor é usar `map`:
 
 ```jl
 sco("map(logarithm, my_example_matrix)")
@@ -1416,22 +1416,22 @@ sco("map(x -> 3x, my_example_matrix)")
 ```
 
 é bastante claro.
-No entanto, o mesmo broadcast se parece com a seguinte:
+No entanto, a mesma operação utilizando o operador de broadcast fica da seguinte forma:
 
 ```jl
 sco("(x -> 3x).(my_example_matrix)")
 ```
 
-Em seguida, `map` funciona com a divisão:
+Além disso, `map` funciona com fatiamento:
 
 ```jl
 sco("map(x -> x + 100, my_example_matrix[:, 3])")
 ```
 
-Finalmente, às vezes, e especialmente ao lidar com dados tabulares, queremos aplicar uma **função sobre todos os elementos em uma dimensão de array específica**.
+Finalmente, às vezes, e especialmente ao lidar com dados tabulares, queremos aplicar uma **função sobre todos os elementos em uma dimensão específica de um array**.
 Isso pode ser feito com a função `mapslices`.
 Parecido com `map`, o primeiro argumento é a função e o segundo argumento é a array.
-A única mudança é que precisamos especificar o argumento `dims` argument para sinalizar em qual dimensão queremos transformar os elementos.
+A única mudança é que precisamos especificar o argumento `dims` para sinalizar em qual dimensão queremos transformar os elementos.
 
 Por exemplo, vamos usar `mapslice` com a função `sum` em ambas as linhas (`dims=1`) e colunas (`dims=2`):
 
@@ -1455,8 +1455,8 @@ mapslices(sum, my_example_matrix; dims=2)
 
 #### Iteração de array {#sec:array_iteration}
 
-Uma operação comum é **iterar sobre uma array com um loop `for`**.
-O **loop regular `for` sobre uma array retorna cada elemento**.
+Uma operação comum é **iterar sobre uma array com um laço `for`**.
+O **laço `for` regular, quando aplicado sobre uma array retorna cada elemento**.
 
 O exemplo mais simples é com um vetor.
 
@@ -1476,7 +1476,7 @@ empty_vector
 )
 ```
 
-Às vezes, você não quer fazer um loop sobre cada elemento, mas na verdade sobre cada índice de array.
+Às vezes, você não quer iterar sobre cada elemento, mas sim sobre cada índice da array.
 **Podemos usar a função `eachindex` combinada com um loop `for` para iterar sobre cada índice de array**.
 
 Novamente, vamos mostrar um exemplo com um vetor:
@@ -1497,15 +1497,15 @@ empty_vector
 )
 ```
 
-Nesse exemplo, o `eachindex(forty_twos)` retorna os índices de `forty_twos`, namely `[1, 2, 3]`.
+Nesse exemplo, o `eachindex(forty_twos)` retorna os índices de `forty_twos`, nomeadamente `[1, 2, 3]`.
 
 Da mesma forma, podemos iterar sobre matrizes.
-O padrão loop `for` vai primeiro sobre as colunas e depois sobre as linhas.
+O laço `for` padrão itera primeiro sobre as colunas e depois sobre as linhas.
 Ele irá primeiro percorrer todos os elementos na coluna 1, da primeira à última linha, em seguida, ele se moverá para a coluna 2 de maneira semelhante até cobrir todas as colunas.
 
 Para aqueles familiarizados com outras linguagens de programação:
-Julia, como a maioria das linguagens de programação científica, é "column-major".
-Column-major significa que os elementos da coluna são armazenados lado a lado na memória[^pointers].
+Julia, como a maioria das linguagens de programação científica, é "colunar".
+Colunar significa que os elementos da coluna são armazenados lado a lado na memória[^pointers].
 Isso também significa que iterar sobre os elementos em uma coluna é muito mais rápido do que sobre os elementos em uma linha.
 
 [^pointers]: ou, que os ponteiros de endereço de memória para os elementos na coluna são armazenados um ao lado do outro.
@@ -1524,7 +1524,7 @@ row_major = [[1 2]
 )
 ```
 
-Se fizermos um loop sobre o vetor armazenado em ordem column-major, então a saída é classificada:
+Se fizermos um loop sobre o vetor armazenado de forma ordenada para as colunas, então o resultado também é ordenado:
 
 ```jl
 sco(
@@ -1540,7 +1540,7 @@ indexes
 )
 ```
 
-No entanto, a saída não é classificada ao fazer um loop sobre a outra matriz:
+No entanto, o resultado não fica ordenado ao interarmos sobre a outra matriz:
 
 ```jl
 sco(
@@ -1558,13 +1558,13 @@ indexes
 
 Muitas vezes é melhor usar funções especializadas para esses loops:
 
-* `eachcol`: iterates over an array column first
+* `eachcol`: itera sobre um array coluna a coluna
 
      ```jl
      sco("first(eachcol(column_major))")
      ```
 
-* `eachrow`: iterates over an array row first
+* `eachrow`: itera sobre um array linha a linha
 
      ```jl
      sco("first(eachrow(column_major))")
@@ -1573,7 +1573,7 @@ Muitas vezes é melhor usar funções especializadas para esses loops:
 ### Par {#sec:pair}
 
 Em comparação com a enorme seção sobre arrays, esta seção sobre pares será breve.
-**`Par` é uma estrutura de dados que contém dois objetos** (which typically belong to each other).
+**`Par` é uma estrutura de dados que contém dois objetos** (que em geral estão relacionados um ao outro).
 Construímos um par em Julia usando a seguinte sintaxe:
 
 ```jl
@@ -1602,15 +1602,15 @@ scob("last(my_pair)")
 
 [^easier]: é mais fácil porque `first` e `last` também funcionam em muitas outras coleções, então você não precisa se lembrar de tanta coisa.
 
-Os pares serão muito usados na manipulação e visualização de dados, uma vez que ambos `DataFrames.jl` (@sec:dataframes) e/ou `Makie.jl` (@sec:DataVisualizationMakie) pegam objetos do tipo `Pair` em suas funções principais.
+Os pares serão muito usados na manipulação e visualização de dados, uma vez que ambos `DataFrames.jl` (@sec:dataframes) e `Makie.jl` (@sec:DataVisualizationMakie) aceitam objetos do tipo `Pair` em suas funções principais.
 Por exemplo, com `DataFrames.jl` veremos que `:a => :b` pode ser usado para renomear a coluna `:a` para `:b`.
 
 ### Dict {#sec:dict}
 
 Se você entendeu o que é um `Pair`, então `Dict` não será um problema.
-Por razões práticas, **`Dict`s são mapeamentos de chaves para valores**.
-Por mapeamento, queremos dizer que se você der alguma chave a um `Dict`, then the `Dict` pode dizer qual valor pertence aquela chave.
-`key`s e `value`s podem ser de qualquer tipo, mas normalmente `key` são strings.
+Para todos os propósitos práticos, **`Dict`s são mapeamentos de chaves para valores**.
+Por mapeamento, queremos dizer que se você der alguma chave a um `Dict`, então o `Dict` poderá lhe dizer qual valor pertence àquela chave.
+Chaves (`key`s) e valores (`value`s) podem ser de qualquer tipo, mas normalmente `key`s são strings.
 
 Existem duas maneiras de construir `Dict`s em Julia.
 A primeira é passando um vetor de tuplas como `(key, value)` para o construtor `Dict`:
@@ -1636,7 +1636,7 @@ name2number_map = Dict("one" => 1, "two" => 2)
 )
 ```
 
-Você pode recuperar um `value` de um `Dict`s ao indexá-lo na `key` correspondente:
+Você pode recuperar um `value` de um `Dict`s ao indexá-lo pela `key` correspondente:
 
 ```jl
 scob("""name2number_map["one"]""")
@@ -1658,7 +1658,7 @@ Se você quer checar se um `Dict` tem uma certa `key` você pode usar `keys` e `
 scob("\"two\" in keys(name2number_map)")
 ```
 
-Para deletar a `key` você pode usar a função `delete!`:
+Para deletar uma `key` você pode usar a função `delete!`:
 
 ```jl
 sco(
@@ -1707,7 +1707,7 @@ scob("""name2number_map["three"]""")
 ### Símbolo {#sec:symbol}
 
 `Symbol` na verdade *não* é uma estrutura de dados.
-É um tipo e se comporta muito parecido com uma string.
+É um tipo e se comporta de modo muito parecido com uma string.
 Em vez de colocar o texto entre aspas, um símbolo começa com dois pontos (:) e pode conter sublinhados:
 
 ```jl
@@ -1756,8 +1756,8 @@ Aqui é que usamos o operador "splat" `...` que pega uma coleção (geralmente u
 scob("add_elements(my_collection...)")
 ```
 
-O `...` está incluído após a coleção que queremos "splat" em uma sequência de argumentos.
-No exemplo acima, o seguinte é o mesmo:
+O `...` deve ser incluído após a coleção que queremos espalhar ou "splat" em uma sequência de argumentos.
+Ambos os exemplos apresentados acima têm o mesmo resultado:
 
 ```jl
 scob("""
@@ -1765,7 +1765,7 @@ add_elements(my_collection...) == add_elements(my_collection[1], my_collection[2
 """)
 ```
 
-Sempre que Julia vê um operador splatting dentro de uma chamada de função, ele será convertido em uma sequência de argumentos para todos os elementos da coleção separados por vírgulas.
+Sempre que Julia vê um operador splat dentro de uma chamada de função, ele será convertido em uma sequência de argumentos para todos os elementos da coleção separados por vírgulas.
 
 Também funciona para ranges:
 
@@ -1786,7 +1786,7 @@ Por isso é importante discutir as **melhores práticas em sistema de arquivos**
 Julia tem recursos de sistema de arquivos nativos que **lidam com as diferenças entre os sistemas operacionais**.
 Eles estão localizados no módulo [`Filesystem`](https://docs.julialang.org/en/v1/base/file/) da biblioteca central `Base` de Julia.
 
-Sempre que você estiver lidando com arquivos como CSV, Excel ou qualquer outro script de Julia, certifique-se de que seu código **funciona em diferentes sistemas de arquivos do SO**.
+Sempre que você estiver lidando com arquivos como CSV, Excel ou qualquer outro script de Julia, certifique-se de que seu código **funciona em sistemas de arquivos de SOs diferentes**.
 Isso é facilmente realizado com as funções `joinpath`, `@__FILE__` e `pkgdir`.
 
 Se você escrever seu código em um pacote, você pode usar `pkgdir` para obter o diretório raiz do pacote.
@@ -1840,12 +1840,12 @@ Neste livro, carregaremos o código via `using`:
 using ModuleName
 ```
 
-Depois de fazer isso, você pode acessar todas as funções e tipos dentro `ModuleName`.
+Depois de fazer isso, você pode acessar todas as funções e tipos dentro do módulo chamado `ModuleName`.
 
 ### Datas {#sec:dates}
 
 Saber como lidar com datas e timestamps é importante na ciência de dados.
-Como dissemos na seção *Por que Julia?* (@sec:why_julia), O `pandas` do Python usa seu próprio tipo de `datetime` para lidar com datas.
+Como dissemos na seção *Por que Julia?* (@sec:why_julia), o `pandas` do Python usa seu próprio tipo de `datetime` para lidar com datas.
 O mesmo é verdade no tidyverse de R, no pacote `lubridate`, que também define o seu próprio tipo de `datetime` para lidar com datas.
 Em Julia, os pacotes não precisam escrever sua própria lógica de datas, porque Julia tem um módulo de datas em sua biblioteca padrão chamado `Dates`.
 
@@ -1860,7 +1860,7 @@ using Dates
 O módulo de biblioteca padrão `Dates` tem **dois tipos para trabalhar com datas**:
 
 1. `Date`: representando o tempo em dias e
-2. `DateTime`: representando o tempo em milissegundos de precisão.
+2. `DateTime`: representando o tempo com precisão de milisegundos.
 
 Nós podemos construir `Date` e `DateTime` com o construtor padrão especificando um número inteiro para representar ano, mês, dia, horas e assim por diante:
 
@@ -1906,8 +1906,8 @@ DateTime(1987, 9, 13, 21, 21) # year, month, day, hour, minute
 
 Para os curiosos, 13 de setembro de 1987, 21:21 é a hora oficial do nascimento do primeiro autor, José.
 
-Nós também podemos passar tipos `Period` para o construtor padrão.
-**Tipos `Period` são a equivalência humana da representação do tempo** para o computador.
+Nós também podemos passar tipos "período" ou `Period` para o construtor padrão.
+**Tipos `Period` são o equivalente-humano para a representação do tempo** para o computador.
 `Dates` em Julia têm os seguintes subtipos abstratos de `Period`:
 
 ```jl
@@ -1932,8 +1932,8 @@ sco("DateTime(Year(1987), Month(9), Day(13), Hour(21), Minute(21))")
 
 #### Parseando Datas {#sec:dates_parsing}
 
-Na maioria das vezes, não construiremos instâncias `Date` ou `DateTime` do princípio.
-Na verdade, nós provavelmente **parsearemos strings como tipos `Date` ou `DateTime`**.
+Na maioria das vezes, não construiremos instâncias `Date` ou `DateTime` do zero.
+Na verdade, nós provavelmente **parsearemos strings para transformá-las em tipos `Date` ou `DateTime`**.
 
 Os construtores `Date` e `DateTime` podem ser alimentados com uma string e uma string de formato de data.
 Por exemplo, a string `"19870913"` representando 13 de setembro de 1987 pode ser parseada com:
@@ -1954,7 +1954,7 @@ sco("""DateTime("1987-09-13T21:21:00", "yyyy-mm-ddTHH:MM:SS")""")
 Você pode encontrar mais informações sobre como especificar diferentes formatos de data na [documentação `Dates`' de Julia](https://docs.julialang.org/en/v1/stdlib/Dates/#Dates.DateFormat).
 Não se preocupe se você tiver que revisitá-lo o tempo todo, nós mesmos fazemos isso ao trabalhar com datas e timestamps.
 
-De acordo com a [documentação `Dates`' de Julia](https://docs.julialang.org/en/v1/stdlib/Dates/#Constructors), usando o `Date(date_string, format_string)` método é bom se ele só for chamado algumas vezes.
+De acordo com a [documentação `Dates`' de Julia](https://docs.julialang.org/en/v1/stdlib/Dates/#Constructors), usar o `Date(date_string, format_string)` método é satisfatório se ele for chamado apenas algumas vezes.
 Se houver muitas strings de data formatadas de forma semelhante para analisar, no entanto, é muito mais eficiente criar primeiro um tipo `DateFormat`, e, em seguida, o passar em vez de uma string de formato bruto.
 Então, nosso exemplo anterior se torna:
 
@@ -1966,7 +1966,7 @@ s = """
 sco(s)
 ```
 
-Como alternativa, sem perda de desempenho, você pode usar o prefixo literal da string `dateformat"..."`:
+Como alternativa, sem perda de desempenho, você pode usar o prefixo de string literal `dateformat"..."`:
 
 ```jl
 sco("""Date("19870913", dateformat"yyyymmdd")""")
@@ -1974,14 +1974,14 @@ sco("""Date("19870913", dateformat"yyyymmdd")""")
 
 #### Extraindo informações de data {#sec:dates_information}
 
-É fácil **extraia as informações desejadas dos objetos `Date` e` DateTime`**.
+É fácil **extrair as informações desejadas dos objetos `Date` e` DateTime`**.
 Primeiro, vamos criar uma instância de uma data muito especial:
 
 ```jl
 sco("""my_birthday = Date("1987-09-13")""")
 ```
 
-Podemos extrair tudo o que quisermos `my_birthday`:
+Podemos extrair tudo o que quisermos de `my_birthday`:
 
 ```jl
 scob("year(my_birthday)")
@@ -2026,7 +2026,7 @@ scob("dayofweekofmonth(my_birthday)")
 Sim, José nasceu no segundo domingo de setembro.
 
 > **_OBSERVAÇÃO:_**
-> Aqui está uma dica útil para recuperar apenas os dias da semana de instâncias de `Dates`.
+> Aqui está uma dica útil para recuperar apenas os dias de semana de instâncias de `Dates`.
 > Use o `filter` no `dayofweek(your_date) <= 5`.
 > Para o dia útil, você pode verificar o pacote [`BusinessDays.jl`](https://github.com/JuliaFinance/BusinessDays.jl).
 
@@ -2046,7 +2046,7 @@ Podemos adicionar quantas quisermos:
 sco("my_birthday + Day(90) + Month(2) + Year(1)")
 ```
 
-Caso você esteja se perguntando: "O que posso fazer com datas de novo? O que está disponível?", então você pode usar `methodswith` para verificar.
+Caso você esteja se perguntando: "O que posso fazer com datas mesmo? O que está disponível?", então você pode usar `methodswith` para verificar.
 Mostramos apenas os primeiros 20 resultados aqui:
 
 ```jl
@@ -2061,8 +2061,8 @@ Vamos ver quantos anos o José tem, em dias:
 sco("today() - my_birthday")
 ```
 
-A **duração padrãon** de tipos de `Date` é a instância `Day`.
-Para o `DateTime`, a duração padrão é a instância `Millisecond`:
+A **duração padrão** de tipos de `Date` é uma instância de `Day`.
+Para o `DateTime`, a duração padrão é uma instância de `Millisecond`:
 
 ```jl
 sco("DateTime(today()) - DateTime(my_birthday)")
@@ -2071,12 +2071,12 @@ sco("DateTime(today()) - DateTime(my_birthday)")
 #### Intervalos de Data {#sec:dates_intervals}
 
 Uma coisa boa sobre o módulo `Dates` é que também podemos construir facilmente **intervalos de data e hora**.
-Julia é inteligente o suficiente para não ter que definir todos os tipos de intervalo e operações que abordamos @sec:ranges.
-Ela apenas estende as funções e operações definidas para range dos tipos `Date`'s.
-Isso é conhecido como múltiplo despacho e já abordamos isso em *Por que Julia?* (@sec:why_julia).
+Julia é inteligente o suficiente para não ter que definir todos os tipos de intervalo e operações que abordamos em @sec:ranges.
+Ela apenas estende as funções e operações definidas para range para os tipos `Date`.
+Isso é conhecido como despacho múltiplo e já abordamos isso em *Por que Julia?* (@sec:why_julia).
 
-Por exemplo, suponha que você deseja criar um intervalo `Day`.
-Isso é fácil de fazer com o operador cólon `:`:
+Por exemplo, suponha que você deseja criar um intervalo de tipo `Day`.
+Isso é fácil de fazer com o operador dois-pontos `:`:
 
 ```jl
 sco("""Date("2021-01-01"):Day(1):Date("2021-01-07")""")
@@ -2111,7 +2111,7 @@ Podemos converter isso para um **vetor** com a função `collect`:
 sco("collected_date_interval = collect(date_interval)")
 ```
 
-E tem toda a **array de funcionalidades disponíveis**, como, por exemplo, indexação:
+E teremos todas as **funcionalidades de array disponíveis**, como, por exemplo, indexação:
 
 ```jl
 sco("collected_date_interval[end]")
@@ -2141,8 +2141,8 @@ using Random: rand, randn, seed!
 
 Nós temos **duas funções principais que geram números aleatórios**:
 
-* `rand`: **amostra aleatória de elementos** de uma estrutura ou tipo de dados.
-* `randn`: gera um número aleatório que segue um **distribuição normal padrão** (média 0 e desvio padrão 1) de um tipo específico.
+* `rand`: faz a amostragem de um **elemento aleatório** de uma estrutura ou tipo de dados.
+* `randn`: gera um número aleatório que segue uma **distribuição normal padrão** (média 0 e desvio padrão 1) de um tipo específico.
 
 > **_OBSERVAÇÃO:_**
 > Observe que essas duas funções já estão no módulo `Base` de Julia.
@@ -2150,13 +2150,13 @@ Nós temos **duas funções principais que geram números aleatórios**:
 
 #### `rand` {#sec:random_rand}
 
-Por padrão, se você ligar `rand` sem argumentos, ele retornará um `Float64` no intervalo $[0, 1)$, o que significa entre 0 inclusivo e 1 exclusivo:
+Por padrão, se você chamar `rand` sem argumentos, ele retornará um `Float64` no intervalo $[0, 1)$, o que significa no intervalo compreendido entre os limites 0 inclusivo e 1 exclusivo:
 
 ```jl
 scob("rand()")
 ```
 
-Você pode modificar argumentos `rand` em várias formas.
+Você pode modificar argumentos `rand` de várias maneiras.
 Por exemplo, suponha que você queira mais de 1 número aleatório:
 
 ```jl
@@ -2247,7 +2247,7 @@ s = """
 sco(s)
 ```
 
-A fim de evitar a repetição tediosa e ineficiente de `seed!` em todo lugar, podemos definir uma instância de `seed!` e passá-la como primeiro argumento **ou `rand` ou `randn`**.
+A fim de evitar a repetição tediosa e ineficiente de `seed!` em todo lugar, podemos definir uma instância de `seed!` e passá-la como o primeiro argumento de **`rand` ou `randn`**.
 
 ```jl
 sco("my_seed = seed!(123)")
@@ -2284,7 +2284,7 @@ Vamos carregar o método `download`:
 using Download: download
 ```
 
-Por exemplo, vamos baixar nosso [repositório GitHub `JuliaDataScience`](https://github.com/JuliaDataScience/JuliaDataScience) `Project.toml` file.
+Por exemplo, vamos baixar nosso arquivo `Project.toml` do [repositório GitHub `JuliaDataScience`](https://github.com/JuliaDataScience/JuliaDataScience).
 Observe que a função `download` não é exportada pelo módulo `Downloads`, então temos que usar a sintaxe `Module.function`.
 Por padrão, ele retorna uma string que contém o caminho do arquivo para o arquivo baixado:
 
@@ -2297,7 +2297,7 @@ s = """
 scob(s)
 ```
 
-Com `readlines`, we can look at the first 4 lines of our downloaded file:
+Com `readlines`, nós podemos observar as primeiras 4 linhas do arquivo que baixamos:
 
 ```jl
 s = """
@@ -2307,4 +2307,4 @@ sco(s; process=catch_show)
 ```
 
 > **_OBSERVAÇÃO:_**
-> Para interações HTTP mais complexas, como interação com APIs da web, consulte o pacote [`HTTP.jl` package](https://github.com/JuliaWeb/HTTP.jl) .
+> Para interações HTTP mais complexas, como interação com APIs da web, consulte o pacote [`HTTP.jl`](https://github.com/JuliaWeb/HTTP.jl).

@@ -49,14 +49,14 @@ O nome _inner_ join az sentido, uma vez que, em matemática, o _set intersection
 Talvez você esteja pensando agora "se temos um _inner_, provavelmente também temos um _outer_".
 Sim, você adivinhou certo!
 
-The **`outerjoin`** is much less strict than the `innerjoin` and just takes any row it can find which contains a name in **at least one of the datasets**:
+O **`outerjoin`** é muito menos rigoroso do que o `innerjoin` e pega qualquer linha que encontrar que contenha um nome em **em pelo menos um dos datasets**:
 
 ```jl
 s = "outerjoin(grades_2020(), grades_2021(); on=:name)"
 sco(s; process=without_caption_label)
 ```
 
-So, this method can create `missing` data even though none of the original datasets had missing values.
+Portanto, este método pode criar dados `faltantes` mesmo que nenhum dos datasets originais tivesse valores ausentes.
 
 ### crossjoin {#sec:crossjoin}
 

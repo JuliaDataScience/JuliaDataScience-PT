@@ -44,7 +44,7 @@
   contents = [
     "preface_pt",
     "why_julia_pt",
-    "julia_basics",
+    "julia_basics_pt",
     "dataframes",
     "dataframes_load_save",
     "dataframes_indexing",

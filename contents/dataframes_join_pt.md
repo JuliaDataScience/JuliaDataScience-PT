@@ -79,7 +79,7 @@ sce(s; post=trim_last_n_lines(6))
 Ops de novo!
 Esse é um erro bastante comum com `DataFrames` e `joins`.
 As tabelas para as notas de 2020 e 2021 têm um nome de coluna duplicado, a saber `:name`.
-Como antes, o erro de saída de `DataFrames.jl` mostra uma sugestão simples que pode corrigir o problema.
+Como antes, o erro do output de `DataFrames.jl` mostra uma sugestão simples que pode corrigir o problema.
 Podemos apenas passar `makeunique=true` para resolver isso:
 
 ```jl
@@ -110,20 +110,20 @@ sco(s; process=without_caption_label)
 
 Agora, as notas de 2020 estão faltando.
 
-Note that **`leftjoin(A, B) != rightjoin(B, A)`**, because the order of the columns will differ.
-For example, compare the output below to the previous output:
+Perceba que **`leftjoin(A, B) != rightjoin(B, A)`**, porque a ordem das colunas será diferente.
+Ou por exemplo, compare o output abaixo com o output anterior:
 
 ```jl
 s = "leftjoin(grades_2021(), grades_2020(); on=:name)"
 sco(s; process=without_caption_label)
 ```
 
-### semijoin and antijoin {#sec:semijoin_antijoin}
+### semijoin e antijoin {#sec:semijoin_antijoin}
 
-Lastly, we have the **`semijoin`** and **`antijoin`**.
+Por último, temos **`semijoin`** e **`antijoin`**.
 
-The semi join is even more restrictive than the inner join.
-It returns **only the elements from the left `DataFrame` which are in both `DataFrame`s**.
+O semi join é ainda mais restritivo que o inner join.
+Retorna **apenas elementos do `DataFrame` da esquerda que estão em ambos `DataFrames`**.
 This is like a combination of the left join with the inner join.
 
 ```jl

@@ -56,31 +56,31 @@ s = "outerjoin(grades_2020(), grades_2021(); on=:name)"
 sco(s; process=without_caption_label)
 ```
 
-Portanto, este método pode criar dados `faltantes` mesmo que nenhum dos datasets originais tivesse valores ausentes.
+Portanto, este método pode criar dados `perdidos` mesmo que nenhum dos datasets originais tivesse valores ausentes.
 
 ### crossjoin {#sec:crossjoin}
 
-We can get even more `missing` data if we use the **`crossjoin`**.
-This gives the **Cartesian product of the rows**, which is basically multiplication of rows, that is, for every row create a combination with any other row:
+Podemos obter ainda mais dados `perdidos` se usarmos o **`crossjoin`**.
+Isso dá o **produto cartesiano das linhas**, que é basicamente a multiplicação de linhas, ou seja, para cada linha crie uma combinação com qualquer outra linha:
 
 ```jl
 s = "crossjoin(grades_2020(), grades_2021(); on=:id)"
 sce(s; post=trim_last_n_lines(2))
 ```
 
-Oops.
-Since `crossjoin` doesn't take the elements in the row into account, we don't need to specify the `on` argument for what we want to join:
+Ops!
+Já que `crossjoin` não leva os elementos na linha em consideração, não precisamos especificar o argumento `on` para o que queremos juntar:
 
 ```jl
 s = "crossjoin(grades_2020(), grades_2021())"
 sce(s; post=trim_last_n_lines(6))
 ```
 
-Oops again.
-This is a very common error with `DataFrame`s and `join`s.
-The tables for the 2020 and 2021 grades have a duplicate column name, namely `:name`.
-Like before, the error that `DataFrames.jl` outputs shows a simple suggestion that might fix the issue.
-We can just pass `makeunique=true` to solve this:
+Ops de novo!
+Esse é um erro bastante comum com `DataFrames`s e `joins`.
+As tabelas para as notas de 2020 e 2021 têm um nome de coluna duplicado, a saber `:name`.
+Como antes, o erro de saída de `DataFrames.jl` mostra uma sugestão simples que pode corrigir o problema.
+Podemos apenas passar `makeunique=true` para resolver isso:
 
 ```jl
 s = "crossjoin(grades_2020(), grades_2021(); makeunique=true)"

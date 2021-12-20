@@ -124,15 +124,15 @@ Por último, temos **`semijoin`** e **`antijoin`**.
 
 O semi join é ainda mais restritivo que o inner join.
 Retorna **apenas elementos do `DataFrame` da esquerda que estão em ambos `DataFrames`**.
-This is like a combination of the left join with the inner join.
+Essa é uma combinação do join da esquerda com o inner join.
 
 ```jl
 s = "semijoin(grades_2020(), grades_2021(); on=:name)"
 sco(s; process=without_caption_label)
 ```
 
-The opposite of the semi join is the anti join.
-It returns **only the elements from the left `DataFrame` which are *not* in the right `DataFrame`**:
+O oposto do semi join é o anti join.
+Ele retorna **apenas os elementos do `DataFrame` da esquerda que *não* são o `DataFrame` da direita**:
 
 ```jl
 s = "antijoin(grades_2020(), grades_2021(); on=:name)"

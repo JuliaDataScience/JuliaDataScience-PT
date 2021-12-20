@@ -56,11 +56,11 @@ s = "outerjoin(grades_2020(), grades_2021(); on=:name)"
 sco(s; process=without_caption_label)
 ```
 
-Portanto, este método pode criar dados `perdidos` mesmo que nenhum dos datasets originais tivesse valores ausentes.
+Portanto, este método pode criar dados `faltantes` mesmo que nenhum dos datasets originais tivesse valores ausentes.
 
 ### crossjoin {#sec:crossjoin}
 
-Podemos obter ainda mais dados `perdidos` se usarmos o **`crossjoin`**.
+Podemos obter ainda mais dados `faltantes` se usarmos o **`crossjoin`**.
 Isso dá o **produto cartesiano das linhas**, que é basicamente a multiplicação de linhas, ou seja, para cada linha crie uma combinação com qualquer outra linha:
 
 ```jl
@@ -77,7 +77,7 @@ sce(s; post=trim_last_n_lines(6))
 ```
 
 Ops de novo!
-Esse é um erro bastante comum com `DataFrames`s e `joins`.
+Esse é um erro bastante comum com `DataFrames` e `joins`.
 As tabelas para as notas de 2020 e 2021 têm um nome de coluna duplicado, a saber `:name`.
 Como antes, o erro de saída de `DataFrames.jl` mostra uma sugestão simples que pode corrigir o problema.
 Podemos apenas passar `makeunique=true` para resolver isso:
@@ -87,28 +87,28 @@ s = "crossjoin(grades_2020(), grades_2021(); makeunique=true)"
 sco(s; process=without_caption_label)
 ```
 
-So, now, we have one row for each grade from everyone in grades 2020 and grades 2021 datasets.
-For direct queries, such as "who has the highest grade?", the Cartesian product is usually not so useful, but for "statistical" queries, it can be.
+Então, agora, temos uma linha para cada nota de todos os datasets das séries 2020 e 2021.
+Para consultas diretas, como "quem tem a nota mais alta?", o produto cartesiano geralmente não é tão útil, mas para consultas "estatísticas", pode ser.
 
-### leftjoin and rightjoin {#sec:leftjoin_rightjoin}
+### leftjoin e rightjoin {#sec:leftjoin_rightjoin}
 
-**More useful for scientific data projects are the `leftjoin` and `rightjoin`**.
-The left join gives all the elements in the _left_ `DataFrame`:
+**Mais úteis para projetos de dados científicos são os `leftjoin` e `rightjoin`**.
+A join a esquerda fornece todos os elementos à _esquerda_ do `DataFrame`:
 
 ```jl
 s = "leftjoin(grades_2020(), grades_2021(); on=:name)"
 sco(s; process=without_caption_label)
 ```
 
-Here, grades for "Bob" and "Alice" were `missing` in the grades 2021 table, so that's why there are also `missing` elements.
-The right join does sort of the opposite:
+Aqui, as notas para "Bob" e "Alice" estavam faltando na tabela de notas de 2021, então é por isso que também existem elementos `faltantes`.
+A join a direita faz quase que o oposto:
 
 ```jl
 s = "rightjoin(grades_2020(), grades_2021(); on=:name)"
 sco(s; process=without_caption_label)
 ```
 
-Now, grades in 2020 are missing.
+Agora, as notas de 2020 estão faltando.
 
 Note that **`leftjoin(A, B) != rightjoin(B, A)`**, because the order of the columns will differ.
 For example, compare the output below to the previous output:

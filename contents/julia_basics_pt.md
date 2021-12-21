@@ -1,10 +1,10 @@
-# Julia Basics {#sec:julia_basics}
+# Básico de Julia {#sec:julia_basics}
 
 > **_OBSERVAÇÃO:_**
 > Neste capítulo, descreveremos o básico de Julia como linguagem de programação.
 > Por favor, note que isso não é *estritamente necessário* para você usar Julia como uma ferramenta de manipulação e visualização de dados.
 > Ter um conhecimento básico de Julia definitivamente o tornará mais *eficaz* e *eficiente* no uso de Julia.
-> No entanto, se você preferir começar imediatamente, pode pular para @sec:dataframes e aprenda sobre dados tabulares em `DataFrames.jl`.
+> No entanto, se você preferir começar imediatamente, pode pular para @sec:dataframes e aprender sobre dados tabulares em `DataFrames.jl`.
 
 Aqui, vamos trazer uma visão mais geral sobre a linguagem Julia, *não* algo aprofundado.
 Se você já está familiarizado e confortável com outras linguagens de programação, nós encorajamos você a ler a documentação de Julia (<https://docs.julialang.org/>).
@@ -40,14 +40,14 @@ Julia tem diversos tipos de variáveis, mas, em ciência de dados, usamos princi
 
 * Números inteiros: `Int64`
 * Números reais: `Float64`
-* Booleana: `Bool`
+* Booleanas: `Bool`
 * Strings: `String`
 
 Inteiros e números reais são armazenados usando 64 bits por padrão, é por isso que eles têm o sufixo `64` no nome do tipo.
-Se você precisar de mais ou menos precisão, existem os tipos `Int8` ou `Int128`, por exemplo, nos quais um maior número significa uma maior significa mais precisão.
+Se você precisar de mais ou menos precisão, existem os tipos `Int8` ou `Int128`, por exemplo, nos quais um maior número significa uma maior precisão.
 Na maioria das vezes, isso não será um problema, então você pode simplesmente seguir os padrões.
 
-Criamos novas variáveis escrevendo o nome da variável à esquerda e seu valor à direita, e no meio usamos o `=` operador de atribuição.
+Criamos novas variáveis escrevendo o nome da variável à esquerda e seu valor à direita, e no meio usamos o operador de atribuição `=`.
 Por exemplo:
 
 ```jl
@@ -149,10 +149,10 @@ s = """
 sco(s)
 ```
 
-Algo importante de se notar com os `struct` é que não podemos alterar seus valores, uma vez que são instanciados.
+Algo importante de se notar com os `struct` é que não podemos alterar seus valores uma vez que são instanciados.
 Podemos resolver isso com `mutable struct`.
 Além disso, observe que objetos mutáveis geralmente serão mais lentos e mais propensos a erros.
-Sempre que possível, faça que tudo seja *imutável*.
+Sempre que possível, faça com que tudo seja *imutável*.
 Vamos criar uma `mutable struct`.
 
 ```jl
@@ -210,12 +210,12 @@ Com relação à comparação numérica, Julia tem três tipos principais de com
 1. **Igualdade**: ou algo é *igual* ou *não igual* em relação a outro
     * == "igual"
     * != ou ≠ "não igual"
-1. **Menos que**: ou algo é *menos que* ou *menos que ou igual a*
-    * <  "menos que"
-    * <= ou ≤ "menos que ou igual a"
-1. **Maior que**: ou algo é *maior que* ou *maior que ou igual a*
+1. **Menor que**: ou algo é *menor que* ou *menor ou igual a*
+    * <  "menor que"
+    * <= ou ≤ "menor ou igual a"
+1. **Maior que**: ou algo é *maior que* ou *maior ou igual a*
     * \> "maior que"
-    * \>= ou ≥ "maior que ou igual a"
+    * \>= ou ≥ "maior ou igual a"
 
 Aqui temos alguns exemplos:
 
@@ -443,7 +443,7 @@ s = """
 scob(s)
 ```
 
-#### Funções anônimas {#sec:function_anonymous}
+#### Funções Anônimas {#sec:function_anonymous}
 
 Muitas vezes não nos importamos com o nome da função e queremos criar uma rapidamente.
 O que precisamos é das **funções anônimas**.
@@ -566,7 +566,7 @@ Aqui, precisamos avisar Julia que o `n` dentro do laço `while` está no escopo 
 
 Por fim, também usamos o operador `+=` que é uma boa abreviatura para `n = n + 1`.
 
-## Estruturas nativas de dados {#sec:data_structures}
+## Estruturas Nativas de Dados {#sec:data_structures}
 
 Julia possui diversas estruturas de dados nativas.
 Elas são abstrações de dados que representam alguma forma de dado estruturado.
@@ -898,7 +898,7 @@ Ou ainda, mais do que dois argumentos:
 scob("map((x, y, z) -> x^y + z, 2, 3, 1)")
 ```
 
-### Tupla nomeada {#sec:namedtuple}
+### Tupla Nomeada {#sec:namedtuple}
 
 Às vezes, você deseja nomear os valores contidos nas tuplas.
 É aí que entram as **tuplas nomeadas**.
@@ -963,7 +963,7 @@ sco("typeof(1.0:10.0)")
 ```
 
 Às vezes, queremos mudar o comportamento padrão do incremento do intervalo.
-Podemos fazer isso adicionando um incremento específico por meio da sintaxe do range `start:step:stop`.
+Podemos fazer isso adicionando um incremento específico por meio da sintaxe da range `start:step:stop`.
 Por exemplo, suponha que queremos um range de `Float64` que vá de 0 a 1 com passos do tamanho de 0.2:
 
 ```jl
@@ -982,19 +982,19 @@ Já que estamos falando de arrays, vamos conversar sobre eles.
 ### Array {#sec:array}
 
 Na sua forma mais básica, **arrays** contém múltiplos objetos.
-Por exemplo, eles podem armazenar múltiplos números em uma dimensão:
+Por exemplo, elas podem armazenar múltiplos números em uma dimensão:
 
 ```jl
 sco("myarray = [1, 2, 3]")
 ```
 
-Na maioria das vezes você quer ter **arrays de tipo único para evitar problemas de performance**, mas observe que eles também podem conter objetos de diferentes tipos:
+Na maioria das vezes você quer ter **arrays de tipo único para evitar problemas de performance**, mas observe que elas também podem conter objetos de diferentes tipos:
 
 ```jl
 sco("myarray = [\"text\", 1, :symbol]"; process=output_block)
 ```
 
-Eles são o "pão com manteiga" da ciência de dados, porque as arrays são o que está por trás da maior parte do fluxo de trabalho em **manipulação de dados** e **visualização de dados**.
+Elas são o "pão com manteiga" da ciência de dados, porque as arrays são o que está por trás da maior parte do fluxo de trabalho em **manipulação de dados** e **visualização de dados**.
 
 Portanto, **arrays são uma estrutura de dados essencial**.
 
@@ -1006,7 +1006,7 @@ Existem vários, mas vamos nos concentrar nos dois mais usados em ciência de da
 * `Vector{T}`: array **unidimensional**. Escrita alternativa para `Array{T, 1}`.
 * `Matrix{T}`: array**bidimensional**. Escrita alternativa para `Array{T, 2}`.
 
-Observe aqui que `T` é o tipo do array subjacente.
+Observe aqui que `T` é o tipo da array subjacente.
 Então, por exemplo, `Vector{Int64}` é um `Vector` no qual todos os elementos são `Int64`, e `Matrix{AbstractFloat}` é uma `Matrix` em que todos os elementos são subtipos de `AbstractFloat`.
 
 Na maioria das vezes, especialmente ao lidar com dados tabulares, estamos usando arrays unidimensionais ou bidimensionais.
@@ -1043,7 +1043,7 @@ s = """
 sco(s)
 ```
 
-Nós também temos algumas **açúcares sintáticos** para os elementos mais comuns na construção de arrays:
+Nós também temos algumas **apelidos sintáticos** para os elementos mais comuns na construção de arrays:
 
 * `zeros` para todos os elementos inicializados em zero.
   Observe que o tipo padrão é `Float64` que pode ser alterado se necessário:
@@ -1186,7 +1186,7 @@ sco(s)
 ```
 
 Finalmente, também podemos criar arrays com **funções de concatenação**.
-Concatenação é um termo padrão em programação e significa "para acorrentar juntos".
+Concatenação é um termo padrão em programação e significa "acorrentar juntos".
 Por exemplo, podemos concatenar strings com "aa" e "bb" para conseguir "aabb":
 
 ```jl
@@ -1382,7 +1382,7 @@ s = """
 sco(s)
 ```
 
-Você pode convertê-lo de volta em um vetor especificando uma tupla com apenas uma dimensão como o segundo argumento:
+Você pode convertê-la de volta em um vetor especificando uma tupla com apenas uma dimensão como o segundo argumento:
 
 ```jl
 sco("reshape(tree_two_matrix, (6, ))")
@@ -1428,7 +1428,7 @@ Além disso, `map` funciona com fatiamento:
 sco("map(x -> x + 100, my_example_matrix[:, 3])")
 ```
 
-Finalmente, às vezes, e especialmente ao lidar com dados tabulares, queremos aplicar uma **função sobre todos os elementos em uma dimensão específica de um array**.
+Finalmente, às vezes, e especialmente ao lidar com dados tabulares, queremos aplicar uma **função sobre todos os elementos em uma dimensão específica de uma array**.
 Isso pode ser feito com a função `mapslices`.
 Parecido com `map`, o primeiro argumento é a função e o segundo argumento é a array.
 A única mudança é que precisamos especificar o argumento `dims` para sinalizar em qual dimensão queremos transformar os elementos.
@@ -1558,13 +1558,13 @@ indexes
 
 Muitas vezes é melhor usar funções especializadas para esses loops:
 
-* `eachcol`: itera sobre um array coluna a coluna
+* `eachcol`: itera sobre uma array coluna a coluna
 
      ```jl
      sco("first(eachcol(column_major))")
      ```
 
-* `eachrow`: itera sobre um array linha a linha
+* `eachrow`: itera sobre uma array linha a linha
 
      ```jl
      sco("first(eachrow(column_major))")
@@ -1773,7 +1773,7 @@ Também funciona para ranges:
 scob("add_elements(1:3...)")
 ```
 
-## Sistema de arquivo {#sec:filesystem}
+## Sistema de Arquivos {#sec:filesystem}
 
 Em ciência de dados, a maioria dos projetos é realizada em um esforço colaborativo.
 Compartilhamos código, dados, tabelas, figuras e assim por diante.
@@ -1855,7 +1855,7 @@ Para começar, vamos carregar o módulo `Dates`:
 using Dates
 ```
 
-#### Tipo `Date` e `DateTime` {#sec:dates_types}
+#### Tipos `Date` e `DateTime` {#sec:dates_types}
 
 O módulo de biblioteca padrão `Dates` tem **dois tipos para trabalhar com datas**:
 
@@ -1954,7 +1954,7 @@ sco("""DateTime("1987-09-13T21:21:00", "yyyy-mm-ddTHH:MM:SS")""")
 Você pode encontrar mais informações sobre como especificar diferentes formatos de data na [documentação `Dates`' de Julia](https://docs.julialang.org/en/v1/stdlib/Dates/#Dates.DateFormat).
 Não se preocupe se você tiver que revisitá-lo o tempo todo, nós mesmos fazemos isso ao trabalhar com datas e timestamps.
 
-De acordo com a [documentação `Dates`' de Julia](https://docs.julialang.org/en/v1/stdlib/Dates/#Constructors), usar o `Date(date_string, format_string)` método é satisfatório se ele for chamado apenas algumas vezes.
+De acordo com a [documentação `Dates`' de Julia](https://docs.julialang.org/en/v1/stdlib/Dates/#Constructors), usar o método `Date(date_string, format_string)` é satisfatório se ele for chamado apenas algumas vezes.
 Se houver muitas strings de data formatadas de forma semelhante para analisar, no entanto, é muito mais eficiente criar primeiro um tipo `DateFormat`, e, em seguida, o passar em vez de uma string de formato bruto.
 Então, nosso exemplo anterior se torna:
 
@@ -1972,7 +1972,7 @@ Como alternativa, sem perda de desempenho, você pode usar o prefixo de string l
 sco("""Date("19870913", dateformat"yyyymmdd")""")
 ```
 
-#### Extraindo informações de data {#sec:dates_information}
+#### Extraindo Informações de Data {#sec:dates_information}
 
 É fácil **extrair as informações desejadas dos objetos `Date` e` DateTime`**.
 Primeiro, vamos criar uma instância de uma data muito especial:
@@ -2030,7 +2030,7 @@ Sim, José nasceu no segundo domingo de setembro.
 > Use o `filter` no `dayofweek(your_date) <= 5`.
 > Para o dia útil, você pode verificar o pacote [`BusinessDays.jl`](https://github.com/JuliaFinance/BusinessDays.jl).
 
-#### Operações de data {#sec:dates_operations}
+#### Operações de Data {#sec:dates_operations}
 
 Podemos realizar **operações** em instâncias de `Dates`.
 Por exemplo, podemos adicionar dias a uma instância `Date` ou `DateTime`.
@@ -2125,7 +2125,7 @@ sco("collected_date_interval .+ Day(10)")
 
 Da mesma forma, esses exemplos funcionam para tipos `DateTime` também.
 
-### Números aleatórios {#sec:random}
+### Números Aleatórios {#sec:random}
 
 Outro módulo importante na biblioteca padrão de Julia é o módulo `Random`.
 Este módulo lida com **geração de números aleatórios**.

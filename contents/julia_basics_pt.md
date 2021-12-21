@@ -944,7 +944,7 @@ A sintaxe é `start:stop`:
 sco("1:10")
 ```
 
-Como você pode ver, nossa range instanciada é do tipo `UnitRange{T}` onde `T` é o tipo de dados contido dentro de `UnitRange`:
+Como você pode ver, nosso range instanciado é do tipo `UnitRange{T}` onde `T` é o tipo de dados contido dentro de `UnitRange`:
 
 ```jl
 sco("typeof(1:10)")
@@ -964,7 +964,7 @@ sco("typeof(1.0:10.0)")
 
 Às vezes, queremos mudar o comportamento padrão do incremento do intervalo.
 Podemos fazer isso adicionando um incremento específico por meio da sintaxe da range `start:step:stop`.
-Por exemplo, suponha que queremos uma range de `Float64` que vá de 0 a 1 com passos do tamanho de 0.2:
+Por exemplo, suponha que queremos um range de `Float64` que vá de 0 a 1 com passos do tamanho de 0.2:
 
 ```jl
 sco("0.0:0.2:1.0")
@@ -976,7 +976,7 @@ Se você quer "materializar" a range, transformando-a em uma coleção, você po
 sco("collect(1:10)")
 ```
 
-Assim, temos uma array do tipo especificado na range entre os limites que definimos.
+Assim, temos uma array do tipo especificado no range entre os limites que definimos.
 Já que estamos falando de arrays, vamos conversar sobre eles.
 
 ### Array {#sec:array}
@@ -1015,7 +1015,7 @@ Mas, podemos usar os apelidos úteis `Vector` e `Matrix` para uma sintaxe clara 
 
 #### Construção de Array {#sec:array_construction}
 
-Como **construímos** um array?
+Como **construímos** uma array?
 Nesta seção, começamos construindo arrays de uma forma mais baixo-nível.
 Isso pode ser necessário para escrever código de alto desempenho em algumas situações.
 No entanto, isso não é necessário na maioria das situações, e podemos, com segurança, usar métodos mais convenientes para criar arrays.
@@ -1773,7 +1773,7 @@ Também funciona para ranges:
 scob("add_elements(1:3...)")
 ```
 
-## Sistema de arquivos {#sec:filesystem}
+## Sistema de Arquivos {#sec:filesystem}
 
 Em ciência de dados, a maioria dos projetos é realizada em um esforço colaborativo.
 Compartilhamos código, dados, tabelas, figuras e assim por diante.

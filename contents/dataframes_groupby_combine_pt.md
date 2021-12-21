@@ -1,31 +1,31 @@
-## Groupby and Combine {#sec:groupby_combine}
+## Groupby e Combine {#sec:groupby_combine}
 
-In the R programming language, @wickham2011split has popularized the so-called split-apply-combine strategy for data transformations.
-In essence, this strategy **splits** a dataset into distinct groups, **applies** one or more functions to each group, and then **combines** the result.
-`DataFrames.jl` fully supports split-apply-combine.
-We will use the student grades example like before.
-Suppose that we want to know each student's mean grade:
+A linguagem de programação R, @wickham2011split popularizou a chamada estratégia dividir-aplicar-combinar para transformações de dados.
+Em essência, esta estratégia **divide** o dataset em grupos distintos, **aplica** uma ou mais funções para cada grupo e, depois, **combina** o resultado.
+`DataFrames.jl` suporta totalmente dividir-aplicar-combinar.
+Usaremos o exemplo das notas do aluno como antes.
+Suponha que queremos saber a nota média de cada aluno:
 
 ```jl
 @sco process=without_caption_label all_grades()
 ```
 
-The strategy is to **split** the dataset into distinct students, **apply** the mean function to each student, and **combine** the result.
+A estratégia é **dividir** o dataset em alunos distintos, **aplicar** a função média para cada aluno e **combinar** o resultado.
 
-The split is called `groupby` and we give as second argument the column ID that we want to split the dataset into:
+A divisão é chamada `groupby` e dá como segundo argumento o ID da coluna em que queremos dividir o dataset:
 
 ```jl
 s = "groupby(all_grades(), :name)"
 sco(s; process=string, post=plainblock)
 ```
 
-We apply the `mean` function from Julia's standard library `Statistics` module:
+Nós aplicamos a função `mean` da biblioteca padrão de Julia no módulo `Statistics`:
 
 ```
 using Statistics
 ```
 
-To apply this function, use the `combine` function:
+Para aplicar esta função, use a função `combine`:
 
 ```jl
 s = """
@@ -35,13 +35,13 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Imagine having to do this without the `groupby` and `combine` functions.
-We would need to loop over our data to split it up into groups, then loop over each split to apply a function, **and** finally loop over each group to gather the final result.
-Therefore, the split-apply-combine technique is a great one to know.
+Imagine ter que fazer isso sem as funções `groupby` e `combine`.
+Precisaríamos fazer um loop sobre nossos dados para dividi-los em grupos, em seguida, fazer um loop em cada divisão para aplicar a função **e** finalmente, fazer um loop em cada grupo para obter o resultado final.
+Portanto, a técnica dividir-aplicar-combinar é muito boa.
 
-### Multiple Source Columns {#sec:groupby_combine_multiple_source}
+### Múltiplas colunas de origem {#sec:groupby_combine_multiple_source}
 
-But what if we want to apply a function to multiple columns of our dataset?
+Mas, e se quisermos aplicar uma função a várias colunas de nosso dataset?
 
 ```jl
 s = """
@@ -53,7 +53,7 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-This is accomplished in a similar manner:
+Isso é feito de maneira semelhante:
 
 ```jl
 s = """
@@ -63,10 +63,10 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Note that we've used the dot `.` operator before the right arrow `=>` to indicate that the `mean` has to be applied to multiple source columns `[:X, :Y]`.
+Perceba que usamos o operador dot `.` operator antes da seta à direita `=>` para indicar que o `mean` tem que ser aplicado a múltiplas colunas de origem `[:X, :Y]`.
 
-To use composable functions, a simple way is to create a function that does the intended composable transformations.
-For instance, for a series of values, let's first take the `mean` followed by `round` to a whole number (also known as an integer `Int`):
+Para usar funções composíveis, uma maneira simples é criar uma função que faça as transformações composíveis pretendidas.
+Por exemplo, para uma série de valores, vamos primeiro pegar o `mean` seguido de `round` para um número inteiro (também conhecido como um inteiro `Int`):
 
 ```jl
 s = """

@@ -1,6 +1,6 @@
 ## Indexação e sumarização
 
-Vamos voltar para o exemplo dos dados `grades_2020()` definido antes:
+Vamos voltar para o exemplo dos dados `grades_2020()` definidos antes:
 
 ```jl
 sco("grades_2020()"; process=without_caption_label)
@@ -12,14 +12,14 @@ Para recuperar um **vetor** para `name`, podemos acessar o `DataFrame` com o `.`
 @sco JDS.names_grades1()
 ```
 
-ou podemos indexar um `DataFrame` muito parecido com uma `Array` com símbolos e caracteres especiais.
+ou podemos indexar um `DataFrame` de modo muito parecido com uma `Array` utilizando símbolos e caracteres especiais.
 O **segundo índice é a indexação da coluna**:
 
 ```jl
 @sco JDS.names_grades2()
 ```
 
-Perceba que `df.name` é exatamente o mesmo que `df[!, :name]`, que você pode verificar fazendo:
+Perceba que `df.name` é exatamente o mesmo que o comando `df[!, :name]`, o que você pode verificar fazendo:
 
 ```
 julia> df = DataFrame(id=[1]);
@@ -28,7 +28,7 @@ julia> @edit df.name
 ```
 
 Em ambos os casos, ele dará a coluna `:name`.
-Também existe o `df[:, :name]` que copia a coluna `:name`.
+Também existe o comando `df[:, :name]` que copia a coluna `:name`.
 Na maioria dos casos, `df[!, :name]` é a melhor aposta, pois é mais versátil e faz uma modificação no local.
 
 Para qualquer **linha**, digamos a segunda linha, podemos usar o **primeiro índice como indexação de linha**:
@@ -48,20 +48,20 @@ ou criar uma função para nos dar qualquer linha `i` que quisermos:
 @sco process=without_caption_label JDS.grade_2020(2)
 ```
 
-Podemos também obter apenas `names` para as 2 primeiras linhas usando **fatiamento** (again similar to an `Array`):
+Podemos também obter apenas a coluna `names` para as 2 primeiras linhas usando **fatiamento** (novamente, de modo similar a um `Array`):
 
 ```jl
 @sco JDS.grades_indexing(grades_2020())
 ```
 
 Se assumirmos que todos os nomes na tabela são únicos, também podemos escrever uma função para obter a nota de uma pessoa por meio de seu `name`.
-Para fazer isso, convertemos a tabela de volta para uma das estruturas de dados básicas de Julia (see @sec:data_structures) que são capazes de criar mapeamentos, a saber `Dict`s:
+Para fazer isso, convertemos a tabela de volta para uma das estruturas de dados básicas de Julia (veja @sec:data_structures) que é capaz de criar mapeamentos, a saber `Dict`s:
 
 ```jl
 @sco post=output_block grade_2020("Bob")
 ```
 
-que funciona porque `zip` faz loops através de `df.name` e `df.grade_2020` ao mesmo tempo como um "zipper":
+que funciona porque `zip` faz itera por `df.name` e `df.grade_2020` ao mesmo tempo como um "zipper":
 
 ```jl
 sco("""
@@ -70,20 +70,20 @@ collect(zip(df.name, df.grade_2020))
 """)
 ```
 
-Entraetanto, converter um `DataFrame` para `Dict` só é útil quando os elementos são únicos.
-Geralmente esse não é o caso e é por isso que precisamos aprender como `filter` um `DataFrame`.
+Entretanto, converter um `DataFrame` para `Dict` só é útil quando os elementos são únicos.
+Geralmente esse não é o caso e é por isso que precisamos aprender como `filter` (filtrar) um `DataFrame`.
 
 ## Filtro e Subconjunto {#sec:filter_subset}
 
 Existem duas maneiras de remover linhas de um `DataFrame`, uma é `filter` (@sec:filter) e outra é `subset` (@sec:subset).
-`filter` was added earlier to `DataFrames.jl`, is more powerful and more consistent with syntax from Julia base, so that is why we start discussing `filter` first.
-`subset` is newer and often more convenient.
+`filter` foi adicionado à biblioteca `DataFrames.jl` anteriormente, é mais poderoso e também tem uma sintaxe mais coerente em relação às bibliotecas básicas de Julia. É por isso que vamos iniciar essa seção discutindo `filter` primeiro.
+`subset` é mais recente e, comumente, é mais conveniente de usar.
 
 ### Filter {#sec:filter}
 
-From this point on, we start to get into the more powerful features of `DataFrames.jl`.
-To do this, we need to learn some functions, such as `select` and `filter`.
-But don't worry!
+A partir de agora, nós começaremos a adentrar funcionalidades mais robustas da biblioteca `DataFrames.jl`.
+Para fazer isso, precisaremos aprender sobre algumas funções, como `select` e `filter`.
+Mas não se preocupe!
 It might be a relief to know that the **general design goal of `DataFrames.jl` is to keep the number of functions that a user has to learn to a minimum[^verbs]**.
 
 [^verbs]: According to Bogumił Kamiński (lead developer and maintainer of `DataFrames.jl`) on Discourse (<https://discourse.julialang.org/t/pull-dataframes-columns-to-the-front/60327/5>).

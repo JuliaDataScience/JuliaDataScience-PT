@@ -47,7 +47,7 @@ Agora, poderíamos fazer as seguintes perguntas:
 
 Ao longo deste capítulo, mostraremos como você pode responder facilmente a essas perguntas em Julia.
 Para fazer isso, primeiro mostramos porque precisamos de um pacote Julia chamado `DataFrames.jl`.
-Nas próximas seções, mostramos como você pode usar este pacote e também, como escrever transformações de dados (@sec:df_performance).
+Nas próximas seções, mostraremos como você pode usar este pacote e também como escrever transformações de dados (@sec:df_performance).
 
 Vejamos uma tabela de notas escolares como a @tbl:grades_for_2020:
 

@@ -21,7 +21,7 @@ Options(tv_shows; label="TV_shows")
 ```
 
 Aqui, as reticências significam que esta pode ser uma tabela muito longa e mostramos apenas algumas linhas.
-Ao analisar dados, muitas vezes levantamos questões interessantes sobre eles, também chamadas de __queries (ou consultas) de dados__.
+Ao analisar dados, muitas vezes levantamos questões interessantes sobre eles, também chamadas de _queries_ (ou consultas) de dados.
 Para tabelas grandes, os computadores são capazes de responder a  perguntas desse tipo muito mais rápido do que você faria manualmente.
 Alguns exemplos de questões para os dados seriam:
 

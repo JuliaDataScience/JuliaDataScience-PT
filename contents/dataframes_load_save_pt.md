@@ -1,14 +1,14 @@
 ## Carrgar e salvar arquivos {#sec:load_save}
 
-Ter apenas dados dentro dos programas Julia e não ser capaz de carregá-los ou salvá-los seria muito limitante.
+Ter os dados apenas dentro dos programas Julia e não ser capaz de carregá-los ou salvá-los seria muito limitante.
 Portanto, começamos mencionando como armazenar e carregar arquivos do HD.
-Focamos em CSV, see @sec:csv, e Excel, see @sec:excel, formatos de arquivo, uma vez que esses são os formatos de armazenamento de dados mais comuns para dados tabulares.
+Focamos em formatos de arquivo CSV, veja @sec:csv, e Excel, veja @sec:excel, uma vez que esses são os formatos de armazenamento de dados mais comuns para dados tabulares.
 
 ### CSV {#sec:csv}
 
 Arquivos **C**omma-**s**eparated **v**alues (CSV, valores separados por vírgula) são eficazes no armazenamento de tabelas.
 Os arquivos CSV têm duas vantagens sobre outros arquivos de armazenamento de dados.
-Primeiro, eles fazem exatamente o que o nome indica que fazem, ou seja, armazenam valores, separando-os por vírgulas `,`.
+Primeiro, eles fazem exatamente o que o nome indica que fazem, ou seja, armazenam valores, separando-os por vírgulas `,` (ou, em sistemas operacionais ambientados no Brasil, separados por ponto-e-vírgula, pois a vírgula é utilizada como separador decimal).
 Este acrônimo também é usado como extensão de arquivo.
 Portanto, certifique-se de salvar seus arquivos usando a extensão ".csv" tal como "myfile.csv".
 Para demonstrar a aparência de um arquivo CSV, podemos instalar o pacote [`CSV.jl`](http://csv.juliadata.org/latest/):
@@ -33,7 +33,7 @@ grades_2020()
 "; process=without_caption_label)
 ```
 
-e lê-los de um arquivo depois de escrever:
+e escrevê-los em um arquivo, para em seguida lê-los novamente:
 
 ```jl
 @sc write_grades_csv()
@@ -51,9 +51,9 @@ end # hide
 Aqui, também vemos o segundo benefício do formato de dados CSV: os dados podem ser lidos usando um editor de texto simples.
 Isso difere de muitos formatos de dados alternativos que requerem software proprietário, por exemplo, Excel.
 
-Isso funciona muito bem, mas somente se nossos dados **contiverem vírgulas `,`** como valores?
-Se tivéssemos de escrever ingenuamente os dados com vírgulas, issp tornaria os arquivos muito difíceis de se converter de volta para uma tabela.
-Por sorte, `CSV.jl` lida com isso de forma automática.
+Isso funciona muito bem, mas e se nossos dados **contiverem vírgulas `,`** como valores?
+Se tivéssemos de escrever ingenuamente os dados com vírgulas, isso tornaria os arquivos muito difíceis de se converter de volta para uma tabela.
+Por sorte, `CSV.jl` resolve esse problema para nós de forma automática.
 Considere os seguintes dados com vírgulas `,`:
 
 ```jl
@@ -77,7 +77,7 @@ end # hide
 
 Logo, `CSV.jl` adiciona aspas `"` em torno dos valores contendo vírgulas.
 Outra maneira comum de resolver esse problema é gravar os dados em um formato de arquivo **t**ab-**s**eparated **v**alues (TSV, valores separados por tabulações).
-Isso pressupõe que os dados não contêm abas, o que é válido na maioria dos casos.
+Isso pressupõe que os dados não contêm tabulações, o que é válido na maioria dos casos.
 
 Além disso, observe que os arquivos TSV também podem ser lidos usando um editor de texto simples e esses arquivos usam a extensão ".tsv".
 
@@ -107,10 +107,10 @@ end # hide
 """)
 ```
 
-Por convenção, ainda é melhor fornecer arquivos com delimitadores especiais, como ";", a extensão ".csv".
+Por convenção, ainda assim é melhor dar a extensão ".csv" a arquivos com delimitadores especiais, como ";".
 
-Carregando arquivos CSV usando `CSV.jl` é feito de maneira semelhante.
-Você pode usar `CSV.read` e especifique em que tipo de formato você deseja que a saída.
+O carregamento de arquivos CSV usando `CSV.jl` é feito de maneira semelhante.
+Você pode usar `CSV.read` e especificar qual o formato do retorno da função.
 Nós especificamos um `DataFrame`.
 
 ```jl
@@ -122,7 +122,7 @@ end # hide
 """; process=without_caption_label)
 ```
 
-Convenientemente, `CSV.jl` irá inferir automaticamente os tipos de coluna para nós:
+Convenientemente, `CSV.jl` irá inferir automaticamente os tipos de dados das colunas para nós:
 
 ```jl
 sco("""
@@ -150,12 +150,12 @@ end # hide
 ```
 
 Essas noções básicas de CSV devem abranger a maioria dos casos de uso.
-Para obter mais informações, consulte o [`CSV.jl` documentação](https://csv.juliadata.org/stable) e, especialemnte, o [`CSV.File` construtor docstring](https://csv.juliadata.org/stable/#CSV.File).
+Para obter mais informações, consulte a [documentação do `CSV.jl` ](https://csv.juliadata.org/stable) e, especialemnte, o [docstring do construtor `CSV.File`  ](https://csv.juliadata.org/stable/#CSV.File).
 
 ### Excel {#sec:excel}
 
 Existem vários pacotes Julia para ler arquivos Excel.
-Existem vários pacotes Julia para ler arquivos Excel [`XLSX.jl`](https://github.com/felipenoris/XLSX.jl), porque é o pacote mais ativamente mantido no ecossistema Julia que lida com dados do Excel.
+Neste livro, nós vamos cobrir apenas o [`XLSX.jl`](https://github.com/felipenoris/XLSX.jl), porque é o pacote mais ativamente mantido no ecossistema Julia que lida com dados do Excel.
 Como um segundo benefício, `XLSX.jl` é escrito em Julia puro, o que torna mais fácil para nós inspecionar e entender o que está acontecendo nos bastidores.
 
 Carregue `XLSX.jl` via
@@ -173,13 +173,13 @@ Para escrever arquivos, definimos uma pequena função auxiliar para dados e nom
 @sc write_xlsx("", DataFrame())
 ```
 
-Agora, podemos escrever facilmente as notas em um arquivo Excel:
+Agora, podemos escrever facilmente os dados das notas escolares em um arquivo Excel:
 
 ```jl
 @sc write_grades_xlsx()
 ```
 
-Ao ler de volta, veremos que `XLSX.jl` coloca os dados em um tipo `XLSXFile` type e podemos acessar a `folha` desejada como um `Dict`:
+Ao ler de volta, veremos que `XLSX.jl` coloca os dados em um tipo `XLSXFile` e podemos acessar a `aba` desejada como um `Dict`:
 
 ```jl
 sco("""
@@ -201,5 +201,5 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Observe que cobrimos apenas o básico de `XLSX.jl` mas um uso mais poderoso e personalizações estão disponíveis.
-Para obter mais informações e opções, consulte o [`XLSX.jl` documentação](https://felipenoris.github.io/XLSX.jl/stable/).
+Observe que cobrimos apenas o básico de `XLSX.jl` mas um uso mais poderoso e customizações estão disponíveis.
+Para obter mais informações e opções, consulte a [documentação do módulo `XLSX.jl` ](https://felipenoris.github.io/XLSX.jl/stable/).

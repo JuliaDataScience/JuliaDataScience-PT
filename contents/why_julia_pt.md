@@ -94,7 +94,7 @@ Eles afirmam:
 > Queremos que seja interativa e que seja compilada.
 
 A maioria dos usuários se sentem atraídos por Julia em função da sua **velocidade superior**.
-Afinal, Julia é membro de um clube prestigiado e exclusivo.
+Afinal, Julia faz parte de um clube prestigiado e exclusivo.
 O [**petaflop club**](https://www.hpcwire.com/off-the-wire/julia-joins-petaflop-club/) é composto por linguagens que excedem a velocidade de **um petaflop^[um petaflop equivale a mil trilhões, ou um quatrilhão de operações com pontos flutuantes por segundo.] no desempenho máximo**.
 Atualmente, apenas C, C++, Fortran e Julia fazem parte do [petaflop club](https://www.nextplatform.com/2017/11/28/julia-language-delivers-petascale-hpc-performance/).
 

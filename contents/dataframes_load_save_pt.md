@@ -1,4 +1,4 @@
-## Carrgar e salvar arquivos {#sec:load_save}
+## Carregar e salvar arquivos {#sec:load_save}
 
 Ter os dados apenas dentro dos programas Julia e não ser capaz de carregá-los ou salvá-los seria muito limitante.
 Portanto, começamos mencionando como armazenar e carregar arquivos do HD.
@@ -19,7 +19,7 @@ julia> ]
 pkg> add CSV
 ```
 
-e carregue-lo via:
+e carregá-lo via:
 
 ```
 using CSV
@@ -156,7 +156,7 @@ Para obter mais informações, consulte a [documentação do `CSV.jl` ](https://
 
 Existem vários pacotes Julia para ler arquivos Excel.
 Neste livro, nós vamos cobrir apenas o [`XLSX.jl`](https://github.com/felipenoris/XLSX.jl), porque é o pacote mais ativamente mantido no ecossistema Julia que lida com dados do Excel.
-Como um segundo benefício, `XLSX.jl` é escrito em Julia puro, o que torna mais fácil para nós inspecionar e entender o que está acontecendo nos bastidores.
+Como um segundo benefício, `XLSX.jl` é escrito em Julia puro, o que torna mais fácil para nós inspecionarmos e entendermos o que está acontecendo nos bastidores.
 
 Carregue `XLSX.jl` via
 
@@ -201,5 +201,5 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Observe que cobrimos apenas o básico de `XLSX.jl` mas um uso mais poderoso e customizações estão disponíveis.
+Observe que cobrimos apenas o básico de `XLSX.jl` mas usos mais poderosos e customizações estão disponíveis.
 Para obter mais informações e opções, consulte a [documentação do módulo `XLSX.jl` ](https://felipenoris.github.io/XLSX.jl/stable/).

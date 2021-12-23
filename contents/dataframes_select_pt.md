@@ -93,7 +93,7 @@ s = """
 sco(s, process=without_caption_label)
 ```
 
-## Tipos de dados e dados ausentes {#sec:missing_data}
+## Tipos de Dados e Dados Faltantes {#sec:missing_data}
 
 ```{=comment}
 Try to combine with transformations

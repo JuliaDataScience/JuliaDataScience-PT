@@ -6,7 +6,7 @@ Em `DataFrames.jl`, a combinação de várias tabelas é feita via _joins_.
 Os joins são extremamente poderosos, mas pode demorar um pouco para você entendê-los.
 Não é necessário saber os joins abaixo de cor, porque a [documentação `DataFrames.jl`](https://DataFrames.juliadata.org/stable/man/joins/), juntamente com este livro, listará-los para você.
 Mas, é essencial saber que os joins existem.
-Se você alguma vez se pegar dando voltas sobre as linhas de um `DataFrame` e compará-lo com outros dados, então você provavelmente precisará de um dos joins abaixo.
+Se você alguma vez se pegar dando voltas sobre as linhas de um `DataFrame` e comparando-o com outros dados, então você provavelmente precisará de um dos joins abaixo.
 
 No @sec:dataframes, introduzimos as notas escolares para o ano de 2020 com `grades_2020`:
 
@@ -33,8 +33,8 @@ Suponha que temos dois datasets `A` e `B` com as respectivas colunas `A_1, A_2, 
 Então, o inner join em `:id` irá percorrer todos os elementos em `A_1` e compará-lo aos elementos em `B_1`.
 Se os elementos são **os mesmos**, então ele irá adicionar todas as informações de `A_2, ..., A_n` e `B_2, ..., B_m` depois da coluna `:id`.
 
-Ok, não se preocupe se você não ainda não compreendeu esta descrição.
-O resultado do join no dataset notas será assim:
+Ok, não se preocupe se você ainda não compreendeu esta descrição.
+O resultado do join nos datasets de notas será assim:
 
 ```jl
 s = "innerjoin(grades_2020(), grades_2021(); on=:name)"
@@ -49,7 +49,7 @@ O nome _inner_ join faz sentido, uma vez que, em matemática, o _set intersectio
 Talvez você esteja pensando agora "se temos um _inner_ (interno), provavelmente também temos um _outer_ (externo)".
 Sim, você adivinhou certo!
 
-O **`outerjoin`** é muito menos rigoroso do que o `innerjoin` e pega qualquer linha que encontrar que contenha um nome em **em pelo menos um dos datasets**:
+O **`outerjoin`** é muito menos rigoroso do que o `innerjoin` e pega qualquer linha que encontrar que contenha um nome **em pelo menos um dos datasets**:
 
 ```jl
 s = "outerjoin(grades_2020(), grades_2021(); on=:name)"
@@ -87,7 +87,7 @@ s = "crossjoin(grades_2020(), grades_2021(); makeunique=true)"
 sco(s; process=without_caption_label)
 ```
 
-Então, agora, temos uma linha para cada nota de todos os datasets das séries 2020 e 2021.
+Então, agora, temos uma linha para cada nota de todos nos datasets de notas de 2020 e 2021.
 Para consultas diretas, como "quem tem a nota mais alta?", o produto cartesiano geralmente não é tão útil, mas para consultas "estatísticas", pode ser.
 
 ### leftjoin e rightjoin {#sec:leftjoin_rightjoin}
@@ -101,7 +101,7 @@ sco(s; process=without_caption_label)
 ```
 
 Aqui, as notas para "Bob" e "Alice" estavam faltando na tabela de notas de 2021, então é por isso que também existem elementos `faltantes`.
-A join a direita faz quase que o oposto:
+A join à direita faz quase que o oposto:
 
 ```jl
 s = "rightjoin(grades_2020(), grades_2021(); on=:name)"
@@ -111,7 +111,7 @@ sco(s; process=without_caption_label)
 Agora, as notas de 2020 estão faltando.
 
 Perceba que **`leftjoin(A, B) != rightjoin(B, A)`**, porque a ordem das colunas será diferente.
-Ou por exemplo, compare o output abaixo com o output anterior:
+Por exemplo, compare o output abaixo com o output anterior:
 
 ```jl
 s = "leftjoin(grades_2021(), grades_2020(); on=:name)"

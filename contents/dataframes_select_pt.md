@@ -24,7 +24,7 @@ s = """select(responses(), "id", "q1", "q2")"""
 sco(s, process=without_caption_label)
 ```
 
-Para selecionar tudo _menos_ uma ou mais colunas, use `Not` com uma única coluna:
+Para selecionar tudo _menos_ uma ou mais colunas, use `Not` com a coluna que não se deseja selecionar:
 
 ```jl
 s = """select(responses(), Not(:q5))"""
@@ -38,16 +38,16 @@ s = """select(responses(), Not([:q4, :q5]))"""
 sco(s, process=without_caption_label)
 ```
 
-Também é bom misturar e combinar colunas que queremos preservar com colunas que não `Not` queremos selecionar:
+É possível também misturar e combinar colunas que queremos preservar com colunas que não (ou `Not`) queremos selecionar:
 
 ```jl
 s = """select(responses(), :q5, Not(:id))"""
 sco(s, process=without_caption_label)
 ```
 
-Perceba como `q5` agora é a primeira coluna no `DataFrame` devolvido por `select`.
+Perceba como `q5` agora é a primeira coluna no `DataFrame` retornado por `select`.
 Existe uma maneira mais inteligente de conseguir o mesmo usando `:`.
-Os dois pontos `:` pode ser pensado como "todas as colunas que ainda não incluímos".
+O caractere de dois pontos `:` pode ser pensado como "todas as colunas que ainda não incluímos".
 Por exemplo:
 
 ```jl
@@ -66,7 +66,7 @@ sco(s, process=without_caption_label)
 
 > **_OBSERVAÇÃO:_**
 > Como você deve ter observado, existem várias maneiras de selecionar uma coluna.
-> Estes são conhecidos como [_seletores de coluna_](https://bkamins.github.io/julialang/2021/02/06/colsel.html).
+> Elas são conhecidas como [_seletores de coluna_](https://bkamins.github.io/julialang/2021/02/06/colsel.html).
 >
 > Podemos usar:
 >
@@ -93,30 +93,30 @@ s = """
 sco(s, process=without_caption_label)
 ```
 
-## Tipos e dados ausentes {#sec:missing_data}
+## Tipos de dados e dados ausentes {#sec:missing_data}
 
 ```{=comment}
 Try to combine with transformations
 
-categórica
-permissivo
-desautorizando
+categorical
+allowmissing
+disallowmissing
 ```
 
-Como discutido em @sec:load_save, `CSV.jl` fará o seu melhor para adivinhar que tipo de tipos seus dados têm como colunas.
+Como discutido em @sec:load_save, `CSV.jl` fará o seu melhor para adivinhar os tipo de dados das colunas de sua tabela.
 No entanto, isso nem sempre funcionará perfeitamente.
 Nesta seção, mostramos porque os tipos adequados são importantes e corrigimos os tipos de dados incorretos.
 Para ser mais claro sobre os tipos, mostramos a saída de texto para `DataFrame`s ao invés de uma tabela bem formatada.
-Nesta seção, trabalharemos com o seuinte dataset:
+Nesta seção, trabalharemos com o seguinte dataset:
 
 ```jl
 @sco process=string post=output_block wrong_types()
 ```
 
-Como a coluna de data tem o tipo incorreto, a classificação não funcionará corretamente:
+Como a coluna de data tem o tipo incorreto, a ordenação dessa coluna não funcionará corretamente:
 
 ```{=comment}
-Uau! Você ainda não apresentou ao leitor a classificação com `sort`.
+Whoa! You haven't introduced the reader to sorting with `sort` yet.
 ```
 
 ```jl
@@ -124,13 +124,13 @@ s = "sort(wrong_types(), :date)"
 scsob(s)
 ```
 
-Para corrigir a classificação, podemos usar o módulo `Date` da biblioteca padrão de Julia, conforme descrito em @sec:dates:
+Para corrigir a ordenação, podemos usar o módulo `Date` da biblioteca padrão de Julia, conforme descrito em @sec:dates:
 
 ```jl
 @sco process=string post=output_block fix_date_column(wrong_types())
 ```
 
-Agora, a classificação funcionará conforme o planejado:
+Agora, a ordenação funcionará conforme o planejado:
 
 ```jl
 s = """
@@ -140,7 +140,7 @@ s = """
 scsob(s)
 ```
 
-Para a coluna de idade, temos um problema semelhante:
+Para a coluna `age` (idade), temos um problema semelhante:
 
 ```jl
 s = "sort(wrong_types(), :age)"
@@ -148,23 +148,23 @@ scsob(s)
 ```
 
 Isso não está certo, porque uma criança é mais jovem do que adultos e adolescentes.
-A solução para este problema e qualquer tipo de dado categórico é usar `CategoricalArrays.jl`:
+A solução para este problema e para qualquer tipo de dado categórico é usar `CategoricalArrays.jl`:
 
 ```
 using CategoricalArrays
 ```
 
-Com o pacote `CategoricalArrays.jl`, podemos adicionar níveis que representam a ordem de variável categórica para nossos dados:
+Com o pacote `CategoricalArrays.jl`, podemos adicionar níveis que representam a ordem da variável categórica em questão para nossos dados:
 
 ```jl
 @sco process=string post=output_block fix_age_column(wrong_types())
 ```
 
 > **_OBESERVAÇÃO:_**
-> Observe também que estamos passando o argumento `ordered=true` que diz para a função `CategoricalArrays.jl`'s `categorical` que nossos dados categóricos são "ordenados".
-> Sem isso, qualquer tipo de classificação ou comparações maiores/menores não seriam possíveis.
+> Observe também que estamos passando o argumento `ordered=true` que diz para a função `categorical` do módulo `CategoricalArrays.jl` que nossos dados categóricos são "ordenados".
+> Sem isso, qualquer tipo de ordenação ou de comparações do tipo maior/menor não seria possível.
 
-Agora, podemos classificar os dados corretamente na coluna de idade:
+Agora, podemos classificar os dados corretamente na coluna `age` (idade):
 
 ```jl
 s = """
@@ -180,7 +180,7 @@ Como definimos funções convenientes, agora podemos definir nossos dados fixos 
 @sco process=string post=output_block correct_types()
 ```
 
-Já que a idade em nossos dados é ordinal (`ordered=true`), podemos comparar adequadamente as categorias de idade:
+Já que a variável `age` (idade) em nossos dados é ordinal (`ordered=true`), podemos comparar adequadamente as categorias de idade:
 
 ```jl
 s = """

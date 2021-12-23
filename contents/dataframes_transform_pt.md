@@ -1,16 +1,16 @@
 ## Transformações de Variáveis
 
 ```{=comment}
-Precisamos cobrir `ifelse` e `case_when`
+We need to cover `ifelse` and `case_when`
 ```
 
-Em @sec:filter, vimos que `filter` funciona pegando uma ou mais colunas de origem e filtrando-as aplicando uma função de "filtragem".
+Em @sec:filter, vimos que `filter` funciona pegando uma ou mais colunas de origem e filtrando-as por meio da aplicação de uma função de "filtragem".
 Para recapitular, aqui está um exemplo de filtro usando a sintaxe `source => f::Function`: `filter(:name => name -> name == "Alice", df)`.
 
 Em @sec:select, vimos que `select` pode pegar uma ou mais colunas de origem e colocá-las em uma ou mais colunas de destino `source => target`.
 Também para recapitular aqui está um exemplo: `select(df, :name => :people_names)`.
 
-Nesta seção, discutimos como **transformar** variáveis, é assim que consegumos **modificar dados**.
+Nesta seção, discutimos como **transformar** variáveis, ou seja, como **modificar dados**.
 Em `DataFrames.jl`, a sintaxe é `source => transformation => target`.
 
 Como antes, usamos o dataset `grades_2020`:
@@ -21,7 +21,7 @@ Como antes, usamos o dataset `grades_2020`:
 
 Suponha que queremos aumentar todas as notas em `grades_2020` por 1.
 Primeiro, definimos uma função que leva como argumento um vetor de dados e retorna todos os seus elementos acrescidos de 1.
-Depois usamos a função `transform` do `DataFrames.jl` que, como todas as funções nativas `DataFrames.jl`', pega o `DataFrame` como primeiro argumento seguido pela sintaxe de transformação:
+Depois usamos a função `transform` do `DataFrames.jl` que, como todas as funções nativas `DataFrames.jl`', tem como primeiro argumento um `DataFrame`, seguido pela sintaxe de transformação:
 
 ```jl
 s = """
@@ -32,11 +32,11 @@ sco(s; process=without_caption_label)
 ```
 
 Aqui, a função `plus_one` recebe toda a coluna `:grade_2020`.
-Essa é a razão pela qual adicionamos o broadcasting "dot" `.` antes do operador `+`.
-Para uma recapitulação sobre broadcasting por favor veja @sec:broadcasting.
+Essa é a razão pela qual adicionamos o caraceter de "ponto" do broadcasting `.` antes do operador `+`.
+Para uma recapitulação sobre broadcasting por gentileza veja @sec:broadcasting.
 
-Como dissemos acima, a minilinguagem `DataFrames.jl` é sempre `source => transformation => target`.
-Então, se quisermos manter a nomenclatura da coluna `target` no output podemos:
+Como dissemos acima, a minilinguagem do módulo `DataFrames.jl` é sempre `source => transformation => target`.
+Então, se quisermos manter a nomenclatura da coluna alvo (`target`) na coluna de output podemos fazer:
 
 ```jl
 s = """
@@ -75,11 +75,11 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Mas, embora o último exemplo seja mais fácil, pois se baseia em operações nativas de Julia, **é altamente recomendável usar as funções fornecidas por `DataFrames.jl` na maioria dos casos porque são mais capazes e fáceis de trabalhar.**
+Mas, embora o último exemplo seja mais fácil, pois se baseia em operações nativas de Julia, **é altamente recomendável usar as funções fornecidas por `DataFrames.jl` na maioria dos casos porque são mais robustas e fáceis de trabalhar.**
 
 ### Transformações Múltiplas {#sec:multiple_transform}
 
-Para mostrar como transformar duas colunas ao mesmo tempo, usamos os dados unidos à esquerda de @sec:join:
+Para mostrar como transformar duas colunas ao mesmo tempo, usamos os dados sobre os quais realizamos o left join em @sec:join:
 
 ```jl
 s = """
@@ -99,8 +99,8 @@ sco(s; process=without_caption_label)
 ```
 
 ```{=comment}
-Eu não acredito que você cobriu o vetor de símbolos como seletor de coletor...
-Você pode ter que fazer isso no `dataframes_select.md`
+I don't think you have covered vector of symbols as col selector...
+You might have to do this in the `dataframes_select.md`
 ```
 
 Podemos limpar o resultado e colocar a lógica em uma função para obter uma lista de todos os alunos aprovados:

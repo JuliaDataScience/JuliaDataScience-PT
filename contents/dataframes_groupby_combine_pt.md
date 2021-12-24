@@ -12,7 +12,7 @@ Suponha que queremos saber a nota média de cada aluno:
 
 A estratégia é **dividir** o dataset em alunos distintos, **aplicar** a função média para cada aluno e **combinar** o resultado.
 
-A divisão é chamada `groupby` e dá como segundo argumento o ID da coluna em que queremos dividir o dataset:
+A divisão é chamada `groupby` e damos como segundo argumento o ID da coluna em que queremos dividir o dataset:
 
 ```jl
 s = "groupby(all_grades(), :name)"
@@ -36,12 +36,12 @@ sco(s; process=without_caption_label)
 ```
 
 Imagine ter que fazer isso sem as funções `groupby` e `combine`.
-Precisaríamos fazer um loop sobre nossos dados para dividi-los em grupos, em seguida, fazer um loop em cada divisão para aplicar a função **e** finalmente, fazer um loop em cada grupo para obter o resultado final.
+Precisaríamos fazer um loop sobre nossos dados para dividi-los em grupos, em seguida, fazer um loop em cada divisão para aplicar a função **e**, finalmente, fazer um loop em cada grupo para obter o resultado final.
 Portanto, a técnica dividir-aplicar-combinar é muito boa.
 
-### Múltiplas colunas de origem {#sec:groupby_combine_multiple_source}
+### Múltiplas Colunas de Origem {#sec:groupby_combine_multiple_source}
 
-Mas, e se quisermos aplicar uma função a várias colunas de nosso dataset?
+Mas, e se quisermos aplicar uma função à várias colunas de nosso dataset?
 
 ```jl
 s = """
@@ -63,7 +63,7 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Perceba que usamos o operador dot `.` operator antes da seta à direita `=>` para indicar que o `mean` tem que ser aplicado a múltiplas colunas de origem `[:X, :Y]`.
+Perceba que usamos o operador dot `.` antes da seta à direita `=>` para indicar que o `mean` tem que ser aplicado a múltiplas colunas de origem `[:X, :Y]`.
 
 Para usar funções composíveis, uma maneira simples é criar uma função que faça as transformações composíveis pretendidas.
 Por exemplo, para uma série de valores, vamos primeiro pegar o `mean` seguido de `round` para um número inteiro (também conhecido como um inteiro `Int`):

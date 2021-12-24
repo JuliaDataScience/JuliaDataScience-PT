@@ -32,7 +32,7 @@ sco(s; process=without_caption_label)
 ```
 
 Aqui, a função `plus_one` recebe toda a coluna `:grade_2020`.
-Essa é a razão pela qual adicionamos o caraceter de "ponto" do broadcasting `.` antes do operador `+`.
+Essa é a razão pela qual adicionamos o caractere de "ponto" do broadcasting `.` antes do operador `+`.
 Para uma recapitulação sobre broadcasting por gentileza veja @sec:broadcasting.
 
 Como dissemos acima, a minilinguagem do módulo `DataFrames.jl` é sempre `source => transformation => target`.

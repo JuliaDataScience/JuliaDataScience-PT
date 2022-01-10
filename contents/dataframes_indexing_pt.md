@@ -84,23 +84,23 @@ Existem duas maneiras de remover linhas de um `DataFrame`, uma é `filter` (@sec
 A partir de agora, nós começaremos a adentrar funcionalidades mais robustas da biblioteca `DataFrames.jl`.
 Para fazer isso, precisaremos aprender sobre algumas funções, como `select` e `filter`.
 Mas não se preocupe!
-It might be a relief to know that the **general design goal of `DataFrames.jl` is to keep the number of functions that a user has to learn to a minimum[^verbs]**.
+Pode ser um alívio saber que o **objetivo geral do design de `DataFrames.jl` é manter o número de funções que um usuário deve aprender em um mínimo[^verbos]**.
 
-[^verbs]: According to Bogumił Kamiński (lead developer and maintainer of `DataFrames.jl`) on Discourse (<https://discourse.julialang.org/t/pull-dataframes-columns-to-the-front/60327/5>).
+[^verbos]: De acordo com Bogumił Kamiński (desenvolvedor e mantenedor líder do `DataFrames.jl`) no Discourse (<https://discourse.julialang.org/t/pull-dataframes-columns-to-the-front/60327/5>).
 
-Like before, we resume from the `grades_2020`:
+Como antes, retomamos a partir de `grades_2020`:
 
 ```jl
 sco("grades_2020()"; process=without_caption_label)
 ```
 
-We can filter rows by using `filter(source => f::Function, df)`.
-Note how this function is very similar to the function `filter(f::Function, V::Vector)` from Julia `Base` module.
-This is because `DataFrames.jl` uses **multiple dispatch** (see @sec:multiple_dispatch) to define a new method of `filter` that accepts a `DataFrame` as argument.
+Podemos filtrar linhas usando `filter(source => f::Function, df)`.
+Perceba como essa função é similar à função `filter(f::Function, V::Vector)` do módulo `Base` de Julia.
+Isso ocorre porque `DataFrames.jl` usa **múltiplos despachos** (see @sec:multiple_dispatch) para definir um novo método de `filter` que aceita `DataFrame` como argumento.
 
-At first sight, defining and working with a function `f` for filtering can be a bit difficult to use in practice.
-Hold tight, that effort is well-paid, since **it is a very powerful way of filtering data**.
-As a simple example, we can create a function `equals_alice` that checks whether its input equals "Alice":
+À primeira vista, definir e trabalhar com uma função `f` para filtrar pode ser um pouco difícil de se usar na prática.
+Aguente firme, esse esforço é bem pago, uma vez que **é uma forma muito poderosa de filtrar dados**.
+Como um exemplo simples, podemos criar uma função `equals_alice` que verifica se sua entrada é igual "Alice":
 
 ```jl
 @sco post=output_block JDS.equals_alice("Bob")
@@ -110,38 +110,38 @@ As a simple example, we can create a function `equals_alice` that checks whether
 sco("equals_alice(\"Alice\")"; post=output_block)
 ```
 
-Equipped with such a function, we can use it as our function `f` to filter out all the rows for which `name` equals "Alice":
+Equipados com essa função, podemos usá-la como nossa função `f` para filtrar todas as linhas para as quais `name` equivale a "Alice":
 
 ```jl
 s = "filter(:name => equals_alice, grades_2020())"
 sco(s; process=without_caption_label)
 ```
 
-Note that this doesn't only work for `DataFrame`s, but also for vectors:
+Observe que isso não funciona apenas para `DataFrame`, mas também para vetores:
 
 ```jl
 s = """filter(equals_alice, ["Alice", "Bob", "Dave"])"""
 sco(s)
 ```
 
-We can make it a bit less verbose by using an **anonymous function** (see @sec:function_anonymous):
+Podemos torná-lo um pouco menos prolixo usando uma **função anônima** (see @sec:function_anonymous):
 
 ```jl
 s = """filter(n -> n == "Alice", ["Alice", "Bob", "Dave"])"""
 sco(s)
 ```
 
-which we can also use on `grades_2020`:
+que também podemos usar em `grades_2020`:
 
 ```jl
 s = """filter(:name => n -> n == "Alice", grades_2020())"""
 sco(s; process=without_caption_label)
 ```
 
-To recap, this function call can be read as "for each element in the column `:name`, let's call the element `n`, check whether `n` equals Alice".
-For some people, this is still too verbose.
-Luckily, Julia has added a _partial function application_ of `==`.
-The details are not important -- just know that you can use it just like any other function:
+Recapitulando, esta chamada de função pode ser lida como "para cada elemento na linha `:name`, vamos chamar o elemento `n`, e checar se `n` se iguala a Alice".
+Para algumas pessoas, isso ainda é muito prolixo.
+Por sorte, Julia adicionou uma _aplicação de função parcial_ de `==`.
+Os detalhes não são importantes -- apenas saiba que você pode usá-la como qualquer outra função:
 
 ```jl
 sco("""
@@ -150,15 +150,15 @@ filter(:name => ==("Alice"), grades_2020())
 """; process=without_caption_label)
 ```
 
-To get all the rows which are *not* Alice, `==` (equality) can be replaced by `!=` (inequality) in all previous examples:
+Para obter todas as linhas que *não* são Alice, `==` (igualdade) pode ser substituído por `!=` (desigualdade) em todos os exemplos anteriores:
 
 ```jl
 s = """filter(:name => !=("Alice"), grades_2020())"""
 sco(s; process=without_caption_label)
 ```
 
-Now, to show **why anonymous functions are so powerful**, we can come up with a slightly more complex filter.
-In this filter, we want to have the people whose names start with A or B **and** have a grade above 6:
+Agora, para mostrar **porque funções anônimas são tão poderosas**, podemos criar um filtro um pouco mais complexo.
+Neste filtro, queremos as pessoas cujos nomes comecem com A ou B **e** tenham uma nota acima de 6:
 
 ```jl
 s = """

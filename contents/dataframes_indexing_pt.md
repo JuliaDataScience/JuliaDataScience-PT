@@ -178,60 +178,60 @@ sco(s; process=without_caption_label)
 
 ### Subset {#sec:subset}
 
-The `subset` function was added to make it easier to work with missing values (@sec:missing_data).
-In contrast to `filter`, `subset` works on complete columns instead of rows or single values.
-If we want to use our earlier defined functions, we should wrap it inside `ByRow`:
+A função `subset` foi adicionada para tornar mais fácil trabalhar com valores ausentes (@sec:missing_data).
+Em contraste com `filter`, `subset` funciona em colunas completas ao invés de linhas ou valores únicos.
+Se quisermos usar nossas funções definidas anteriormente, devemos envolvê-las dentro de `ByRow`:
 
 ```jl
 s = "subset(grades_2020(), :name => ByRow(equals_alice))"
 sco(s; process=without_caption_label)
 ```
 
-Also note that the `DataFrame` is now the first argument `subset(df, args...)`, whereas in `filter` it was the second one `filter(f, df)`.
-The reason for this is that Julia defines filter as `filter(f, V::Vector)` and `DataFrames.jl` chose to maintain consistency with existing Julia functions that were extended to `DataFrame`s types by multiple dispatch.
+Também perceba quee `DataFrame` é agora o primeiro argumento `subset(df, args...)`, enquanto que `filter` foi o segundo `filter(f, df)`.
+A razão para isso é que Julia define filtro como `filter(f, V::Vector)` e `DataFrames.jl` optou por manter a consistência com as funções Julia existentes que foram estendidas para tipos de `DataFrame`s de múltiplos despachos.
 
-> **_NOTE:_**
-> Most of native `DataFrames.jl` functions, which `subset` belongs to, have a **consistent function signature that always takes a `DataFrame` as first argument**.
+> **_OBSERVAÇÃO:_**
+> A maioria das funções nativas de `DataFrames.jl`, as quais `subset` pertence, tem uma **assinatura de função consistente que sempre recebe um `DataFrame` como primeiro argumento**.
 
-Just like with `filter`, we can also use anonymous functions inside `subset`:
+Assim como com `filter`, também podemos usar funções anônimas dentro de `subset`:
 
 ```jl
 s = "subset(grades_2020(), :name => ByRow(name -> name == \"Alice\"))"
 sco(s; process=without_caption_label)
 ```
 
-Or, the partial function application for `==`:
+Ou, a aplicação de função parcial para `==`:
 
 ```jl
 s = "subset(grades_2020(), :name => ByRow(==(\"Alice\")))"
 sco(s; process=without_caption_label)
 ```
 
-Ultimately, let's show the real power of `subset`.
-First, we create a dataset with some missing values:
+Em última análise, vamos mostrar o verdadeiro poder de `subset`.
+Primeiro, criamos um dataset com alguns valores ausentes:
 
 ```jl
 @sco salaries()
 ```
 
-This data is about a plausible situation where you want to figure out your colleagues' salaries, and haven't figured it out for Zed yet.
-Even though we don't want to encourage these practices, we suspect it is an interesting example.
-Suppose we want to know who earns more than 2000.
-If we use `filter`, without taking the `missing` values into account, it will fail:
+Esses dados são sobre uma situação plausível em que você deseja descobrir os salários de seus colegas e ainda não descobriu.
+Embora não queiramos incentivar essas práticas, suspeitamos que seja um exemplo interessante.
+Suponha que queremos saber quem ganha mais de 2.000.
+Se usarmos `filter`, sem levar em consideração os valores 'faltantes', ele falhará:
 
 ```jl
 s = "filter(:salary => >(2_000), salaries())"
 sce(s, post=trim_last_n_lines(25))
 ```
 
-`subset` will also fail, but it will fortunately point us towards an easy solution:
+`subset` também falhará, mas felizmente nos apontará para uma solução fácil:
 
 ```jl
 s = "subset(salaries(), :salary => ByRow(>(2_000)))"
 sce(s, post=trim_last_n_lines(25))
 ```
 
-So, we just need to pass the keyword argument `skipmissing=true`:
+Então, só precisamos passar o argumento de palavra-chave `skipmissing=true`:
 
 ```jl
 s = "subset(salaries(), :salary => ByRow(>(2_000)); skipmissing=true)"
@@ -239,11 +239,11 @@ sco(s; process=without_caption_label)
 ```
 
 ```{=comment}
-Rik, we need a example of both filter and subset with multiple conditions, as in:
+Rik, precisamos de um exemplo de filtro e subconjunto com várias condições, como em:
 
 `filter(row -> row.col1 >= something1 && row.col2 <= something2, df)`
 
-and:
+e:
 
 `subset(df, :col1 => ByRow(>=(something1)), :col2 => ByRow(<=(something2)>))
 ```

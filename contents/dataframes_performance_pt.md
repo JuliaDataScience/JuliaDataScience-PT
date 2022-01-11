@@ -109,67 +109,67 @@ Então, se você não precisa de uma cópia, sempre acesse suas colunas `DataFra
 
 ### CSV.read versus CSV.File {#sec:df_performance_csv_read_file}
 
-If you take a look at the help output for `CSV.read`, you will see that there is a convenience function identical to the function called `CSV.File` with the same keyword arguments.
-Both `CSV.read` and `CSV.File` will read the contents of a CSV file, but they differ in the default behavior.
-**`CSV.read`, by default, will not make copies** of the incoming data.
-Instead, `CSV.read` will pass all the data to the second argument (known as the "sink").
+Se você der uma olhada no output ajuda para `CSV.read`, você verá que existe uma função de conveniência idêntica à função chamada `CSV.File` com os mesmos argumentos de palavras-chave.
+Ambos `CSV.read` e `CSV.File` vão ler o conteúdo de um arquivo CSV, mas eles se diferem no comportamento padrão.
+**`CSV.read`, por padrão, não fará cópias** dos dados de entrada.
+Ao invés disso, `CSV.read` irá passar todos os dados para o segundo argumento (conhecido como "sink").
 
-So, something like this:
+Então, algo assim:
 
 ```julia
 df = CSV.read("file.csv", DataFrame)
 ```
 
-will pass all the incoming data from `file.csv` to the `DataFrame` sink, thus returning a `DataFrame` type that we store in the `df` variable.
+passará todos os dados recebidos de `file.csv` para o sink `DataFrame`, retornando assim um tipo `DataFrame` que vamos armazenar na variável `df`.
 
-For the case of **`CSV.File`, the default behavior is the opposite: it will make copies of every column contained in the CSV file**.
-Also, the syntax is slightly different.
-We need to wrap anything that `CSV.File` returns in a `DataFrame` constructor function:
+Para o caso do **`CSV.File`, o comportamento padrão é o oposto: ele fará cópias de todas as colunas contidas no arquivo CSV**.
+Além disso, a sintaxe é um pouco diferente.
+Precisamos embrulhar tudo que o `CSV.File` retorna em uma função construtora `DataFrame`:
 
 ```julia
 df = DataFrame(CSV.File("file.csv"))
 ```
 
-Or, with the pipe `|>` operator:
+Ou, com o operador de tubulação `|>`:
 
 ```julia
 df = CSV.File("file.csv") |> DataFrame
 ```
 
-Like we said, `CSV.File` will make copies of each column in the underlying CSV file.
-Ultimately, if you want the most performance, you would definitely use `CSV.read` instead of `CSV.File`.
-That's why we only covered `CSV.read` in @sec:csv.
+Como dissemos, `CSV.File` fará cópias de cada coluna no arquivo CSV subjacente.
+Em última análise, se você quiser o máximo de desempenho, você definitivamente usaria `CSV.read` em vez de `CSV.File`.
+É por isso que cobrimos apenas `CSV.read` em @sec:csv.
 
-### CSV.jl Multiple Files {#sec:df_performance_csv_multiple}
+### Múltiplos Arquivos CSV.jl {#sec:df_performance_csv_multiple}
 
-Now let's turn our attention to the `CSV.jl`.
-Specifically, the case when we have multiple CSV files to read into a single `DataFrame`.
-Since version 0.9 of `CSV.jl` we can provide a vector of strings representing filenames.
-Before, we needed to perform some sort of multiple file reading and then concatenate vertically the results into a single `DataFrame`.
-To exemplify, the code below reads from multiple CSV files and then concatenates them vertically using `vcat` into a single `DataFrame` with the `reduce` function:
+Agora vamos voltar nossa atenção para o `CSV.jl`.
+Especificamente, o caso em que temos vários arquivos CSV para ler em um único `DataFrame`.
+Desde a versão 0.9 do `CSV.jl` podemos fornecer um vetor de strings representando nomes de arquivos.
+Antes, precisávamos realizar algum tipo de leitura de vários arquivos e, em seguida, concatenar verticalmente os resultados em um único `DataFrame`.
+Para exemplificar, o código abaixo lê vários arquivos CSV e os concatena verticalmente usando `vcat` em um único `DataFrame` com a função `reduce`:
 
 ```julia
 files = filter(endswith(".csv"), readdir())
 df = reduce(vcat, CSV.read(file, DataFrame) for file in files)
 ```
 
-One additional trait is that `reduce` will not parallelize because it needs to keep the order of `vcat` which follows the same ordering of the `files` vector.
+Uma característica adicional é que `reduce` não será paralelizado porque precisa manter a ordem de `vcat` que segue a mesma ordem do vetor `files`.
 
-With this functionality in `CSV.jl` we simply pass the `files` vector into the `CSV.read` function:
+Com esta funcionalidade em `CSV.jl` nós simplesmente passamos o vetor `files` para a função `CSV.read`:
 
 ```julia
 files = filter(endswith(".csv"), readdir())
 df = CSV.read(files, DataFrame)
 ```
 
-`CSV.jl` will designate a file for each thread available in the computer while it lazily concatenates each thread-parsed output into a `DataFrame`.
-So we have the **additional benefit of multithreading** that we don't have with the `reduce` option.
+`CSV.jl` designará um arquivo para cada thread disponível no computador enquanto ele concatena lentamente cada saída analisada por thread em um `DataFrame`.
+Portanto, temos o **benefício adicional do multithreading** que não temos com a opção `reduce`.
 
-### CategoricalArrays.jl compression {#sec:df_performance_categorical_compression}
+### Compressão CategoricalArrays.jl {#sec:df_performance_categorical_compression}
 
-If you are handling data with a lot of categorical values, i.e. a lot of columns with textual data that represent somehow different qualitative data, you would probably benefit by using `CategoricalArrays.jl` compression.
+Se você estiver lidando com dados com muitos valores categóricos, ou seja, muitas colunas com dados textuais que representam dados qualitativos de alguma forma diferentes, você provavelmente se beneficiaria usando a compressão `CategoricalArrays.jl`.
 
-By default, **`CategoricalArrays.jl` will use an unsigned integer of size 32 bits `UInt32` to represent the underlying categories**:
+Por padrão, **`CategoricalArrays.jl` usará um inteiro sem sinal no tamanho de 32 bits `UInt32` para representar as categorias subjacentes**:
 
 ```jl
 s = """
@@ -178,13 +178,13 @@ s = """
 sco(s; process=string, post=plainblock)
 ```
 
-This means that `CategoricalArrays.jl` can represent up to $2^{32}$ different categories in a given vector or column, which is a huge value (close to 4.3 billion).
-You probably would never need to have this sort of capacity in dealing with regular data[^bigdata].
-That's why `categorical` has a `compress` argument that accepts either `true` or `false` to determine whether or not the underlying categorical data is compressed.
-If you pass **`compress=true`, `CategoricalArrays.jl` will try to compress the underlying categorical data to the smallest possible representation in `UInt`**.
-For example, the previous `categorical` vector would be represented as an unsigned integer of size 8 bits `UInt8` (mostly because this is the smallest unsigned integer available in Julia):
+Isso significa que `CategoricalArrays.jl` pode representar até $2^{32}$ categorias diferentes em um determinado vetor ou coluna, o que é um valor enorme (perto de 4,3 bilhões).
+Você provavelmente nunca precisaria ter esse tipo de capacidade para lidar com dados regulares[^bigdata].
+É por isso que `categorical` tem um argumento `compress` que aceita `true` ou `false` para determinar se os dados categóricos subjacentes são compactados ou não.
+Se você passar **`compress=true`, `CategoricalArrays.jl` tentará compactar os dados categóricos subjacentes para a menor representação possível em `UInt`**.
+Por exemplo, o vetor `categorical` anterior seria representado como um inteiro sem sinal de tamanho 8 bits `UInt8` (principalmente porque este é o menor inteiro sem sinal disponível em Julia):
 
-[^bigdata]: also notice that regular data (up to 10 000 rows) is not big data (more than 100 000 rows). So, if you are dealing primarily with big data please exercise caution in capping your categorical values.
+[^bigdata]: observe também que dados regulares (até 10.000 linhas) não são big data (mais de 100.000 linhas). Portanto, se você estiver lidando principalmente com big data, tenha cuidado ao limitar seus valores categóricos.
 
 ```jl
 s = """
@@ -193,13 +193,13 @@ s = """
 sco(s; process=string, post=plainblock)
 ```
 
-What does this all mean?
-Suppose you have a big vector.
-For example, a vector with one million entries, but only 4 underlying categories: A, B, C, or D.
-If you do not compress the resulting categorical vector, you will have one million entries stored as `UInt32`.
-On the other hand, if you do compress it, you will have one million entries stored instead as `UInt8`.
-By using `Base.summarysize` function we can get the underlying size, in bytes, of a given object.
-So let's quantify how much more memory we would need to have if we did not compress our one million categorical vector:
+O que tudo isso significa?
+Suponha que você tenha um grande vetor.
+Por exemplo, considere um vetor com um milhão de entradas, mas apenas 4 categorias subjacentes: A, B, C ou D.
+Se você não compactar o vetor categórico resultante, você terá um milhão de entradas armazenadas como `UInt32`.
+Por outro lado, se você compactar, você terá um milhão de entradas armazenadas como `UInt8`.
+Usando a função `Base.summarysize` podemos obter o tamanho subjacente, em bytes, de um determinado objeto.
+Então, vamos quantificar quanta memória mais precisaríamos ter se não comprimissemos nosso um milhão de vetores categóricos:
 
 ```julia
 using Random
@@ -213,8 +213,8 @@ s = """
 sco(s; process=string, post=plainblock)
 ```
 
-4 million bytes, which is approximately 3.8 MB.
-Don't get us wrong, this is a good improvement over the raw string size:
+4 milhões de bytes, que é aproximadamente 3,8 MB.
+Não nos entenda mal, esta é uma boa melhoria em relação ao tamanho da string bruta:
 
 ```jl
 s = """
@@ -223,9 +223,9 @@ s = """
 sco(s; process=string, post=plainblock)
 ```
 
-We reduced 50% of the raw data size by using the default `CategoricalArrays.jl` underlying representation as `UInt32`.
+Reduzimos 50% do tamanho dos dados brutos usando uma representação subjacente padrão `CategoricalArrays.jl` como `UInt32`.
 
-Now let's see how we would fare with compression:
+Agora vamos ver como nos sairíamos com a compressão:
 
 ```jl
 s = """
@@ -234,7 +234,7 @@ s = """
 sco(s; process=string, post=plainblock)
 ```
 
-We reduced the size to 25% (one quarter) of the original uncompressed vector size without losing information.
-Our compressed categorical vector now has 1 million bytes which is approximately 1.0 MB.
+Reduzimos o tamanho para 25% (um quarto) do tamanho original do vetor não compactado sem perder informações.
+Nosso vetor categórico compactado agora tem 1 milhão de bytes, que é aproximadamente 1,0 MB.
 
-So whenever possible, in the interest of performance, consider using `compress=true` in your categorical data.
+Portanto, sempre que possível, no interesse do desempenho, considere usar `compress=true` em seus dados categóricos.

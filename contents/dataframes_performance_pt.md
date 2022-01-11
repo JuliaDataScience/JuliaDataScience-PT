@@ -1,4 +1,4 @@
-## Performance {#sec:df_performance}
+## Desempenho {#sec:df_performance}
 
 Até agora, não pensamos em fazer nosso código `DataFrames.jl` **rápido**.
 Como tudo em Julia, `DataFrames.jl` pode ser bem veloz.
@@ -13,19 +13,19 @@ Quase todas as funções `DataFrames.jl` que vims tem uma \"`!` gêmea\".
 Por exemplo, `filter` tem um _in-loco_ `filter!`, `select` tem `select!`, `subset` tem `subset!`, e assim por diante.
 Observe que essas funções **não** retornam um novo `DataFrame`, mas, ao invés vez disso, elas **atualizam** o `DataFrame` sobre o qual atuam.
 Além disso, `DataFrames.jl` (versão 1.3 em diante) suporta in-loco `leftjoin` com a função `leftjoin!`.
-This function updates the left `DataFrame` with the joined columns from the right `DataFrame`.
-There is a caveat that for each row of left table there must match *at most* one row in right table.
+Essa função atualiza o `DataFrame` esquerdo com as colunas unidas do `DataFrame` direito.
+Há uma ressalva de que cada linha da tabela esquerda deve corresponder a *no máximo* uma linha da tabela direita.
 
-If you want the highest speed and performance in your code, you should definitely use the `!` functions instead of regular `DataFrames.jl` functions.
+Se você deseja a mais alta velocidade e desempenho em seu código, definitivamente deve usar as funções `!` ao invés das funções regulares de `DataFrames.jl`.
 
-Let's go back to the example of the `select` function in the beginning of @sec:select.
-Here is the responses `DataFrame`:
+Vamos voltar para o exemplo da função `select` no começo de @sec:select.
+Aqui estão as respostas do `DataFrame`:
 
 ```jl
 sco("responses()"; process=without_caption_label)
 ```
 
-Now, let's perform the selection with the `select` function, like we did before:
+Agora vamos desempenhar a seleção com a função `select`, como fizemos antes:
 
 ```jl
 s = """
@@ -35,7 +35,7 @@ s = """
 sco(s, process=without_caption_label)
 ```
 
-And here is the _in-place_ function:
+Aqui está a função _in loco_:
 
 ```jl
 s = """
@@ -45,9 +45,9 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-The `@allocated` macro tells us how much memory was allocated.
-In other words, **how much new information the computer had to store in its memory while running the code**.
-Let's see how they will perform:
+O macro `@allocated` nos diz quanta memória foi alocada.
+Em outras palavras, **quanta informação nova o computador teve que armazenar em sua memória enquanto executava o código**.
+Vamos ver qual será o desempenho:
 
 ```jl
 s = """
@@ -67,23 +67,23 @@ s = """
 sco(s; process=string, post=plainblock)
 ```
 
-As we can see, `select!` allocates less than `select`.
-So, it should be faster, while consuming less memory.
+Como pudemos ver, `select!` aloca menos que `select`.
+Portanto, é mais rápido e consome menos memória.
 
-### Copying vs Not Copying Columns {#sec:df_performance_df_copy}
+### Copiar vs Não Copiar Colunas {#sec:df_performance_df_copy}
 
-There are **two ways to access a DataFrame column**.
-They differ in how they are accessed: one creates a "view" to the column without copying and the other creates a whole new column by copying the original column.
+Existem **duas formas de acessar a coluna DataFrame**.
+Elas diferem na forma como são acessadas: uma cria uma "visualização" para a coluna sem copiar e a outra cria uma coluna totalmente nova copiando a coluna original.
 
-The first way uses the regular dot `.` operator followed by the column name, like in `df.col`.
-This kind of access **does not copy** the column `col`.
-Instead `df.col` creates a "view" which is a link to the original column without performing any allocation.
-Additionally, the syntax `df.col` is the same as `df[!, :col]` with the bang `!` as the row selector.
+A primeira usa o operador dot regular `.` seguido pelo nome da coluna, como em `df.col`.
+Essa forma de acesso **não copia** a coluna `col`.
+Ao invés disso `df.col` cria uma "visualização" que é um link para a coluna original sem realizar nenhuma alocação.
+Além do mais, a sintaxe `df.col` é a mesma que `df[!, :col]` com o estrondo `!` como o seletor de linha.
 
-The second way to access a `DataFrame` column is the `df[:, :col]` with the colon `:` as the row selector.
-This kind of access **does copy** the column `col`, so beware that it may produce unwanted allocations.
+A segunda forma de acessar uma coluna `DataFrame` é a `df[:, :col]` com os dois pontos `:` como o seletor de linha.
+Esse tipo de acesso **copia** a coluna `col`, portanto, tenha cuidado, pois isso pode produzir alocações indesejadas.
 
-As before, let's try out these two ways to access a column in the responses `DataFrame`:
+Como antes, vamos experimentar essas duas maneiras de acessar uma coluna nas respostas `DataFrame`:
 
 ```jl
 s = """
@@ -104,8 +104,8 @@ s = """
 sco(s; process=string, post=plainblock)
 ```
 
-When we access a column without copying it we are making zero allocations and our code should be faster.
-So, if you don't need a copy, always access your `DataFrame`s columns with `df.col` or `df[!, :col]` instead of `df[:, :col]`.
+Quando acessamos uma coluna sem copiá-la estamos fazendo alocações zero e nosso código deve ser mais rápido.
+Então, se você não precisa de uma cópia, sempre acesse suas colunas `DataFrame`s com `df.col` ou `df[!, :col]` ao invés de `df[:, :col]`.
 
 ### CSV.read versus CSV.File {#sec:df_performance_csv_read_file}
 

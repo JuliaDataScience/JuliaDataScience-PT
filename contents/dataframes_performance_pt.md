@@ -1,18 +1,18 @@
 ## Performance {#sec:df_performance}
 
-So far, we haven't thought about making our `DataFrames.jl` code **fast**.
-Like everything in Julia, `DataFrames.jl` can be really fast.
-In this section, we will give some performance tips and tricks.
+Até agora, não pensamos em fazer nosso código `DataFrames.jl` **rápido**.
+Como tudo em Julia, `DataFrames.jl` pode ser bem veloz.
+Nesta seção, daremos algumas dicas e truques de desempenho.
 
-### In-place operations {#sec:df_performance_inplace}
+### Operações in-loco {#sec:df_performance_inplace}
 
-Like we explained in @sec:function_bang, functions that end with a bang `!` are a common pattern to denote functions that modify one or more of their arguments.
-In the context of high performance Julia code, this *means* that **functions with `!` will just change in-place the objects that we have supplied as arguments.
+Como explicamos em @sec:function_bang, funções que terminam com um estrondo `!` são um padrão comum para denotar funções que modificam um ou mais de seus argumentos.
+O contexto do código de alta performance em Julia, *significa* que **funções com `!` apenas mudarão no local os objetos que fornecemos como argumentos.
 
-Almost all the `DataFrames.jl` functions that we've seen have a \"`!` twin\".
-For example, `filter` has an _in-place_ `filter!`, `select` has `select!`, `subset` has `subset!`, and so on.
-Notice that these functions **do not** return a new `DataFrame`, but instead they **update** the `DataFrame` that they act upon.
-Additionally, `DataFrames.jl` (version 1.3 onwards) supports in-place `leftjoin` with the function `leftjoin!`.
+Quase todas as funções `DataFrames.jl` que vims tem uma \"`!` gêmea\".
+Por exemplo, `filter` tem um _in-loco_ `filter!`, `select` tem `select!`, `subset` tem `subset!`, e assim por diante.
+Observe que essas funções **não** retornam um novo `DataFrame`, mas, ao invés vez disso, elas **atualizam** o `DataFrame` sobre o qual atuam.
+Além disso, `DataFrames.jl` (versão 1.3 em diante) suporta in-loco `leftjoin` com a função `leftjoin!`.
 This function updates the left `DataFrame` with the joined columns from the right `DataFrame`.
 There is a caveat that for each row of left table there must match *at most* one row in right table.
 

@@ -180,7 +180,7 @@ function front_cover()
         legJ = Label(fig[1, 3:5], "Julia", textsize=394,
             tellheight=false, halign=:left, font=NOTO_SANS_BOLD)
         translate!(legJ.elements[:text], 0, 0, 9)
-        legD = Label(fig[1, 3:5], "\n\n\n\nData Science", textsize=126,
+        legD = Label(fig[1, 3:5], "\n\n\n\nCiência de Dados", textsize=126,
             tellheight=false, halign=:left, font=NOTO_SANS_BOLD)
         translate!(legD.elements[:text], 0, 0, 9)
         vspace = "\n\n"

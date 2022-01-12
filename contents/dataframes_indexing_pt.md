@@ -1,4 +1,4 @@
-## Indexação e sumarização
+## Indexação e Sumarização
 
 Vamos voltar para o exemplo dos dados `grades_2020()` definidos antes:
 
@@ -61,7 +61,7 @@ Para fazer isso, convertemos a tabela de volta para uma das estruturas de dados 
 @sco post=output_block grade_2020("Bob")
 ```
 
-que funciona porque `zip` faz itera por `df.name` e `df.grade_2020` ao mesmo tempo como um "zipper":
+que funciona porque `zip` itera pelo `df.name` e `df.grade_2020` ao mesmo tempo como um "zipper":
 
 ```jl
 sco("""
@@ -79,7 +79,7 @@ Existem duas maneiras de remover linhas de um `DataFrame`, uma é `filter` (@sec
 `filter` foi adicionado à biblioteca `DataFrames.jl` anteriormente, é mais poderoso e também tem uma sintaxe mais coerente em relação às bibliotecas básicas de Julia. É por isso que vamos iniciar essa seção discutindo `filter` primeiro.
 `subset` é mais recente e, comumente, é mais conveniente de usar.
 
-### Filter {#sec:filter}
+### Filtro {#sec:filter}
 
 A partir de agora, nós começaremos a adentrar funcionalidades mais robustas da biblioteca `DataFrames.jl`.
 Para fazer isso, precisaremos aprender sobre algumas funções, como `select` e `filter`.
@@ -96,7 +96,7 @@ sco("grades_2020()"; process=without_caption_label)
 
 Podemos filtrar linhas usando `filter(source => f::Function, df)`.
 Perceba como essa função é similar à função `filter(f::Function, V::Vector)` do módulo `Base` de Julia.
-Isso ocorre porque `DataFrames.jl` usa **múltiplos despachos** (see @sec:multiple_dispatch) para definir um novo método de `filter` que aceita `DataFrame` como argumento.
+Isso ocorre porque `DataFrames.jl` usa **despacho múltiplo** (see @sec:multiple_dispatch) para definir um novo método de `filter` que aceita `DataFrame` como argumento.
 
 À primeira vista, definir e trabalhar com uma função `f` para filtrar pode ser um pouco difícil de se usar na prática.
 Aguente firme, esse esforço é bem pago, uma vez que **é uma forma muito poderosa de filtrar dados**.
@@ -124,7 +124,7 @@ s = """filter(equals_alice, ["Alice", "Bob", "Dave"])"""
 sco(s)
 ```
 
-Podemos torná-lo um pouco menos prolixo usando uma **função anônima** (see @sec:function_anonymous):
+Podemos torná-lo um pouco menos prolixo usando uma **função anônima** (veja @sec:function_anonymous):
 
 ```jl
 s = """filter(n -> n == "Alice", ["Alice", "Bob", "Dave"])"""
@@ -176,7 +176,7 @@ s = "filter([:name, :grade_2020] => complex_filter, grades_2020())"
 sco(s; process=without_caption_label)
 ```
 
-### Subset {#sec:subset}
+### Subconjunto {#sec:subset}
 
 A função `subset` foi adicionada para tornar mais fácil trabalhar com valores ausentes (@sec:missing_data).
 Em contraste com `filter`, `subset` funciona em colunas completas ao invés de linhas ou valores únicos.
@@ -187,8 +187,8 @@ s = "subset(grades_2020(), :name => ByRow(equals_alice))"
 sco(s; process=without_caption_label)
 ```
 
-Também perceba quee `DataFrame` é agora o primeiro argumento `subset(df, args...)`, enquanto que `filter` foi o segundo `filter(f, df)`.
-A razão para isso é que Julia define filtro como `filter(f, V::Vector)` e `DataFrames.jl` optou por manter a consistência com as funções Julia existentes que foram estendidas para tipos de `DataFrame`s de múltiplos despachos.
+Também perceba que `DataFrame` é agora o primeiro argumento `subset(df, args...)`, enquanto que em `filter` foi o segundo `filter(f, df)`.
+A razão para isso é que Julia define filtro como `filter(f, V::Vector)` e `DataFrames.jl` optou por manter a consistência com as funções Julia existentes que foram estendidas para tipos de `DataFrame`s de despacho múltiplo.
 
 > **_OBSERVAÇÃO:_**
 > A maioria das funções nativas de `DataFrames.jl`, as quais `subset` pertence, tem uma **assinatura de função consistente que sempre recebe um `DataFrame` como primeiro argumento**.
@@ -214,7 +214,7 @@ Primeiro, criamos um dataset com alguns valores ausentes:
 @sco salaries()
 ```
 
-Esses dados são sobre uma situação plausível em que você deseja descobrir os salários de seus colegas e ainda não descobriu.
+Esses dados são sobre uma situação plausível em que você deseja descobrir os salários de seus colegas e ainda não descobriu o do Zed.
 Embora não queiramos incentivar essas práticas, suspeitamos que seja um exemplo interessante.
 Suponha que queremos saber quem ganha mais de 2.000.
 Se usarmos `filter`, sem levar em consideração os valores 'faltantes', ele falhará:

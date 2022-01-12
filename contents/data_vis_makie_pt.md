@@ -1,50 +1,50 @@
-# Data Visualization with Makie.jl {#sec:DataVisualizationMakie}
+# Visualização de dados com Makie.jl {#sec:DataVisualizationMakie}
 
-> From the japanese word Maki-e, which is a technique to sprinkle lacquer with gold and silver powder.
-> Data is the gold and silver of our age, so let's spread it out beautifully on the screen!
+> Da palavra japonesa Maki-e, que é uma técnica para polvilhar verniz com pó de ouro e prata.
+> Os dados são o ouro e a prata da nossa era, então vamos espalhá-los lindamente pela tela!
 >
-> _Simon Danisch, Creator of `Makie.jl`_
+> _Simon Danisch, criador do `Makie.jl`_
 
-[Makie.jl](http://makie.juliaplots.org/stable/index.html) is a high-performance, extendable, and multi-platform plotting ecosystem for the Julia programming language.
-In our opinion, it is the prettiest and most versatile plotting package.
+[Makie.jl](http://makie.juliaplots.org/stable/index.html) é um ecossistema de plotagem de alto desempenho, extensível e multiplataforma para a linguagem de programação Julia.
+Na nossa opinião, é o pacote de plotagem mais bonito e versátil.
 
-Like many plotting packages, the code is split into multiple packages.
-`Makie.jl` is the front end package that defines all plotting functions required to create plot objects.
-These objects store all information about the plots, but still need to be converted to an image.
-To convert these plot objects to an image, you need one of the Makie back ends.
-By default, `Makie.jl` is reexported by every backend, so you only need to install and load the back end that you want to use.
+Assim como muitos pacotes de plotagem, o código é dividido em vários pacotes.
+`Makie.jl` é o pacote de front-end que define todas as funções de plotagem necessárias para criar objetos de plotagem.
+Esses objetos armazenam todas as informações sobre as plotagens, mas ainda precisam ser convertidos em uma imagem.
+Para converter esses objetos de plotagem em uma imagem, você precisa de um dos back-ends Makie.
+Por padrão, o `Makie.jl` é reexportado por cada back-end, então você só precisa instalar e carregar o back-end que deseja usar.
 
-There are three main back ends which concretely implement all abstract rendering capabilities defined in Makie.
-One for non-interactive 2D publication-quality vector graphics: `CairoMakie.jl`.
-Another for interactive 2D and 3D plotting in standalone `GLFW.jl` windows (also GPU-powered), `GLMakie.jl`.
-And the third one, a WebGL-based interactive 2D and 3D plotting that runs within browsers, `WGLMakie.jl`. [See Makie's documentation for more](http://makie.juliaplots.org/stable/documentation/backends_and_output/).
+Existem três back-ends principais que implementam concretamente todos os recursos de renderização abstratos definidos no Makie.
+Um para gráficos vetoriais 2D não interativos com qualidade de publicação: `CairoMakie.jl`.
+Outro para plotagem 2D e 3D interativa em janelas `GLFW.jl` independentes (também alimentadas por GPU), `GLMakie.jl`.
+E o terceiro, uma plotagem 2D e 3D interativa baseada em WebGL que roda dentro de navegadores, `WGLMakie.jl`. [Veja a documentação de Makie](http://makie.juliaplots.org/stable/documentation/backends_and_output/).
 
-In this book we will only show examples for `CairoMakie.jl` and `GLMakie.jl`.
+Neste livro, mostraremos apenas exemplos para `CairoMakie.jl` e `GLMakie.jl`.
 
-You can activate any backend by using the appropriate package and calling its `activate!` function.
-For example:
+Você pode ativar qualquer backend usando o pacote apropriado e chamando sua função `activate!`.
+Por exemplo:
 
 ```
 using GLMakie
 GLMakie.activate!()
 ```
 
-Now, we will start with publication-quality plots.
-But, before going into plotting it is important to know how to save our plots.
-The easiest option to `save` a figure `fig` is to type `save("filename.png", fig)`.
-Other formats are also available for `CairoMakie.jl`, such as `svg` and `pdf`.
-The resolution of the output image can easily be adjusted by passing extra arguments.
-For example, for vector formats you specify `pt_per_unit`:
+Agora, vamos começar com plots com qualidade de publicação.
+Mas, antes de entrar na plotagem, é importante saber como salvar nossos plots.
+A opção mais fácil para `salvar` uma figura `fig` é digitar `save("filename.png", fig)`.
+Outros formatos também estão disponíveis para `CairoMakie.jl`, como `svg` e `pdf`.
+A resolução da imagem de saída pode ser facilmente ajustada passando argumentos extras.
+Por exemplo, para formatos vetoriais, você especifica `pt_per_unit`:
 
 ```
 save("filename.pdf", fig; pt_per_unit=2)
 ```
 
-or
+ou
 
 ```
 save("filename.pdf", fig; pt_per_unit=0.5)
 ```
 
-For `png`'s you specify `px_per_unit`.
-See [Backends & Output](https://makie.juliaplots.org/stable/documentation/backends_and_output/) for details.
+Para `png`, você especifica `px_per_unit`.
+Veja [Backends & Output](https://makie.juliaplots.org/stable/documentation/backends_and_output/) para mais detalhes.

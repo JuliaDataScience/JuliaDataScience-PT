@@ -1,6 +1,6 @@
 ## CairoMakie.jl {#sec:cairomakie}
 
-Let's start with our first plot, some scatter points with lines between them:
+Vamos começar com nosso primeiro plot, alguns pontos de dispersão com linhas entre eles::
 
 ```
 using CairoMakie
@@ -19,11 +19,11 @@ s = """
 sco(s)
 ```
 
-Note that the previous plot is the default output, which we probably need to tweak by using axis names and labels.
+Observe que o plot anterior é a saída padrão, que provavelmente precisamos ajustar usando nomes e rótulos de eixo.
 
-Also note that every plotting function like `scatterlines` creates and returns a new `Figure`, `Axis` and `plot` object in a collection called `FigureAxisPlot`.
-These are known as the `non-mutating` methods.
-On the other hand, the `mutating` methods (e.g. `scatterlines!`, note the `!`) just return a plot object which can be appended into a given `axis` or the `current_figure()`.
+Observe também que toda função de plotagem como `scatterlines` cria e retorna um novo objeto `Figure`, `Axis` e `plot` em uma coleção chamada `FigureAxisPlot`.
+Estes são conhecidos como os métodos `non-mutating.
+Por outro lado, os métodos `mutating` (por exemplo, `scatterlines!`, observe o `!`) apenas retornam um objeto plot que pode ser anexado a um determinado `axis` ou `current_figure()`.
 
-The next question that one might have is: how do I change the color or the marker type?
-This can be done via `attributes`, which we do in the next section.
+A próxima pergunta que se pode ter é: como mudo a cor ou o tipo de marcador?
+Isso pode ser feito via `attributes`, que faremos na próxima seção.

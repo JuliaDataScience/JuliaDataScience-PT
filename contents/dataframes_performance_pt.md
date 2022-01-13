@@ -6,10 +6,10 @@ Nesta seção, daremos algumas dicas e truques de desempenho.
 
 ### Operações in-loco {#sec:df_performance_inplace}
 
-Como explicamos em @sec:function_bang, funções que terminam com um estrondo `!` são um padrão comum para denotar funções que modificam um ou mais de seus argumentos.
+Como explicamos em @sec:function_bang, funções que terminam com uma exclamação `!` são um padrão comum para denotar funções que modificam um ou mais de seus argumentos.
 O contexto do código de alta performance em Julia, *significa* que **funções com `!` apenas mudarão no local os objetos que fornecemos como argumentos.
 
-Quase todas as funções `DataFrames.jl` que vims tem uma \"`!` gêmea\".
+Quase todas as funções `DataFrames.jl` que vimos tem uma \"`!` gêmea\".
 Por exemplo, `filter` tem um _in-loco_ `filter!`, `select` tem `select!`, `subset` tem `subset!`, e assim por diante.
 Observe que essas funções **não** retornam um novo `DataFrame`, mas, ao invés vez disso, elas **atualizam** o `DataFrame` sobre o qual atuam.
 Além disso, `DataFrames.jl` (versão 1.3 em diante) suporta in-loco `leftjoin` com a função `leftjoin!`.
@@ -19,7 +19,7 @@ Há uma ressalva de que cada linha da tabela esquerda deve corresponder a *no m�
 Se você deseja a mais alta velocidade e desempenho em seu código, definitivamente deve usar as funções `!` ao invés das funções regulares de `DataFrames.jl`.
 
 Vamos voltar para o exemplo da função `select` no começo de @sec:select.
-Aqui estão as respostas do `DataFrame`:
+Aqui está o `DataFrame` responses:
 
 ```jl
 sco("responses()"; process=without_caption_label)
@@ -35,7 +35,7 @@ s = """
 sco(s, process=without_caption_label)
 ```
 
-Aqui está a função _in loco_:
+Aqui está a função _in-loco_:
 
 ```jl
 s = """
@@ -78,12 +78,12 @@ Elas diferem na forma como são acessadas: uma cria uma "visualização" para a 
 A primeira usa o operador dot regular `.` seguido pelo nome da coluna, como em `df.col`.
 Essa forma de acesso **não copia** a coluna `col`.
 Ao invés disso `df.col` cria uma "visualização" que é um link para a coluna original sem realizar nenhuma alocação.
-Além do mais, a sintaxe `df.col` é a mesma que `df[!, :col]` com o estrondo `!` como o seletor de linha.
+Além do mais, a sintaxe `df.col` é a mesma que `df[!, :col]` com a exclamação `!` como a seletora de linha.
 
 A segunda forma de acessar uma coluna `DataFrame` é a `df[:, :col]` com os dois pontos `:` como o seletor de linha.
 Esse tipo de acesso **copia** a coluna `col`, portanto, tenha cuidado, pois isso pode produzir alocações indesejadas.
 
-Como antes, vamos experimentar essas duas maneiras de acessar uma coluna nas respostas `DataFrame`:
+Como antes, vamos experimentar essas duas maneiras de acessar uma coluna no `DataFrame` responses:
 
 ```jl
 s = """
@@ -130,7 +130,7 @@ Precisamos embrulhar tudo que o `CSV.File` retorna em uma função construtora `
 df = DataFrame(CSV.File("file.csv"))
 ```
 
-Ou, com o operador de tubulação `|>`:
+Ou, com o operador pipe `|>`:
 
 ```julia
 df = CSV.File("file.csv") |> DataFrame

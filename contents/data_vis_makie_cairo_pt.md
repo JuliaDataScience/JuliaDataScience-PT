@@ -26,4 +26,4 @@ Estes são conhecidos como os métodos _non-mutating_ (imutáveis).
 Por outro lado, os métodos _mutating_ (mutáveis, por exemplo, `scatterlines!`, observe o `!`) apenas retornam um objeto plot que pode ser anexado a um determinado `axis` ou `current_figure()`.
 
 A próxima pergunta que se pode ter é: como mudo a cor ou o tipo de marcador?
-Isso pode ser feito por meio de _attributes_ (atributos), que faremos na próxima seção.
+Isso pode ser feito por meio de `attributes` (atributos), que faremos na próxima seção.

@@ -1,6 +1,6 @@
 ## CairoMakie.jl {#sec:cairomakie}
 
-Vamos começar com nosso primeiro plot, um diagrama de dispersão com algumas observações conectado por linhas entre elas:
+Vamos começar com nosso primeiro plot, um gráfico de dispersão com algumas observações conectadas por linhas:
 
 ```
 using CairoMakie
@@ -19,11 +19,11 @@ s = """
 sco(s)
 ```
 
-Observe que o plot anterior é a saída padrão, que provavelmente precisamos ajustar os nomes e rótulos de eixo.
+Observe que o gráfico anterior é a saída padrão, que provavelmente precisaremos ajustar usando nomes de eixo e rótulos.
 
-Observe também que toda função de plotagem como `scatterlines` cria e retorna um novo objeto `Figure`, `Axis` e `plot` em uma coleção chamada `FigureAxisPlot`.
+Observe também que toda função de plotagem como `scatterlines` cria e retorna novos objetos do tipo `Figure`, `Axis` e `plot` dentro de uma coleção chamada `FigureAxisPlot`.
 Estes são conhecidos como os métodos _non-mutating_ (imutáveis).
-Por outro lado, os métodos _mutating_ (mutáveis, por exemplo, `scatterlines!`, observe o `!`) apenas retornam um objeto plot que pode ser anexado a um determinado `axis` ou `current_figure()`.
+Por outro lado, os métodos _mutating_ (mutáveis, por exemplo, `scatterlines!`, observe o `!`) apenas retornam um objeto do tipo _plot_ que pode ser anexado a um determinado `axis` (eix) ou à `current_figure()` (figura atual).
 
 A próxima pergunta que se pode ter é: como mudo a cor ou o tipo de marcador?
-Isso pode ser feito por meio de `attributes` (atributos), que faremos na próxima seção.
+Isso pode ser feito por meio de `attributes` (atributos), o que faremos na próxima seção.

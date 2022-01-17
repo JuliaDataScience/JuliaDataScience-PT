@@ -16,7 +16,7 @@ Por padrão, o `Makie.jl` é reexportado por cada backend, então você só prec
 
 Existem três _backends_ principais que implementam concretamente todos os recursos de renderização abstratos definidos no Makie.
 Um para gráficos vetoriais 2D não interativos com qualidade de publicação: `CairoMakie.jl`.
-Outro para plotagem 2D e 3D interativa em janelas `GLFW.jl` independentes (alimentadas pela GPU), `GLMakie.jl`.
+Outro para plotagem 2D e 3D interativa em janelas `GLFW.jl` independentes (que também rodam na GPU), `GLMakie.jl`.
 E o terceiro, uma plotagem 2D e 3D interativa baseada em WebGL que roda dentro de navegadores, `WGLMakie.jl`. [Veja a documentação de Makie](http://makie.juliaplots.org/stable/documentation/backends_and_output/).
 
 Neste livro, mostraremos apenas exemplos para `CairoMakie.jl` e `GLMakie.jl`.
@@ -30,7 +30,7 @@ GLMakie.activate!()
 ```
 
 Agora, vamos começar com plots com qualidade de publicação.
-Mas, antes de entrar na plotagem, é importante saber como salvar nossos plots.
+Mas, antes de sairmos plotando, é importante saber como salvar nossos gráficos.
 A opção mais fácil para `salvar` uma figura `fig` é digitar `save("filename.png", fig)`.
 Outros formatos também estão disponíveis para `CairoMakie.jl`, como `svg` e `pdf`.
 A resolução da imagem de saída pode ser facilmente ajustada passando argumentos extras.

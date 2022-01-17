@@ -1,6 +1,6 @@
 ## Atributos {#sec:datavisMakie_attributes}
 
-Um plot personalizado pode ser criado usando `attributes`.
+Um gráfico personalizado pode ser criado usando `attributes` (atributos).
 Os atributos podem ser definidos através de argumentos de palavras-chave.
 Uma lista de `atributos` para cada objeto de plotagem pode ser visualizada via:
 
@@ -13,9 +13,9 @@ s = """
 sco(s)
 ```
 
-Ou como uma chamada `Dict`, `pltobject.attributes.attributes`.
+Ou como uma chamada de dicionário (`Dict`), `pltobject.attributes.attributes`.
 
-Pedir ajuda no `REPL` como `?lines` ou `help(lines)` para qualquer função de plotagem mostrará seus atributos correspondentes mais uma breve descrição de como usar essa função específica.
+Pedir ajuda no `REPL` como `?lines` ou `help(lines)` para qualquer função de plotagem mostrará seus atributos correspondentes acrescidos de uma breve descrição de como usar essa função específica.
 Por exemplo, para `lines`:
 
 ```jl
@@ -25,14 +25,14 @@ s = """
 sco(s)
 ```
 
-Não apenas os objetos plot têm atributos, também os objetos `Axis` e `Figure`.
-Por exemplo, para figura, temos `backgroundcolor`, `resolution`, `font` e `fontsize` e o `figure_padding` que altera a quantidade de espaço ao redor do conteúdo da figura, veja a área cinza no plot, Figure (@ fig:custom_plot).
-Pode levar um número para todos os lados, ou uma tupla de quatro números para esquerda, direita, inferior e superior.
+Não apenas os objetos de tipo _plot_ têm atributos, como também os objetos `Axis` (eixo) e `Figure` (figura) os possuem.
+Por exemplo, para figura, temos `backgroundcolor` (cor de fundo), `resolution` (resolução), `font` (fonte) e `fontsize` (tamanho da fonte) e o `figure_padding` (preenchimento ou passe-partout) que altera a quantidade de espaço ao redor do conteúdo da figura, veja a área cinza no plot, Figure (@ fig:custom_plot).
+Ele aceita como argumentos um número único para todos os lados, ou uma tupla de quatro números para esquerda, direita, inferior e superior, representando cada um dos lados.
 
-`Axis` tem bem mais, alguns deles são `backgroundcolor`, `xgridcolor` e `title`.
+`Axis` tem muito mais atributos, alguns deles são `backgroundcolor` (cor de fundo), `xgridcolor` (cor da grade) e `title` (título).
 Para uma lista completa basta digitar `help(Axis)`.
 
-Portanto, para nosso próximo plot, chamaremos vários atributos de uma só vez, como segue:
+Assim, para nosso próximo plot, chamaremos vários atributos de uma só vez, como segue:
 
 ```jl
 s = """
@@ -52,11 +52,11 @@ sco(s)
 ```
 
 Este exemplo já possui a maioria dos atributos que grande parte dos usuários normalmente executará.
-Provavelmente, também será bom ter uma `legend`.
-Que para mais de uma função fará mais sentido.
-Então, vamos `append` outra mutação `plot object` e adicione as legendas correspondentes chamando `axislegend`.
-Isto irá coletar todos os `labels` que você pode ter passado para suas funções de plotagem e por padrão estará localizado na posição superior direita.
-Para outro diferente, o argumento `position=:ct` é chamado, onde `:ct` significa que vamos colocar nosso rótulo no 'centro' e no 'topo', veja Figura @fig:custom_plot_leg:
+Provavelmente, também seria bom ter uma `legend` (legenda).
+O que fará mais sentido quando utilizarmos mais de uma função.
+Então, vamos `append` (acrescentar) outra mutação em nosso `plot object` e adicionar as legendas correspondentes chamando `axislegend`.
+A legenda criada irá coletar todos os `labels` que você pode ter passado para suas funções de plotagem e por padrão estará localizada na posição superior direita.
+Para uma posição diferente, o argumento `position=:ct` é chamado, onde `:ct` significa que vamos colocar nosso rótulo no 'centro' e no 'topo', veja Figura @fig:custom_plot_leg:
 
 ```jl
 s = """

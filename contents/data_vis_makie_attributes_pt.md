@@ -77,14 +77,14 @@ s = """
 sco(s)
 ```
 
-Other positions are also available by combining `left(l), center(c), right(r)` and `bottom(b), center(c), top(t)`.
-For instance, for left top, use `:lt`.
+Outras posições também estão disponíveis ao combinarmos `left(l), center(c), right(r)` and `bottom(b), center(c), top(t)`.
+Por exemplo, para o topo superior esquerdo, use `:lt`.
 
-However, having to write this much code just for two lines is cumbersome.
-So, if you plan on doing a lot of plots with the same general aesthetics, then setting a theme will be better.
-We can do this with `set_theme!()` as the following example illustrates.
+No entanto, escrever essa quantidade de código apenas para duas linhas é complicado.
+Portanto, se você planeja fazer muitos plots com a mesma estética geral, definir um tema é sempre melhor.
+Podemos fazer isso com `set_theme!()` como ilustrado pelo exemplo abaixo.
 
-Plotting the previous figure should take the new default settings defined by `set_theme!(kwargs)`:
+plotagem da figura anterior deve ter as novas configurações padrão definidas por `set_theme!(kwargs)`:
 
 ```jl
 s = """
@@ -107,15 +107,15 @@ s = """
 sco(s)
 ```
 
-Note that the last line is `set_theme!()`, which will reset the default settings of Makie.
-For more on `themes` please go to @sec:themes.
+Perceba que a última linha é `set_theme!()`, que irá redefinir as configurações padrão do Makie.
+Para mais `temas` por favor vá a @sec:themes.
 
-Before moving on into the next section, it's worthwhile to see an example where an `array` of attributes are passed at once to a plotting function.
-For this example, we will use the `scatter` plotting function to do a bubble plot.
+Antes de passarmos para a próxima seção, vale a pena ver um exemplo onde um `array` de atributos é passado de uma só vez para uma função de plotagem.
+Para esse exemplo, usaremos a função de plotagem `scatter` para fazer um bubble plot.
 
-The data for this could be an `array` with 100 rows and 3 columns, here we generated these at random from a normal distribution.
-Here, the first column could be the positions in the `x` axis, the second one the positions in `y` and the third one an intrinsic associated value for each point.
-The later could be represented in a plot by a different `color` or with a different marker size. In a bubble plot we can do both.
+Os dados para isso podem ser um `array` com 100 linhas e 3 colunas, aqui gerados aleatoriamente a partir de uma distribuição normal.
+Aqui, a primeira coluna pode ser as posições no eixo `x`, a segunda as posições em `y` e a terceira um valor associado intrínseco para cada ponto.
+O último pode ser representado em um gráfico por uma 'cor' diferente ou com um tamanho de marcador diferente. Em um plot bubble podemos fazer os dois.
 
 ```jl
 s = """
@@ -127,7 +127,7 @@ s = """
 sco(s)
 ```
 
-Next, the corresponding plot can be seen in @fig:bubble:
+A seguir, o plot correspondente pode ser visto em @fig:bubble:
 
 ```jl
 s = """

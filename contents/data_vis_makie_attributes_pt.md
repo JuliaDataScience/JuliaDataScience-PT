@@ -147,20 +147,20 @@ s = """
 sco(s)
 ```
 
-where we have decomposed the tuple `FigureAxisPlot` into `fig, ax, pltobj`, in order to be able to add a `Legend` and `Colorbar` outside of the plotted object.
-We will discuss layout options in more detail in @sec:makie_layouts.
+onde decompomos a tupla `FigureAxisPlot` em `fig, ax, pltobj`, para podermos adicionar um `Legend` e `Colorbar` fora do objeto plotado.
+Vamos discutir opções de layout mais detalhadamente em in @sec:makie_layouts.
 
-We have done some basic but still interesting examples to show how to use `Makie.jl` and by now you might be wondering: what else can we do?
-What are all the possible plotting functions available in `Makie.jl`?
-To answer this question, a _cheat sheet_ is shown in @fig:cheat_sheet_cairomakie.
-These work especially well with `CairoMakie.jl` backend.
+Fizemos alguns exemplos básicos, mas ainda interessantes, para mostrar como usar o `Makie.jl` e agora você deve estar se perguntando: o que mais podemos fazer?
+Quais são todas as possíveis funções de plotagem disponíveis em `Makie.jl`?
+Para responder essa pergunta, contamos com uma _cheat sheet_ em @fig:cheat_sheet_cairomakie.
+Isso funciona especialemnte bem com o backend `CairoMakie.jl`.
 
-![Plotting functions: Cheat Sheet. Output given by Cairomakie.](images/makiePlottingFunctionsHide.png){#fig:cheat_sheet_cairomakie}
+![Funções de plotagem: Cheat Sheet. Saída dada por Cairomakie.](images/makiePlottingFunctionsHide.png){#fig:cheat_sheet_cairomakie}
 
-For completeness, in @fig:cheat_sheet_glmakie, we show the corresponding functions _cheat sheet_ for `GLMakie.jl`, which supports mostly 3D plots.
-Those will be explained in detail in @sec:glmakie.
+Para completar, em @fig:cheat_sheet_glmakie, mostramos as funções correspondentes _cheat sheet_ para `GLMakie.jl`, que suporta principalmente plotagens 3D.
+Elas serão explicadas em detalhes em @sec:glmakie.
 
-![Plotting functions: Cheat Sheet. Output given by GLMakie.](images/GLMakiePlottingFunctionsHide.png){#fig:cheat_sheet_glmakie}
+![Funções de plotagem: Cheat Sheet. Saída dada por GLMakie.](images/GLMakiePlottingFunctionsHide.png){#fig:cheat_sheet_glmakie}
 
-Now, that we have an idea of all the things we can do, let's go back and continue with the basics.
-It's time to learn how to change the general appearance of our plots.
+Agora que temos uma ideia de todas as coisas que podemos fazer, vamos voltar e continuar com o básico.
+É hora de aprendermos a mudar a aparência geral dos nossos plots.

@@ -17,39 +17,39 @@ Isso já parece bom, mas poderia ser melhor. Podemos corrigir problemas de espa�
 
 Levar em consideração o tamanho real de uma `Legend` ou `Colorbar` é feito por
 
-> - `tellheight=true` or `false`
-> - `tellwidth=true` or `false`
+> - `tellheight=true` ou `false`
+> - `tellwidth=true` ou `false`
 >
-> _Setting these to `true` will take into account the actual size (height or width) for a `Legend` or `Colorbar`_.
-> Consequently, things will be resized accordingly.
+> _Definir como `true` levará em consideração o tamanho real (altura ou largura) para uma `Legend` ou `Colorbar`_.
+> Consequentemente, as coisas serão redimensionadas de acordo.
 
-The space between columns and rows is specified as
+O espaço entre colunas e linhas é especificado como
 
 > - `colgap!(fig.layout, col, separation)`
 > - `rowgap!(fig.layout, row, separation)`
 >
-> _Column gap_ (`colgap!`), if `col` is given then the gap will be applied to that specific column.
->_Row gap_ (`rowgap!`) ,if `row` is given then the gap will be applied to that specific row.
+> _Column gap_ (`colgap!`), se `col` for fornecido, a lacuna será aplicada a essa coluna específica.
+>_Row gap_ (`rowgap!`) , se a `linha` for fornecido, a lacuna será aplicada a essa linha específica.
 
-Also, we will see how to put content into the **protrusions**, _i.e._ the space reserved for _title: `x` and `y`; either `ticks` or `label`_.
-We do this by plotting into `fig[i, j, protrusion]` where _`protrusion`_ can be `Left()`, `Right()`, `Bottom()` and `Top()`, or for each corner `TopLeft()`, `TopRight()`, `BottomRight()`, `BottomLeft()`.
-See below how these options are being used:
+Além disso, veremos como colocar conteúdo nas **protrusões**, _i.e._ o espaço reservado para _título: `x` e `y`; ou `ticks` ou `label`_.
+Fazemos isso plotando em `fig[i, j, protrusion]` onde _`protrusion`_ pode ser `Esquerda()`, `Direita()`, `Inferior()` e `Superior()`, ou para cada canto `SuperiorEsquerdo()`, `SuperiorDireito()`, `InferiorDireito()`, `InferiorEsquerdo()`.
+Veja abaixo como essas opções estão sendo utilizadas:
 
 ```jl
 @sco JDS.first_layout_fixed()
 ```
 
-Here, having the label `(a)` in the `TopLeft()` is probably not necessary, this will only make sense for more than two plots.
-For our next example let's keep using the previous tools and some more to create a richer and complex figure.
+Aqui, ter o rótulo `(a)` no `SuperiorEsquerdo()` provavelmente não é necessário, isso só fará sentido para mais de dois plots.
+Para o nosso próximo exemplo vamos continuar usando as ferramentas anteriores e mais algumas para criar uma figura mais rica e complexa.
 
-You can hide decorations and axis' spines with:
+Você pode ocultar decorações e espinhas de eixos com:
 
 > - `hidedecorations!(ax; kwargs...)`
 > - `hidexdecorations!(ax; kwargs...)`
 > - `hideydecorations!(ax; kwargs...)`
 > - `hidespines!(ax; kwargs...)`
 
-Remember, we can always ask for help to see what kind of arguments we can use, e.g.,
+Lembre-se, sempre podemos pedir ajuda para ver que tipo de argumentos podemos usar, por exemplo,
 
 ```jl
 s = """
@@ -58,7 +58,7 @@ s = """
 sco(s)
 ```
 
-Alternatively, for decorations
+Alternativamente, para decorações
 
 ```jl
 s = """
@@ -67,19 +67,19 @@ s = """
 sco(s)
 ```
 
-For elements that **you don't want to hide**, just pass them with `false`, i.e. `hideydecorations!(ax; ticks=false, grid=false)`.
+Para elementos que **você não deseja ocultar**, apenas passe-os com `false`, ou seja, `hideydecorations!(ax; ticks=false, grid=false)`.
 
 
-Synchronizing your `Axis` is done via:
+A sincronização do seu `Axis` é feita via:
 
-> - `linkaxes!`, `linkyaxes!` and `linkxaxes!`
+> - `linkaxes!`, `linkyaxes!` e `linkxaxes!`
 >
-> This could be useful when shared axis are desired.
-> Another way of getting shared axis will be by setting `limits!`.
+> Isso pode ser útil quando eixos compartilhados são desejados.
+> Outra maneira de obter eixos compartilhados será definindo `limites!`.
 
-Setting `limits` at once or independently for each axis is done by calling
+Definir `limites` de uma vez ou independentemente para cada eixo é feito chamando
 
-> - `limits!(ax; l, r, b, t)`, where `l` is left, `r` right, `b` bottom, and `t` top.
+> - `limites!(ax; l, r, b, t)`, onde `l` é esquerda, `r` direita, `b` inferior e `t` superior.
 >
 > You can also do `ylims!(low, high)` or `xlims!(low, high)`, and even open ones by doing `ylims!(low=0)` or `xlims!(high=1)`.
 

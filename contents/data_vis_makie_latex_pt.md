@@ -1,13 +1,13 @@
-## Using LaTeXStrings.jl
+## Usando LaTeXStrings.jl
 
-LaTeX support in `Makie.jl` is also available via `LaTeXStrings.jl`:
+Suporte LaTeX em `Makie.jl` também está disponível via `LaTeXStrings.jl`:
 
 ```
 using LaTeXStrings
 ```
 
-Simple use cases are shown below (@fig:latex_strings).
-A basic example includes LaTeX strings for x-y labels and legends:
+Casos de uso simples mostraremos abaixo (@fig:latex_strings).
+Um exemplo básico inclui strings LaTeX para rótulos e legendas x-y:
 
 ```jl
 @sc LaTeX_Strings()
@@ -25,23 +25,23 @@ s = """
 sco(s)
 ```
 
-A more involved example will be one with some equation as `text` and increasing legend numbering for curves in a plot:
+Um exemplo mais complicado será com alguma equação como 'text' e aumentando a numeração de legenda para curvas em um plot:
 
 ```jl
 @sco JDS.multiple_lines()
 ```
 
-But, some lines have repeated colors, so thats no good.
-Adding some markers and line styles usually helps.
-So, let's do that using [`Cycles`](http://makie.juliaplots.org/stable/documentation/theming/index.html#cycles) for these types.
-Setting `covary=true` allows to cycle all elements together:
+Mas, algumas linhas têm cores repetidas, então isso não é bom.
+Adicionar alguns marcadores e estilos de linha geralmente ajuda.
+Então, vamos fazer isso usando [`Cycles`](http://makie.juliaplots.org/stable/documentation/theming/index.html#cycles) para esses tipos.
+Definir `covary=true` permite alternar todos os elementos juntos:
 
 ```jl
 @sco JDS.multiple_scatters_and_lines()
 ```
 
-And voilà.
-A publication quality plot is here.
-What more can we ask for?
-Well, what about different default colors or palettes.
-In our next section, we will see how to use again [`Cycles`](http://makie.juliaplots.org/stable/documentation/theming/index.html#cycles) and know a little bit more about them, plus some additional keywords in order to achieve this.
+E voilà.
+Um plot de qualidade de publicação está aqui.
+O que mais podemos pedir?
+Bem, e quanto a diferentes cores ou paletas padrão?
+Em nossa próxima seção, veremos como usar novamente [`Cycles`](http://makie.juliaplots.org/stable/documentation/theming/index.html#cycles) e conheça um pouco mais sobre eles, além de algumas palavras-chave adicionais para conseguir isso.

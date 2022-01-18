@@ -1,32 +1,32 @@
-## Colors and Colormaps {#sec:makie_colors}
+## Cores e mapas de cores {#sec:makie_colors}
 
-Choosing an appropiate set of colors or colorbar for your plot is an essential part when presenting results.
-Using [Colors.jl](https://github.com/JuliaGraphics/Colors.jl) is supported in `Makie.jl`
-so that you can use [named colors](https://juliagraphics.github.io/Colors.jl/latest/namedcolors/) or pass `RGB` or `RGBA` values.
-Additionally, colormaps from [ColorSchemes.jl](https://github.com/JuliaGraphics/ColorSchemes.jl) and [PerceptualColourMaps.jl](https://github.com/peterkovesi/PerceptualColourMaps.jl) can also be used.
-It is worth knowing that you can reverse a colormap by doing `Reverse(:colormap_name)`
-and obtain a transparent color or colormap with `color=(:red,0.5)` and `colormap=(:viridis, 0.5)`.
+Escolher um conjunto apropriado de cores ou barra de cores para sua plotagem é uma parte essencial para apresentação de resultados.
+[Colors.jl](https://github.com/JuliaGraphics/Colors.jl) é suportado em `Makie.jl`
+para que você possa usar [named colors](https://juliagraphics.github.io/Colors.jl/latest/namedcolors/) ou passar valores `RGB` ou `RGBA`.
+Além disso, os mapas de cores [ColorSchemes.jl](https://github.com/JuliaGraphics/ColorSchemes.jl) e [PerceptualColourMaps.jl](https://github.com/peterkovesi/PerceptualColourMaps.jl) também podem ser usados.
+Vale a pena saber que você pode reverter um mapa de cores fazendo `Reverse(:colormap_name)`
+para obter uma cor transparente ou mapa de cores com `color=(:red,0.5)` e `colormap=(:viridis, 0.5)`.
 
-Different use cases will be shown next. Then we will difine a custom theme with new colors and a colorbar palette.
+Diferentes casos de uso serão mostrados a seguir. Então vamos definir um tema personalizado com novas cores e uma paleta de cores.
 
-By default `Makie.jl` has a predefined set of colors in order to cycle trough them automatically.
-As shown in the previous figures, where no specific color was set.
-Overwriting these defaults is done by calling the keyword `color` in the plotting function and specifying a new color via a `Symbol` or `String`.
-See this in action in the following example:
+Por padrão `Makie.jl` tem um conjunto predefinido de cores para percorrê-las automaticamente.
+Conforme mostrado nas figuras anteriores, onde nenhuma cor específica foi definida.
+A substituição desses padrões é feita chamando a palavra-chave `color` na função de plotagem e especificando uma nova cor por meio de um `Symbol` ou `String`.
+Veja isso em ação no exemplo a seguir:
 
 ```jl
 @sco JDS.set_colors_and_cycle()
 ```
 
-Where, in the first two lines we have used the keyword `color` to specify our color.
-The rest is using the default cycle set of colors.
-Later, we will learn how to do a custom cycle.
+Onde, nas duas primeiras linhas, usamos a palavra-chave `color` para especificar nossa cor.
+O resto está usando o padrão do conjunto de cores do ciclo.
+Mais tarde, aprenderemos como fazer um ciclo personalizado.
 
-Regarding colormaps, we are already familiar with the keyword `colormap` for heatmaps and scatters.
-Here, we show that a colormap can also be specified via a `Symbol` or a `String`, similar to colors.
-Or, even a vector of `RGB` colors.
-Let's do our first an example by calling colormaps as a `Symbol`, `String` and `cgrad` for categorical values.
-See `?cgrad` for more information.
+Em relação aos mapas de cores, já estamos familiarizados com a palavra-chave `colormap` para heatmaps e scatters.
+Aqui, mostramos que um mapa de cores também pode ser especificado por meio de um `Symbol` ou uma `String`, semelhante a cores.
+Ou até mesmo um vetor de cores `RGB`.
+Vamos fazer nosso primeiro exemplo chamando mapas de cores como `Symbol`, `String` e `cgrad` para valores categóricos.
+Cheque `?cgrad` para mais informações.
 
 ```jl
 scolor = """
@@ -45,8 +45,8 @@ scolor = """
 sco(scolor)
 ```
 
-When setting a `colorrange` usually the values outside this range are colored with the first and last color from  the colormap.
-However, sometimes is better to specify the color you want at both ends. We do that with `highclip` and `lowclip`:
+Ao definir um `colorrange` geralmente os valores fora deste intervalo são coloridos com a primeira e a última cor do mapa de cores.
+No entanto, às vezes é melhor especificar a cor desejada em ambas as extremidades. Fazemos isso com `highclip` e `lowclip`:
 
 ```
 using ColorSchemes
@@ -70,8 +70,8 @@ s = """
 sco(s)
 ```
 
-But we mentioned that also `RGB` vectors are valid options.
-For our next example you could pass the custom colormap _perse_ or use `cgrad` to force a categorical `Colorbar`.
+Mas mencionamos que também vetores `RGB` são opções válidas.
+Para o nosso próximo exemplo, você pode passar o mapa de cores personalizado _perse_ ou usar `cgrad` para forçar um `Colorbar` categórico.
 
 ```
 using Colors, ColorSchemes
@@ -98,12 +98,12 @@ scat = """
 sco(scat)
 ```
 
-Lastly, the ticks in the colorbar for the categorial case are not centered by default in each color.
-This is fixed by passing custom ticks, as in `cbar.ticks = (positions, ticks)`.
-The last situation is when passing a tuple of two colors to `colormap` as symbols, strings or a mix.
-You will get an interpolated colormap between these two colors.
+Por fim, os tiques na barra de cores para o caso categorial não são centralizados por padrão em cada cor.
+Isso é corrigido passando ticks personalizados, como em `cbar.ticks = (positions, ticks)`.
+A última situação é passar uma tupla de duas cores para o `colormap` como símbolos, strings ou uma mistura.
+Você obterá um mapa de cores interpolado entre essas duas cores.
 
-Also, hexadecimal coded colors are also accepted. So, on top or our heatmap let's put one semi-transparent point using this.
+Além disso, cores codificadas em hexadecimal também são aceitas. Então, no topo do nosso mapa de calor, vamos colocar um ponto semitransparente usando:
 
 ```jl
 s2color2 = """
@@ -123,18 +123,18 @@ s2color2 = """
 sco(s2color2)
 ```
 
-### Custom cycle
+### Ciclo personalizado
 
-Here, we could define a global `Theme` with a new cycle for colors, however that is **not the recommend way** to do it.
-It's better to define a new theme and use as shown before.
-Lets define a new one with a `cycle` for `:color`, `:linestyle`, `:marker` and a new `colormap` default.
-Lets add this new attributes to our previous `publication_theme`.
+Aqui, poderíamos definir um `Tema` global com um novo ciclo de cores, mas essa **não é a maneira recomendada** de fazer isso.
+É melhor definir um novo tema e usar como mostramos antes.
+Vamos definir um novo com um `cycle` para `:color`, `:linestyle`, `:marker` e um novo padrão `colormap`.
+Vamos adicionar esses novos atributos ao nosso `publication_theme` anterior.
 
 ```jl
 @sc new_cycle_theme()
 ```
 
-And apply it to a plotting function like the following:
+E aplique-o a uma função de plotagem como a seguinte:
 
 ```jl
 @sc scatters_and_lines()
@@ -152,5 +152,5 @@ s = """
 sco(s)
 ```
 
-At this point you should be able to have **complete control** over your colors, line styles, markers and colormaps for your plots.
-Next, we will dive into how to manage and control **layouts**.
+Neste ponto, você deve ter **controle completo** sobre suas cores, estilos de linha, marcadores e mapas de cores para seus plots.
+A seguir, veremos como gerenciar e controlar **layouts**.

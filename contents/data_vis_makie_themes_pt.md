@@ -1,13 +1,13 @@
-## Themes {#sec:themes}
+## Temas {#sec:themes}
 
-There are several ways to affect the general appearance of your plots.
-Either, you could use a [predefined theme](http://makie.juliaplots.org/stable/documentation/theming/predefined_themes/index.html) or your own custom theme.
-For example, use the predefined dark theme via `with_theme(your_plot_function, theme_dark())`.
-Or, build your own with `Theme(kwargs)` or even update the one that is active with `update_theme!(kwargs)`.
+Existem várias maneiras de modificar a aparência geral de seus plots.
+Ou, você pode usar um [tema predefinido](http://makie.juliaplots.org/stable/documentation/theming/predefined_themes/index.html) ou seu próprio tema personalizado.
+Por exemplo, use um tema escuro predefinido via `with_theme(your_plot_function, theme_dark())`.
+Ou construa o seu próprio com `Theme(kwargs)` ou até mesmo atualize o que está ativo com `update_theme!(kwargs)`.
 
-You can also do `set_theme!(theme; kwargs...)` to change the current default theme to `theme` and override or add attributes given by `kwargs`.
-If you do this and want to reset all previous settings just do `set_theme!()` with no arguments.
-See the following examples, where we had prepared a test plotting function with different characteristics, such that most attributes for each theme can be appreciated.
+Você também pode fazer `set_theme!(theme; kwargs...)` para alterar o tema do padrão atual para `theme` e substituir ou adicionar atributos fornecidos por `kwargs`.
+Se você fizer isso e quiser redefinir todas as configurações anteriores, faça `set_theme!()` sem argumentos.
+Veja os exemplos a seguir, onde preparamos uma função de plotagem de teste com características diferentes, de forma que a maioria dos atributos para cada tema possa ser apreciada.
 
 ```jl
 sco(
@@ -19,8 +19,8 @@ y = cumsum(randn(6, 6), dims=2)
 )
 ```
 
-A matrix of size `(20, 20)` with random entries, so that we can plot a heatmap.
-The range in $x$ and $y$ is also specified.
+Uma matrix de tamanho `(20, 20)` com entradas aleatórias, para que possamos plotar um mapa de calor.
+O intervalo em $x$ e $y$ também é especificado.
 
 ```jl
 sco(
@@ -34,15 +34,15 @@ matrix[1:6, 1:6] # first 6 rows and columns
 )
 ```
 
-Hence, our plotting function looks like follows:
+Portanto, nossa função de plotagem se parece com o seguinte:
 
 ```jl
 @sc demo_themes(y, xv, yv, matrix)
 ```
 
-Note that the `series` function has been used to plot several lines and scatters at once with their corresponding labels.
-Also, a heatmap with their colorbar has been included.
-Currently, there are two dark themes, one called `theme_dark()` and the other one `theme_black()`, see Figures.
+Observe que a função `series` foi usada para plotar várias linhas e dispersões de uma só vez com seus rótulos correspondentes.
+Além disso, um mapa de calor com sua barra de cores foi incluído.
+Atualmente, existem dois temas escuros, um chamado `theme_dark()` e outro `theme_black()`, veja Figures.
 
 ```jl
 s = """
@@ -64,7 +64,7 @@ s = """
 sco(s)
 ```
 
-And three more white-ish themes called, `theme_ggplot2()`, `theme_minimal()` and `theme_light()`. Useful for more standard publication type plots.
+E mais três temas esbranquiçados chamados, `theme_ggplot2()`, `theme_minimal()` e `theme_light()`. Útil para plots de tipo de publicação mais padrão.
 
 ```jl
 s = """
@@ -90,20 +90,20 @@ s = """
 sco(s)
 ```
 
-Another alternative is defining a custom `Theme` by doing `with_theme(your_plot, your_theme())`.
-For instance, the following theme could be a simple version for a publication quality template:
+Outra alternativa é definir um `Theme` fazendo `with_theme(your_plot, your_theme())`.
+Por exemplo, o tema a seguir pode ser uma versão simples para um modelo de qualidade de publicação:
 
 ```jl
 @sc publication_theme()
 ```
 
-Which, for simplicity we use it to plot `scatterlines` and a `heatmap`.
+Que, por simplicidade, usamos para traçar `scatterlines` e um `heatmap`.
 
 ```jl
 @sc plot_with_legend_and_colorbar()
 ```
 
-Then, using the previously define `Theme` the output is shown in Figure (@fig:plot_with_legend_and_colorbar).
+Então, usando o `Theme` definido anteriormente, a saída é mostrada na Figure (@fig:plot_with_legend_and_colorbar).
 
 ```jl
 s = """
@@ -117,8 +117,8 @@ s = """
 sco(s)
 ```
 
-Now, if something needs to be changed after `set_theme!(your_theme)`, we can do it with `update_theme!(resolution=(500, 400), fontsize=18)`, for example.
-Another approach will be to pass additional arguments to the `with_theme` function:
+Agora, se algo precisar ser alterado após `set_theme!(your_theme)`, podemos fazer isso com `update_theme!(resolution=(500, 400), fontsize=18)`, por exemplo.
+Outra abordagem será passar argumentos adicionais para a função `with_theme`:
 
 ```jl
 s = """
@@ -137,4 +137,4 @@ s = """
 sco(s)
 ```
 
-Now, let's move on and do a plot with LaTeX strings and a custom theme.
+Agora, vamos seguir em frente e fazer um plot com strings LaTeX e um tema personalizado.

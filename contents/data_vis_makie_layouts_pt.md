@@ -1,21 +1,21 @@
 ## Layouts {#sec:makie_layouts}
 
-A complete _canvas/layout_ is defined by `Figure`, which can be filled with content after creation.
-We will start with a simple arrangement of one `Axis`, one `Legend` and one `Colorbar`.
-For this task we can think of the canvas as an arrangement of `rows` and `columns` in indexing a `Figure` much like a regular `Array`/`Matrix`.
-The `Axis` content will be in _row 1, column 1_, e.g. `fig[1, 1]`, the `Colorbar` in _row 1, column 2_, namely `fig[1, 2]`.
-And the `Legend` in _row 2_ and across _column 1 and 2_, namely `fig[2, 1:2]`.
+Um _canvas/layout_ completo é definido por `Figure`, que pode ser preenchido com conteúdo após ser criado.
+omeçaremos com um arranjo simples de um `Axis`, uma `Legend` e uma `Colorbar`.
+Para esta tarefa, podemos pensar no canvas como um arranjo de `linhas` e `colunas` na indexação de uma `Figure` bem como um `Array`/`Matrix` regular.
+O conteúdo do `Axis` estará na _linha 1, coluna 1_, por exemplo `fig[1, 1]`, a `Colorbar` na _linha 1, coluna 2_, ou seja, `fig[1, 2]`.
+E a `Legend` na _linha 2_ e nas _colunas 1 e 2_, ou seja, `fig[2, 1:2]`.
 
 ```jl
 @sco JDS.first_layout()
 ```
 
-This does look good already, it could be better. We could fix spacing problems using the following keywords and methods:
+Isso já parece bom, mas poderia ser melhor. Podemos corrigir problemas de espaçamento usando as seguintes palavras-chave e métodos:
 
 - `figure_padding=(left, right, bottom, top)`
 - `padding=(left, right, bottom, top)`
 
-Taking into account the actual size for a `Legend` or `Colorbar` is done by
+Levar em consideração o tamanho real de uma `Legend` ou `Colorbar` é feito por
 
 > - `tellheight=true` or `false`
 > - `tellwidth=true` or `false`

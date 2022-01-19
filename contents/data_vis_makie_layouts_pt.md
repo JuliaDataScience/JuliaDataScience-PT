@@ -113,43 +113,43 @@ using Dates
 @sco JDS.mixed_mode_layout()
 ```
 
-Here, the argument `alignmode=Mixed(bottom=0)` is shifting the bounding box to the bottom, so that this will align with the panel on the left filling the space.
+Aqui, o argumento `alignmode=Mixed(bottom=0)` desloca a caixa delimitadora para a parte inferior, de forma a alinhar com o painel à esquerda preenchendo o espaço.
 
-Also, see how `colsize!` and `rowsize!` are being used for different columns and rows.
-You could also put a number instead of `Auto()` but then everything will be fixed.
-And, additionally, one could also give a `height` or `width` when defining the `Axis`, as in `Axis(fig, heigth=50)` which will be fixed as well.
+Também, veja como `colsize!` e `rowsize!` estão sendo usados para diferentes colunas e linhas.
+Você também pode colocar um número ao invés de `Auto()` mas então tudo vai ser corrigido.
+E, além disso, pode-se também dar um `height` ou `width` ao definir o `Axis`, como em `Axis(fig, heigth=50)` que será corrigido também.
 
-### Nested `Axis` (_subplots_)
+### `Axis` aninhado (_subplots_)
 
-It is also possible to define a set of `Axis` (_subplots_) explicitly, and use it to build a main figure with several rows and columns.
-For instance, the following its a "complicated" arrangement of `Axis`:
+Também é possível definir um conjunto de `Axis` (_subplots_) explicitamente e use-o para construir uma figura principal com várias linhas e colunas.
+Por exemplo, o seguinte é um arranjo "complicado" de `Axis`:
 
 ```jl
 @sc nested_sub_plot!(fig)
 ```
 
-which, when used to build a more complex figure by doing several calls, we obtain:
+que, quando usado para construir uma figura mais complexa fazendo várias chamadas, obtemos:
 
 ```jl
 @sco JDS.main_figure()
 ```
 
-Note that different subplot functions can be called here.
-Also, each `Axis` here is an independent part of `Figure`.
-So that, if you need to do some `rowgap!`'s or `colsize!`'s operations, you will need to do it in each one of them independently or to all of them together.
+Observe que diferentes funções de subplot podem ser chamadas aqui.
+Também, cada `Axis` aqui é uma parte independente de `Figure`.
+Então, se você precisar fazer alguma operação `rowgap!` ou `colsize!`, você precisará fazê-lo em cada um deles de forma independente ou em todos eles juntos.
 
-For grouped `Axis` (_subplots_) we can use `GridLayout()` which, then, could be used to composed a more complicated `Figure`.
+Para `Axis` (_subplots_) agrupados podemos usar `GridLayout()` que, então, poderia ser usado para compor um `Figure`.
 
-### Nested GridLayout
+### GridLayout aninhado
 
-By using `GridLayout()` we can group subplots, allowing more freedom to build complex figures.
-Here, using our previous `nested_sub_plot!` we define three sub-groups and one normal `Axis`:
+Ao usar o `GridLayout()` podemos agrupar subplots, permitindo mais liberdade na construção de figuras complexas.
+Aqui, usando nosso `nested_sub_plot!` anterior, definimos três subgrupos e um `Axis` normal:
 
 ```jl
 @sco JDS.nested_Grid_Layouts()
 ```
 
-Now, using `rowgap!` or `colsize!` over each group is possible and `rowsize!, colsize!` can also be applied to the set of `GridLayout()`s.
+Agora, usando `rowgap!` ou `colsize!` sobre cada grupo é possível `rowsize!, colsize!` também pode ser aplicado ao conjunto de `GridLayout()`s.
 
 ### Inset plots
 

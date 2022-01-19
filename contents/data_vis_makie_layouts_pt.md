@@ -81,29 +81,29 @@ Definir `limites` de uma vez ou independentemente para cada eixo é feito chaman
 
 > - `limites!(ax; l, r, b, t)`, onde `l` é esquerda, `r` direita, `b` inferior e `t` superior.
 >
-> You can also do `ylims!(low, high)` or `xlims!(low, high)`, and even open ones by doing `ylims!(low=0)` or `xlims!(high=1)`.
+> Você também pode fazer `ylims!(low, high)` ou `xlims!(low, high)`, e até mesmo abrir fazendo `ylims!(low=0)` ou `xlims!(high=1)`.
 
-Now, the example:
+Agora, o exemplo:
 
 ```jl
 @sco JDS.complex_layout_double_axis()
 ```
 
-So, now our `Colorbar` needs to be horizontal and the bar ticks need to be in the lower part.
-This is done by setting `vertical=false` and `flipaxis=false`.
-Additionally, note that we can call many `Axis` into `fig`, or even `Colorbar`'s and `Legend`'s, and then afterwards build the layout.
+Então, agora nosso `Colorbar` precisa ser horizontal e as marcações da barra precisam estar na parte inferior.
+Isso é feito configurando `vertical=false` e `flipaxis=false`.
+Além disso, observe que podemos chamar muitos `Axis` em `fig`, ou mesmo `Colorbar` e `Legend`, e depois construir o layout.
 
-Another common layout is a grid of squares for heatmaps:
+Outro layout comum é uma grade de quadrados para mapas de calor:
 
 ```jl
 @sco JDS.squares_layout()
 ```
 
-where all labels are in the **protrusions** and each `Axis` has an `AspectData()` ratio.
-The `Colorbar` is located in the third column and expands from row 1 up to row 2.
+onde todos os rótulos estão em **protrusões** e cada `Axis` tem uma razão `AspectData()`.
+A `Colorbar` está localizada na terceira coluna e se expande da linha 1 até a linha 2.
 
-The next case uses the so called `Mixed()` **alignmode**, which is especially useful when dealing with large empty spaces between `Axis` due to long ticks.
-Also, the `Dates` module from Julia's standard library will be needed it for this example.
+O próximo caso usa o chamado **modo de alinhamento** `Mixed()`, o que é especialmente útil ao lidar com grandes espaços vazios entre 'Axis' devido a tiques longos.
+Ainda, o módulo `Dates` da biblioteca padrão de Julia será necessário para esse exemplo.
 
 ```
 using Dates

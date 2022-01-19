@@ -151,7 +151,7 @@ Aqui, usando nosso `nested_sub_plot!` anterior, definimos três subgrupos e um `
 
 Agora, usando `rowgap!` ou `colsize!` sobre cada grupo é possível `rowsize!, colsize!` também pode ser aplicado ao conjunto de `GridLayout()`s.
 
-### Inset plots
+### Plots `inset`
 
 Currently, doing `inset` plots is a little bit tricky.
 Here, we show two possible ways of doing it by initially defining auxiliary functions.

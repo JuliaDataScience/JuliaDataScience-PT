@@ -1,12 +1,12 @@
 ## GLMakie.jl {#sec:glmakie}
 
-`CairoMakie.jl` supplies all our needs for static 2D images.
-But sometimes we want interactivity, especially when we are dealing with 3D images.
-Visualizing data in 3D is also a common practice to gain insight from your data.
-This is where `GLMakie.jl` might be helpful, since it uses [OpenGL](http://www.opengl.org/) as a backend that adds interactivity and responsiveness to plots.
-Like before, a simple plot includes, of course, lines and points. So, we will start with those and since we already know how layouts work, we will put that into practice.
+`CairoMakie.jl` fornece todas as nossas necessidades de imagens 2D estáticas.
+Mas às vezes queremos interatividade, principalmente quando estamos lidando com imagens 3D.
+A visualização de dados em 3D também é uma prática comum para obter insights de seus dados.
+É aqui que `GLMakie.jl` pode ser útil, já que usa [OpenGL](http://www.opengl.org/) como um backend que adiciona interatividade e capacidade de resposta a plots.
+Como antes, um plot simples inclui, é claro, linhas e pontos. Então, vamos começar com eles e como já sabemos como os layouts funcionam, vamos colocar isso em prática.
 
-### Scatters and Lines
+### Dispersão e Linhas   
 
 For scatter plots we have two options, the first one is `scatter(x, y, z)` and the second one is `meshscatter(x, y, z)`.
 In the first one markers don't scale in the axis directions, but in the later they do because they are actual geometries in 3D space.

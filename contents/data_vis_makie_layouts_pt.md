@@ -149,39 +149,39 @@ Aqui, usando nosso `nested_sub_plot!` anterior, definimos três subgrupos e um `
 @sco JDS.nested_Grid_Layouts()
 ```
 
-Agora, usando `rowgap!` ou `colsize!` sobre cada grupo é possível `rowsize!, colsize!` também pode ser aplicado ao conjunto de `GridLayout()`s.
+Agora, usando `rowgap!` ou `colsize!` sobre cada grupo é possível `rowsize!, colsize!` também pode ser aplicado ao conjunto de `GridLayout().
 
 ### Plots `inset`
 
-Currently, doing `inset` plots is a little bit tricky.
-Here, we show two possible ways of doing it by initially defining auxiliary functions.
-The first one is by doing a `BBox`, which lives in the whole `Figure` space:
+Atualmente, fazer gráficos `inset` é um pouco complicado.
+Aqui, mostramos duas maneiras possíveis de fazer isso definindo inicialmente as funções auxiliares.
+A primeira é fazendo um `BBox`, que fica em todo o espaço `Figure`:
 
 ```jl
 @sc add_box_inset(fig)
 ```
 
-Then, the `inset` is easily done, as in:
+Então, o `inset` é feito facilmente, como em:
 
 ```jl
 @sco JDS.figure_box_inset()
 ```
 
-where the `Box` dimensions are bound by the `Figure`'s `resolution`.
-Note, that an inset can be also outside the `Axis`.
-The other approach, is by defining a new `Axis` into a position `fig[i, j]` specifying his `width`, `height`, `halign` and `valign`.
-We do that in the following function:
+onde as dimensões `Box` estão vinculadas ao `resolution` `Figure`.
+Observe que um inset também pode estar fora do `Eixo`.
+A outra abordagem é definir um novo `Eixo` em uma posição `fig[i, j]` especificando seu `width`, `height`, `halign` and `valign`.
+Fazemos isso na seguinte função:
 
 ```jl
 @sc add_axis_inset()
 ```
 
-See that in the following example the `Axis` with gray background will be rescaled if the total figure size changes.
-The _insets_ are bound by the `Axis` positioning.
+Veja que no exemplo a seguir o `Eixo` com fundo cinza será redimensionado se o tamanho total da figura for alterado.
+Os _insets_ são limitados pelo posicionamento do `Eixo`.
 
 ```jl
 @sco JDS.figure_axis_inset()
 ```
 
-And this should cover most used cases for layouting with Makie.
-Now, let's do some nice 3D examples with  `GLMakie.jl`.
+E isso deve cobrir os casos mais usados para layout com Makie.
+Agora, vamos fazer alguns bons exemplos 3D com  `GLMakie.jl`.

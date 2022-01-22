@@ -29,10 +29,10 @@ Não apenas os objetos de tipo _plot_ têm atributos, como também os objetos `A
 Por exemplo, para figura, temos `backgroundcolor` (cor de fundo), `resolution` (resolução), `font` (fonte) e `fontsize` (tamanho da fonte) e o `figure_padding` (preenchimento ou passe-partout) que altera a quantidade de espaço ao redor do conteúdo da figura, veja a área cinza no plot, Figure (@ fig:custom_plot).
 Ele aceita como argumentos um número único para todos os lados, ou uma tupla de quatro números para esquerda, direita, inferior e superior, representando cada um dos lados.
 
-`Axis` tem muito mais atributos, alguns deles são `backgroundcolor` (cor de fundo), `xgridcolor` (cor da grade) e `title` (título).
+`Axis` tem muito mais atributos, alguns deles são `backgroundcolor` (cor de fundo), `xgridcolor` (cor da grade do eixo x) e `title` (título).
 Para uma lista completa basta digitar `help(Axis)`.
 
-Assim, para nosso próximo plot, chamaremos vários atributos de uma só vez, como segue:
+Assim, para nosso próximo plot, designaremos vários atributos de uma só vez, como segue:
 
 ```jl
 s = """
@@ -53,7 +53,7 @@ sco(s)
 
 Este exemplo já possui a maioria dos atributos que grande parte dos usuários normalmente executará.
 Provavelmente, também seria bom ter uma `legend` (legenda).
-O que fará mais sentido quando utilizarmos mais de uma função.
+O que fará mais sentido quando utilizarmos mais de uma função de visualização.
 Então, vamos `append` (acrescentar) outra mutação em nosso `plot object` e adicionar as legendas correspondentes chamando `axislegend`.
 A legenda criada irá coletar todos os `labels` que você pode ter passado para suas funções de plotagem e por padrão estará localizada na posição superior direita.
 Para uma posição diferente, o argumento `position=:ct` é chamado, onde `:ct` significa que vamos colocar nosso rótulo no 'centro' e no 'topo', veja Figura @fig:custom_plot_leg:
@@ -77,14 +77,14 @@ s = """
 sco(s)
 ```
 
-Outras posições também estão disponíveis ao combinarmos `left(l), center(c), right(r)` and `bottom(b), center(c), top(t)`.
+Outras posições também estão disponíveis ao combinarmos `left(l), center(c), right(r)` com `bottom(b), center(c), top(t)`.
 Por exemplo, para o topo superior esquerdo, use `:lt`.
 
 No entanto, escrever essa quantidade de código apenas para duas linhas é complicado.
 Portanto, se você planeja fazer muitos plots com a mesma estética geral, definir um tema é sempre melhor.
 Podemos fazer isso com `set_theme!()` como ilustrado pelo exemplo abaixo.
 
-plotagem da figura anterior deve ter as novas configurações padrão definidas por `set_theme!(kwargs)`:
+A plotagem da figura anterior deve ter as novas configurações padrão definidas por `set_theme!(kwargs)`:
 
 ```jl
 s = """
@@ -108,14 +108,14 @@ sco(s)
 ```
 
 Perceba que a última linha é `set_theme!()`, que irá redefinir as configurações padrão do Makie.
-Para mais `temas` por favor vá a @sec:themes.
+Para mais `themes` por favor vá a @sec:themes.
 
 Antes de passarmos para a próxima seção, vale a pena ver um exemplo onde um `array` de atributos é passado de uma só vez para uma função de plotagem.
-Para esse exemplo, usaremos a função de plotagem `scatter` para fazer um bubble plot.
+Para esse exemplo, usaremos a função de plotagem `scatter` para fazer um gráfico de dispersão.
 
 Os dados para isso podem ser um `array` com 100 linhas e 3 colunas, aqui gerados aleatoriamente a partir de uma distribuição normal.
 Aqui, a primeira coluna pode ser as posições no eixo `x`, a segunda as posições em `y` e a terceira um valor associado intrínseco para cada ponto.
-O último pode ser representado em um gráfico por uma 'cor' diferente ou com um tamanho de marcador diferente. Em um plot bubble podemos fazer os dois.
+O último pode ser representado em um gráfico por uma 'cor' diferente ou com um tamanho de marcador diferente. Em um gráfico de dispersão podemos fazer os dois.
 
 ```jl
 s = """
@@ -157,7 +157,7 @@ Isso funciona especialemnte bem com o backend `CairoMakie.jl`.
 
 ![Funções de plotagem: Cheat Sheet. Saída dada por Cairomakie.](images/makiePlottingFunctionsHide.png){#fig:cheat_sheet_cairomakie}
 
-Para completar, em @fig:cheat_sheet_glmakie, mostramos as funções correspondentes _cheat sheet_ para `GLMakie.jl`, que suporta principalmente plotagens 3D.
+Para completar, em @fig:cheat_sheet_glmakie, mostramos as funções correspondentes _cheat sheet_ para `GLMakie.jl`, que dá suporte principalmente para plotagens 3D.
 Elas serão explicadas em detalhes em @sec:glmakie.
 
 ![Funções de plotagem: Cheat Sheet. Saída dada por GLMakie.](images/GLMakiePlottingFunctionsHide.png){#fig:cheat_sheet_glmakie}

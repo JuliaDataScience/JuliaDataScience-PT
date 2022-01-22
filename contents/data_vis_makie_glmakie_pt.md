@@ -6,7 +6,7 @@ A visualização de dados em 3D também é uma prática comum para obter insight
 É aqui que `GLMakie.jl` pode ser útil, já que usa [OpenGL](http://www.opengl.org/) como um backend que adiciona interatividade e capacidade de resposta a plots.
 Como antes, um plot simples inclui, é claro, linhas e pontos. Então, vamos começar com eles e como já sabemos como os layouts funcionam, vamos colocar isso em prática.
 
-### Dispersão e Linhas   
+### Dispersão e Linhas
 
 For scatter plots we have two options, the first one is `scatter(x, y, z)` and the second one is `meshscatter(x, y, z)`.
 In the first one markers don't scale in the axis directions, but in the later they do because they are actual geometries in 3D space.

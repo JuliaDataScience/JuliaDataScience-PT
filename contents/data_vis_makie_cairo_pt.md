@@ -23,7 +23,7 @@ Observe que o gráfico anterior é a saída padrão, que provavelmente precisare
 
 Observe também que toda função de plotagem como `scatterlines` cria e retorna novos objetos do tipo `Figure`, `Axis` e `plot` dentro de uma coleção chamada `FigureAxisPlot`.
 Estes são conhecidos como os métodos _non-mutating_ (imutáveis).
-Por outro lado, os métodos _mutating_ (mutáveis, por exemplo, `scatterlines!`, observe o `!`) apenas retornam um objeto do tipo _plot_ que pode ser anexado a um determinado `axis` (eix) ou à `current_figure()` (figura atual).
+Por outro lado, os métodos _mutating_ (mutáveis, por exemplo, `scatterlines!`, observe o `!`) apenas retornam um objeto do tipo _plot_ que pode ser anexado a um determinado `axis` (eixo) ou à `current_figure()` (figura atual).
 
 A próxima pergunta que se pode ter é: como mudo a cor ou o tipo de marcador?
 Isso pode ser feito por meio de `attributes` (atributos), o que faremos na próxima seção.

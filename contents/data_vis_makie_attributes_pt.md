@@ -26,7 +26,7 @@ sco(s)
 ```
 
 Não apenas os objetos de tipo _plot_ têm atributos, como também os objetos `Axis` (eixo) e `Figure` (figura) os possuem.
-Por exemplo, para figura, temos `backgroundcolor` (cor de fundo), `resolution` (resolução), `font` (fonte) e `fontsize` (tamanho da fonte) e o `figure_padding` (preenchimento ou passe-partout) que altera a quantidade de espaço ao redor do conteúdo da figura, veja a área cinza no plot, Figure (@ fig:custom_plot).
+Por exemplo, para figura, temos `backgroundcolor` (cor de fundo), `resolution` (resolução), `font` (fonte) e `fontsize` (tamanho da fonte) e o `figure_padding` (preenchimento ou passe-partout) que altera a quantidade de espaço ao redor do conteúdo da figura, veja a área cinza no _plot_, Figure (@ fig:custom_plot).
 Ele aceita como argumentos um número único para todos os lados, ou uma tupla de quatro números para esquerda, direita, inferior e superior, representando cada um dos lados.
 
 `Axis` tem muito mais atributos, alguns deles são `backgroundcolor` (cor de fundo), `xgridcolor` (cor da grade do eixo x) e `title` (título).
@@ -81,7 +81,7 @@ Outras posições também estão disponíveis ao combinarmos `left(l), center(c)
 Por exemplo, para o topo superior esquerdo, use `:lt`.
 
 No entanto, escrever essa quantidade de código apenas para duas linhas é complicado.
-Portanto, se você planeja fazer muitos plots com a mesma estética geral, definir um tema é sempre melhor.
+Portanto, se você planeja fazer muitos _plots_ com a mesma estética geral, definir um tema é sempre melhor.
 Podemos fazer isso com `set_theme!()` como ilustrado pelo exemplo abaixo.
 
 A plotagem da figura anterior deve ter as novas configurações padrão definidas por `set_theme!(kwargs)`:
@@ -127,7 +127,7 @@ s = """
 sco(s)
 ```
 
-A seguir, o plot correspondente pode ser visto em @fig:bubble:
+A seguir, o _plot_ correspondente pode ser visto em @fig:bubble:
 
 ```jl
 s = """
@@ -148,19 +148,19 @@ sco(s)
 ```
 
 onde decompomos a tupla `FigureAxisPlot` em `fig, ax, pltobj`, para podermos adicionar um `Legend` e `Colorbar` fora do objeto plotado.
-Vamos discutir opções de layout mais detalhadamente em in @sec:makie_layouts.
+Vamos discutir opções de _layout_ mais detalhadamente em in @sec:makie_layouts.
 
 Fizemos alguns exemplos básicos, mas ainda interessantes, para mostrar como usar o `Makie.jl` e agora você deve estar se perguntando: o que mais podemos fazer?
 Quais são todas as possíveis funções de plotagem disponíveis em `Makie.jl`?
 Para responder essa pergunta, contamos com uma _cheat sheet_ em @fig:cheat_sheet_cairomakie.
-Isso funciona especialemnte bem com o backend `CairoMakie.jl`.
+Isso funciona especialmente bem com o _backend_ `CairoMakie.jl`.
 
 ![Funções de plotagem: Cheat Sheet. Saída dada por Cairomakie.](images/makiePlottingFunctionsHide.png){#fig:cheat_sheet_cairomakie}
 
-Para completar, em @fig:cheat_sheet_glmakie, mostramos as funções correspondentes _cheat sheet_ para `GLMakie.jl`, que dá suporte principalmente para plotagens 3D.
+Para completar, em @fig:cheat_sheet_glmakie, mostramos as funções correspondentes _cheat sheet_ para `GLMakie.jl`, que dão suporte principalmente para plotagens 3D.
 Elas serão explicadas em detalhes em @sec:glmakie.
 
 ![Funções de plotagem: Cheat Sheet. Saída dada por GLMakie.](images/GLMakiePlottingFunctionsHide.png){#fig:cheat_sheet_glmakie}
 
 Agora que temos uma ideia de todas as coisas que podemos fazer, vamos voltar e continuar com o básico.
-É hora de aprendermos a mudar a aparência geral dos nossos plots.
+É hora de aprendermos a mudar a aparência geral dos nossos _plots_.

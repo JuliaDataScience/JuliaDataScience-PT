@@ -12,7 +12,7 @@ Assim como muitos pacotes de plotagem, o código é dividido em vários pacotes.
 `Makie.jl` é o pacote de _frontend_ que define todas as funções de plotagem necessárias para criar objetos de plotagem.
 Esses objetos armazenam todas as informações sobre as plotagens, mas ainda precisam ser convertidos em uma imagem.
 Para converter esses objetos de plotagem em uma imagem, você precisa de um dos _backends_ Makie.
-Por padrão, o `Makie.jl` é reexportado por cada backend, então você só precisa instalar e carregar o _backend_ que deseja usar.
+Por padrão, o `Makie.jl` é reexportado por cada _backend_, então você só precisa instalar e carregar o _backend_ que deseja usar.
 
 Existem três _backends_ principais que implementam concretamente todos os recursos de renderização abstratos definidos no Makie.
 Um para gráficos vetoriais 2D não interativos com qualidade de publicação: `CairoMakie.jl`.
@@ -29,7 +29,7 @@ using GLMakie
 GLMakie.activate!()
 ```
 
-Agora, vamos começar com plots com qualidade de publicação.
+Agora, vamos começar com _plots_ com qualidade de publicação.
 Mas, antes de sairmos plotando, é importante saber como salvar nossos gráficos.
 A opção mais fácil para `salvar` uma figura `fig` é digitar `save("filename.png", fig)`.
 Outros formatos também estão disponíveis para `CairoMakie.jl`, como `svg` e `pdf`.

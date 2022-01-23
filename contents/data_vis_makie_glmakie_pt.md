@@ -3,8 +3,8 @@
 `CairoMakie.jl` fornece todas as nossas necessidades de imagens 2D estáticas.
 Mas às vezes queremos interatividade, principalmente quando estamos lidando com imagens 3D.
 A visualização de dados em 3D também é uma prática comum para obter insights de seus dados.
-É aqui que `GLMakie.jl` pode ser útil, já que usa [OpenGL](http://www.opengl.org/) como um backend que adiciona interatividade e capacidade de resposta a plots.
-Como antes, um plot simples inclui, é claro, linhas e pontos. Então, vamos começar com eles e como já sabemos como os layouts funcionam, vamos colocar isso em prática.
+É aqui que `GLMakie.jl` pode ser útil, já que usa [OpenGL](http://www.opengl.org/) como um backend que adiciona interatividade e capacidade de resposta a _plots_.
+Como antes, um _plot_ simples inclui, é claro, linhas e pontos. Então, vamos começar com eles e como já sabemos como os layouts funcionam, vamos colocar isso em prática.
 
 ### Dispersão e Linhas
 

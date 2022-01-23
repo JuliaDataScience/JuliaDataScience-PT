@@ -152,5 +152,5 @@ s = """
 sco(s)
 ```
 
-Neste ponto, você deve ter **controle completo** sobre suas cores, estilos de linha, marcadores e mapas de cores para seus plots.
+Neste ponto, você deve ter **controle completo** sobre suas cores, estilos de linha, marcadores e mapas de cores para seus _plots_.
 A seguir, veremos como gerenciar e controlar **layouts**.

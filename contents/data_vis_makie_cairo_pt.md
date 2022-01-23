@@ -1,6 +1,6 @@
 ## CairoMakie.jl {#sec:cairomakie}
 
-Vamos começar com nosso primeiro plot, um gráfico de dispersão com algumas observações conectadas por linhas:
+Vamos começar com nosso primeiro _plot_, um gráfico de dispersão com algumas observações conectadas por linhas:
 
 ```
 using CairoMakie

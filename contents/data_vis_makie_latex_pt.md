@@ -25,7 +25,7 @@ s = """
 sco(s)
 ```
 
-Um exemplo mais complicado será com alguma equação como 'text' e aumentando a numeração de legenda para curvas em um plot:
+Um exemplo mais complicado será com alguma equação como 'text' e aumentando a numeração de legenda para curvas em um _plot_:
 
 ```jl
 @sco JDS.multiple_lines()
@@ -41,7 +41,7 @@ Definir `covary=true` permite alternar todos os elementos juntos:
 ```
 
 E voilà.
-Um plot de qualidade de publicação está aqui.
+Um _plot_ de qualidade de publicação está aqui.
 O que mais podemos pedir?
 Bem, e quanto a diferentes cores ou paletas padrão?
 Em nossa próxima seção, veremos como usar novamente [`Cycles`](http://makie.juliaplots.org/stable/documentation/theming/index.html#cycles) e conheça um pouco mais sobre eles, além de algumas palavras-chave adicionais para conseguir isso.

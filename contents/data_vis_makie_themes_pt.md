@@ -137,4 +137,4 @@ s = """
 sco(s)
 ```
 
-Agora, vamos seguir em frente e fazer um plot com strings em LaTeX e um tema personalizado.
+Agora, vamos seguir em frente e fazer um _plot_ com strings em LaTeX e um tema personalizado.

@@ -39,7 +39,7 @@ Veja abaixo como essas opções estão sendo utilizadas:
 @sco JDS.first_layout_fixed()
 ```
 
-Aqui, ter o rótulo `(a)` no `SuperiorEsquerdo()` provavelmente não é necessário, isso só fará sentido para mais de dois plots.
+Aqui, ter o rótulo `(a)` no `SuperiorEsquerdo()` provavelmente não é necessário, isso só fará sentido para mais de dois _plots_.
 Para o nosso próximo exemplo vamos continuar usando as ferramentas anteriores e mais algumas para criar uma figura mais rica e complexa.
 
 Você pode ocultar decorações e espinhas de eixos com:
@@ -134,7 +134,7 @@ que, quando usado para construir uma figura mais complexa fazendo várias chamad
 @sco JDS.main_figure()
 ```
 
-Observe que diferentes funções de subplot podem ser chamadas aqui.
+Observe que diferentes funções de _subplot_ podem ser chamadas aqui.
 Também, cada `Axis` aqui é uma parte independente de `Figure`.
 Então, se você precisar fazer alguma operação `rowgap!` ou `colsize!`, você precisará fazê-lo em cada um deles de forma independente ou em todos eles juntos.
 
@@ -142,7 +142,7 @@ Para `Axis` (_subplots_) agrupados podemos usar `GridLayout()` que, então, pode
 
 ### GridLayout aninhado
 
-Ao usar o `GridLayout()` podemos agrupar subplots, permitindo mais liberdade na construção de figuras complexas.
+Ao usar o `GridLayout()` podemos agrupar _subplots_, permitindo mais liberdade na construção de figuras complexas.
 Aqui, usando nosso `nested_sub_plot!` anterior, definimos três subgrupos e um `Axis` normal:
 
 ```jl
@@ -151,7 +151,7 @@ Aqui, usando nosso `nested_sub_plot!` anterior, definimos três subgrupos e um `
 
 Agora, usando `rowgap!` ou `colsize!` sobre cada grupo é possível `rowsize!, colsize!` também pode ser aplicado ao conjunto de `GridLayout().
 
-### Plots `inset`
+### _Plots_ `inset`
 
 Atualmente, fazer gráficos `inset` é um pouco complicado.
 Aqui, mostramos duas maneiras possíveis de fazer isso definindo inicialmente as funções auxiliares.

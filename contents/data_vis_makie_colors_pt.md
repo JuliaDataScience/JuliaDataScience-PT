@@ -2,12 +2,13 @@
 
 Escolher um conjunto apropriado de cores ou barra de cores para sua plotagem é uma parte essencial para apresentação de resultados.
 [Colors.jl](https://github.com/JuliaGraphics/Colors.jl) é suportado em `Makie.jl`
-para que você possa usar [named colors](https://juliagraphics.github.io/Colors.jl/latest/namedcolors/) ou passar valores `RGB` ou `RGBA`.
+para que você possa usar [cores nomeadas](https://juliagraphics.github.io/Colors.jl/latest/namedcolors/) ou passar valores `RGB` ou `RGBA`.
 Além disso, os mapas de cores [ColorSchemes.jl](https://github.com/JuliaGraphics/ColorSchemes.jl) e [PerceptualColourMaps.jl](https://github.com/peterkovesi/PerceptualColourMaps.jl) também podem ser usados.
 Vale a pena saber que você pode reverter um mapa de cores fazendo `Reverse(:colormap_name)`
 para obter uma cor transparente ou mapa de cores com `color=(:red,0.5)` e `colormap=(:viridis, 0.5)`.
 
-Diferentes casos de uso serão mostrados a seguir. Então vamos definir um tema personalizado com novas cores e uma paleta de cores.
+Diferentes casos de uso serão mostrados a seguir.
+Então vamos definir um tema personalizado com novas cores e uma paleta de cores.
 
 Por padrão `Makie.jl` tem um conjunto predefinido de cores para percorrê-las automaticamente.
 Conforme mostrado nas figuras anteriores, onde nenhuma cor específica foi definida.
@@ -22,7 +23,7 @@ Onde, nas duas primeiras linhas, usamos a palavra-chave `color` para especificar
 O resto está usando o padrão do conjunto de cores do ciclo.
 Mais tarde, aprenderemos como fazer um ciclo personalizado.
 
-Em relação aos mapas de cores, já estamos familiarizados com a palavra-chave `colormap` para heatmaps e scatters.
+Em relação aos mapas de cores, já estamos familiarizados com a palavra-chave `colormap` para `heatmap`s e `scatter`s.
 Aqui, mostramos que um mapa de cores também pode ser especificado por meio de um `Symbol` ou uma `String`, semelhante a cores.
 Ou até mesmo um vetor de cores `RGB`.
 Vamos fazer nosso primeiro exemplo chamando mapas de cores como `Symbol`, `String` e `cgrad` para valores categóricos.
@@ -46,7 +47,8 @@ sco(scolor)
 ```
 
 Ao definir um `colorrange` geralmente os valores fora deste intervalo são coloridos com a primeira e a última cor do mapa de cores.
-No entanto, às vezes é melhor especificar a cor desejada em ambas as extremidades. Fazemos isso com `highclip` e `lowclip`:
+No entanto, às vezes é melhor especificar a cor desejada em ambas as extremidades.
+Fazemos isso com `highclip` e `lowclip`:
 
 ```
 using ColorSchemes
@@ -103,7 +105,8 @@ Isso é corrigido passando ticks personalizados, como em `cbar.ticks = (position
 A última situação é passar uma tupla de duas cores para o `colormap` como símbolos, strings ou uma mistura.
 Você obterá um mapa de cores interpolado entre essas duas cores.
 
-Além disso, cores codificadas em hexadecimal também são aceitas. Então, no topo do nosso mapa de calor, vamos colocar um ponto semitransparente usando:
+Além disso, cores codificadas em hexadecimal também são aceitas.
+Então, no topo do nosso mapa de calor, vamos colocar um ponto semitransparente usando:
 
 ```jl
 s2color2 = """

@@ -25,7 +25,7 @@ s = """
 sco(s)
 ```
 
-Um exemplo mais complicado será com alguma equação como 'text' e aumentando a numeração de legenda para curvas em um _plot_:
+Um exemplo mais complicado será com alguma equação como texto e aumentando a numeração de legenda para curvas em um _plot_:
 
 ```jl
 @sco JDS.multiple_lines()

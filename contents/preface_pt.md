@@ -113,3 +113,5 @@ Rik Huijzer agradece em primeiro lugar seus supervisores de PhD na Universidade 
 Em segundo lugar, agradece aos pais e a sua namorada por toda a compreensão durante feriados, finais de semana e noites dedicadas a este livro.
 
 Lazaro Alonso agradece sua esposa e suas filhas por todo suporte durante o projeto.
+
+Agradecemos também à tradução de Nádia Lebedev e à revisão técnica de [Henrique Pougy](https://github.com/h-pgy) e [Elias Noda](https://github.com/Elias-Noda).

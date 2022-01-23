@@ -1,7 +1,7 @@
 ## Temas {#sec:themes}
 
-Existem várias maneiras de modificar a aparência geral de seus plots.
-Ou, você pode usar um [tema predefinido](http://makie.juliaplots.org/stable/documentation/theming/predefined_themes/index.html) ou seu próprio tema personalizado.
+Existem várias maneiras de modificar a aparência geral de seus _plots_.
+Você pode usar um [tema predefinido](http://makie.juliaplots.org/stable/documentation/theming/predefined_themes/index.html) ou seu próprio tema personalizado.
 Por exemplo, use um tema escuro predefinido via `with_theme(your_plot_function, theme_dark())`.
 Ou construa o seu próprio com `Theme(kwargs)` ou até mesmo atualize o que está ativo com `update_theme!(kwargs)`.
 
@@ -42,7 +42,7 @@ Portanto, nossa função de plotagem se parece com o seguinte:
 
 Observe que a função `series` foi usada para plotar várias linhas e dispersões de uma só vez com seus rótulos correspondentes.
 Além disso, um mapa de calor com sua barra de cores foi incluído.
-Atualmente, existem dois temas escuros, um chamado `theme_dark()` e outro `theme_black()`, veja Figures.
+Atualmente, existem dois temas escuros, um chamado `theme_dark()` e outro `theme_black()`:
 
 ```jl
 s = """
@@ -64,7 +64,7 @@ s = """
 sco(s)
 ```
 
-E mais três temas esbranquiçados chamados, `theme_ggplot2()`, `theme_minimal()` e `theme_light()`. Útil para plots de tipo de publicação mais padrão.
+E mais três temas claros chamados, `theme_ggplot2()`, `theme_minimal()` e `theme_light()`. Útil para _plots_ de tipo de publicação mais padrão.
 
 ```jl
 s = """
@@ -97,13 +97,13 @@ Por exemplo, o tema a seguir pode ser uma versão simples para um modelo de qual
 @sc publication_theme()
 ```
 
-Que, por simplicidade, usamos para traçar `scatterlines` e um `heatmap`.
+Que, por simplicidade, usamos para plotar `scatterlines` e um `heatmap`.
 
 ```jl
 @sc plot_with_legend_and_colorbar()
 ```
 
-Então, usando o `Theme` definido anteriormente, a saída é mostrada na Figure (@fig:plot_with_legend_and_colorbar).
+Então, usando o `Theme` definido anteriormente, a saída é mostrada na Figura (@fig:plot_with_legend_and_colorbar).
 
 ```jl
 s = """
@@ -137,4 +137,4 @@ s = """
 sco(s)
 ```
 
-Agora, vamos seguir em frente e fazer um plot com strings LaTeX e um tema personalizado.
+Agora, vamos seguir em frente e fazer um plot com strings em LaTeX e um tema personalizado.

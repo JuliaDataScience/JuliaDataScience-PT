@@ -3,14 +3,15 @@
 `CairoMakie.jl` fornece todas as nossas necessidades de imagens 2D estáticas.
 Mas às vezes queremos interatividade, principalmente quando estamos lidando com imagens 3D.
 A visualização de dados em 3D também é uma prática comum para obter insights de seus dados.
-É aqui que `GLMakie.jl` pode ser útil, já que usa [OpenGL](http://www.opengl.org/) como um backend que adiciona interatividade e capacidade de resposta a _plots_.
-Como antes, um _plot_ simples inclui, é claro, linhas e pontos. Então, vamos começar com eles e como já sabemos como os layouts funcionam, vamos colocar isso em prática.
+É aqui que `GLMakie.jl` pode ser útil, já que usa [OpenGL](http://www.opengl.org/) como um _backend_ que adiciona interatividade e capacidade de resposta a _plots_.
+Como antes, um _plot_ simples inclui, é claro, linhas e pontos.
+Então, vamos começar com eles e como já sabemos como os layouts funcionam, vamos colocar isso em prática.
 
 ### Dispersão e Linhas
 
-For scatter plots we have two options, the first one is `scatter(x, y, z)` and the second one is `meshscatter(x, y, z)`.
-In the first one markers don't scale in the axis directions, but in the later they do because they are actual geometries in 3D space.
-See the next example:
+Para os gráficos de dispersão temos duas opções, a primeira é `scatter(x, y, z)` e a segunda é `meshscatter(x, y, z)`.
+Na primeira, os marcadores não são escalonados nas direções dos eixos, mas na segunda, porque são geometrias reais no espaço 3D.
+Veja o próximo exemplo:
 
 ```
 using GLMakie
@@ -20,45 +21,44 @@ GLMakie.activate!()
 ```jl
 @sco JDS.scatters_in_3D()
 ```
+Observe também que uma geometria diferente pode ser passada como marcadores, ou seja, um quadrado/ângulo e podemos atribuir-lhes uma `colormap` também.
+No painel central, pode-se obter esferas perfeitas fazendo `aspect = :data` como no painel direito.
 
-Note also, that a different geometry can be passed as markers, i.e., a square/rectangle and we can assign a `colormap` for them as well.
-In the middle panel one could get perfect spheres by doing `aspect = :data` as in the right panel.
-
-And doing `lines` or `scatterlines` is also straightforward:
+E fazendo `lines` ou `scatterlines` é também bem simples:
 
 ```jl
 @sco JDS.lines_in_3D()
 ```
 
-Plotting a `surface` is also easy to do as well as a `wireframe` and `contour` lines in 3D.
+Plotando uma `surface` também é fácil de ser fazer assim como um `wireframe` e linhas `contour` em 3D.
 
-### Surfaces, wireframe, contour, contourf and contour3d
+### `surface`s, `wireframe`, `contour`, `contourf` e `contour3d`
 
-To show these cases we'll use the following `peaks` function:
+Para mostrar estes casos, utilizaremos a seguinte função `peaks`:
 
 ```jl
 @sc JDS.peaks()
 ```
 
-The output for the different plotting functions is
+A saída para as diferentes funções de plotagem é:
 
 ```jl
 @sco JDS.plot_peaks_function()
 ```
 
-But, it can also be plotted with a `heatmap(x, y, z)`, `contour(x, y, z)` or `contourf(x, y, z)`:
+Mas, também pode ser plotado com um `heatmap(x, y, z)`, `contour(x, y, z)` ou `contourf(x, y, z)`:
 
 ```jl
 @sco JDS.heatmap_contour_and_contourf()
 ```
 
-Additionally, by changing `Axis` to an `Axis3`, these plots will be automatically be in the x-y plane:
+Adicionalmente, ao mudarmos `Axis` para um `Axis3`, estes _plots_ estarão automaticamente no plano x-y:
 
 ```jl
 @sco JDS.heatmap_contour_and_contourf_in_a_3d_plane()
 ```
 
-Something else that is easy to do is to mix all these plotting functions into just one plot, namely:
+Algo que também é bem facil de fazer é misturar todas essas fun;óes de plotagens em um único _plot_:
 
 ```
 using TestImages
@@ -68,12 +68,13 @@ using TestImages
 @sco JDS.mixing_surface_contour3d_contour_and_contourf()
 ```
 
-Not bad, right? From there is clear that  any `heatmap`'s, `contour`'s, `contourf`'s or `image` can be plotted into any plane.
+Não é ruim, certo?
+É claro que qualquer `heatmap`s, `contour`s, `contourf`s ou `image` pode ser plotado em qualquer _plot_.
 
-### Arrows and Streamplots
+### `arrows` e `streamplots`
 
-`arrows` and `streamplot` are plots that might be useful when we want to know the directions that a given variable will follow.
-See a demonstration below^[we are using the `LinearAlgebra` module from Julia's standard library.]:
+`arrows` e `streamplot` são _plots_ que podem ser úteis quando queremos saber as direções que uma determinada variável seguirá.
+Veja uma demonstração abaixo^[Estamos usando o módulo `LinearAlgebra` da biblioteca padrão de Julia.]:
 
 ```
 using LinearAlgebra
@@ -83,13 +84,13 @@ using LinearAlgebra
 @sco JDS.arrows_and_streamplot_in_3d()
 ```
 
-Other interesting examples are a `mesh(obj)`, a `volume(x, y, z, vals)`, and a `contour(x, y, z, vals)`.
+Outros exemplos interessantes são `mesh(obj)`, `volume(x, y, z, vals)`, e `contour(x, y, z, vals)`.
 
-### Meshes and Volumes
+### _Mesh_ e Volumes
 
-Drawing Meshes comes in handy when you want to plot geometries, like a `Sphere` or a Rectangle, i. e. `FRect3D`.
-Another approach to visualize points in 3D space is by calling the functions `volume` and `contour`, which implements [ray tracing](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)) to simulate a wide variety of optical effects.
-See the next examples:
+Visualizações de _mesh_ são úteis quando você quer plotar geometrias, como uma `Sphere` ou um Retângulo, ex: `FRect3D`.
+Outra abordagem para visualizar pontos no espaço 3D é chamando as funções `volume` e `contour`, que implementam [_ray tracing_](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)) para simular uma grande variedade de efeitos ópticos.
+Veja os próximos exemplos:
 
 ```
 using GeometryBasics
@@ -99,18 +100,20 @@ using GeometryBasics
 @sco JDS.mesh_volume_contour()
 ```
 
-Note that here we are plotting two meshes in the same axis, one transparent sphere and a cube.
-So far, we have covered most of the 3D use-cases.
-Another example is `?linesegments`.
+Note que aqui estamos traçando duas _mesh_ no mesmo eixo, uma esfera transparente e um cubo.
+Até agora, cobrimos a maioria dos casos de uso 3D.
+Outro exemplo é `?linesegments`.
 
-Taking as reference the previous example one can do the following custom plot with spheres and rectangles:
+Tomando como referência o exemplo anterior, pode-se fazer o seguinte _plot_ personalizado com esferas e retângulos:
 
 ```
 using GeometryBasics, Colors
 ```
 
-For the spheres let's do a rectangular grid. Also, we will use a different color for each one of them.
-Additionally, we can mix spheres and a rectangular plane. Next, we define all the necessary data.
+Para as esferas, vamos fazer um _grid_ retangular.
+Além disso, usaremos uma cor diferente para cada uma delas.
+Adicionalmente, podemos misturar esferas e um plano retangular.
+Em seguida, definimos todos os dados necessários.
 
 ```jl
 sc("""
@@ -126,15 +129,15 @@ colors = [RGBA(rand(4)...) for v in recmesh.position]
 """)
 ```
 
-Then, the plot is simply done with:
+Então, o _plot_ é feito simplesmente com:
 
 ```jl
 @sco JDS.grid_spheres_and_rectangle_as_plate()
 ```
 
-Here, the rectangle is semi-transparent due to the alpha channel added to the RGB color.
-The rectangle function is quite versatile, for instance  3D boxes are easy do implement which in turn could be used for plotting a 3D histogram.
-See our next example, where we are using again our `peaks` function and some additional definitions:
+Aqui, o retângulo é semi-transparente devido ao canal alfa adicionado à cor RGB.
+A função de retângulo é bastante versátil, por exemplo, _box_ 3D é fácil implementar que por sua vez pode ser usada para traçar um histograma 3D.
+Veja nosso próximo exemplo, onde estamos usando novamente nossa função `peaks` e algumas definições adicionais:
 
 ```jl
 sc("""
@@ -149,21 +152,23 @@ ztmp2 = abs.(z) ./ maximum(abs.(z)) .+ 0.15
 """)
 ```
 
-here $\delta x, \delta y$ are used to specified our boxes size. `cmap2` will be the color for each box and `ztmp2` will be used as a transparency parameter. See the output in the next figure.
+aqui $\delta x, \delta y$ são usados para especificar o tamanho das _box_.
+`cmap2` será a cor de cada _box_ e `ztmp2` será usado como o parâmetro de transparência.
+Veja o resultado na próxima figura.
 
 ```jl
 @sco JDS.histogram_or_bars_in_3d()
 ```
 
-Note, that you can also call `lines` or `wireframe` over a mesh object.
+Note que você pode também usar `lines` ou `wireframe` sobre um objeto _mesh_.
 
-### Filled Line and Band
+### Linhas Preenchidas e `band`
 
-For our last example we will show how to do a filled curve in 3D with `band` and some `linesegments`:
+Para o nosso último exemplo vamos mostrar como fazer uma curva preenchida em 3d com `band` e alguns `linesegments`:
 
 ```jl
 @sco JDS.filled_line_and_linesegments_in_3D()
 ```
 
-Finally, our journey doing 3D plots has come to an end.
-You can combine everything we exposed here to create amazing 3D images!
+Finalmente, nossa jornada fazendo _plots_ 3D chegou ao fim.
+Você pode combinar tudo o que expostos aqui para criar imagens 3D incríveis!

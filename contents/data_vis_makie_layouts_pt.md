@@ -1,8 +1,8 @@
 ## Layouts {#sec:makie_layouts}
 
-Um _canvas/layout_ completo é definido por `Figure`, que pode ser preenchido com conteúdo após ser criado.
-omeçaremos com um arranjo simples de um `Axis`, uma `Legend` e uma `Colorbar`.
-Para esta tarefa, podemos pensar no canvas como um arranjo de `linhas` e `colunas` na indexação de uma `Figure` bem como um `Array`/`Matrix` regular.
+Um _canvas_/_layout_ completo é definido por `Figure`, que pode ser preenchido com conteúdo após ser criado.
+Começaremos com um arranjo simples de um `Axis`, uma `Legend` e uma `Colorbar`.
+Para esta tarefa, podemos pensar no canvas como um arranjo de `rows` e `columns` na indexação de uma `Figure` bem como um `Array`/`Matrix` regular.
 O conteúdo do `Axis` estará na _linha 1, coluna 1_, por exemplo `fig[1, 1]`, a `Colorbar` na _linha 1, coluna 2_, ou seja, `fig[1, 2]`.
 E a `Legend` na _linha 2_ e nas _colunas 1 e 2_, ou seja, `fig[2, 1:2]`.
 
@@ -10,12 +10,13 @@ E a `Legend` na _linha 2_ e nas _colunas 1 e 2_, ou seja, `fig[2, 1:2]`.
 @sco JDS.first_layout()
 ```
 
-Isso já parece bom, mas poderia ser melhor. Podemos corrigir problemas de espaçamento usando as seguintes palavras-chave e métodos:
+Isso já parece bom, mas poderia ser melhor.
+Podemos corrigir problemas de espaçamento usando as seguintes palavras-chave e métodos:
 
 - `figure_padding=(left, right, bottom, top)`
 - `padding=(left, right, bottom, top)`
 
-Levar em consideração o tamanho real de uma `Legend` ou `Colorbar` é feito por
+Levar em consideração o tamanho real de uma `Legend` ou `Colorbar` é feito por:
 
 > - `tellheight=true` ou `false`
 > - `tellwidth=true` ou `false`
@@ -23,7 +24,7 @@ Levar em consideração o tamanho real de uma `Legend` ou `Colorbar` é feito po
 > _Definir como `true` levará em consideração o tamanho real (altura ou largura) para uma `Legend` ou `Colorbar`_.
 > Consequentemente, as coisas serão redimensionadas de acordo.
 
-O espaço entre colunas e linhas é especificado como
+O espaço entre colunas e linhas é especificado como:
 
 > - `colgap!(fig.layout, col, separation)`
 > - `rowgap!(fig.layout, row, separation)`
@@ -31,15 +32,15 @@ O espaço entre colunas e linhas é especificado como
 > _Column gap_ (`colgap!`), se `col` for fornecido, a lacuna será aplicada a essa coluna específica.
 >_Row gap_ (`rowgap!`) , se a `linha` for fornecido, a lacuna será aplicada a essa linha específica.
 
-Além disso, veremos como colocar conteúdo nas **protrusões**, _i.e._ o espaço reservado para _título: `x` e `y`; ou `ticks` ou `label`_.
-Fazemos isso plotando em `fig[i, j, protrusion]` onde _`protrusion`_ pode ser `Esquerda()`, `Direita()`, `Inferior()` e `Superior()`, ou para cada canto `SuperiorEsquerdo()`, `SuperiorDireito()`, `InferiorDireito()`, `InferiorEsquerdo()`.
+Além disso, veremos como colocar conteúdo nas **protrusões**, _i.e._ o espaço reservado para título: `x` e `y`; ou `ticks` ou `label`.
+Fazemos isso plotando em `fig[i, j, protrusion]` onde `protrusion` pode ser `Left()`, `Right()`, `Bottom()` e `Top()`, ou para cada canto `TopLeft()`, `TopRight()`, `BottomRight()`, `BottomLeft()`.
 Veja abaixo como essas opções estão sendo utilizadas:
 
 ```jl
 @sco JDS.first_layout_fixed()
 ```
 
-Aqui, ter o rótulo `(a)` no `SuperiorEsquerdo()` provavelmente não é necessário, isso só fará sentido para mais de dois _plots_.
+Aqui, ter o rótulo `(a)` no `TopLeft()` provavelmente não é necessário, isso só fará sentido para mais de dois _plots_.
 Para o nosso próximo exemplo vamos continuar usando as ferramentas anteriores e mais algumas para criar uma figura mais rica e complexa.
 
 Você pode ocultar decorações e espinhas de eixos com:
@@ -58,7 +59,7 @@ s = """
 sco(s)
 ```
 
-Alternativamente, para decorações
+Alternativamente, para decorações:
 
 ```jl
 s = """
@@ -77,9 +78,9 @@ A sincronização do seu `Axis` é feita via:
 > Isso pode ser útil quando eixos compartilhados são desejados.
 > Outra maneira de obter eixos compartilhados será definindo `limites!`.
 
-Definir `limites` de uma vez ou independentemente para cada eixo é feito chamando
+Definir limites de uma vez ou independentemente para cada eixo é feito chamando
 
-> - `limites!(ax; l, r, b, t)`, onde `l` é esquerda, `r` direita, `b` inferior e `t` superior.
+> - `limits!(ax; l, r, b, t)`, onde `l` é esquerda, `r` direita, `b` inferior e `t` superior.
 >
 > Você também pode fazer `ylims!(low, high)` ou `xlims!(low, high)`, e até mesmo abrir fazendo `ylims!(low=0)` ou `xlims!(high=1)`.
 
@@ -102,7 +103,7 @@ Outro layout comum é uma grade de quadrados para mapas de calor:
 onde todos os rótulos estão em **protrusões** e cada `Axis` tem uma razão `AspectData()`.
 A `Colorbar` está localizada na terceira coluna e se expande da linha 1 até a linha 2.
 
-O próximo caso usa o chamado **modo de alinhamento** `Mixed()`, o que é especialmente útil ao lidar com grandes espaços vazios entre 'Axis' devido a tiques longos.
+O próximo caso usa o chamado **modo de alinhamento** `Mixed()`, o que é especialmente útil ao lidar com grandes espaços vazios entre `Axis` devido a tiques longos.
 Ainda, o módulo `Dates` da biblioteca padrão de Julia será necessário para esse exemplo.
 
 ```
@@ -149,7 +150,7 @@ Aqui, usando nosso `nested_sub_plot!` anterior, definimos três subgrupos e um `
 @sco JDS.nested_Grid_Layouts()
 ```
 
-Agora, usando `rowgap!` ou `colsize!` sobre cada grupo é possível `rowsize!, colsize!` também pode ser aplicado ao conjunto de `GridLayout().
+Agora, usando `rowgap!` ou `colsize!` sobre cada grupo é possível `rowsize!, colsize!` também pode ser aplicado ao conjunto de `GridLayout()`.
 
 ### _Plots_ `inset`
 
@@ -168,16 +169,16 @@ Então, o `inset` é feito facilmente, como em:
 ```
 
 onde as dimensões `Box` estão vinculadas ao `resolution` `Figure`.
-Observe que um inset também pode estar fora do `Eixo`.
-A outra abordagem é definir um novo `Eixo` em uma posição `fig[i, j]` especificando seu `width`, `height`, `halign` and `valign`.
+Observe que um inset também pode estar fora do `Axis`.
+A outra abordagem é definir um novo `Axis` em uma posição `fig[i, j]` especificando seu `width`, `height`, `halign` and `valign`.
 Fazemos isso na seguinte função:
 
 ```jl
 @sc add_axis_inset()
 ```
 
-Veja que no exemplo a seguir o `Eixo` com fundo cinza será redimensionado se o tamanho total da figura for alterado.
-Os _insets_ são limitados pelo posicionamento do `Eixo`.
+Veja que no exemplo a seguir o `Axis` com fundo cinza será redimensionado se o tamanho total da figura for alterado.
+Os _insets_ são limitados pelo posicionamento do `Axis`.
 
 ```jl
 @sco JDS.figure_axis_inset()

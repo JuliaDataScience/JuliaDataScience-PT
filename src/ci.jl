@@ -40,7 +40,21 @@ This method is called during CI.
 function build(; project="default")
     println("Building JDS")
     write_thanks_page()
-    fail_on_error = true
-    gen(; fail_on_error, project)
+    fail_on_error = false
+    gen(["preface"]; fail_on_error, project)
     build_all(; fail_on_error, project)
+end
+
+"Push the Portugese output to the original JDS gh-pages."
+function push_to_jds()
+    jds_dir = mktempdir()
+    run(`git clone --branch=gh-pages https://github.com/JuliaDataScience/JuliaDataScience $jds_dir`)
+    from = BUILD_DIR
+    to = joinpath(jds_dir, "pt")
+    mkpath(to)
+    cp(from, to; force=true)
+    run(`git add .`)
+    run(`git commit -m 'deploy from JuliaDataScience-PT'`)
+    run(`git push`)
+    return nothing
 end

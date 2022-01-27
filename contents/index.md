@@ -48,7 +48,7 @@ Or in BibTeX format:
 
 ### Front Cover {-}
 
-```jl
+```
 let
     fig = front_cover()
     # Use lazy loading to keep homepage speed high.

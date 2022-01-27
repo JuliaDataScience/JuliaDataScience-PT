@@ -30,6 +30,10 @@ jobs:
             ${{ runner.os }}-test-
             ${{ runner.os }}-
 
+      - name: Deploy to JuliaDataScience
+        # if: ${{ github.event_name != 'pull_request' }}
+        run: julia --project -e 'using JDS; JDS.push_to_jds()'
+
       - name: Install GLMakie dependencies
         run: sudo apt-get update && sudo apt-get install -y xorg-dev imagemagick mesa-utils xvfb libgl1 freeglut3-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev
 
@@ -37,13 +41,15 @@ jobs:
         run: julia --color=yes --project -e 'using Pkg; Pkg.instantiate();
                 using Books; Books.install_dependencies()'
 
+      - run: |
+          mkdir _build
+          echo 'foo' > _build/index.html
+
       - run: >
-          DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project -e 'using JDS; JDS.build(; project="pt")'
+          DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project -e '
+            using JDS; JDS.build(; project="pt")'
         env:
           # Fix for Plots with GR backend.
           GKSwstype: nul
 
-      - name: Deploy to JuliaDataScience
-        # if: ${{ github.event_name != 'pull_request' }}
-        run: julia --project -e 'using JDS; JDS.push_to_jds()'
 

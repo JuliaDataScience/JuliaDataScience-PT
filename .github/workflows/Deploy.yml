@@ -17,7 +17,9 @@ jobs:
           persist-credentials: false
           ref: gh-pages
 
-      - shell: julia --color=yes {0}
+
+      - name: Deploy to JuliaDataScience
+        shell: julia --color=yes {0}
         run: |
           jds_dir = mktempdir()
           url = "https://github.com/JuliaDataScience/JuliaDataScience"
@@ -31,7 +33,4 @@ jobs:
               run(`git commit -m 'deploy from JuliaDataScience-PT'`)
               run(`git push`)
           end
-
-    name: Deploy to JuliaDataScience
-        run: julia src/push-jds.jl
 

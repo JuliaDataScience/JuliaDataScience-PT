@@ -14,9 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          persist-credentials: false
+          persist-credentials: true
           ref: gh-pages
-
 
       - name: Deploy to JuliaDataScience
         shell: julia --color=yes {0}

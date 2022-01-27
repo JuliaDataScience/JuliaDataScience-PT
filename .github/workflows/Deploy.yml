@@ -17,12 +17,9 @@ jobs:
           persist-credentials: true
           ref: gh-pages
 
-      -   name: Setup SSH Keys and known_hosts
-          env:
-            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          run: |
-            ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-            ssh-add - <<< "${{ secrets.JULIADATASCIENCE }}"
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.JULIADATASCIENCE }}
 
       - name: Deploy to JuliaDataScience
         shell: julia --color=yes {0}

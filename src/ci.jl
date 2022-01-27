@@ -55,6 +55,6 @@ function push_to_jds()
     cp(from, to; force=true)
     run(`git add .`)
     run(`git commit -m 'deploy from JuliaDataScience-PT'`)
-    run(`git push --set-upstream-origin gh-pages`)
+    run(`git push --set-upstream origin gh-pages`)
     return nothing
 end

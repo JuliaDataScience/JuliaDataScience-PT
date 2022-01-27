@@ -5,7 +5,7 @@
 <h1 align="center">Julia Data Science</h1>
 
 <h3 align="center">
-  Open source and open access book for data science in Julia.
+  Livro aberto e open source para ciência de dados em Julia.
 </h3>
 
 [![CI Build](https://github.com/JuliaDataScience/JuliaDataScience/workflows/CI/badge.svg)](https://github.com/JuliaDataScience/JuliaDataScience/actions?query=workflow%3ACI+branch%3Amain)
@@ -13,13 +13,13 @@
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 [![Site Analytics](https://img.shields.io/badge/site-analytics-blueviolet)](https://app.usefathom.com/share/eejxhkte/julia+data+science)
 
-You can read the full book on <https://juliadatascience.io>.
+Você pode ler o livro na íntegra em <https://juliadatascience.io/pt>.
 
-This book is also published at [Amazon.com](https://www.amazon.com/dp/B09KMRKQ96/).
+Este livro também está disponível na [Amazon.com](https://www.amazon.com/dp/B09QP69D1T/).
 
 ## LICENSE
 
-This book is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International][cc-by-nc-sa].
+Este livro possui uma licença [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International][cc-by-nc-sa].
 
 [![CC BY-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 

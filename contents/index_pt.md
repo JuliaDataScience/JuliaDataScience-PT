@@ -1,4 +1,24 @@
-# Welcome {-}
+# Bem-vindo(a) {-}
+
+```{=html}
+<style>
+.language-switcher {
+    font-size: 22px;
+    text-align: right;
+    margin-right: 0.2em;
+    margin-bottom: 2em;
+}
+
+.language-switcher button {
+    font-size: 20px;
+}
+</style>
+
+<div class="language-switcher">
+<a href="/"><button>🇺🇸</button></a>
+<a href="/pt/index_pt"><button>🇧🇷</button></a>
+</div>
+```
 
 ```{=comment}
 This file is only included on the website.

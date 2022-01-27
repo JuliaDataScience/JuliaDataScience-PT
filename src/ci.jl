@@ -40,8 +40,8 @@ This method is called during CI.
 function build(; project="default")
     println("Building JDS")
     write_thanks_page()
-    fail_on_error = false
-    gen(["preface"]; fail_on_error, project)
+    fail_on_error = true
+    gen(; fail_on_error, project)
     build_all(; fail_on_error, project)
 end
 

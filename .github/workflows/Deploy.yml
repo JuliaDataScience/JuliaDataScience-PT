@@ -21,7 +21,8 @@ jobs:
         shell: julia --color=yes {0}
         run: |
           jds_dir = mktempdir()
-          url = "https://github.com/JuliaDataScience/JuliaDataScience"
+          secret = ENV["JULIADATASCIENCE"]
+          url = "https://jds:$secret@github.com/JuliaDataScience/JuliaDataScience"
           run(`git clone --branch=gh-pages $url $jds_dir`)
           from = "."
           to = joinpath(jds_dir, "pt")
@@ -34,4 +35,6 @@ jobs:
               run(`git commit -m 'deploy from JuliaDataScience-PT'`)
               run(`git push`)
           end
+        env:
+          JULIADATASCIENCE: ${{ secrets.JULIADATASCIENCE }}
 

@@ -25,7 +25,6 @@ jobs:
         shell: julia --color=yes {0}
         run: |
           jds_dir = mktempdir()
-          secret = ENV["JULIADATASCIENCE"]
           url = "https://github.com/JuliaDataScience/JuliaDataScience"
           run(`git clone --branch=gh-pages $url $jds_dir`)
           from = "."

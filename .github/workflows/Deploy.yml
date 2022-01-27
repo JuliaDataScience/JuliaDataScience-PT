@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - gh-pages
+  # TMP
+  pull_request:
   workflow_dispatch:
 
 jobs:

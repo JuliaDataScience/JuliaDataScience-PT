@@ -9,11 +9,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  steps:
-    - uses: actions/checkout@v2
-      with:
-        persist-credentials: false
-        ref: gh-pages
+  Deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          ref: gh-pages
 
-    - run: julia src/push-jds.jl
+      - name: Deploy to JuliaDataScience
+        run: julia src/push-jds.jl
 

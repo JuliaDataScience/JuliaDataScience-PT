@@ -53,8 +53,10 @@ function push_to_jds()
     to = joinpath(jds_dir, "pt")
     mkpath(to)
     cp(from, to; force=true)
-    run(`git add .`)
-    run(`git commit -m 'deploy from JuliaDataScience-PT'`)
-    run(`git push --set-upstream origin gh-pages`)
+    cd(jds_dir) do
+        run(`git add .`)
+        run(`git commit -m 'deploy from JuliaDataScience-PT'`)
+        run(`git push`)
+    end
     return nothing
 end

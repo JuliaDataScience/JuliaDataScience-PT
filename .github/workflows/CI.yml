@@ -48,11 +48,7 @@ jobs:
           # Fix for Plots with GR backend.
           GKSwstype: nul
 
-      - name: Deploy to secondary branch
-        if: ${{ github.event_name != 'pull_request' }}
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force_orphan: true
-          publish_dir: ./_build/
+      - name: Deploy to JuliaDataScience
+        # if: ${{ github.event_name != 'pull_request' }}
+        run: julia --project -e 'using JDS; JDS.push_to_jds()'
 

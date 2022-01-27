@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  BuildAndDeploy:
+  Build:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -36,14 +36,6 @@ jobs:
       - name: Install dependencies
         run: julia --color=yes --project -e 'using Pkg; Pkg.instantiate();
                 using Books; Books.install_dependencies()'
-
-      - run: |
-          mkdir -p _build
-          echo 'foo' > _build/index.html
-
-      - name: Deploy to JuliaDataScience
-        # if: ${{ github.event_name != 'pull_request' }}
-        run: julia --project -e 'using JDS; JDS.push_to_jds()'
 
       - run: >
           DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project -e '

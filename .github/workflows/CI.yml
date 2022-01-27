@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  BuildAndDeploy:
+  Build:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
 
       - uses: julia-actions/setup-julia@v1
         with:
-          version: "1.6"
+          version: "1.7"
 
       - uses: actions/cache@v1
         env:
@@ -33,14 +33,9 @@ jobs:
       - name: Install GLMakie dependencies
         run: sudo apt-get update && sudo apt-get install -y xorg-dev imagemagick mesa-utils xvfb libgl1 freeglut3-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev
 
-      # Enforce most recent version.
-      - name: Install Books.jl#main
-        run: julia --color=yes --project -e 'using Pkg;
-          Pkg.add(url="https://github.com/rikhuijzer/Books.jl#main");'
-
       - name: Install dependencies
         run: julia --color=yes --project -e 'using Pkg; Pkg.instantiate();
-                using Books; Books.install_dependencies()'
+          using Books; Books.install_dependencies()'
 
       - run: >
           DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project -e 'using JDS; JDS.build(; project="pt")'
@@ -55,4 +50,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force_orphan: true
           publish_dir: ./_build/
-

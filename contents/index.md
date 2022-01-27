@@ -15,8 +15,8 @@
 </style>
 
 <div class="language-switcher">
-<a href="/"><button>🇺🇸</button></a>
-<a href="/pt"><button>🇧🇷</button></a>
+<a href="https://juliadatascience.io"><button>🇺🇸</button></a>
+<a href="https://juliadatascience.io/pt"><button>🇧🇷</button></a>
 </div>
 ```
 
@@ -28,7 +28,7 @@ Bem-vindo(a)! Este é um livro _open source_ e de acesso livre e gratuito de com
 Nosso público-alvo são pesquisadores de todos os campos de ciências aplicadas, assim como praticantes e profissionais do mercado.
 Você pode navegar pelas páginas do ebook usando as teclas direcionais (esquerda/direita) do seu teclado.
 
-Este livro também está disponível como um arquivo [**PDF**](/pt/juliadatascience.pdf){target="_blank"}.
+Este livro também está disponível como um arquivo [**PDF**](/juliadatascience.pdf){target="_blank"}.
 
 O código-fonte está disponível no [GitHub](https://github.com/JuliaDataScience/JuliaDataScience-PT){target="_blank"}.
 

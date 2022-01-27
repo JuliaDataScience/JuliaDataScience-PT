@@ -1,21 +1,40 @@
-# Welcome {-}
+# Bem-vindo(a) {-}
+
+```{=html}
+<style>
+.language-switcher {
+    font-size: 22px;
+    text-align: right;
+    margin-right: 0.2em;
+    margin-bottom: 2em;
+}
+
+.language-switcher button {
+    font-size: 20px;
+}
+</style>
+
+<div class="language-switcher">
+<a href="/"><button>🇺🇸</button></a>
+<a href="/pt"><button>🇧🇷</button></a>
+</div>
+```
 
 ```{=comment}
 This file is only included on the website.
 ```
 
-Welcome! This is an open source and open access book on how to do **Data Science using [Julia](https://julialang.org)**.
-Our target audience are researchers from all fields of applied sciences.
-Of course, we hope to be useful for industry too.
-You can navigate through the pages of the ebook by using the arrow keys (left/right) on your keyboard.
+Bem-vindo(a)! Este é um livro _open source_ e de acesso livre e gratuito de como fazer **Ciência de Dados com [Julia](https://julialang.org)**.
+Nosso público-alvo são pesquisadores de todos os campos de ciências aplicadas, assim como praticantes e profissionais do mercado.
+Você pode navegar pelas páginas do ebook usando as teclas direcionais (esquerda/direita) do seu teclado.
 
-The book is also available as [**PDF**](/juliadatascience.pdf){target="_blank"}.
+Este livro também está disponível como um arquivo [**PDF**](/pt/juliadatascience.pdf){target="_blank"}.
 
-The source code is available at [GitHub](https://github.com/JuliaDataScience/JuliaDataScience){target="_blank"}.
+O código-fonte está disponível no [GitHub](https://github.com/JuliaDataScience/JuliaDataScience-PT){target="_blank"}.
 
-This book is also published at [Amazon.com](https://www.amazon.com/dp/B09KMRKQ96/).
+Este livro também está disponível na [Amazon.com](https://www.amazon.com/dp/B09QP69D1T/).
 
-If you want to be notified about updates, please consider **signing up for updates**:
+Se você quer ser notificado sobre atualizações, por favor considere se **inscrever na newsletter**:
 
 ```{=html}
 <form style="margin: 0 auto;" action="https://api.staticforms.xyz/submit" method="post">
@@ -26,9 +45,9 @@ If you want to be notified about updates, please consider **signing up for updat
 </form>
 ```
 
-### Citation Info {-}
+### Como Citar esse Livro {-}
 
-To cite the content, please use:
+Para citar esse conteúdo por favor use:
 
 ```plaintext
 Storopoli, Huijzer and Alonso (2021). Julia Data Science. https://juliadatascience.io. ISBN: 9798489859165.
@@ -46,7 +65,7 @@ Or in BibTeX format:
 }
 ```
 
-### Front Cover {-}
+### Capa do Livro {-}
 
 ```jl
 let
@@ -59,4 +78,3 @@ let
     Options(fig; filename, label=filename)
 end
 ```
-

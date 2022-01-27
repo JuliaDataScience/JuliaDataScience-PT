@@ -44,3 +44,4 @@ function build(; project="default")
     gen(; fail_on_error, project)
     build_all(; fail_on_error, project)
 end
+

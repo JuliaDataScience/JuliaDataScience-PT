@@ -30,8 +30,8 @@ jobs:
           cp(from, to; force=true)
           cd(jds_dir) do
               run(`git add .`)
-              run(`git config --global user.email "contact@juliadatascience.io"')
-              run(`git config --glabal user.name "Bot"`)
+              run(`git config --global user.email 'contact@juliadatascience.io'`)
+              run(`git config --glabal user.name 'Bot'`)
               run(`git commit -m 'deploy from JuliaDataScience-PT'`)
               run(`git push`)
           end

@@ -30,10 +30,6 @@ jobs:
             ${{ runner.os }}-test-
             ${{ runner.os }}-
 
-      - name: Deploy to JuliaDataScience
-        # if: ${{ github.event_name != 'pull_request' }}
-        run: julia --project -e 'using JDS; JDS.push_to_jds()'
-
       - name: Install GLMakie dependencies
         run: sudo apt-get update && sudo apt-get install -y xorg-dev imagemagick mesa-utils xvfb libgl1 freeglut3-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev
 
@@ -44,6 +40,10 @@ jobs:
       - run: |
           mkdir _build
           echo 'foo' > _build/index.html
+
+      - name: Deploy to JuliaDataScience
+        # if: ${{ github.event_name != 'pull_request' }}
+        run: julia --project -e 'using JDS; JDS.push_to_jds()'
 
       - run: >
           DISPLAY=:0 xvfb-run -s '-screen 0 1024x768x24' julia --project -e '

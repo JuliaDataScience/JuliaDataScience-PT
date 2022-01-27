@@ -38,7 +38,7 @@ jobs:
                 using Books; Books.install_dependencies()'
 
       - run: |
-          mkdir _build
+          mkdir -p _build
           echo 'foo' > _build/index.html
 
       - name: Deploy to JuliaDataScience

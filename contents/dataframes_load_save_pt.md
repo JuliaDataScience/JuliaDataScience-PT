@@ -150,7 +150,7 @@ end # hide
 ```
 
 Essas noções básicas de CSV devem abranger a maioria dos casos de uso.
-Para obter mais informações, consulte a [documentação do `CSV.jl` ](https://csv.juliadata.org/stable) e, especialemnte, o [docstring do construtor `CSV.File`  ](https://csv.juliadata.org/stable/#CSV.File).
+Para obter mais informações, consulte a [documentação do `CSV.jl` ](https://csv.juliadata.org/stable) e, especialmente, o [docstring do construtor `CSV.File`  ](https://csv.juliadata.org/stable/#CSV.File).
 
 ### Excel {#sec:excel}
 
